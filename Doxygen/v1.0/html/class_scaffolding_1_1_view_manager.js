@@ -1,0 +1,25 @@
+var class_scaffolding_1_1_view_manager =
+[
+    [ "AddAnimationEventToTransition", "class_scaffolding_1_1_view_manager.html#a2c7fd84060667b998d66a67568853a03", null ],
+    [ "GetCurrentOverlays", "class_scaffolding_1_1_view_manager.html#a5674ccdc20f2afe33e0f55838fc05f27", null ],
+    [ "Init", "class_scaffolding_1_1_view_manager.html#a8da654dc78dfd8839c7680315bedd382", null ],
+    [ "IsViewAnOverlay", "class_scaffolding_1_1_view_manager.html#a85f6fe3eff8b8fabfc846ba3fc109a4a", null ],
+    [ "OverrideStartupSequence", "class_scaffolding_1_1_view_manager.html#a8b9e5f3a4043a28c2b7d123724ae87b4", null ],
+    [ "RequestOverlayClose", "class_scaffolding_1_1_view_manager.html#a53ac113d01c1f5213787c1ef4724616c", null ],
+    [ "RequestOverlayCloseAll", "class_scaffolding_1_1_view_manager.html#a499bfe5132ab7546d40667dbded6b3fe", null ],
+    [ "RequestOverlayForceClose", "class_scaffolding_1_1_view_manager.html#aabb569944b16f76150d38ecabc5b9b7d", null ],
+    [ "RequestOverlayForceCloseAll", "class_scaffolding_1_1_view_manager.html#aec7560a6b7c91c50e7e39e1edbf622ea", null ],
+    [ "RequestOverlayOpen", "class_scaffolding_1_1_view_manager.html#a3228151a1d53fe86f49be2a35ec498f1", null ],
+    [ "RequestOverlayOpen", "class_scaffolding_1_1_view_manager.html#afa5b87d7f4c473eab77d2e2747384a40", null ],
+    [ "RequestScreen", "class_scaffolding_1_1_view_manager.html#a1153349d20cce467198780b7473ca20d", null ],
+    [ "RequestScreen", "class_scaffolding_1_1_view_manager.html#a3810a74e555482c79b4264bf19a65523", null ],
+    [ "RequestScreenWithLoadingView", "class_scaffolding_1_1_view_manager.html#ac8277accf4c311d3e00f6381d3c1c858", null ],
+    [ "Start", "class_scaffolding_1_1_view_manager.html#a20eef73a9db449ba636716b8381ea282", null ],
+    [ "startingView", "class_scaffolding_1_1_view_manager.html#abc9825e89be3fddca59c392ba338a8db", null ],
+    [ "startingViewIndex", "class_scaffolding_1_1_view_manager.html#a9e56eb550c23c91a256fe35da7636e82", null ],
+    [ "startingViewIsScreen", "class_scaffolding_1_1_view_manager.html#a7685f71898184419cedb57f3e25f59a1", null ],
+    [ "viewLength", "class_scaffolding_1_1_view_manager.html#a7c9fb93b9a870283b29774b884d001e1", null ],
+    [ "CurrentScreen", "class_scaffolding_1_1_view_manager.html#aeba5a2db8a3551991c2be765ee700dbd", null ],
+    [ "LastScreen", "class_scaffolding_1_1_view_manager.html#ac4d88a4e3c77abab903d16959b45cdae", null ],
+    [ "TargetScreen", "class_scaffolding_1_1_view_manager.html#ad77b108adca50eb2af05eb2dbbe13701", null ]
+];

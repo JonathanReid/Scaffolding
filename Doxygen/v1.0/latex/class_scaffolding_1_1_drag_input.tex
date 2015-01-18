@@ -1,0 +1,207 @@
+\hypertarget{class_scaffolding_1_1_drag_input}{\section{Scaffolding.\-Drag\-Input Class Reference}
+\label{class_scaffolding_1_1_drag_input}\index{Scaffolding.\-Drag\-Input@{Scaffolding.\-Drag\-Input}}
+}
+
+
+Drag input is a quick dragging solution using \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input}.  
+
+
+Inheritance diagram for Scaffolding.\-Drag\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_scaffolding_1_1_drag_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_drag_input_aff15e6ed3bca67228c44918a544e241b}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The inputs clean up phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_drag_input_aa14faf0a305db966f957bb59ab5de1ff}{Register\-Drag\-Callback} (Action$<$ Vector3 $>$ callback)
+\begin{DoxyCompactList}\small\item\em Registers the drag callback. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_drag_input_a5f46ef8ef277a59f91ce14eb725af851}{Register\-Direction\-Callback} (Action$<$ Direction $>$ callback)
+\begin{DoxyCompactList}\small\item\em Registers the direction callback. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_drag_input_a600650eb9b2e3ce954af6a5982db3360}{Handle\-Event\-Dragged\-Delta} (Vector3 delta)
+\begin{DoxyCompactList}\small\item\em Event\-Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through an average delta position value of all known touches. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_drag_input_a49561ec761c72584711384d57cb74f41}{Handle\-Event\-Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_drag_input_ab50a7059961c803e39e3ce9ffb0945d7}{Handle\-Event\-Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_drag_input_a4f032b5cb00663f311d36154fb8e64a3}{bool {\bfseries lock\-Horizontal}}\label{class_scaffolding_1_1_drag_input_a4f032b5cb00663f311d36154fb8e64a3}
+
+\item 
+\hypertarget{class_scaffolding_1_1_drag_input_ab1eb142a4d7572c0c1cc36b2a50d7eee}{bool {\bfseries lock\-Vertical}}\label{class_scaffolding_1_1_drag_input_ab1eb142a4d7572c0c1cc36b2a50d7eee}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_scaffolding_1_1_drag_input_ab8e2d83d121fbd2b3ad60ef23fe5332f}{Mouse\-Pressed}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} mouse pressed. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_drag_input_ab13911d3778d99a0687b7bf724adb42d}{Lock\-Horizontal}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} lock horizontal. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_drag_input_a5efcdda6db82447e4e61490c85977180}{Lock\-Vertical}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} lock vertical. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Drag input is a quick dragging solution using \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input}. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_drag_input_aff15e6ed3bca67228c44918a544e241b}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Drag\-Input.\-Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_input_aff15e6ed3bca67228c44918a544e241b}
+
+
+The inputs clean up phase. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_input_a600650eb9b2e3ce954af6a5982db3360}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Handle\-Event\-Dragged\-Delta@{Handle\-Event\-Dragged\-Delta}}
+\index{Handle\-Event\-Dragged\-Delta@{Handle\-Event\-Dragged\-Delta}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Handle\-Event\-Dragged\-Delta}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Drag\-Input.\-Handle\-Event\-Dragged\-Delta (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{delta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_input_a600650eb9b2e3ce954af6a5982db3360}
+
+
+Event\-Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through an average delta position value of all known touches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a2f8eac0790f92d3ce70e196069cc6936}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_input_a49561ec761c72584711384d57cb74f41}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Handle\-Event\-Pressed@{Handle\-Event\-Pressed}}
+\index{Handle\-Event\-Pressed@{Handle\-Event\-Pressed}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Handle\-Event\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Drag\-Input.\-Handle\-Event\-Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_input_a49561ec761c72584711384d57cb74f41}
+
+
+Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}{Scaffolding.\-Abstract\-Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_drag_this_input_a09639007081a6fee7bb7141ec5fa32a5}{Scaffolding.\-Drag\-This\-Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_input_ab50a7059961c803e39e3ce9ffb0945d7}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Handle\-Event\-Released@{Handle\-Event\-Released}}
+\index{Handle\-Event\-Released@{Handle\-Event\-Released}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Handle\-Event\-Released}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Drag\-Input.\-Handle\-Event\-Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_input_ab50a7059961c803e39e3ce9ffb0945d7}
+
+
+Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}{Scaffolding.\-Abstract\-Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_drag_this_input_a9da2ff31ce625e9880e6f47cd8617c6a}{Scaffolding.\-Drag\-This\-Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_input_a5f46ef8ef277a59f91ce14eb725af851}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Register\-Direction\-Callback@{Register\-Direction\-Callback}}
+\index{Register\-Direction\-Callback@{Register\-Direction\-Callback}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Register\-Direction\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Drag\-Input.\-Register\-Direction\-Callback (
+\begin{DoxyParamCaption}
+\item[{Action$<$ Direction $>$}]{callback}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_drag_input_a5f46ef8ef277a59f91ce14eb725af851}
+
+
+Registers the direction callback. 
+
+Example\-: public void My\-Callback\-Function(\-Direction direction) \{ if(direction == Direction.\-Left) \{ //dragged left... \} \}
+
+\-\_\-drag\-Input.\-Register\-Direction\-Callback(\-My\-Callback\-Function);
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_drag_input_aa14faf0a305db966f957bb59ab5de1ff}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Register\-Drag\-Callback@{Register\-Drag\-Callback}}
+\index{Register\-Drag\-Callback@{Register\-Drag\-Callback}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Register\-Drag\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Drag\-Input.\-Register\-Drag\-Callback (
+\begin{DoxyParamCaption}
+\item[{Action$<$ Vector3 $>$}]{callback}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_drag_input_aa14faf0a305db966f957bb59ab5de1ff}
+
+
+Registers the drag callback. 
+
+Example\-: public void My\-Callback\-Function(\-Vector3 delta\-Movement) \{ transform.\-position += delta\-Movement; \}
+
+\-\_\-drag\-Input.\-Register\-Drag\-Callback(\-My\-Callback\-Function);
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_scaffolding_1_1_drag_input_ab13911d3778d99a0687b7bf724adb42d}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Lock\-Horizontal@{Lock\-Horizontal}}
+\index{Lock\-Horizontal@{Lock\-Horizontal}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Lock\-Horizontal}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-Drag\-Input.\-Lock\-Horizontal\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_scaffolding_1_1_drag_input_ab13911d3778d99a0687b7bf724adb42d}
+
+
+Gets or sets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} lock horizontal. 
+
+{\ttfamily true} if lock horizontal; otherwise, {\ttfamily false}.\hypertarget{class_scaffolding_1_1_drag_input_a5efcdda6db82447e4e61490c85977180}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Lock\-Vertical@{Lock\-Vertical}}
+\index{Lock\-Vertical@{Lock\-Vertical}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Lock\-Vertical}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-Drag\-Input.\-Lock\-Vertical\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_scaffolding_1_1_drag_input_a5efcdda6db82447e4e61490c85977180}
+
+
+Gets or sets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} lock vertical. 
+
+{\ttfamily true} if lock vertical; otherwise, {\ttfamily false}.\hypertarget{class_scaffolding_1_1_drag_input_ab8e2d83d121fbd2b3ad60ef23fe5332f}{\index{Scaffolding\-::\-Drag\-Input@{Scaffolding\-::\-Drag\-Input}!Mouse\-Pressed@{Mouse\-Pressed}}
+\index{Mouse\-Pressed@{Mouse\-Pressed}!Scaffolding::DragInput@{Scaffolding\-::\-Drag\-Input}}
+\subsubsection[{Mouse\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-Drag\-Input.\-Mouse\-Pressed\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_drag_input_ab8e2d83d121fbd2b3ad60ef23fe5332f}
+
+
+Gets a value indicating whether this \hyperlink{class_scaffolding_1_1_drag_input}{Scaffolding.\-Drag\-Input} mouse pressed. 
+
+{\ttfamily true} if mouse pressed; otherwise, {\ttfamily false}.
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Input/\-Items/Drag\-Input.\-cs\end{DoxyCompactItemize}

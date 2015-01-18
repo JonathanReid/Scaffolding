@@ -1,0 +1,309 @@
+\hypertarget{class_scaffolding_1_1_abstract_view}{\section{Scaffolding.\-Abstract\-View Class Reference}
+\label{class_scaffolding_1_1_abstract_view}\index{Scaffolding.\-Abstract\-View@{Scaffolding.\-Abstract\-View}}
+}
+
+
+Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay.  
+
+
+Inheritance diagram for Scaffolding.\-Abstract\-View\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scaffolding_1_1_abstract_view}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Showing\-Types} \{ {\bfseries Wait\-For\-Previous\-Hide\-Transition}, 
+{\bfseries Show\-Immediately}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_scaffolding_1_1_scaffolding_button}{Scaffolding\-Button} \hyperlink{class_scaffolding_1_1_abstract_view_a0d1b13f8a8b94985aecef73344b33270}{Get\-Button\-For\-Name} (string name)
+\begin{DoxyCompactList}\small\item\em Return a button that is a child of the view by name. \end{DoxyCompactList}\item 
+\hyperlink{class_scaffolding_1_1_s_object}{S\-Object} \hyperlink{class_scaffolding_1_1_abstract_view_a3acb31a04d6fa8d91358cb289cf12f28}{Get\-Data\-For\-Transition} (Type type)
+\begin{DoxyCompactList}\small\item\em Get the data that has been packaged for delivery to a view. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_adf0ec646b670c17b7635f21a74432332}{Setup} (\hyperlink{class_scaffolding_1_1_view_manager}{View\-Manager} manager)
+\begin{DoxyCompactList}\small\item\em Runs when the view is created. Use this instead of Awake or Start. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}{On\-Show\-Start} (\hyperlink{class_scaffolding_1_1_s_object}{S\-Object} data)
+\begin{DoxyCompactList}\small\item\em Runs when the view is opened, and before any animation events have happened. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}{On\-Show\-Complete} ()
+\begin{DoxyCompactList}\small\item\em Runs after the \char`\"{}show\char`\"{} step has been completed, usually after any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are enabled at this step. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}{On\-Hide\-Start} ()
+\begin{DoxyCompactList}\small\item\em Runs when the view is requested to close, before any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}{On\-Hide\-Complete} ()
+\begin{DoxyCompactList}\small\item\em Runs when the view is completely closed. After this call, the view will be deleted. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are enabled at this step. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_adfcc4c97dbec84c92718de4456717fc2}{Request\-Overlay} (Type type)
+\begin{DoxyCompactList}\small\item\em Request an overlay with type to open. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a3b4879cd1667059f38599a7008d4fe61}{Request\-Overlay\-Close} (Type type)
+\begin{DoxyCompactList}\small\item\em Request an overlay to close of type. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a5ad76f8f3445b4be40fe89a6e28d1d3b}{Request\-Overlay\-Force\-Close} (Type type)
+\begin{DoxyCompactList}\small\item\em Force an overlay to close, this skips the On\-Hide\-Start method and goes straight to Hide\-Complete. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_ac9e33d232d17e2815946bd7dfbdc718f}{Request\-View} (Type type)
+\begin{DoxyCompactList}\small\item\em Request a view with type. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a4fce5dc780e682a9c32068dee4a4d58e}{Request\-View\-With\-Loading\-Overlay} (Type type, Type loading\-Type)
+\begin{DoxyCompactList}\small\item\em Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_a5676805d5374e27b0903a49fece06021}{Send\-Data\-To\-View} (Type target\-View, \hyperlink{class_scaffolding_1_1_s_object}{S\-Object} data)
+\begin{DoxyCompactList}\small\item\em Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_ac150377c429c981707547230cf2ccb73}{Remove\-Data\-For\-View} (Type target\-View)
+\begin{DoxyCompactList}\small\item\em Delete any data you want to send to a view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}{Disable\-All\-Inputs} ()
+\begin{DoxyCompactList}\small\item\em Disable any inputs found in the view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}{Enable\-All\-Inputs} ()
+\begin{DoxyCompactList}\small\item\em Enable any inputs found in the view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}{Toggle\-Enabled\-Inputs} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Toggles the enabled state of all inputs in the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a7a3bdf62bce105b7857671d30adb179b}{Showing\-Types {\bfseries showing\-Type}}\label{class_scaffolding_1_1_abstract_view_a7a3bdf62bce105b7857671d30adb179b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_addde808d8caa8a49014303bf1dcc1f8e}{Animation\-Clip {\bfseries in\-Transition}}\label{class_scaffolding_1_1_abstract_view_addde808d8caa8a49014303bf1dcc1f8e}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_aa62967668127d7526d2bca78e1e1501b}{Animation\-Clip {\bfseries out\-Transition}}\label{class_scaffolding_1_1_abstract_view_aa62967668127d7526d2bca78e1e1501b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_ae03980c52528bdb18b92932bb1f17e7b}{bool {\bfseries disable\-Inputs\-If\-Overlay}}\label{class_scaffolding_1_1_abstract_view_ae03980c52528bdb18b92932bb1f17e7b}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_scaffolding_1_1_abstract_view_a162a5103cff0b5aa7938715e1a84ad61}{Is\-Hiding}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether or not this view is in the hide state. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_abstract_view_ac933ea22f4d4b9e511f872d53d37a544}{Is\-Showing}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether or not this view is in the showing state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Disable\-All\-Inputs@{Disable\-All\-Inputs}}
+\index{Disable\-All\-Inputs@{Disable\-All\-Inputs}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Disable\-All\-Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Abstract\-View.\-Disable\-All\-Inputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}
+
+
+Disable any inputs found in the view. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Enable\-All\-Inputs@{Enable\-All\-Inputs}}
+\index{Enable\-All\-Inputs@{Enable\-All\-Inputs}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Enable\-All\-Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Abstract\-View.\-Enable\-All\-Inputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}
+
+
+Enable any inputs found in the view. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a0d1b13f8a8b94985aecef73344b33270}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Get\-Button\-For\-Name@{Get\-Button\-For\-Name}}
+\index{Get\-Button\-For\-Name@{Get\-Button\-For\-Name}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Get\-Button\-For\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scaffolding\-Button} Scaffolding.\-Abstract\-View.\-Get\-Button\-For\-Name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a0d1b13f8a8b94985aecef73344b33270}
+
+
+Return a button that is a child of the view by name. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a3acb31a04d6fa8d91358cb289cf12f28}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Get\-Data\-For\-Transition@{Get\-Data\-For\-Transition}}
+\index{Get\-Data\-For\-Transition@{Get\-Data\-For\-Transition}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Get\-Data\-For\-Transition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-Object} Scaffolding.\-Abstract\-View.\-Get\-Data\-For\-Transition (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a3acb31a04d6fa8d91358cb289cf12f28}
+
+
+Get the data that has been packaged for delivery to a view. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!On\-Hide\-Complete@{On\-Hide\-Complete}}
+\index{On\-Hide\-Complete@{On\-Hide\-Complete}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{On\-Hide\-Complete}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-On\-Hide\-Complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}
+
+
+Runs when the view is completely closed. After this call, the view will be deleted. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are enabled at this step. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!On\-Hide\-Start@{On\-Hide\-Start}}
+\index{On\-Hide\-Start@{On\-Hide\-Start}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{On\-Hide\-Start}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-On\-Hide\-Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}
+
+
+Runs when the view is requested to close, before any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!On\-Show\-Complete@{On\-Show\-Complete}}
+\index{On\-Show\-Complete@{On\-Show\-Complete}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{On\-Show\-Complete}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-On\-Show\-Complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}
+
+
+Runs after the \char`\"{}show\char`\"{} step has been completed, usually after any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are enabled at this step. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!On\-Show\-Start@{On\-Show\-Start}}
+\index{On\-Show\-Start@{On\-Show\-Start}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{On\-Show\-Start}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-On\-Show\-Start (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-Object}}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}
+
+
+Runs when the view is opened, and before any animation events have happened. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ac150377c429c981707547230cf2ccb73}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Remove\-Data\-For\-View@{Remove\-Data\-For\-View}}
+\index{Remove\-Data\-For\-View@{Remove\-Data\-For\-View}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Remove\-Data\-For\-View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Abstract\-View.\-Remove\-Data\-For\-View (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-View}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_ac150377c429c981707547230cf2ccb73}
+
+
+Delete any data you want to send to a view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-View} & Target view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_view_adfcc4c97dbec84c92718de4456717fc2}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Request\-Overlay@{Request\-Overlay}}
+\index{Request\-Overlay@{Request\-Overlay}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Request\-Overlay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Request\-Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_adfcc4c97dbec84c92718de4456717fc2}
+
+
+Request an overlay with type to open. 
+
+Example\-: Request\-Overlay(typeof(\-My\-View)); \hypertarget{class_scaffolding_1_1_abstract_view_a3b4879cd1667059f38599a7008d4fe61}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Request\-Overlay\-Close@{Request\-Overlay\-Close}}
+\index{Request\-Overlay\-Close@{Request\-Overlay\-Close}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Request\-Overlay\-Close}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Request\-Overlay\-Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a3b4879cd1667059f38599a7008d4fe61}
+
+
+Request an overlay to close of type. 
+
+Example\-: Request\-Overlay\-Close(typeof(\-My\-View)); \hypertarget{class_scaffolding_1_1_abstract_view_a5ad76f8f3445b4be40fe89a6e28d1d3b}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Request\-Overlay\-Force\-Close@{Request\-Overlay\-Force\-Close}}
+\index{Request\-Overlay\-Force\-Close@{Request\-Overlay\-Force\-Close}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Request\-Overlay\-Force\-Close}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Request\-Overlay\-Force\-Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a5ad76f8f3445b4be40fe89a6e28d1d3b}
+
+
+Force an overlay to close, this skips the On\-Hide\-Start method and goes straight to Hide\-Complete. 
+
+Example\-: Request\-Overlay\-Force\-Close(typeof(\-My\-View)); \hypertarget{class_scaffolding_1_1_abstract_view_ac9e33d232d17e2815946bd7dfbdc718f}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Request\-View@{Request\-View}}
+\index{Request\-View@{Request\-View}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Request\-View}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Request\-View (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_ac9e33d232d17e2815946bd7dfbdc718f}
+
+
+Request a view with type. 
+
+Example\-: Request\-View(typeof(\-My\-View)); \hypertarget{class_scaffolding_1_1_abstract_view_a4fce5dc780e682a9c32068dee4a4d58e}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Request\-View\-With\-Loading\-Overlay@{Request\-View\-With\-Loading\-Overlay}}
+\index{Request\-View\-With\-Loading\-Overlay@{Request\-View\-With\-Loading\-Overlay}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Request\-View\-With\-Loading\-Overlay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Request\-View\-With\-Loading\-Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type, }
+\item[{Type}]{loading\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a4fce5dc780e682a9c32068dee4a4d58e}
+
+
+Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. 
+
+Example\-: Request\-View\-With\-Loading\-Overlay(typeof(\-My\-Heavy\-View),typeof(\-My\-Loading\-Screen)); \hypertarget{class_scaffolding_1_1_abstract_view_a5676805d5374e27b0903a49fece06021}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Send\-Data\-To\-View@{Send\-Data\-To\-View}}
+\index{Send\-Data\-To\-View@{Send\-Data\-To\-View}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Send\-Data\-To\-View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Abstract\-View.\-Send\-Data\-To\-View (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-View, }
+\item[{{\bf S\-Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a5676805d5374e27b0903a49fece06021}
+
+
+Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. 
+
+Example\-: Value\-Object obj = new Value\-Object(); obj.\-Put\-Int(\char`\"{}\-Key\char`\"{}, 10); Send\-Data\-To\-View(type\-Of(\-My\-View),obj); \hypertarget{class_scaffolding_1_1_abstract_view_adf0ec646b670c17b7635f21a74432332}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\-Abstract\-View.\-Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf View\-Manager}}]{manager}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_adf0ec646b670c17b7635f21a74432332}
+
+
+Runs when the view is created. Use this instead of Awake or Start. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Toggle\-Enabled\-Inputs@{Toggle\-Enabled\-Inputs}}
+\index{Toggle\-Enabled\-Inputs@{Toggle\-Enabled\-Inputs}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Toggle\-Enabled\-Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Abstract\-View.\-Toggle\-Enabled\-Inputs (
+\begin{DoxyParamCaption}
+\item[{bool}]{enabled}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}
+
+
+Toggles the enabled state of all inputs in the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & If set to {\ttfamily true} enabled.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_view_a162a5103cff0b5aa7938715e1a84ad61}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Is\-Hiding@{Is\-Hiding}}
+\index{Is\-Hiding@{Is\-Hiding}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Is\-Hiding}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-Abstract\-View.\-Is\-Hiding\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_abstract_view_a162a5103cff0b5aa7938715e1a84ad61}
+
+
+Gets a value indicating whether or not this view is in the hide state. 
+
+{\ttfamily true} if this instance is hiding; otherwise, {\ttfamily false}.\hypertarget{class_scaffolding_1_1_abstract_view_ac933ea22f4d4b9e511f872d53d37a544}{\index{Scaffolding\-::\-Abstract\-View@{Scaffolding\-::\-Abstract\-View}!Is\-Showing@{Is\-Showing}}
+\index{Is\-Showing@{Is\-Showing}!Scaffolding::AbstractView@{Scaffolding\-::\-Abstract\-View}}
+\subsubsection[{Is\-Showing}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-Abstract\-View.\-Is\-Showing\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_abstract_view_ac933ea22f4d4b9e511f872d53d37a544}
+
+
+Gets a value indicating whether or not this view is in the showing state. 
+
+{\ttfamily true} if this instance is showing; otherwise, {\ttfamily false}.
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Location/Abstract\-View.\-cs\end{DoxyCompactItemize}

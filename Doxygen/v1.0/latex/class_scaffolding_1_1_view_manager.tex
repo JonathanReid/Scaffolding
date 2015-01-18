@@ -1,0 +1,307 @@
+\hypertarget{class_scaffolding_1_1_view_manager}{\section{Scaffolding.\-View\-Manager Class Reference}
+\label{class_scaffolding_1_1_view_manager}\index{Scaffolding.\-View\-Manager@{Scaffolding.\-View\-Manager}}
+}
+Inheritance diagram for Scaffolding.\-View\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scaffolding_1_1_view_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Action \hyperlink{class_scaffolding_1_1_view_manager_a8b9e5f3a4043a28c2b7d123724ae87b4}{Override\-Startup\-Sequence} ()
+\begin{DoxyCompactList}\small\item\em Overrides the startup sequence. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a8da654dc78dfd8839c7680315bedd382}{Init} ()
+\begin{DoxyCompactList}\small\item\em The startup sequence. \hyperlink{namespace_scaffolding}{Scaffolding} starts from here. \end{DoxyCompactList}\item 
+Dictionary$<$ Type, \hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} $>$ \hyperlink{class_scaffolding_1_1_view_manager_a5674ccdc20f2afe33e0f55838fc05f27}{Get\-Current\-Overlays} ()
+\begin{DoxyCompactList}\small\item\em Gets the current overlays. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_view_manager_a85f6fe3eff8b8fabfc846ba3fc109a4a}{Is\-View\-An\-Overlay} (Type type)
+\begin{DoxyCompactList}\small\item\em Determines whether the type is an overlay. \end{DoxyCompactList}\item 
+\hypertarget{class_scaffolding_1_1_view_manager_a2c7fd84060667b998d66a67568853a03}{void {\bfseries Add\-Animation\-Event\-To\-Transition} (Type target\-View, Animation\-Clip clip, string event\-Name)}\label{class_scaffolding_1_1_view_manager_a2c7fd84060667b998d66a67568853a03}
+
+\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a1153349d20cce467198780b7473ca20d}{Request\-Screen} (Type screen\-Type)
+\begin{DoxyCompactList}\small\item\em Requests the screen to open. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_ac8277accf4c311d3e00f6381d3c1c858}{Request\-Screen\-With\-Loading\-View} (Type screen\-Type, Type loading\-View\-Type, \hyperlink{class_scaffolding_1_1_s_object}{S\-Object} data)
+\begin{DoxyCompactList}\small\item\em Requests the screen with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a3810a74e555482c79b4264bf19a65523}{Request\-Screen} (Type screen\-Type, \hyperlink{class_scaffolding_1_1_s_object}{S\-Object} data)
+\begin{DoxyCompactList}\small\item\em Requests the screen with data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a3228151a1d53fe86f49be2a35ec498f1}{Request\-Overlay\-Open} (Type overlay\-Type)
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_afa5b87d7f4c473eab77d2e2747384a40}{Request\-Overlay\-Open} (Type overlay\-Type, \hyperlink{class_scaffolding_1_1_s_object}{S\-Object} data)
+\begin{DoxyCompactList}\small\item\em Requests the overlay open with data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a53ac113d01c1f5213787c1ef4724616c}{Request\-Overlay\-Close} (Type overlay\-Type)
+\begin{DoxyCompactList}\small\item\em Requests the overlay to close \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_aabb569944b16f76150d38ecabc5b9b7d}{Request\-Overlay\-Force\-Close} (Type overlay\-Type)
+\begin{DoxyCompactList}\small\item\em Requests the overlay to force close. This will skip the Hide\-Start() method of the target overlay. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_a499bfe5132ab7546d40667dbded6b3fe}{Request\-Overlay\-Close\-All} ()
+\begin{DoxyCompactList}\small\item\em Requests all open overlays to close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_aec7560a6b7c91c50e7e39e1edbf622ea}{Request\-Overlay\-Force\-Close\-All} ()
+\begin{DoxyCompactList}\small\item\em Requests all open overlays to be forced close. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_abc9825e89be3fddca59c392ba338a8db}{\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} {\bfseries starting\-View}}\label{class_scaffolding_1_1_view_manager_abc9825e89be3fddca59c392ba338a8db}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_a7685f71898184419cedb57f3e25f59a1}{bool {\bfseries starting\-View\-Is\-Screen} = true}\label{class_scaffolding_1_1_view_manager_a7685f71898184419cedb57f3e25f59a1}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_a9e56eb550c23c91a256fe35da7636e82}{int {\bfseries starting\-View\-Index}}\label{class_scaffolding_1_1_view_manager_a9e56eb550c23c91a256fe35da7636e82}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_a7c9fb93b9a870283b29774b884d001e1}{int {\bfseries view\-Length}}\label{class_scaffolding_1_1_view_manager_a7c9fb93b9a870283b29774b884d001e1}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_a20eef73a9db449ba636716b8381ea282}{void {\bfseries Start} ()}\label{class_scaffolding_1_1_view_manager_a20eef73a9db449ba636716b8381ea282}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} \hyperlink{class_scaffolding_1_1_view_manager_ac4d88a4e3c77abab903d16959b45cdae}{Last\-Screen}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the last Screen. \end{DoxyCompactList}\item 
+\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} \hyperlink{class_scaffolding_1_1_view_manager_aeba5a2db8a3551991c2be765ee700dbd}{Current\-Screen}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the current screen. \end{DoxyCompactList}\item 
+\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} \hyperlink{class_scaffolding_1_1_view_manager_ad77b108adca50eb2af05eb2dbbe13701}{Target\-Screen}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the target screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_view_manager_a5674ccdc20f2afe33e0f55838fc05f27}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Get\-Current\-Overlays@{Get\-Current\-Overlays}}
+\index{Get\-Current\-Overlays@{Get\-Current\-Overlays}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Get\-Current\-Overlays}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<$Type,{\bf Abstract\-View}$>$ Scaffolding.\-View\-Manager.\-Get\-Current\-Overlays (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a5674ccdc20f2afe33e0f55838fc05f27}
+
+
+Gets the current overlays. 
+
+\begin{DoxyReturn}{Returns}
+The current overlays.
+\end{DoxyReturn}
+\hypertarget{class_scaffolding_1_1_view_manager_a8da654dc78dfd8839c7680315bedd382}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Init@{Init}}
+\index{Init@{Init}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a8da654dc78dfd8839c7680315bedd382}
+
+
+The startup sequence. \hyperlink{namespace_scaffolding}{Scaffolding} starts from here. 
+
+\hypertarget{class_scaffolding_1_1_view_manager_a85f6fe3eff8b8fabfc846ba3fc109a4a}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Is\-View\-An\-Overlay@{Is\-View\-An\-Overlay}}
+\index{Is\-View\-An\-Overlay@{Is\-View\-An\-Overlay}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Is\-View\-An\-Overlay}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\-View\-Manager.\-Is\-View\-An\-Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a85f6fe3eff8b8fabfc846ba3fc109a4a}
+
+
+Determines whether the type is an overlay. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the type is an overlay, otherwise; {\ttfamily false}.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_a8b9e5f3a4043a28c2b7d123724ae87b4}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Override\-Startup\-Sequence@{Override\-Startup\-Sequence}}
+\index{Override\-Startup\-Sequence@{Override\-Startup\-Sequence}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Override\-Startup\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}Action Scaffolding.\-View\-Manager.\-Override\-Startup\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a8b9e5f3a4043a28c2b7d123724ae87b4}
+
+
+Overrides the startup sequence. 
+
+\begin{DoxyReturn}{Returns}
+The callback to contiue the startup sequence when you are finished.
+\end{DoxyReturn}
+\hypertarget{class_scaffolding_1_1_view_manager_a53ac113d01c1f5213787c1ef4724616c}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Close@{Request\-Overlay\-Close}}
+\index{Request\-Overlay\-Close@{Request\-Overlay\-Close}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Close}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a53ac113d01c1f5213787c1ef4724616c}
+
+
+Requests the overlay to close 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\-Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_a499bfe5132ab7546d40667dbded6b3fe}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Close\-All@{Request\-Overlay\-Close\-All}}
+\index{Request\-Overlay\-Close\-All@{Request\-Overlay\-Close\-All}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Close\-All}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Close\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a499bfe5132ab7546d40667dbded6b3fe}
+
+
+Requests all open overlays to close. 
+
+\hypertarget{class_scaffolding_1_1_view_manager_aabb569944b16f76150d38ecabc5b9b7d}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Force\-Close@{Request\-Overlay\-Force\-Close}}
+\index{Request\-Overlay\-Force\-Close@{Request\-Overlay\-Force\-Close}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Force\-Close}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Force\-Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_aabb569944b16f76150d38ecabc5b9b7d}
+
+
+Requests the overlay to force close. This will skip the Hide\-Start() method of the target overlay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\-Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_aec7560a6b7c91c50e7e39e1edbf622ea}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Force\-Close\-All@{Request\-Overlay\-Force\-Close\-All}}
+\index{Request\-Overlay\-Force\-Close\-All@{Request\-Overlay\-Force\-Close\-All}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Force\-Close\-All}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Force\-Close\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_aec7560a6b7c91c50e7e39e1edbf622ea}
+
+
+Requests all open overlays to be forced close. 
+
+\hypertarget{class_scaffolding_1_1_view_manager_a3228151a1d53fe86f49be2a35ec498f1}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Open@{Request\-Overlay\-Open}}
+\index{Request\-Overlay\-Open@{Request\-Overlay\-Open}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Open}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Open (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a3228151a1d53fe86f49be2a35ec498f1}
+
+
+Requests an overlay to open 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\-Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_afa5b87d7f4c473eab77d2e2747384a40}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Overlay\-Open@{Request\-Overlay\-Open}}
+\index{Request\-Overlay\-Open@{Request\-Overlay\-Open}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Overlay\-Open}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Overlay\-Open (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\-Type, }
+\item[{{\bf S\-Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_afa5b87d7f4c473eab77d2e2747384a40}
+
+
+Requests the overlay open with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\-Type} & Overlay type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_a1153349d20cce467198780b7473ca20d}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Screen@{Request\-Screen}}
+\index{Request\-Screen@{Request\-Screen}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Screen (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a1153349d20cce467198780b7473ca20d}
+
+
+Requests the screen to open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\-Type} & Screen type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_a3810a74e555482c79b4264bf19a65523}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Screen@{Request\-Screen}}
+\index{Request\-Screen@{Request\-Screen}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Screen (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\-Type, }
+\item[{{\bf S\-Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_a3810a74e555482c79b4264bf19a65523}
+
+
+Requests the screen with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\-Type} & Screen type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_ac8277accf4c311d3e00f6381d3c1c858}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Request\-Screen\-With\-Loading\-View@{Request\-Screen\-With\-Loading\-View}}
+\index{Request\-Screen\-With\-Loading\-View@{Request\-Screen\-With\-Loading\-View}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Request\-Screen\-With\-Loading\-View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-View\-Manager.\-Request\-Screen\-With\-Loading\-View (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\-Type, }
+\item[{Type}]{loading\-View\-Type, }
+\item[{{\bf S\-Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_ac8277accf4c311d3e00f6381d3c1c858}
+
+
+Requests the screen with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\-Type} & Screen type.\\
+\hline
+{\em loading\-View\-Type} & Loading view type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_scaffolding_1_1_view_manager_aeba5a2db8a3551991c2be765ee700dbd}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Current\-Screen@{Current\-Screen}}
+\index{Current\-Screen@{Current\-Screen}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Current\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Abstract\-View} Scaffolding.\-View\-Manager.\-Current\-Screen\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_view_manager_aeba5a2db8a3551991c2be765ee700dbd}
+
+
+Gets the current screen. 
+
+The current screen.\hypertarget{class_scaffolding_1_1_view_manager_ac4d88a4e3c77abab903d16959b45cdae}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Last\-Screen@{Last\-Screen}}
+\index{Last\-Screen@{Last\-Screen}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Last\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Abstract\-View} Scaffolding.\-View\-Manager.\-Last\-Screen\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_view_manager_ac4d88a4e3c77abab903d16959b45cdae}
+
+
+Gets the last Screen. 
+
+The last Screen.\hypertarget{class_scaffolding_1_1_view_manager_ad77b108adca50eb2af05eb2dbbe13701}{\index{Scaffolding\-::\-View\-Manager@{Scaffolding\-::\-View\-Manager}!Target\-Screen@{Target\-Screen}}
+\index{Target\-Screen@{Target\-Screen}!Scaffolding::ViewManager@{Scaffolding\-::\-View\-Manager}}
+\subsubsection[{Target\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Abstract\-View} Scaffolding.\-View\-Manager.\-Target\-Screen\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_view_manager_ad77b108adca50eb2af05eb2dbbe13701}
+
+
+Gets the target screen. 
+
+The target screen.
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Location/View\-Manager.\-cs\end{DoxyCompactItemize}

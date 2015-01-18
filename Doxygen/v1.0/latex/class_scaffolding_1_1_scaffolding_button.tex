@@ -1,0 +1,381 @@
+\hypertarget{class_scaffolding_1_1_scaffolding_button}{\section{Scaffolding.\-Scaffolding\-Button Class Reference}
+\label{class_scaffolding_1_1_scaffolding_button}\index{Scaffolding.\-Scaffolding\-Button@{Scaffolding.\-Scaffolding\-Button}}
+}
+
+
+The button class associated with the \hyperlink{namespace_scaffolding}{Scaffolding} default buttons.  
+
+
+Inheritance diagram for Scaffolding.\-Scaffolding\-Button\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_scaffolding_1_1_scaffolding_button}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Button\-Action\-Type} \{ {\bfseries Do\-Nothing}, 
+{\bfseries Open}, 
+{\bfseries Close}, 
+{\bfseries Play\-An\-Animation}
+ \}
+\item 
+enum {\bfseries Button\-State} \{ {\bfseries Up}, 
+{\bfseries Down}, 
+{\bfseries Inactive}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_scaffolding_button_a9473252a76f28a9d9605c7be23377f94}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_scaffolding_button_a1f295926babd2653cd63ed2933108d45}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em Runs when parent view is closed, override this to clean up your extended button. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_scaffolding_button_a1cc1e5b6b74c5411e1ca46dd81eb5144}{Handle\-Event\-Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_scaffolding_button_ab6c3c337fc6c6c9dad69498ac5acd098}{Handle\-Event\-Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_scaffolding_button_aa84a30d26afd5a3f54b5614d6e09e535}{Toggle\-Enabled\-Input} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Runs when view is closed or opened. Enables or Disables the button, and changes its visual state. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_aae1c0c4bf8e05652482aa08e5074a146}{Toggle\-Button\-Inactive} (bool active)
+\begin{DoxyCompactList}\small\item\em Toggles the button inactive state. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a46d64b651a64a4bffbe23ccba30eb62b}{Disable\-Inputs\-On\-Overlay} (Type t)
+\begin{DoxyCompactList}\small\item\em Disables the inputs for an overlay. Use this when opening an overlay and you dont want any click throughs happening on the current view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a58b903748ef8c771beaf4ef2549d6e3a}{Open\-Screen\-On\-Pressed} (Type target\-View)
+\begin{DoxyCompactList}\small\item\em Set the Screen to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_acf69a55f5537c91b3ddb251054c5b00e}{Open\-Screen\-On\-Pressed} (Type target\-View, Type loading\-View)
+\begin{DoxyCompactList}\small\item\em Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a6a88c00f8269467d03e6809fa10735bd}{Open\-Overlay\-On\-Pressed} (Type target\-Overlay)
+\begin{DoxyCompactList}\small\item\em Set the overlay to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_ad0f4de72aa3f1d16675ab391a5cc7fac}{Close\-Overlay\-On\-Pressed} (Type target\-Overlay)
+\begin{DoxyCompactList}\small\item\em Set the overlay to be closed when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a64d38c68237749eb7257c6bb29157af8}{Run\-Method\-On\-Pressed} (Type target\-Class, string method)
+\begin{DoxyCompactList}\small\item\em Add a method to be called when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a14a7663cdb2337745c9da6eb49c27c84}{Add\-Button\-Pressed\-Handler} (Action$<$ \hyperlink{class_scaffolding_1_1_scaffolding_button}{Scaffolding\-Button} $>$ action)
+\begin{DoxyCompactList}\small\item\em Registers the button pressed callback. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_scaffolding_button_a5857275c09f0c219bb7f5a5f2a345311}{Add\-Button\-Down\-Handler} (Action$<$ \hyperlink{class_scaffolding_1_1_scaffolding_button}{Scaffolding\-Button} $>$ action)
+\begin{DoxyCompactList}\small\item\em Registers the button down callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a20f7172d6e146170a2501484c2e84027}{string {\bfseries target\-View}}\label{class_scaffolding_1_1_scaffolding_button_a20f7172d6e146170a2501484c2e84027}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a2c6c416f1310699b9f28eb6326c5ac09}{int {\bfseries target\-View\-Index}}\label{class_scaffolding_1_1_scaffolding_button_a2c6c416f1310699b9f28eb6326c5ac09}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a5f28d4b31c041e4696535d1b0646229a}{int {\bfseries target\-View\-Length}}\label{class_scaffolding_1_1_scaffolding_button_a5f28d4b31c041e4696535d1b0646229a}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a92ed43ac0680a6032895634b917a5e90}{Camera {\bfseries input\-Camera}}\label{class_scaffolding_1_1_scaffolding_button_a92ed43ac0680a6032895634b917a5e90}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a89c371a6131332888debf1ef8cd9f61b}{int {\bfseries input\-Camera\-Index}}\label{class_scaffolding_1_1_scaffolding_button_a89c371a6131332888debf1ef8cd9f61b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_ab332584689def1a17f7a173a08227aee}{int {\bfseries input\-Camera\-Length}}\label{class_scaffolding_1_1_scaffolding_button_ab332584689def1a17f7a173a08227aee}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a6337d42ebb8a2d8a12378e9a6ff8609a}{bool {\bfseries open\-As\-Screen} = true}\label{class_scaffolding_1_1_scaffolding_button_a6337d42ebb8a2d8a12378e9a6ff8609a}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_abc00f74db0cfaec3115f97cce0fb6beb}{Button\-Action\-Type {\bfseries button\-Action\-Type}}\label{class_scaffolding_1_1_scaffolding_button_abc00f74db0cfaec3115f97cce0fb6beb}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a0d546af584d0ac0b31a16e4adb9a76ee}{List$<$ int $>$ {\bfseries selected\-Script\-Index}}\label{class_scaffolding_1_1_scaffolding_button_a0d546af584d0ac0b31a16e4adb9a76ee}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a91fedcedb5085efb1f3ee0c56386a621}{List$<$ int $>$ {\bfseries selected\-Script\-Length}}\label{class_scaffolding_1_1_scaffolding_button_a91fedcedb5085efb1f3ee0c56386a621}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a204f0e71bf3160760688ab657c2a9cf2}{List$<$ string $>$ {\bfseries selected\-Script}}\label{class_scaffolding_1_1_scaffolding_button_a204f0e71bf3160760688ab657c2a9cf2}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a077fbe5ce0919cde25b81a90eb9ad04c}{List$<$ int $>$ {\bfseries selected\-Method\-Index}}\label{class_scaffolding_1_1_scaffolding_button_a077fbe5ce0919cde25b81a90eb9ad04c}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a3de32644f293ca146e964f3c2bcbce06}{List$<$ string $>$ {\bfseries selected\-Method}}\label{class_scaffolding_1_1_scaffolding_button_a3de32644f293ca146e964f3c2bcbce06}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_aa883b3f77e293c7bcdbb387addc502d0}{List$<$ int $>$ {\bfseries selected\-Method\-Length}}\label{class_scaffolding_1_1_scaffolding_button_aa883b3f77e293c7bcdbb387addc502d0}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_af47869b2051fe6bfdc5dfa93062a5403}{Animation\-Clip {\bfseries animation\-Clip}}\label{class_scaffolding_1_1_scaffolding_button_af47869b2051fe6bfdc5dfa93062a5403}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_abbd519ae824f26e7a5fb2f4a2c18c326}{bool {\bfseries open\-Loading\-Overlay} = false}\label{class_scaffolding_1_1_scaffolding_button_abbd519ae824f26e7a5fb2f4a2c18c326}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a506367f905833bed57cb759fd367f859}{string {\bfseries loading\-Overlay}}\label{class_scaffolding_1_1_scaffolding_button_a506367f905833bed57cb759fd367f859}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_ac1a87db8d9654caba5330793522e5aec}{int {\bfseries loading\-Overlay\-Index}}\label{class_scaffolding_1_1_scaffolding_button_ac1a87db8d9654caba5330793522e5aec}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_ac9d9f07efc30620e06fa2ceb45952957}{int {\bfseries loading\-Overlay\-Length}}\label{class_scaffolding_1_1_scaffolding_button_ac9d9f07efc30620e06fa2ceb45952957}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_abac36d513665d8b5e208498a0a0a1f0f}{bool {\bfseries disable\-Inputs\-On\-Overlay} = false}\label{class_scaffolding_1_1_scaffolding_button_abac36d513665d8b5e208498a0a0a1f0f}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_aa24c2795a9d4b45ca98b201a0d1685bd}{bool {\bfseries created}}\label{class_scaffolding_1_1_scaffolding_button_aa24c2795a9d4b45ca98b201a0d1685bd}
+
+\item 
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a05626fef67a390539a1c6778b1fb627b}{int {\bfseries scaff\-I\-D} = -\/1}\label{class_scaffolding_1_1_scaffolding_button_a05626fef67a390539a1c6778b1fb627b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The button class associated with the \hyperlink{namespace_scaffolding}{Scaffolding} default buttons. 
+
+Allows you to quickly add in button behaviour in your scene, such as opening a new screen or overlay. Helps facilitate a very quick flow setup. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a5857275c09f0c219bb7f5a5f2a345311}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Add\-Button\-Down\-Handler@{Add\-Button\-Down\-Handler}}
+\index{Add\-Button\-Down\-Handler@{Add\-Button\-Down\-Handler}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Add\-Button\-Down\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Add\-Button\-Down\-Handler (
+\begin{DoxyParamCaption}
+\item[{Action$<$ {\bf Scaffolding\-Button} $>$}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a5857275c09f0c219bb7f5a5f2a345311}
+
+
+Registers the button down callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Method to callback after down happened. Needs Button as params\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a14a7663cdb2337745c9da6eb49c27c84}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Add\-Button\-Pressed\-Handler@{Add\-Button\-Pressed\-Handler}}
+\index{Add\-Button\-Pressed\-Handler@{Add\-Button\-Pressed\-Handler}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Add\-Button\-Pressed\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Add\-Button\-Pressed\-Handler (
+\begin{DoxyParamCaption}
+\item[{Action$<$ {\bf Scaffolding\-Button} $>$}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a14a7663cdb2337745c9da6eb49c27c84}
+
+
+Registers the button pressed callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Method to callback after pressed happened. Needs Button as params\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a1f295926babd2653cd63ed2933108d45}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Scaffolding\-Button.\-Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_scaffolding_button_a1f295926babd2653cd63ed2933108d45}
+
+
+Runs when parent view is closed, override this to clean up your extended button. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_scaffolding_button_ad0f4de72aa3f1d16675ab391a5cc7fac}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Close\-Overlay\-On\-Pressed@{Close\-Overlay\-On\-Pressed}}
+\index{Close\-Overlay\-On\-Pressed@{Close\-Overlay\-On\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Close\-Overlay\-On\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Close\-Overlay\-On\-Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-Overlay}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_ad0f4de72aa3f1d16675ab391a5cc7fac}
+
+
+Set the overlay to be closed when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a46d64b651a64a4bffbe23ccba30eb62b}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Disable\-Inputs\-On\-Overlay@{Disable\-Inputs\-On\-Overlay}}
+\index{Disable\-Inputs\-On\-Overlay@{Disable\-Inputs\-On\-Overlay}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Disable\-Inputs\-On\-Overlay}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Disable\-Inputs\-On\-Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{t}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a46d64b651a64a4bffbe23ccba30eb62b}
+
+
+Disables the inputs for an overlay. Use this when opening an overlay and you dont want any click throughs happening on the current view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & target overlay.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a1cc1e5b6b74c5411e1ca46dd81eb5144}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Handle\-Event\-Pressed@{Handle\-Event\-Pressed}}
+\index{Handle\-Event\-Pressed@{Handle\-Event\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Handle\-Event\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Scaffolding\-Button.\-Handle\-Event\-Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_scaffolding_button_a1cc1e5b6b74c5411e1ca46dd81eb5144}
+
+
+Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_scaffolding_button_ab6c3c337fc6c6c9dad69498ac5acd098}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Handle\-Event\-Released@{Handle\-Event\-Released}}
+\index{Handle\-Event\-Released@{Handle\-Event\-Released}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Handle\-Event\-Released}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Scaffolding\-Button.\-Handle\-Event\-Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_scaffolding_button_ab6c3c337fc6c6c9dad69498ac5acd098}
+
+
+Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a6a88c00f8269467d03e6809fa10735bd}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Open\-Overlay\-On\-Pressed@{Open\-Overlay\-On\-Pressed}}
+\index{Open\-Overlay\-On\-Pressed@{Open\-Overlay\-On\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Open\-Overlay\-On\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Open\-Overlay\-On\-Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-Overlay}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a6a88c00f8269467d03e6809fa10735bd}
+
+
+Set the overlay to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a58b903748ef8c771beaf4ef2549d6e3a}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Open\-Screen\-On\-Pressed@{Open\-Screen\-On\-Pressed}}
+\index{Open\-Screen\-On\-Pressed@{Open\-Screen\-On\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Open\-Screen\-On\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Open\-Screen\-On\-Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-View}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a58b903748ef8c771beaf4ef2549d6e3a}
+
+
+Set the Screen to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-View} & Target view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_acf69a55f5537c91b3ddb251054c5b00e}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Open\-Screen\-On\-Pressed@{Open\-Screen\-On\-Pressed}}
+\index{Open\-Screen\-On\-Pressed@{Open\-Screen\-On\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Open\-Screen\-On\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Open\-Screen\-On\-Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-View, }
+\item[{Type}]{loading\-View}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_acf69a55f5537c91b3ddb251054c5b00e}
+
+
+Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-View} & Target view.\\
+\hline
+{\em loading\-View} & Loading view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a64d38c68237749eb7257c6bb29157af8}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Run\-Method\-On\-Pressed@{Run\-Method\-On\-Pressed}}
+\index{Run\-Method\-On\-Pressed@{Run\-Method\-On\-Pressed}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Run\-Method\-On\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Run\-Method\-On\-Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\-Class, }
+\item[{string}]{method}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_a64d38c68237749eb7257c6bb29157af8}
+
+
+Add a method to be called when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\-Class} & Target class.\\
+\hline
+{\em method} & Method.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_a9473252a76f28a9d9605c7be23377f94}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Scaffolding\-Button.\-Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_scaffolding_button_a9473252a76f28a9d9605c7be23377f94}
+
+
+Run by the view during it's setup phase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & View.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{Scaffolding.\-Abstract\-Input}.
+
+\hypertarget{class_scaffolding_1_1_scaffolding_button_aae1c0c4bf8e05652482aa08e5074a146}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Toggle\-Button\-Inactive@{Toggle\-Button\-Inactive}}
+\index{Toggle\-Button\-Inactive@{Toggle\-Button\-Inactive}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Toggle\-Button\-Inactive}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\-Scaffolding\-Button.\-Toggle\-Button\-Inactive (
+\begin{DoxyParamCaption}
+\item[{bool}]{active}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_scaffolding_button_aae1c0c4bf8e05652482aa08e5074a146}
+
+
+Toggles the button inactive state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active} & If set to {\ttfamily true} active.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_scaffolding_button_aa84a30d26afd5a3f54b5614d6e09e535}{\index{Scaffolding\-::\-Scaffolding\-Button@{Scaffolding\-::\-Scaffolding\-Button}!Toggle\-Enabled\-Input@{Toggle\-Enabled\-Input}}
+\index{Toggle\-Enabled\-Input@{Toggle\-Enabled\-Input}!Scaffolding::ScaffoldingButton@{Scaffolding\-::\-Scaffolding\-Button}}
+\subsubsection[{Toggle\-Enabled\-Input}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Scaffolding\-Button.\-Toggle\-Enabled\-Input (
+\begin{DoxyParamCaption}
+\item[{bool}]{enabled}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_scaffolding_button_aa84a30d26afd5a3f54b5614d6e09e535}
+
+
+Runs when view is closed or opened. Enables or Disables the button, and changes its visual state. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a5b19183daa9bbef63dd4637d7197c077}{Scaffolding.\-Abstract\-Input}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Input/\-Items/Scaffolding\-Button.\-cs\end{DoxyCompactItemize}

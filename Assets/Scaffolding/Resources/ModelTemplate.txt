@@ -1,0 +1,24 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using Scaffolding;
+
+public class [MODEL_NAME] : [MODEL_TYPE] {
+	 
+	private void Awake()
+	{
+
+	}
+
+	public override void RegisterView(AbstractView view)
+    {
+		base.RegisterView(view);
+
+    }
+
+	public override void ViewClosed ()
+	{
+		base.ViewClosed ();
+	}
+
+}

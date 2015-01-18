@@ -1,0 +1,114 @@
+\hypertarget{class_scaffolding_1_1_pinch_this_input}{\section{Scaffolding.\-Pinch\-This\-Input Class Reference}
+\label{class_scaffolding_1_1_pinch_this_input}\index{Scaffolding.\-Pinch\-This\-Input@{Scaffolding.\-Pinch\-This\-Input}}
+}
+
+
+\hyperlink{class_scaffolding_1_1_pinch_this_input}{Pinch\-This\-Input} attaches to a gameobject as a quick solution to get something to respond to the pinch gesture. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} so falls under the same rules as other inputs in regards to views. E.\-g colliders get disabled during On\-Show\-Start and On\-Hide\-Start phases.  
+
+
+Inheritance diagram for Scaffolding.\-Pinch\-This\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_scaffolding_1_1_pinch_this_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_pinch_this_input_a60b5bc5461de1286d8bd142742451dab}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\-View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_pinch_this_input_a00f941bc53b1847a2be7a2e61a4a9a57}{Handle\-Event\-Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_pinch_this_input_ad9ca7c0e4b14d3d59ff06b258b4b9f7d}{Handle\-Event\-Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_pinch_this_input_a4ecf8031d0563624942fea3713354054}{Camera {\bfseries input\-Camera}}\label{class_scaffolding_1_1_pinch_this_input_a4ecf8031d0563624942fea3713354054}
+
+\item 
+\hypertarget{class_scaffolding_1_1_pinch_this_input_a52967dabb3c854e6aeb501f3423feb0d}{int {\bfseries input\-Camera\-Index}}\label{class_scaffolding_1_1_pinch_this_input_a52967dabb3c854e6aeb501f3423feb0d}
+
+\item 
+\hypertarget{class_scaffolding_1_1_pinch_this_input_a8c0727e05a84d7ee4e9136b728302f77}{int {\bfseries input\-Camera\-Length}}\label{class_scaffolding_1_1_pinch_this_input_a8c0727e05a84d7ee4e9136b728302f77}
+
+\item 
+\hypertarget{class_scaffolding_1_1_pinch_this_input_acb30c6b37a2031dccf9951608e247136}{float {\bfseries smallest\-Scale} = 0}\label{class_scaffolding_1_1_pinch_this_input_acb30c6b37a2031dccf9951608e247136}
+
+\item 
+\hypertarget{class_scaffolding_1_1_pinch_this_input_af682306ce14b0aea6fae51486784857e}{float {\bfseries largest\-Scale} = 2}\label{class_scaffolding_1_1_pinch_this_input_af682306ce14b0aea6fae51486784857e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_scaffolding_1_1_pinch_this_input}{Pinch\-This\-Input} attaches to a gameobject as a quick solution to get something to respond to the pinch gesture. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\-Input} so falls under the same rules as other inputs in regards to views. E.\-g colliders get disabled during On\-Show\-Start and On\-Hide\-Start phases. 
+
+Can be tested in the editor by holding down left C\-M\-D on mac or left C\-T\-R\-L on P\-C.\-Pinch this input. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_pinch_this_input_a00f941bc53b1847a2be7a2e61a4a9a57}{\index{Scaffolding\-::\-Pinch\-This\-Input@{Scaffolding\-::\-Pinch\-This\-Input}!Handle\-Event\-Pressed@{Handle\-Event\-Pressed}}
+\index{Handle\-Event\-Pressed@{Handle\-Event\-Pressed}!Scaffolding::PinchThisInput@{Scaffolding\-::\-Pinch\-This\-Input}}
+\subsubsection[{Handle\-Event\-Pressed}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Pinch\-This\-Input.\-Handle\-Event\-Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_pinch_this_input_a00f941bc53b1847a2be7a2e61a4a9a57}
+
+
+Event\-Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_pinch_input_aea53be8e94bef95c8373dd05639eaa41}{Scaffolding.\-Pinch\-Input}.
+
+\hypertarget{class_scaffolding_1_1_pinch_this_input_ad9ca7c0e4b14d3d59ff06b258b4b9f7d}{\index{Scaffolding\-::\-Pinch\-This\-Input@{Scaffolding\-::\-Pinch\-This\-Input}!Handle\-Event\-Released@{Handle\-Event\-Released}}
+\index{Handle\-Event\-Released@{Handle\-Event\-Released}!Scaffolding::PinchThisInput@{Scaffolding\-::\-Pinch\-This\-Input}}
+\subsubsection[{Handle\-Event\-Released}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Pinch\-This\-Input.\-Handle\-Event\-Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_pinch_this_input_ad9ca7c0e4b14d3d59ff06b258b4b9f7d}
+
+
+Event\-Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\-Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\-Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_pinch_input_ad7e6fa3689011526acda972b7f6f4aa8}{Scaffolding.\-Pinch\-Input}.
+
+\hypertarget{class_scaffolding_1_1_pinch_this_input_a60b5bc5461de1286d8bd142742451dab}{\index{Scaffolding\-::\-Pinch\-This\-Input@{Scaffolding\-::\-Pinch\-This\-Input}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding::PinchThisInput@{Scaffolding\-::\-Pinch\-This\-Input}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\-Pinch\-This\-Input.\-Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_pinch_this_input_a60b5bc5461de1286d8bd142742451dab}
+
+
+Run by the view during it's setup phase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & View.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_pinch_input_aa6687d25d10c2f4e7106641e0647af35}{Scaffolding.\-Pinch\-Input}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Input/\-Items/Pinch\-This\-Input.\-cs\end{DoxyCompactItemize}
