@@ -5,7 +5,7 @@ using Scaffolding;
 
 public class FourthView : AbstractView {
 	 
-	public override void Setup(ViewManagerBase manager)
+    public override void Setup(ViewManagerBase manager)
     {
         base.Setup(manager);
     }

@@ -1,5 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 namespace Scaffolding {
@@ -67,11 +69,12 @@ namespace Scaffolding {
 		public static ScaffoldingConfig CreateInstance()
 		{
 			string path = "";
+			ScaffoldingConfig sc = null;
 
+#if UNITY_EDITOR
 			RecursivelyFindFolderPath("Assets");
 			path = _scaffoldingPath+"/Resources/SCConfig.asset";
 
-			ScaffoldingConfig sc = null;
 			if(AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) == null)
 			{
 				sc = ScriptableObject.CreateInstance<ScaffoldingConfig> ();
@@ -87,6 +90,11 @@ namespace Scaffolding {
 			
 			sc = AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) as ScaffoldingConfig;
 			sc.ScaffoldingPath = _scaffoldingPath;
+#else
+			path = "SCConfig.asset";
+			sc = Resources.Load<ScaffoldingConfig>(path);
+#endif
+
 			return sc;
 		}
 

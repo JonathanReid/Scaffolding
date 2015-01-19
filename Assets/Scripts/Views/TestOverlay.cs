@@ -9,7 +9,7 @@ public class TestOverlay : AbstractView {
     {
         base.Setup(manager);
     }
-	
+
     public override void OnShowStart(SObject data)
     {
         base.OnShowStart(data);

@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Scaffolding;
 
-public class SecondView : AbstractView
-{
+public class SecondView : AbstractView {
+	 
+	public override void Setup(ViewManagerBase manager)
+    {
+        base.Setup(manager);
+    }
+
     public override void OnShowStart(SObject data)
     {
         base.OnShowStart(data);

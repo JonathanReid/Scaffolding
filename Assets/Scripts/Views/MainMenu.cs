@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Scaffolding;
 
-public class MainMenu : AbstractView
-{
+public class MainMenu : AbstractView {
+	 
 	public override void Setup(ViewManagerBase manager)
     {
         base.Setup(manager);
-	}
+    }
 
     public override void OnShowStart(SObject data)
     {
@@ -30,13 +30,14 @@ public class MainMenu : AbstractView
         base.OnHideComplete();
     }
 
-    public void OpenMadeByLink()
-    {
-        Application.OpenURL("http://www.twitter.com/_jonreid");
-    }
-
-    public void OpenSupportedByLink()
-    {
-        Application.OpenURL("http://www.preloaded.com");
-    }
+	public void OpenMadeByLink()
+	{
+		Debug.Log("Made by link");
+		Application.OpenURL("http://www.jonsgames.com");
+	}
+	
+	public void OpenSupportedByLink()
+	{
+		Application.OpenURL("http://www.preloaded.com");
+	}
 }

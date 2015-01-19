@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 328a0423c34674b5abb95acef1688270
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: ScaffoldingLogo
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,8 +25,8 @@ TextureImporter:
   textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: 1
+    filterMode: 2
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
