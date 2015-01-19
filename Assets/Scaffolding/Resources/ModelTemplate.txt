@@ -16,9 +16,4 @@ public class [MODEL_NAME] : [MODEL_TYPE] {
 
     }
 
-	public override void ViewClosed ()
-	{
-		base.ViewClosed ();
-	}
-
 }

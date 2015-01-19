@@ -5,7 +5,7 @@ using Scaffolding;
 
 public class MainMenu : AbstractView
 {
-    public override void Setup(ViewManager manager)
+	public override void Setup(ViewManagerBase manager)
     {
         base.Setup(manager);
 	}

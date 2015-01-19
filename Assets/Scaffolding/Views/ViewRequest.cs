@@ -5,10 +5,10 @@ using System;
 
 namespace Scaffolding
 {
-    public class ViewRequest : MonoBehaviour
+    public class ViewRequest : MonoBehaviour, IRequestable
     {
 
-        internal ViewManager _manager;
+		internal ViewManagerBase _manager;
         internal Dictionary<Type, SObject> _viewDataforTransitions;
         internal bool _isHiding;
         internal bool _isShowing;
@@ -46,6 +46,11 @@ namespace Scaffolding
             }
         }
 
+		public virtual void RegisterViewToModel(AbstractView view, AbstractModel model)
+		{
+			_manager.RegisterViewToModel(view,model);
+		}
+
         /// <summary>
         /// Get the data that has been packaged for delivery to a view.
         /// </summary>
@@ -64,10 +69,7 @@ namespace Scaffolding
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public virtual void RequestOverlay<T>() where T :AbstractView
         {
-            if (IsShowing)
-            {
-                RequestOverlay(typeof(T));
-            }
+ 	       RequestOverlay(typeof(T));
         }
     
         /// <summary>
@@ -79,10 +81,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlay(Type type)
         {
-            if (IsShowing)
-            {
-                _manager.RequestOverlayOpen(type, GetViewDataForTransition(type));
-            }
+ 	       _manager.RequestOverlay(type, GetViewDataForTransition(type));
             RemoveDataForView(type);
         }
     
@@ -93,10 +92,7 @@ namespace Scaffolding
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public virtual void RequestOverlay<T>(bool disableInputsOnScreen)
         {
-            if (IsShowing)
-            {
-                RequestOverlay(typeof(T), disableInputsOnScreen);
-            }
+ 	       RequestOverlay(typeof(T), disableInputsOnScreen);
         }
     
         /// <summary>
@@ -106,15 +102,12 @@ namespace Scaffolding
         /// <param name="disableInputsOnScreen">If set to <c>true</c> disable inputs on screen.</param>
         public virtual void RequestOverlay(Type type, bool disableInputsOnScreen)
         {
-            if (IsShowing)
-            {
-                SObject vo = GetViewDataForTransition(type);
-                if (vo == null)
-                    vo = new SObject();
-                vo.AddBool("Scaffolding:DisableInputsOnOverlay", disableInputsOnScreen);
-                SendDataToView(type, vo);
-                RequestOverlay(type);
-            }
+	        SObject vo = GetViewDataForTransition(type);
+	        if (vo == null)
+	            vo = new SObject();
+	        vo.AddBool("Scaffolding:DisableInputsOnOverlay", disableInputsOnScreen);
+	        SendDataToView(type, vo);
+	        RequestOverlay(type);
         }
     
     
@@ -127,10 +120,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlayClose<T>() where T :AbstractView
         {
-            if (IsShowing)
-            {
-                RequestOverlayClose(typeof(T));
-            }
+ 	       RequestOverlayClose(typeof(T));
         }
     
         /// <summary>
@@ -142,10 +132,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlayClose(Type type)
         {
-            if (IsShowing)
-            {
-                _manager.RequestOverlayClose(type);
-            }
+ 	       _manager.RequestOverlayClose(type);
         }
     
         /// <summary>
@@ -157,10 +144,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlayForceClose<T>() where T :AbstractView
         {
-            if (IsShowing)
-            {
-                RequestOverlayForceClose(typeof(T));
-            }
+ 	       RequestOverlayForceClose(typeof(T));
         }
     
         /// <summary>
@@ -172,10 +156,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlayForceClose(Type type)
         {
-            if (IsShowing)
-            {
-                _manager.RequestOverlayForceClose(type);
-            }
+ 	       _manager.RequestOverlayForceClose(type);
         }
     
         /// <summary>
@@ -187,10 +168,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestView<T>() where T :AbstractView
         {
-            if (IsShowing)
-            {
-                RequestView(typeof(T));
-            }
+ 	       RequestView(typeof(T));
         }
     
         /// <summary>
@@ -202,11 +180,8 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestView(Type type)
         {
-            if (IsShowing)
-            {
-                _manager.RequestView(type, GetViewDataForTransition(type));
-                RemoveDataForView(type);
-            }
+			_manager.RequestView(type, GetViewDataForTransition(type));
+			RemoveDataForView(type);
         }
     
         /// <summary>
@@ -215,10 +190,7 @@ namespace Scaffolding
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public virtual void RequestForceReopenView<T>() where T:AbstractView
         {
-            if (IsShowing)
-            {
-                _manager.RequestViewForceReopen<T>(GetViewDataForTransition(typeof(T)));
-            }
+ 	       _manager.RequestForceReopenView<T>(GetViewDataForTransition(typeof(T)));
         }
     
         /// <summary>
@@ -227,10 +199,7 @@ namespace Scaffolding
         /// <param name="type">Type.</param>
         public virtual void RequestForceReopenView(Type type)
         {
-            if (IsShowing)
-            {
-                _manager.RequestViewForceReopen(type, GetViewDataForTransition(type));
-            }
+ 	       _manager.RequestForceReopenView(type, GetViewDataForTransition(type));
         }
     
         /// <summary>
@@ -242,10 +211,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestViewWithLoadingOverlay<T, L>() where T :AbstractView where  L :AbstractView
         {
-            if (IsShowing)
-            {
-                RequestViewWithLoadingOverlay(typeof(T), typeof(L));
-            }
+ 	       RequestViewWithLoadingOverlay(typeof(T), typeof(L));
         }
     
         /// <summary>
@@ -257,11 +223,8 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestViewWithLoadingOverlay(Type type, Type loadingType)
         {
-            if (IsShowing)
-            {
-                _manager.RequestViewWithLoadingView(type, loadingType, GetViewDataForTransition(type));
-                RemoveDataForView(type);
-            }
+			_manager.RequestViewWithLoadingOverlay(type, loadingType, GetViewDataForTransition(type));
+			RemoveDataForView(type);
         }
     
         /************************************************

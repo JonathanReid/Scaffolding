@@ -12,8 +12,9 @@ namespace Scaffolding
     /// </summary>
     public abstract class AbstractView : ViewRequest
     {
-		public delegate void AbstractViewEvent(SObject obj);
+		public delegate void AbstractViewEvent(AbstractView sender, SObject obj);
 		public event AbstractViewEvent ViewEvent;
+		public event AbstractViewEvent ViewClosedEvent;
 
         /************************************************
          * for inspector
@@ -105,14 +106,6 @@ namespace Scaffolding
             GetButtonForName(name).AddButtonEnterHandlerNoButton(handler);
         }
 #endif
-        
-        public virtual void ButtonDown(AbstractButton button)
-        {
-        }
-        
-        public virtual void ButtonPressed(AbstractButton button)
-        {
-        }
 
         /************************************************
          * private methods
@@ -137,7 +130,7 @@ namespace Scaffolding
         /// Runs when the view is created.
         /// Use this instead of Awake or Start.
         /// </summary>
-        public virtual void Setup(ViewManager manager)
+        public virtual void Setup(ViewManagerBase manager)
         {
             _isSettingUp = true;
             _manager = manager;
@@ -160,8 +153,6 @@ namespace Scaffolding
                         input.name = input.name + index;
                     }
                     _allButtons.Add(input.name, input as AbstractButton);
-                    (input as AbstractButton).AddButtonDownHandler(ButtonDown);
-                    (input as AbstractButton).AddButtonPressedHandler(ButtonPressed);
                     index++;
                 }
             }
@@ -255,7 +246,15 @@ namespace Scaffolding
 		{
 			if(ViewEvent != null)
 			{
-				ViewEvent(obj);
+				ViewEvent(this, obj);
+			}
+		}
+
+		public virtual void NotifyModelOfViewClosed()
+		{
+			if(ViewClosedEvent != null)
+			{
+				ViewClosedEvent(this,null);
 			}
 		}
 
