@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 namespace Scaffolding
 {
+	/// <summary>
+	/// Scaffolding UGUI button, When using Unity 4.6 or higher, UGUI buttons are automatically used. This button type favours the UGUI event system
+	/// </summary>
 	public class ScaffoldingUGUIButton : AbstractButton, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler {
 
 		private Button _button;
@@ -20,6 +23,9 @@ namespace Scaffolding
 			base.Setup (view);
 		}
 
+		/// <summary>
+		/// When the button is clicked, called by .onClick from the uGUI button
+		/// </summary>
 		private void ButtonClicked()
 		{
 			if(_enabled)
@@ -28,6 +34,10 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Called when the pointer over the button is down
+		/// </summary>
+		/// <param name="data">Data.</param>
 		public void OnPointerDown(PointerEventData data)
 		{
 			if(_enabled)
@@ -36,6 +46,10 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Called when the pointer over the button is up.
+		/// </summary>
+		/// <param name="data">Data.</param>
 		public void OnPointerUp(PointerEventData data)
 		{
 			if(_enabled)
@@ -44,6 +58,10 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Called when the pointer exits the button
+		/// </summary>
+		/// <param name="data">Data.</param>
 		public void OnPointerExit(PointerEventData data)
 		{
 			if(_enabled)
@@ -52,6 +70,10 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Called when the pointer enters the button
+		/// </summary>
+		/// <param name="data">Data.</param>
 		public void OnPointerEnter(PointerEventData data)
 		{
 			if(_enabled)
@@ -60,18 +82,31 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Called when the button is destroyed, cleans reference to the button
+		/// </summary>
 		public override void Cleanup ()
 		{
 			_button = null;
 			base.Cleanup ();
 		}
 
+		/// <summary>
+		/// Toggles the enabled state of the button. Stops events being called by the button.
+		/// The button is still visually active, just not responsive.
+		/// </summary>
+		/// <param name="enabled">If set to <c>true</c> enabled.</param>
 		public override void ToggleEnabledInput (bool enabled)
 		{
 			_enabled = enabled;
 			base.ToggleEnabledInput(enabled);
 		}
 
+		/// <summary>
+		/// Changes the visual state of the button.
+		/// Inactive makes the button disabled.
+		/// </summary>
+		/// <param name="state">State.</param>
 		public override void ChangeState (ButtonState state)
 		{
 			base.ChangeState (state);
@@ -88,6 +123,9 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Runs the button pressed callbacks
+		/// </summary>
 		public override void ButtonPressed ()
 		{
 			if(_enabled)
@@ -107,6 +145,9 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Runs the button down callbacks
+		/// </summary>
 		public override void ButtonDown ()
 		{
 			if(_enabled)

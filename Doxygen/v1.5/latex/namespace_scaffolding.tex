@@ -1,0 +1,65 @@
+\hypertarget{namespace_scaffolding}{\section{Package Scaffolding}
+\label{namespace_scaffolding}\index{Scaffolding@{Scaffolding}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_scaffolding_1_1_abstract_button}{Abstract\+Button}
+\item 
+class \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input}
+\begin{DoxyCompactList}\small\item\em Abstract input is responsible for all inputs responding to a touch or input from \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager}. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_abstract_model}{Abstract\+Model}
+\begin{DoxyCompactList}\small\item\em The default base of all automatically created models. Allows for easy registration between itself and its paired view, can also register other views. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View}
+\begin{DoxyCompactList}\small\item\em Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_drag_input}{Drag\+Input}
+\begin{DoxyCompactList}\small\item\em Drag input is a quick dragging solution using \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input}. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_drag_this_input}{Drag\+This\+Input}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_scaffolding_1_1_drag_this_input}{Drag\+This\+Input} attaches to a gameobject as a quick solution to get something draggable. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} so falls under the same rules as other inputs in regards to views. E.\+g colliders get disabled during On\+Show\+Start and On\+Hide\+Start phases. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager}
+\begin{DoxyCompactList}\small\item\em Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} is a multitouch input manager that looks after all the inputs used within scaffoldings \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} class. \hyperlink{namespace_scaffolding}{Scaffolding} is multitouch from the core and built upon the idea that you should be able to place your whole hand on the screen and still use buttons. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker}
+\begin{DoxyCompactList}\small\item\em Input tracker, tracks every finger or mouse press that happens within Scaffoldings views. \end{DoxyCompactList}\item 
+interface \hyperlink{interface_scaffolding_1_1_i_requestable}{I\+Requestable}
+\item 
+class \hyperlink{class_scaffolding_1_1_pinch_input}{Pinch\+Input}
+\begin{DoxyCompactList}\small\item\em Pinch input is largely a touch input based class. It replicates the pinch gesture, and dispatches a callback while pinching. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_pinch_this_input}{Pinch\+This\+Input}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_scaffolding_1_1_pinch_this_input}{Pinch\+This\+Input} attaches to a gameobject as a quick solution to get something to respond to the pinch gesture. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} so falls under the same rules as other inputs in regards to views. E.\+g colliders get disabled during On\+Show\+Start and On\+Hide\+Start phases. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_position_item}{Position\+Item}
+\begin{DoxyCompactList}\small\item\em Positions the transform relative to a camera. Only works with Orthographic cameras currently. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_rotate_input}{Rotate\+Input}
+\begin{DoxyCompactList}\small\item\em Rotate input is largely a touch input based class. It replicates the rotate gesture, and dispatches a callback while rotating. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_rotate_this_input}{Rotate\+This\+Input}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_scaffolding_1_1_rotate_this_input}{Rotate\+This\+Input} attaches to a gameobject as a quick solution to get something to respond to the rotate gesture. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} so falls under the same rules as other inputs in regards to views. E.\+g colliders get disabled during On\+Show\+Start and On\+Hide\+Start phases. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_scaffolding_button}{Scaffolding\+Button}
+\begin{DoxyCompactList}\small\item\em The button class associated with the \hyperlink{namespace_scaffolding}{Scaffolding} default buttons. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_scaffolding_config}{Scaffolding\+Config}
+\item 
+class {\bfseries Scaffolding\+Extensions}
+\item 
+class \hyperlink{class_scaffolding_1_1_s_object}{S\+Object}
+\begin{DoxyCompactList}\small\item\em Value object. Used for passing data between views. Pack any data you require into this, and On\+Show\+Start can retrieve it. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_swipe_input}{Swipe\+Input}
+\begin{DoxyCompactList}\small\item\em Swipe input replicates the swipe gesture and dispatches a callback for a chosen swipe direction. \end{DoxyCompactList}\item 
+class \hyperlink{class_scaffolding_1_1_view_manager}{View\+Manager}
+\item 
+class \hyperlink{class_scaffolding_1_1_view_manager_base}{View\+Manager\+Base}
+\item 
+class \hyperlink{class_scaffolding_1_1_view_request}{View\+Request}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_scaffolding_adc0bcef3c1b102a3c533746548b926bc}{enum {\bfseries View\+Type} \{ {\bfseries View}, 
+{\bfseries Overlay}
+ \}}\label{namespace_scaffolding_adc0bcef3c1b102a3c533746548b926bc}
+
+\item 
+\hypertarget{namespace_scaffolding_ac802e1dd73864be73491e27ad8d59017}{enum {\bfseries Swipe\+Direction} \{ {\bfseries Left}, 
+{\bfseries Right}, 
+{\bfseries Up}, 
+{\bfseries Down}
+ \}}\label{namespace_scaffolding_ac802e1dd73864be73491e27ad8d59017}
+
+\end{DoxyCompactItemize}

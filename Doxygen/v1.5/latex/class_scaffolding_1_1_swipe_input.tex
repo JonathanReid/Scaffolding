@@ -1,0 +1,97 @@
+\hypertarget{class_scaffolding_1_1_swipe_input}{\section{Scaffolding.\+Swipe\+Input Class Reference}
+\label{class_scaffolding_1_1_swipe_input}\index{Scaffolding.\+Swipe\+Input@{Scaffolding.\+Swipe\+Input}}
+}
+
+
+Swipe input replicates the swipe gesture and dispatches a callback for a chosen swipe direction.  
+
+
+Inheritance diagram for Scaffolding.\+Swipe\+Input\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_scaffolding_1_1_swipe_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_swipe_input_a5d19c1744df90f14d150241605cb86bf}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The inputs clean up phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_swipe_input_a00ad2fde21a1aa47c4dbfa36768a0bc3}{Register\+Swipe\+Callback} (Action$<$ Swipe\+Direction $>$ callback)
+\begin{DoxyCompactList}\small\item\em Register a callback handler fo the swipe input. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_swipe_input_a818aba4106a64b5dde4977bca4b358a7}{Handle\+Event\+Dragged} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_swipe_input_a96c9d39a58afb3717925a4c9a0347791}{float {\bfseries velocity\+Threshold}}\label{class_scaffolding_1_1_swipe_input_a96c9d39a58afb3717925a4c9a0347791}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Swipe input replicates the swipe gesture and dispatches a callback for a chosen swipe direction. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_swipe_input_a5d19c1744df90f14d150241605cb86bf}{\index{Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Swipe\+Input.\+Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_swipe_input_a5d19c1744df90f14d150241605cb86bf}
+
+
+The inputs clean up phase. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Scaffolding.\+Abstract\+Input}.
+
+\hypertarget{class_scaffolding_1_1_swipe_input_a818aba4106a64b5dde4977bca4b358a7}{\index{Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}!Handle\+Event\+Dragged@{Handle\+Event\+Dragged}}
+\index{Handle\+Event\+Dragged@{Handle\+Event\+Dragged}!Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}}
+\subsubsection[{Handle\+Event\+Dragged}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Swipe\+Input.\+Handle\+Event\+Dragged (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_swipe_input_a818aba4106a64b5dde4977bca4b358a7}
+
+
+Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a5996b0cb611a384e527ce871b9607858}{Scaffolding.\+Abstract\+Input}.
+
+\hypertarget{class_scaffolding_1_1_swipe_input_a00ad2fde21a1aa47c4dbfa36768a0bc3}{\index{Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}!Register\+Swipe\+Callback@{Register\+Swipe\+Callback}}
+\index{Register\+Swipe\+Callback@{Register\+Swipe\+Callback}!Scaffolding\+::\+Swipe\+Input@{Scaffolding\+::\+Swipe\+Input}}
+\subsubsection[{Register\+Swipe\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Swipe\+Input.\+Register\+Swipe\+Callback (
+\begin{DoxyParamCaption}
+\item[{Action$<$ Swipe\+Direction $>$}]{callback}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_swipe_input_a00ad2fde21a1aa47c4dbfa36768a0bc3}
+
+
+Register a callback handler fo the swipe input. 
+
+Example\+: public void My\+Callback\+Function(\+Swipe\+Direction direction) \{ //do swipe based code here... \}
+
+\+\_\+swipe\+Input.\+Register\+Swipe\+Callback(\+My\+Callback\+Function);
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/\+Items/Swipe\+Input.\+cs\end{DoxyCompactItemize}

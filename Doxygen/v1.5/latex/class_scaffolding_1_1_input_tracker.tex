@@ -1,0 +1,217 @@
+\hypertarget{class_scaffolding_1_1_input_tracker}{\section{Scaffolding.\+Input\+Tracker Class Reference}
+\label{class_scaffolding_1_1_input_tracker}\index{Scaffolding.\+Input\+Tracker@{Scaffolding.\+Input\+Tracker}}
+}
+
+
+Input tracker, tracks every finger or mouse press that happens within Scaffoldings views.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_scaffolding_1_1_input_tracker_aef292511fa77f23f3235fbad1939b4b5}{Hit\+Game\+Object} (Game\+Object obj)
+\begin{DoxyCompactList}\small\item\em Determines if the object passed through was hit by this tracker \end{DoxyCompactList}\item 
+\hyperlink{class_scaffolding_1_1_input_tracker_a7ca2f8e54f0c2b79ab88151833339e44}{Input\+Tracker} (int id, Vector3 position, List$<$ Camera $>$ hit\+Cameras)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{class_scaffolding_1_1_input_tracker}{Scaffolding.\+Input\+Tracker} class. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_input_tracker_aedce3144315d02e9713c7fddacafe5aa}{Update\+Tracker} (Vector3 position)
+\begin{DoxyCompactList}\small\item\em Update the specified position. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_input_tracker_afa1ed7b953c814e9b45a6348c6d08c85}{Set\+New\+Velocity\+Data} (float time, Vector3 position)
+\begin{DoxyCompactList}\small\item\em Sets the new velocity data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_input_tracker_a38e432bbd719c51f738311b153d6df70}{Kill\+Tracker} ()
+\begin{DoxyCompactList}\small\item\em Clean this instance. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_input_tracker_a354f0c69074700a14d7d969d9e6b18e4}{Start\+Tracking} ()
+\begin{DoxyCompactList}\small\item\em Start tracking the input \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_input_tracker_a2381c906d5c7c84cb8fad33ad95c7386}{Stop\+Tracking} ()
+\begin{DoxyCompactList}\small\item\em Stop tracking the input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_scaffolding_1_1_input_tracker_a53596ca80977b53a7d9c1931e0defaa4}{Finger\+Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the finger identifier. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_input_tracker_a7a9ba2d2d88ce0e11e27ca9721117f99}{Alive}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this \hyperlink{class_scaffolding_1_1_input_tracker}{Scaffolding.\+Input\+Tracker} is dirty. \end{DoxyCompactList}\item 
+Vector3 \hyperlink{class_scaffolding_1_1_input_tracker_afc147aaaa6ab7d2406738cb97a01ef96}{Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the current position of the input. \end{DoxyCompactList}\item 
+Vector3 \hyperlink{class_scaffolding_1_1_input_tracker_a88d354a4e9d4bc7791e67a0a8e19af65}{Delta\+Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the delta position. \end{DoxyCompactList}\item 
+Vector2 \hyperlink{class_scaffolding_1_1_input_tracker_a2d7b1cd8114f6531a9640b5fde49f35e}{Velocity}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the velocity. \end{DoxyCompactList}\item 
+Game\+Object \hyperlink{class_scaffolding_1_1_input_tracker_a6c539c6f8ad29e71d9426cb75194082f}{Hit\+Object}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the object hit by this tracker \end{DoxyCompactList}\item 
+List$<$ Camera $>$ \hyperlink{class_scaffolding_1_1_input_tracker_a8b3f5b027dc3d7d325cffa4df0633dcf}{Hit\+Camera}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the list of cameras used for input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Input tracker, tracks every finger or mouse press that happens within Scaffoldings views. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_scaffolding_1_1_input_tracker_a7ca2f8e54f0c2b79ab88151833339e44}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Input\+Tracker@{Input\+Tracker}}
+\index{Input\+Tracker@{Input\+Tracker}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Input\+Tracker}]{\setlength{\rightskip}{0pt plus 5cm}Scaffolding.\+Input\+Tracker.\+Input\+Tracker (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{Vector3}]{position, }
+\item[{List$<$ Camera $>$}]{hit\+Cameras}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_input_tracker_a7ca2f8e54f0c2b79ab88151833339e44}
+
+
+Initializes a new instance of the \hyperlink{class_scaffolding_1_1_input_tracker}{Scaffolding.\+Input\+Tracker} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier.\\
+\hline
+{\em position} & Position.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_input_tracker_aef292511fa77f23f3235fbad1939b4b5}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Hit\+Game\+Object@{Hit\+Game\+Object}}
+\index{Hit\+Game\+Object@{Hit\+Game\+Object}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Hit\+Game\+Object}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\+Input\+Tracker.\+Hit\+Game\+Object (
+\begin{DoxyParamCaption}
+\item[{Game\+Object}]{obj}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_input_tracker_aef292511fa77f23f3235fbad1939b4b5}
+
+
+Determines if the object passed through was hit by this tracker 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true}, if game object was hit, {\ttfamily false} otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Object.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_input_tracker_a38e432bbd719c51f738311b153d6df70}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Kill\+Tracker@{Kill\+Tracker}}
+\index{Kill\+Tracker@{Kill\+Tracker}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Kill\+Tracker}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Input\+Tracker.\+Kill\+Tracker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_input_tracker_a38e432bbd719c51f738311b153d6df70}
+
+
+Clean this instance. 
+
+\hypertarget{class_scaffolding_1_1_input_tracker_afa1ed7b953c814e9b45a6348c6d08c85}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Set\+New\+Velocity\+Data@{Set\+New\+Velocity\+Data}}
+\index{Set\+New\+Velocity\+Data@{Set\+New\+Velocity\+Data}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Set\+New\+Velocity\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Input\+Tracker.\+Set\+New\+Velocity\+Data (
+\begin{DoxyParamCaption}
+\item[{float}]{time, }
+\item[{Vector3}]{position}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_input_tracker_afa1ed7b953c814e9b45a6348c6d08c85}
+
+
+Sets the new velocity data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Time.\\
+\hline
+{\em position} & Position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_input_tracker_a354f0c69074700a14d7d969d9e6b18e4}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Start\+Tracking@{Start\+Tracking}}
+\index{Start\+Tracking@{Start\+Tracking}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Start\+Tracking}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Input\+Tracker.\+Start\+Tracking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_input_tracker_a354f0c69074700a14d7d969d9e6b18e4}
+
+
+Start tracking the input 
+
+\hypertarget{class_scaffolding_1_1_input_tracker_a2381c906d5c7c84cb8fad33ad95c7386}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Stop\+Tracking@{Stop\+Tracking}}
+\index{Stop\+Tracking@{Stop\+Tracking}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Stop\+Tracking}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Input\+Tracker.\+Stop\+Tracking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_input_tracker_a2381c906d5c7c84cb8fad33ad95c7386}
+
+
+Stop tracking the input 
+
+\hypertarget{class_scaffolding_1_1_input_tracker_aedce3144315d02e9713c7fddacafe5aa}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Update\+Tracker@{Update\+Tracker}}
+\index{Update\+Tracker@{Update\+Tracker}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Update\+Tracker}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Input\+Tracker.\+Update\+Tracker (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{position}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_input_tracker_aedce3144315d02e9713c7fddacafe5aa}
+
+
+Update the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_scaffolding_1_1_input_tracker_a7a9ba2d2d88ce0e11e27ca9721117f99}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Alive@{Alive}}
+\index{Alive@{Alive}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Alive}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\+Input\+Tracker.\+Alive\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_a7a9ba2d2d88ce0e11e27ca9721117f99}
+
+
+Gets a value indicating whether this \hyperlink{class_scaffolding_1_1_input_tracker}{Scaffolding.\+Input\+Tracker} is dirty. 
+
+{\ttfamily true} if is dirty; otherwise, {\ttfamily false}.\hypertarget{class_scaffolding_1_1_input_tracker_a88d354a4e9d4bc7791e67a0a8e19af65}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Delta\+Position@{Delta\+Position}}
+\index{Delta\+Position@{Delta\+Position}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Delta\+Position}]{\setlength{\rightskip}{0pt plus 5cm}Vector3 Scaffolding.\+Input\+Tracker.\+Delta\+Position\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_a88d354a4e9d4bc7791e67a0a8e19af65}
+
+
+Gets the delta position. 
+
+The delta position.\hypertarget{class_scaffolding_1_1_input_tracker_a53596ca80977b53a7d9c1931e0defaa4}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Finger\+Id@{Finger\+Id}}
+\index{Finger\+Id@{Finger\+Id}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Finger\+Id}]{\setlength{\rightskip}{0pt plus 5cm}int Scaffolding.\+Input\+Tracker.\+Finger\+Id\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_a53596ca80977b53a7d9c1931e0defaa4}
+
+
+Gets the finger identifier. 
+
+The finger identifier.\hypertarget{class_scaffolding_1_1_input_tracker_a8b3f5b027dc3d7d325cffa4df0633dcf}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Hit\+Camera@{Hit\+Camera}}
+\index{Hit\+Camera@{Hit\+Camera}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Hit\+Camera}]{\setlength{\rightskip}{0pt plus 5cm}List$<$Camera$>$ Scaffolding.\+Input\+Tracker.\+Hit\+Camera\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_scaffolding_1_1_input_tracker_a8b3f5b027dc3d7d325cffa4df0633dcf}
+
+
+Gets or sets the list of cameras used for input 
+
+The hit camera.\hypertarget{class_scaffolding_1_1_input_tracker_a6c539c6f8ad29e71d9426cb75194082f}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Hit\+Object@{Hit\+Object}}
+\index{Hit\+Object@{Hit\+Object}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Hit\+Object}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Object Scaffolding.\+Input\+Tracker.\+Hit\+Object\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_a6c539c6f8ad29e71d9426cb75194082f}
+
+
+Gets the object hit by this tracker 
+
+The hit object.\hypertarget{class_scaffolding_1_1_input_tracker_afc147aaaa6ab7d2406738cb97a01ef96}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Position@{Position}}
+\index{Position@{Position}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Position}]{\setlength{\rightskip}{0pt plus 5cm}Vector3 Scaffolding.\+Input\+Tracker.\+Position\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_afc147aaaa6ab7d2406738cb97a01ef96}
+
+
+Gets the current position of the input. 
+
+The position.\hypertarget{class_scaffolding_1_1_input_tracker_a2d7b1cd8114f6531a9640b5fde49f35e}{\index{Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!Scaffolding\+::\+Input\+Tracker@{Scaffolding\+::\+Input\+Tracker}}
+\subsubsection[{Velocity}]{\setlength{\rightskip}{0pt plus 5cm}Vector2 Scaffolding.\+Input\+Tracker.\+Velocity\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_input_tracker_a2d7b1cd8114f6531a9640b5fde49f35e}
+
+
+Gets the velocity. 
+
+The velocity.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/Input\+Tracker.\+cs\end{DoxyCompactItemize}

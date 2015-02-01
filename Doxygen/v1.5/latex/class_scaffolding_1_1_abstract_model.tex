@@ -1,0 +1,103 @@
+\hypertarget{class_scaffolding_1_1_abstract_model}{\section{Scaffolding.\+Abstract\+Model Class Reference}
+\label{class_scaffolding_1_1_abstract_model}\index{Scaffolding.\+Abstract\+Model@{Scaffolding.\+Abstract\+Model}}
+}
+
+
+The default base of all automatically created models. Allows for easy registration between itself and its paired view, can also register other views.  
+
+
+Inheritance diagram for Scaffolding.\+Abstract\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scaffolding_1_1_abstract_model}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_model_a505c8e3a54070efd3c4a7d9016367fed}{Register\+View} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em When the view associated with this model is opened, it gets registered with the model here. This also registers the default View\+Event delegate, for quick communication between registered views and the model. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_model_af196af33f85f9dee1d6c37640e8631a6}{Handle\+View\+Closed\+Event} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} sender, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} obj)
+\begin{DoxyCompactList}\small\item\em Handles the view closed event. Automatically called when any view registered to this model is closed. This deregisters the view from the model. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_model_a2a2f77959557dfd2983d4aca57fee9c4}{Handle\+View\+Event} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} sender, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} obj)
+\begin{DoxyCompactList}\small\item\em Handles the view event. Called by any view registered to the model. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_model_a5ff673abdc32f2241d610050bfb57939}{View\+Closed} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em Gets called when the view associated with this model is closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The default base of all automatically created models. Allows for easy registration between itself and its paired view, can also register other views. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_model_af196af33f85f9dee1d6c37640e8631a6}{\index{Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}!Handle\+View\+Closed\+Event@{Handle\+View\+Closed\+Event}}
+\index{Handle\+View\+Closed\+Event@{Handle\+View\+Closed\+Event}!Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}}
+\subsubsection[{Handle\+View\+Closed\+Event}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Model.\+Handle\+View\+Closed\+Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{sender, }
+\item[{{\bf S\+Object}}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_model_af196af33f85f9dee1d6c37640e8631a6}
+
+
+Handles the view closed event. Automatically called when any view registered to this model is closed. This deregisters the view from the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Sender.\\
+\hline
+{\em obj} & Object.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_model_a2a2f77959557dfd2983d4aca57fee9c4}{\index{Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}!Handle\+View\+Event@{Handle\+View\+Event}}
+\index{Handle\+View\+Event@{Handle\+View\+Event}!Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}}
+\subsubsection[{Handle\+View\+Event}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Model.\+Handle\+View\+Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{sender, }
+\item[{{\bf S\+Object}}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_model_a2a2f77959557dfd2983d4aca57fee9c4}
+
+
+Handles the view event. Called by any view registered to the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Sender.\\
+\hline
+{\em obj} & Object.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_model_a505c8e3a54070efd3c4a7d9016367fed}{\index{Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}!Register\+View@{Register\+View}}
+\index{Register\+View@{Register\+View}!Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}}
+\subsubsection[{Register\+View}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Model.\+Register\+View (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_model_a505c8e3a54070efd3c4a7d9016367fed}
+
+
+When the view associated with this model is opened, it gets registered with the model here. This also registers the default View\+Event delegate, for quick communication between registered views and the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & View.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_model_a5ff673abdc32f2241d610050bfb57939}{\index{Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}!View\+Closed@{View\+Closed}}
+\index{View\+Closed@{View\+Closed}!Scaffolding\+::\+Abstract\+Model@{Scaffolding\+::\+Abstract\+Model}}
+\subsubsection[{View\+Closed}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Model.\+View\+Closed (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_model_a5ff673abdc32f2241d610050bfb57939}
+
+
+Gets called when the view associated with this model is closed. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Views/Abstract\+Model.\+cs\end{DoxyCompactItemize}

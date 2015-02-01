@@ -1,0 +1,555 @@
+\hypertarget{class_scaffolding_1_1_view_manager_base}{\section{Scaffolding.\+View\+Manager\+Base Class Reference}
+\label{class_scaffolding_1_1_view_manager_base}\index{Scaffolding.\+View\+Manager\+Base@{Scaffolding.\+View\+Manager\+Base}}
+}
+Inheritance diagram for Scaffolding.\+View\+Manager\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_scaffolding_1_1_view_manager_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_ad47faade879ba9cfe1624960d0a48e25}{delegate void {\bfseries View\+Manager\+Event} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} changed\+View)}\label{class_scaffolding_1_1_view_manager_base_ad47faade879ba9cfe1624960d0a48e25}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_a178a05fc2bb3a02de223a09def5d9efc}{void {\bfseries Add\+Animation\+Event\+To\+Transition} (Type target\+View, Animation\+Clip clip, string event\+Name)}\label{class_scaffolding_1_1_view_manager_base_a178a05fc2bb3a02de223a09def5d9efc}
+
+\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a3afde7ee1eb394797bba9d334e85cd6e}{Request\+View$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests the screen to open. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a9707174312efe777211b7ade13cf9ce4}{Request\+View} (Type screen\+Type)
+\begin{DoxyCompactList}\small\item\em Requests the screen to open. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a367f6c39d23aa731eb747bb0b9fc0b67}{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_ae56fe5f11df7c468d9a99938b0757e45}{Request\+View\+With\+Loading\+Overlay} (Type screen\+Type, Type loading\+View\+Type)
+\begin{DoxyCompactList}\small\item\em Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a3afa59b6a26b3aab4f2e426cc9b827c3}{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_aa9f6af665d066471cac654181edcf4fe}{Request\+View\+With\+Loading\+Overlay} (Type screen\+Type, Type loading\+View\+Type, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_ac1e312060187e1b0995b5944145eca4f}{Request\+View$<$ T $>$} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Requests the screen with data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a5e2c66cf402ef8b9f3d8aa1162b06995}{Request\+Force\+Reopen\+View$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Request to reopen an already open view \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a78c0b2e1361d4962c6cea7c4b983d7ec}{Request\+Force\+Reopen\+View} (Type screen\+Type)
+\begin{DoxyCompactList}\small\item\em Request to reopen an already open view \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_aa28101b866360aae9efceea950535ec6}{Request\+Force\+Reopen\+View$<$ T $>$} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Request to reopen an already open view \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a950c3fa25288d34a615c8a9b80177b48}{Request\+Force\+Reopen\+View} (Type screen\+Type, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Request to reopen an already open view \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a194a6730d30f15d9cd2bc0809ecbdea7}{Request\+View} (Type screen\+Type, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} data)
+\begin{DoxyCompactList}\small\item\em Requests the screen with data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a38479b74a1e0cdcfa81f967c753062fb}{Request\+Overlay} (Type overlay\+Type)
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a8e99066d44cc24df5a78ce9cfa5f792c}{Request\+Overlay$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a8e0638cb6ce962d9f6b4accf70399eca}{Request\+Overlay$<$ T $>$} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_ac22aa52e9532ff847d464a251082dce3}{Request\+Overlay} (Type overlay\+Type, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} view\+Data)
+\begin{DoxyCompactList}\small\item\em Requests the overlay open with data. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_afe33255e871d0c4228c7629911e97df2}{Request\+Overlay\+Close$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests the overlay to close \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a9fd519e341f2075813bfb900a461130d}{Request\+Overlay\+Close} (Type overlay\+Type)
+\begin{DoxyCompactList}\small\item\em Requests the overlay to close \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a187a7e1d15142349f697174cf8f868b4}{Request\+Overlay\+Force\+Close$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests the overlay to force close. This will skip the Hide\+Start() method of the target overlay. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a1f2666a080551b586f7f0847f3958e5d}{Request\+Overlay\+Force\+Close} (Type overlay\+Type)
+\begin{DoxyCompactList}\small\item\em Requests the overlay to force close. This will skip the Hide\+Start() method of the target overlay. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a3adaf70659846c8ba4fe29c6d145ca3e}{Request\+Overlay\+Close\+All} ()
+\begin{DoxyCompactList}\small\item\em Requests all open overlays to close. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_manager_base_a85021ea2e970c2e46badb5bdf17cbf49}{Request\+Overlay\+Force\+Close\+All} ()
+\begin{DoxyCompactList}\small\item\em Requests all open overlays to be forced close. \end{DoxyCompactList}\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_aa255a6fa1922a757dbc52f66e3cd75f6}{void {\bfseries Register\+View\+To\+Model} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view, \hyperlink{class_scaffolding_1_1_abstract_model}{Abstract\+Model} model)}\label{class_scaffolding_1_1_view_manager_base_aa255a6fa1922a757dbc52f66e3cd75f6}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_a9b5acbdc66d3036270f2cc22c5c6bfb4}{void {\bfseries Un\+Register\+View\+From\+Model} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)}\label{class_scaffolding_1_1_view_manager_base_a9b5acbdc66d3036270f2cc22c5c6bfb4}
+
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_af6f41b20382ba5d9bca9c52485c4fe48}{static View\+Manager\+Event {\bfseries View\+Opened}}\label{class_scaffolding_1_1_view_manager_base_af6f41b20382ba5d9bca9c52485c4fe48}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_a18ce0bb6faba2bd7137c5fdef3652040}{static View\+Manager\+Event {\bfseries View\+Closed}}\label{class_scaffolding_1_1_view_manager_base_a18ce0bb6faba2bd7137c5fdef3652040}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_a4bf89b7b4b2c4243880c87d1eed8a7d2}{static View\+Manager\+Event {\bfseries Overlay\+Opened}}\label{class_scaffolding_1_1_view_manager_base_a4bf89b7b4b2c4243880c87d1eed8a7d2}
+
+\item 
+\hypertarget{class_scaffolding_1_1_view_manager_base_a86066209ff5b3b786cd3bc926acabe4e}{static View\+Manager\+Event {\bfseries Overlay\+Closed}}\label{class_scaffolding_1_1_view_manager_base_a86066209ff5b3b786cd3bc926acabe4e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a78c0b2e1361d4962c6cea7c4b983d7ec}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}}
+\index{Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Force\+Reopen\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Force\+Reopen\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a78c0b2e1361d4962c6cea7c4b983d7ec}
+
+
+Request to reopen an already open view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_a950c3fa25288d34a615c8a9b80177b48}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}}
+\index{Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Force\+Reopen\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Force\+Reopen\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type, }
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a950c3fa25288d34a615c8a9b80177b48}
+
+
+Request to reopen an already open view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+{\em view\+Data} & View data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a5e2c66cf402ef8b9f3d8aa1162b06995}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}}
+\index{Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Force\+Reopen\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Force\+Reopen\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a5e2c66cf402ef8b9f3d8aa1162b06995}
+
+
+Request to reopen an already open view 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+\end{DoxyTemplParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_aa28101b866360aae9efceea950535ec6}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}}
+\index{Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Force\+Reopen\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Force\+Reopen\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_aa28101b866360aae9efceea950535ec6}
+
+
+Request to reopen an already open view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Data} & View data.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a38479b74a1e0cdcfa81f967c753062fb}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay@{Request\+Overlay}}
+\index{Request\+Overlay@{Request\+Overlay}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a38479b74a1e0cdcfa81f967c753062fb}
+
+
+Requests an overlay to open 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_ac22aa52e9532ff847d464a251082dce3}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay@{Request\+Overlay}}
+\index{Request\+Overlay@{Request\+Overlay}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\+Type, }
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_ac22aa52e9532ff847d464a251082dce3}
+
+
+Requests the overlay open with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a8e99066d44cc24df5a78ce9cfa5f792c}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}}
+\index{Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a8e99066d44cc24df5a78ce9cfa5f792c}
+
+
+Requests an overlay to open 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a8e0638cb6ce962d9f6b4accf70399eca}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}}
+\index{Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a8e0638cb6ce962d9f6b4accf70399eca}
+
+
+Requests an overlay to open 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a9fd519e341f2075813bfb900a461130d}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Close@{Request\+Overlay\+Close}}
+\index{Request\+Overlay\+Close@{Request\+Overlay\+Close}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Close}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a9fd519e341f2075813bfb900a461130d}
+
+
+Requests the overlay to close 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_afe33255e871d0c4228c7629911e97df2}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Close$<$ T $>$@{Request\+Overlay\+Close$<$ T $>$}}
+\index{Request\+Overlay\+Close$<$ T $>$@{Request\+Overlay\+Close$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Close$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Close}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_afe33255e871d0c4228c7629911e97df2}
+
+
+Requests the overlay to close 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a3adaf70659846c8ba4fe29c6d145ca3e}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Close\+All@{Request\+Overlay\+Close\+All}}
+\index{Request\+Overlay\+Close\+All@{Request\+Overlay\+Close\+All}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Close\+All}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Close\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a3adaf70659846c8ba4fe29c6d145ca3e}
+
+
+Requests all open overlays to close. 
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_a1f2666a080551b586f7f0847f3958e5d}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Force\+Close@{Request\+Overlay\+Force\+Close}}
+\index{Request\+Overlay\+Force\+Close@{Request\+Overlay\+Force\+Close}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Force\+Close}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Force\+Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{overlay\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a1f2666a080551b586f7f0847f3958e5d}
+
+
+Requests the overlay to force close. This will skip the Hide\+Start() method of the target overlay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_a187a7e1d15142349f697174cf8f868b4}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Force\+Close$<$ T $>$@{Request\+Overlay\+Force\+Close$<$ T $>$}}
+\index{Request\+Overlay\+Force\+Close$<$ T $>$@{Request\+Overlay\+Force\+Close$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Force\+Close$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Force\+Close}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a187a7e1d15142349f697174cf8f868b4}
+
+
+Requests the overlay to force close. This will skip the Hide\+Start() method of the target overlay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em overlay\+Type} & Overlay type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a85021ea2e970c2e46badb5bdf17cbf49}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+Overlay\+Force\+Close\+All@{Request\+Overlay\+Force\+Close\+All}}
+\index{Request\+Overlay\+Force\+Close\+All@{Request\+Overlay\+Force\+Close\+All}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+Overlay\+Force\+Close\+All}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+Overlay\+Force\+Close\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a85021ea2e970c2e46badb5bdf17cbf49}
+
+
+Requests all open overlays to be forced close. 
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_a9707174312efe777211b7ade13cf9ce4}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View@{Request\+View}}
+\index{Request\+View@{Request\+View}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a9707174312efe777211b7ade13cf9ce4}
+
+
+Requests the screen to open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_a194a6730d30f15d9cd2bc0809ecbdea7}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View@{Request\+View}}
+\index{Request\+View@{Request\+View}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type, }
+\item[{{\bf S\+Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a194a6730d30f15d9cd2bc0809ecbdea7}
+
+
+Requests the screen with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a3afde7ee1eb394797bba9d334e85cd6e}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View$<$ T $>$@{Request\+View$<$ T $>$}}
+\index{Request\+View$<$ T $>$@{Request\+View$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a3afde7ee1eb394797bba9d334e85cd6e}
+
+
+Requests the screen to open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_ac1e312060187e1b0995b5944145eca4f}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View$<$ T $>$@{Request\+View$<$ T $>$}}
+\index{Request\+View$<$ T $>$@{Request\+View$<$ T $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_ac1e312060187e1b0995b5944145eca4f}
+
+
+Requests the screen with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+{\em data} & Data.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_ae56fe5f11df7c468d9a99938b0757e45}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}}
+\index{Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+View\+With\+Loading\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type, }
+\item[{Type}]{loading\+View\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_ae56fe5f11df7c468d9a99938b0757e45}
+
+
+Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+{\em loading\+View\+Type} & Loading view type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_manager_base_aa9f6af665d066471cac654181edcf4fe}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}}
+\index{Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Manager\+Base.\+Request\+View\+With\+Loading\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{screen\+Type, }
+\item[{Type}]{loading\+View\+Type, }
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_aa9f6af665d066471cac654181edcf4fe}
+
+
+Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Type} & Screen type.\\
+\hline
+{\em loading\+View\+Type} & Loading view type.\\
+\hline
+{\em view\+Data} & View\+Data.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a367f6c39d23aa731eb747bb0b9fc0b67}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}}
+\index{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+View\+With\+Loading\+Overlay}$<$ T, L $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a367f6c39d23aa731eb747bb0b9fc0b67}
+
+
+Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+{\em L} & The 2nd type parameter.\\
+\hline
+\end{DoxyTemplParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\item[{\em L} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_manager_base_a3afa59b6a26b3aab4f2e426cc9b827c3}{\index{Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}!Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}}
+\index{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}!Scaffolding\+::\+View\+Manager\+Base@{Scaffolding\+::\+View\+Manager\+Base}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Manager\+Base.\+Request\+View\+With\+Loading\+Overlay}$<$ T, L $>$ (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{view\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_manager_base_a3afa59b6a26b3aab4f2e426cc9b827c3}
+
+
+Requests the view with a loading view. This is useful if the screen you are moving to is very heavy and takes a long time to load. You can open an overlay to mask this loading while you wait. Once the loading is complete, the overlay will close. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Data} & View data.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+{\em L} & The 2nd type parameter.\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\item[{\em L} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Views/View\+Manager\+Base.\+cs\end{DoxyCompactItemize}

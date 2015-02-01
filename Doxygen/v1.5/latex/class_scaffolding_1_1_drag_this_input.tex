@@ -1,0 +1,130 @@
+\hypertarget{class_scaffolding_1_1_drag_this_input}{\section{Scaffolding.\+Drag\+This\+Input Class Reference}
+\label{class_scaffolding_1_1_drag_this_input}\index{Scaffolding.\+Drag\+This\+Input@{Scaffolding.\+Drag\+This\+Input}}
+}
+
+
+\hyperlink{class_scaffolding_1_1_drag_this_input}{Drag\+This\+Input} attaches to a gameobject as a quick solution to get something draggable. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} so falls under the same rules as other inputs in regards to views. E.\+g colliders get disabled during On\+Show\+Start and On\+Hide\+Start phases.  
+
+
+Inheritance diagram for Scaffolding.\+Drag\+This\+Input\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_scaffolding_1_1_drag_this_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_drag_this_input_afb612ddc8d089c8708494b57063b235d}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_drag_this_input_a5de83a69a0b5052b9d162dcf397e5684}{Handle\+Dragged\+Callback} (Vector3 delta)
+\begin{DoxyCompactList}\small\item\em Handles the dragged callback. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_drag_this_input_a09639007081a6fee7bb7141ec5fa32a5}{Handle\+Event\+Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_drag_this_input_a9da2ff31ce625e9880e6f47cd8617c6a}{Handle\+Event\+Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_drag_this_input_a5b8cb43b5f174f58c7098642fda90dcc}{string {\bfseries input\+Camera}}\label{class_scaffolding_1_1_drag_this_input_a5b8cb43b5f174f58c7098642fda90dcc}
+
+\item 
+\hypertarget{class_scaffolding_1_1_drag_this_input_a6ce7f9342173a57e81b666fdd3162c8f}{int {\bfseries input\+Camera\+Index}}\label{class_scaffolding_1_1_drag_this_input_a6ce7f9342173a57e81b666fdd3162c8f}
+
+\item 
+\hypertarget{class_scaffolding_1_1_drag_this_input_a955fd31f5d266ed13258c695c323ef7e}{int {\bfseries input\+Camera\+Length}}\label{class_scaffolding_1_1_drag_this_input_a955fd31f5d266ed13258c695c323ef7e}
+
+\item 
+\hypertarget{class_scaffolding_1_1_drag_this_input_a923518138b1f4ab3842f44db144f6d22}{int {\bfseries axis\+Drop\+Down\+Index}}\label{class_scaffolding_1_1_drag_this_input_a923518138b1f4ab3842f44db144f6d22}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_scaffolding_1_1_drag_this_input}{Drag\+This\+Input} attaches to a gameobject as a quick solution to get something draggable. Extends \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} so falls under the same rules as other inputs in regards to views. E.\+g colliders get disabled during On\+Show\+Start and On\+Hide\+Start phases. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_drag_this_input_a5de83a69a0b5052b9d162dcf397e5684}{\index{Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}!Handle\+Dragged\+Callback@{Handle\+Dragged\+Callback}}
+\index{Handle\+Dragged\+Callback@{Handle\+Dragged\+Callback}!Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}}
+\subsubsection[{Handle\+Dragged\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Drag\+This\+Input.\+Handle\+Dragged\+Callback (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{delta}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_drag_this_input_a5de83a69a0b5052b9d162dcf397e5684}
+
+
+Handles the dragged callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Delta.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_drag_this_input_a09639007081a6fee7bb7141ec5fa32a5}{\index{Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}!Handle\+Event\+Pressed@{Handle\+Event\+Pressed}}
+\index{Handle\+Event\+Pressed@{Handle\+Event\+Pressed}!Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}}
+\subsubsection[{Handle\+Event\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Drag\+This\+Input.\+Handle\+Event\+Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_this_input_a09639007081a6fee7bb7141ec5fa32a5}
+
+
+Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_drag_input_a49561ec761c72584711384d57cb74f41}{Scaffolding.\+Drag\+Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_this_input_a9da2ff31ce625e9880e6f47cd8617c6a}{\index{Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}!Handle\+Event\+Released@{Handle\+Event\+Released}}
+\index{Handle\+Event\+Released@{Handle\+Event\+Released}!Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}}
+\subsubsection[{Handle\+Event\+Released}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Drag\+This\+Input.\+Handle\+Event\+Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_this_input_a9da2ff31ce625e9880e6f47cd8617c6a}
+
+
+Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_drag_input_ab50a7059961c803e39e3ce9ffb0945d7}{Scaffolding.\+Drag\+Input}.
+
+\hypertarget{class_scaffolding_1_1_drag_this_input_afb612ddc8d089c8708494b57063b235d}{\index{Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding\+::\+Drag\+This\+Input@{Scaffolding\+::\+Drag\+This\+Input}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Drag\+This\+Input.\+Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_drag_this_input_afb612ddc8d089c8708494b57063b235d}
+
+
+Run by the view during it's setup phase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & View.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{Scaffolding.\+Abstract\+Input}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/\+Items/Drag\+This\+Input.\+cs\end{DoxyCompactItemize}

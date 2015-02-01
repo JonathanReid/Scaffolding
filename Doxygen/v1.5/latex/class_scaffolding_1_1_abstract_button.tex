@@ -1,0 +1,404 @@
+\hypertarget{class_scaffolding_1_1_abstract_button}{\section{Scaffolding.\+Abstract\+Button Class Reference}
+\label{class_scaffolding_1_1_abstract_button}\index{Scaffolding.\+Abstract\+Button@{Scaffolding.\+Abstract\+Button}}
+}
+Inheritance diagram for Scaffolding.\+Abstract\+Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_scaffolding_1_1_abstract_button}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a8570e566f4323db9e5b65bf214ec5bc4}{enum {\bfseries Button\+Action\+Type} \{ {\bfseries Do\+Nothing}, 
+{\bfseries Open}, 
+{\bfseries Close}
+ \}}\label{class_scaffolding_1_1_abstract_button_a8570e566f4323db9e5b65bf214ec5bc4}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_ab12f25762012b4eaf00e4a8036cb715b}{enum {\bfseries Button\+State} \{ {\bfseries Up}, 
+{\bfseries Down}, 
+{\bfseries Inactive}
+ \}}\label{class_scaffolding_1_1_abstract_button_ab12f25762012b4eaf00e4a8036cb715b}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_abstract_button_aa9ef22706bd2af0de02ec86f4d6641d4}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_abstract_button_ae8879dc8ec6de80c1c75d7399ebffe90}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The inputs clean up phase. \end{DoxyCompactList}\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a8ba5b844a0a9af02bb60aefc4a6f8a6f}{virtual void {\bfseries Button\+Pressed} ()}\label{class_scaffolding_1_1_abstract_button_a8ba5b844a0a9af02bb60aefc4a6f8a6f}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_ae6dddf72812ac62282f3cde509f6b43b}{virtual void {\bfseries Button\+Down} ()}\label{class_scaffolding_1_1_abstract_button_ae6dddf72812ac62282f3cde509f6b43b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a672ed0b6c81579cd2daaa7c0274bcdb0}{void {\bfseries Toggle\+Button\+Inactive} (bool active)}\label{class_scaffolding_1_1_abstract_button_a672ed0b6c81579cd2daaa7c0274bcdb0}
+
+\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_button_ae18ef32bad19d3fd5159bc825c9a1211}{Change\+State} (Button\+State state)
+\begin{DoxyCompactList}\small\item\em Changes the buttons visual state. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a8862a2385e9d955cf58a878828ddde05}{Open\+View\+On\+Pressed} (Type target)
+\begin{DoxyCompactList}\small\item\em Set the Screen to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a2580b5e356bcda58ab8f7de52679c211}{Open\+View\+On\+Pressed$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Set the Screen to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_acba98947a8987ad65e7ce34114e903cf}{Open\+View\+On\+Pressed} (Type target, Type loading\+View)
+\begin{DoxyCompactList}\small\item\em Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_adc646043693b169f9810a6c0bf662007}{Open\+View\+On\+Pressed$<$ T, L $>$} ()
+\begin{DoxyCompactList}\small\item\em Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a1087cf2c11995a65a0432bccdd930fd6}{Open\+Overlay\+On\+Pressed} (Type target\+Overlay)
+\begin{DoxyCompactList}\small\item\em Set the overlay to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a71ab29dc963545c57b57aa9a294f5be1}{Open\+Overlay\+On\+Pressed$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Set the overlay to be opened when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_abb180405fc64d38655f5be2a935dc71c}{Close\+Overlay\+On\+Pressed} (Type target\+Overlay)
+\begin{DoxyCompactList}\small\item\em Set the overlay to be closed when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_acf05350651bf38ee6c7928c6c2f35c54}{Close\+Overlay\+On\+Pressed$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Set the overlay to be closed when the button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_ae99a36e41eb5d2975137669c44aafe26}{Add\+Button\+Pressed\+Handler} (Action$<$ \hyperlink{class_scaffolding_1_1_abstract_button}{Abstract\+Button} $>$ action)
+\begin{DoxyCompactList}\small\item\em Registers the button pressed callback. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a797be871a53380fa6aaed1bad0d64002}{Add\+Button\+Pressed\+Handler\+No\+Button} (Action action)
+\begin{DoxyCompactList}\small\item\em Registers the button pressed callback.. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_ac5e452a4c33391900a861e2e0275cc58}{Add\+Button\+Down\+Handler} (Action$<$ \hyperlink{class_scaffolding_1_1_abstract_button}{Abstract\+Button} $>$ action)
+\begin{DoxyCompactList}\small\item\em Registers the button down callback. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_button_a33bcbcb549fceb9e1f6df0b0fff440aa}{Add\+Button\+Down\+Handler\+No\+Button} (Action action)
+\begin{DoxyCompactList}\small\item\em Registers the button down callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a3964c7b7750ae8a2616d1ec95ef2961d}{string {\bfseries target\+View}}\label{class_scaffolding_1_1_abstract_button_a3964c7b7750ae8a2616d1ec95ef2961d}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_af1415e2079d38ab6514fdba3a29d6a65}{int {\bfseries target\+View\+Index}}\label{class_scaffolding_1_1_abstract_button_af1415e2079d38ab6514fdba3a29d6a65}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_adf6d52ebbf1d039ff8bc2add1fec61bd}{int {\bfseries target\+View\+Length}}\label{class_scaffolding_1_1_abstract_button_adf6d52ebbf1d039ff8bc2add1fec61bd}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a0368194bc658fc41d470caaa4613d6fc}{string {\bfseries input\+Camera}}\label{class_scaffolding_1_1_abstract_button_a0368194bc658fc41d470caaa4613d6fc}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_ad62400a6c2dd73d00d4323d9e22ad3bf}{int {\bfseries input\+Camera\+Index}}\label{class_scaffolding_1_1_abstract_button_ad62400a6c2dd73d00d4323d9e22ad3bf}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a7d1ed91db6beff4dbd8cbca02302f4aa}{int {\bfseries input\+Camera\+Length}}\label{class_scaffolding_1_1_abstract_button_a7d1ed91db6beff4dbd8cbca02302f4aa}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_afabca95e2175e1dc3000ca60d5593bb7}{string {\bfseries loading\+Overlay}}\label{class_scaffolding_1_1_abstract_button_afabca95e2175e1dc3000ca60d5593bb7}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a99eac01e9ba3a61018e5424942fd82e3}{bool {\bfseries open\+As\+Screen} = true}\label{class_scaffolding_1_1_abstract_button_a99eac01e9ba3a61018e5424942fd82e3}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_ae005c481844dab665e7ad68c7655ef93}{bool {\bfseries disable\+Inputs\+On\+Overlay} = false}\label{class_scaffolding_1_1_abstract_button_ae005c481844dab665e7ad68c7655ef93}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_aea0592d79dd8b035de641dcdf943f5b6}{bool {\bfseries open\+Loading\+Overlay} = false}\label{class_scaffolding_1_1_abstract_button_aea0592d79dd8b035de641dcdf943f5b6}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a51a8f08a8b61d48549750ee0afa3b8c2}{Button\+Action\+Type {\bfseries button\+Action\+Type}}\label{class_scaffolding_1_1_abstract_button_a51a8f08a8b61d48549750ee0afa3b8c2}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_ab1319d3e572a56ca6f32b034c1e25197}{List$<$ int $>$ {\bfseries selected\+Script\+Index}}\label{class_scaffolding_1_1_abstract_button_ab1319d3e572a56ca6f32b034c1e25197}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a84730e9b36659535b38d1c177f87bfa7}{List$<$ int $>$ {\bfseries selected\+Script\+Length}}\label{class_scaffolding_1_1_abstract_button_a84730e9b36659535b38d1c177f87bfa7}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_aaf2a5387f50d2b7fa3b25a07a54e9330}{List$<$ string $>$ {\bfseries selected\+Script}}\label{class_scaffolding_1_1_abstract_button_aaf2a5387f50d2b7fa3b25a07a54e9330}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a5217705c6d3e1eae6465bf019c4cc66e}{List$<$ int $>$ {\bfseries selected\+Method\+Index}}\label{class_scaffolding_1_1_abstract_button_a5217705c6d3e1eae6465bf019c4cc66e}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a03cfefa7a15e4ee66df3751ccf1fc15c}{List$<$ string $>$ {\bfseries selected\+Method}}\label{class_scaffolding_1_1_abstract_button_a03cfefa7a15e4ee66df3751ccf1fc15c}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a6f9c088635d052c30907f9664c6fa6d9}{List$<$ int $>$ {\bfseries selected\+Method\+Length}}\label{class_scaffolding_1_1_abstract_button_a6f9c088635d052c30907f9664c6fa6d9}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_abe3142b5b2d1c8da49ab71d8fc248204}{Animation\+Clip {\bfseries animation\+Clip}}\label{class_scaffolding_1_1_abstract_button_abe3142b5b2d1c8da49ab71d8fc248204}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_acdd3679a16da22f4306a45ca42091fc0}{int {\bfseries loading\+Overlay\+Index}}\label{class_scaffolding_1_1_abstract_button_acdd3679a16da22f4306a45ca42091fc0}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_button_a290d3aff2b734b388cfa170f2d08362d}{int {\bfseries loading\+Overlay\+Length}}\label{class_scaffolding_1_1_abstract_button_a290d3aff2b734b388cfa170f2d08362d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_button_ac5e452a4c33391900a861e2e0275cc58}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Add\+Button\+Down\+Handler@{Add\+Button\+Down\+Handler}}
+\index{Add\+Button\+Down\+Handler@{Add\+Button\+Down\+Handler}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Add\+Button\+Down\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Add\+Button\+Down\+Handler (
+\begin{DoxyParamCaption}
+\item[{Action$<$ {\bf Abstract\+Button} $>$}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_ac5e452a4c33391900a861e2e0275cc58}
+
+
+Registers the button down callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Method to callback after down happened. Needs Button as params\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_a33bcbcb549fceb9e1f6df0b0fff440aa}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Add\+Button\+Down\+Handler\+No\+Button@{Add\+Button\+Down\+Handler\+No\+Button}}
+\index{Add\+Button\+Down\+Handler\+No\+Button@{Add\+Button\+Down\+Handler\+No\+Button}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Add\+Button\+Down\+Handler\+No\+Button}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Add\+Button\+Down\+Handler\+No\+Button (
+\begin{DoxyParamCaption}
+\item[{Action}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a33bcbcb549fceb9e1f6df0b0fff440aa}
+
+
+Registers the button down callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_ae99a36e41eb5d2975137669c44aafe26}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Add\+Button\+Pressed\+Handler@{Add\+Button\+Pressed\+Handler}}
+\index{Add\+Button\+Pressed\+Handler@{Add\+Button\+Pressed\+Handler}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Add\+Button\+Pressed\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Add\+Button\+Pressed\+Handler (
+\begin{DoxyParamCaption}
+\item[{Action$<$ {\bf Abstract\+Button} $>$}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_ae99a36e41eb5d2975137669c44aafe26}
+
+
+Registers the button pressed callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Method to callback after pressed happened. Needs Button as params\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_a797be871a53380fa6aaed1bad0d64002}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Add\+Button\+Pressed\+Handler\+No\+Button@{Add\+Button\+Pressed\+Handler\+No\+Button}}
+\index{Add\+Button\+Pressed\+Handler\+No\+Button@{Add\+Button\+Pressed\+Handler\+No\+Button}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Add\+Button\+Pressed\+Handler\+No\+Button}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Add\+Button\+Pressed\+Handler\+No\+Button (
+\begin{DoxyParamCaption}
+\item[{Action}]{action}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a797be871a53380fa6aaed1bad0d64002}
+
+
+Registers the button pressed callback.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_ae18ef32bad19d3fd5159bc825c9a1211}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Change\+State@{Change\+State}}
+\index{Change\+State@{Change\+State}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Change\+State}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Button.\+Change\+State (
+\begin{DoxyParamCaption}
+\item[{Button\+State}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_button_ae18ef32bad19d3fd5159bc825c9a1211}
+
+
+Changes the buttons visual state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & State.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_ae8879dc8ec6de80c1c75d7399ebffe90}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Abstract\+Button.\+Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_button_ae8879dc8ec6de80c1c75d7399ebffe90}
+
+
+The inputs clean up phase. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Scaffolding.\+Abstract\+Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_scaffolding_button_a1f295926babd2653cd63ed2933108d45}{Scaffolding.\+Scaffolding\+Button}.
+
+\hypertarget{class_scaffolding_1_1_abstract_button_abb180405fc64d38655f5be2a935dc71c}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Close\+Overlay\+On\+Pressed@{Close\+Overlay\+On\+Pressed}}
+\index{Close\+Overlay\+On\+Pressed@{Close\+Overlay\+On\+Pressed}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Close\+Overlay\+On\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Close\+Overlay\+On\+Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\+Overlay}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_abb180405fc64d38655f5be2a935dc71c}
+
+
+Set the overlay to be closed when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_acf05350651bf38ee6c7928c6c2f35c54}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Close\+Overlay\+On\+Pressed$<$ T $>$@{Close\+Overlay\+On\+Pressed$<$ T $>$}}
+\index{Close\+Overlay\+On\+Pressed$<$ T $>$@{Close\+Overlay\+On\+Pressed$<$ T $>$}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Close\+Overlay\+On\+Pressed$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+Abstract\+Button.\+Close\+Overlay\+On\+Pressed}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_acf05350651bf38ee6c7928c6c2f35c54}
+
+
+Set the overlay to be closed when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_abstract_button_a1087cf2c11995a65a0432bccdd930fd6}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+Overlay\+On\+Pressed@{Open\+Overlay\+On\+Pressed}}
+\index{Open\+Overlay\+On\+Pressed@{Open\+Overlay\+On\+Pressed}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+Overlay\+On\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Open\+Overlay\+On\+Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\+Overlay}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a1087cf2c11995a65a0432bccdd930fd6}
+
+
+Set the overlay to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_a71ab29dc963545c57b57aa9a294f5be1}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+Overlay\+On\+Pressed$<$ T $>$@{Open\+Overlay\+On\+Pressed$<$ T $>$}}
+\index{Open\+Overlay\+On\+Pressed$<$ T $>$@{Open\+Overlay\+On\+Pressed$<$ T $>$}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+Overlay\+On\+Pressed$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+Abstract\+Button.\+Open\+Overlay\+On\+Pressed}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a71ab29dc963545c57b57aa9a294f5be1}
+
+
+Set the overlay to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Overlay} & Target overlay.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_abstract_button_a8862a2385e9d955cf58a878828ddde05}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+View\+On\+Pressed@{Open\+View\+On\+Pressed}}
+\index{Open\+View\+On\+Pressed@{Open\+View\+On\+Pressed}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+View\+On\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Open\+View\+On\+Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a8862a2385e9d955cf58a878828ddde05}
+
+
+Set the Screen to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_acba98947a8987ad65e7ce34114e903cf}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+View\+On\+Pressed@{Open\+View\+On\+Pressed}}
+\index{Open\+View\+On\+Pressed@{Open\+View\+On\+Pressed}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+View\+On\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+Button.\+Open\+View\+On\+Pressed (
+\begin{DoxyParamCaption}
+\item[{Type}]{target, }
+\item[{Type}]{loading\+View}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_acba98947a8987ad65e7ce34114e903cf}
+
+
+Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+{\em loading\+View} & Loading view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_button_a2580b5e356bcda58ab8f7de52679c211}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+View\+On\+Pressed$<$ T $>$@{Open\+View\+On\+Pressed$<$ T $>$}}
+\index{Open\+View\+On\+Pressed$<$ T $>$@{Open\+View\+On\+Pressed$<$ T $>$}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+View\+On\+Pressed$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+Abstract\+Button.\+Open\+View\+On\+Pressed}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_a2580b5e356bcda58ab8f7de52679c211}
+
+
+Set the Screen to be opened when the button is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_abstract_button_adc646043693b169f9810a6c0bf662007}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Open\+View\+On\+Pressed$<$ T, L $>$@{Open\+View\+On\+Pressed$<$ T, L $>$}}
+\index{Open\+View\+On\+Pressed$<$ T, L $>$@{Open\+View\+On\+Pressed$<$ T, L $>$}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Open\+View\+On\+Pressed$<$ T, L $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+Abstract\+Button.\+Open\+View\+On\+Pressed}$<$ T, L $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_button_adc646043693b169f9810a6c0bf662007}
+
+
+Set the screen to be opened when the button is pressed. Set the loading overlay to be opened first to mask heavy loading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+{\em loading\+View} & Loading view.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\item[{\em L} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_abstract_button_aa9ef22706bd2af0de02ec86f4d6641d4}{\index{Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding\+::\+Abstract\+Button@{Scaffolding\+::\+Abstract\+Button}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Abstract\+Button.\+Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_button_aa9ef22706bd2af0de02ec86f4d6641d4}
+
+
+Run by the view during it's setup phase. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{Scaffolding.\+Abstract\+Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_scaffolding_button_a9473252a76f28a9d9605c7be23377f94}{Scaffolding.\+Scaffolding\+Button}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/\+Items/Abstract\+Button.\+cs\end{DoxyCompactItemize}

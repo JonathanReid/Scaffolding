@@ -1,0 +1,261 @@
+\hypertarget{class_scaffolding_1_1_abstract_view}{\section{Scaffolding.\+Abstract\+View Class Reference}
+\label{class_scaffolding_1_1_abstract_view}\index{Scaffolding.\+Abstract\+View@{Scaffolding.\+Abstract\+View}}
+}
+
+
+Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay.  
+
+
+Inheritance diagram for Scaffolding.\+Abstract\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_scaffolding_1_1_abstract_view}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a809162c7410e4929fd9e3f91c9e2e96c}{enum {\bfseries Showing\+Types} \{ {\bfseries Wait\+For\+Previous\+Hide\+Transition}, 
+{\bfseries Show\+Immediately}
+ \}}\label{class_scaffolding_1_1_abstract_view_a809162c7410e4929fd9e3f91c9e2e96c}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a49247000d508f81e25846e1998a90a26}{delegate void {\bfseries Abstract\+View\+Event} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} sender, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} obj)}\label{class_scaffolding_1_1_abstract_view_a49247000d508f81e25846e1998a90a26}
+
+\item 
+\hyperlink{class_scaffolding_1_1_abstract_button}{Abstract\+Button} \hyperlink{class_scaffolding_1_1_abstract_view_a77bcaa12d078eff7aa7bbaa30cb5bbda}{Get\+Button\+For\+Name} (string name)
+\begin{DoxyCompactList}\small\item\em Return a button that is a child of the view by name. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_adb8d1d723fc56128e54f9267b9985cec}{Add\+Button\+Pressed\+Handler} (string name, Action handler)
+\begin{DoxyCompactList}\small\item\em Adds a button pressed handler for the named button. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_ac12bfa146c003591cf231ca61770207e}{Add\+Button\+Down\+Handler} (string name, Action handler)
+\begin{DoxyCompactList}\small\item\em Adds a button down handler for the named button. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a9af94b623e26a958d6295fc3b89eab0b}{Setup} (\hyperlink{class_scaffolding_1_1_view_manager_base}{View\+Manager\+Base} manager)
+\begin{DoxyCompactList}\small\item\em Runs when the view is created. Use this instead of Awake or Start. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}{On\+Show\+Start} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} data)
+\begin{DoxyCompactList}\small\item\em Runs when the view is opened, and before any animation events have happened. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}{On\+Show\+Complete} ()
+\begin{DoxyCompactList}\small\item\em Runs after the \char`\"{}show\char`\"{} step has been completed, usually after any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are enabled at this step. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}{On\+Hide\+Start} ()
+\begin{DoxyCompactList}\small\item\em Runs when the view is requested to close, before any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}{On\+Hide\+Complete} ()
+\begin{DoxyCompactList}\small\item\em Runs when the view is completely closed. After this call, the view will be deleted. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are enabled at this step. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a4c2e1951ff7342457f17e19d172aa8c0}{Dispatch\+Event\+To\+Model} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} obj)
+\begin{DoxyCompactList}\small\item\em Dispatchs an event to model. This will only be picked up if the model is registered to a view. This allows for communication between the view and its model. You should O\+N\+L\+Y communicate with models through events. Views D\+O N\+O\+T know about their model. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_view_a9dbb324d1671f845976f1fa23d01ccde}{Notify\+Model\+Of\+View\+Closed} ()
+\begin{DoxyCompactList}\small\item\em Notifies the model that the view has been closed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}{Disable\+All\+Inputs} ()
+\begin{DoxyCompactList}\small\item\em Disable any inputs found in the view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}{Enable\+All\+Inputs} ()
+\begin{DoxyCompactList}\small\item\em Enable any inputs found in the view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}{Toggle\+Enabled\+Inputs} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Toggles the enabled state of all inputs in the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a7a3bdf62bce105b7857671d30adb179b}{Showing\+Types {\bfseries showing\+Type}}\label{class_scaffolding_1_1_abstract_view_a7a3bdf62bce105b7857671d30adb179b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_addde808d8caa8a49014303bf1dcc1f8e}{Animation\+Clip {\bfseries in\+Transition}}\label{class_scaffolding_1_1_abstract_view_addde808d8caa8a49014303bf1dcc1f8e}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_aa62967668127d7526d2bca78e1e1501b}{Animation\+Clip {\bfseries out\+Transition}}\label{class_scaffolding_1_1_abstract_view_aa62967668127d7526d2bca78e1e1501b}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_ae03980c52528bdb18b92932bb1f17e7b}{bool {\bfseries disable\+Inputs\+If\+Overlay}}\label{class_scaffolding_1_1_abstract_view_ae03980c52528bdb18b92932bb1f17e7b}
+
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a8b01ef366ac5b405ce80cdea50d1f1a3}{Abstract\+View\+Event {\bfseries View\+Event}}\label{class_scaffolding_1_1_abstract_view_a8b01ef366ac5b405ce80cdea50d1f1a3}
+
+\item 
+\hypertarget{class_scaffolding_1_1_abstract_view_a8a8bf6f8a0757bd81b8301f25297042a}{Abstract\+View\+Event {\bfseries View\+Closed\+Event}}\label{class_scaffolding_1_1_abstract_view_a8a8bf6f8a0757bd81b8301f25297042a}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_view_ac12bfa146c003591cf231ca61770207e}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Add\+Button\+Down\+Handler@{Add\+Button\+Down\+Handler}}
+\index{Add\+Button\+Down\+Handler@{Add\+Button\+Down\+Handler}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Add\+Button\+Down\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+View.\+Add\+Button\+Down\+Handler (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{Action}]{handler}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_ac12bfa146c003591cf231ca61770207e}
+
+
+Adds a button down handler for the named button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name.\\
+\hline
+{\em handler} & Handler.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_view_adb8d1d723fc56128e54f9267b9985cec}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Add\+Button\+Pressed\+Handler@{Add\+Button\+Pressed\+Handler}}
+\index{Add\+Button\+Pressed\+Handler@{Add\+Button\+Pressed\+Handler}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Add\+Button\+Pressed\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+View.\+Add\+Button\+Pressed\+Handler (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{Action}]{handler}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_adb8d1d723fc56128e54f9267b9985cec}
+
+
+Adds a button pressed handler for the named button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name.\\
+\hline
+{\em handler} & Handler.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Disable\+All\+Inputs@{Disable\+All\+Inputs}}
+\index{Disable\+All\+Inputs@{Disable\+All\+Inputs}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Disable\+All\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+View.\+Disable\+All\+Inputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a1bb34cd891cb97082030215fdb8b8794}
+
+
+Disable any inputs found in the view. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a4c2e1951ff7342457f17e19d172aa8c0}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Dispatch\+Event\+To\+Model@{Dispatch\+Event\+To\+Model}}
+\index{Dispatch\+Event\+To\+Model@{Dispatch\+Event\+To\+Model}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Dispatch\+Event\+To\+Model}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+Dispatch\+Event\+To\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a4c2e1951ff7342457f17e19d172aa8c0}
+
+
+Dispatchs an event to model. This will only be picked up if the model is registered to a view. This allows for communication between the view and its model. You should O\+N\+L\+Y communicate with models through events. Views D\+O N\+O\+T know about their model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Object.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Enable\+All\+Inputs@{Enable\+All\+Inputs}}
+\index{Enable\+All\+Inputs@{Enable\+All\+Inputs}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Enable\+All\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+View.\+Enable\+All\+Inputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_ae550b6838501b3c2e3751535059c478e}
+
+
+Enable any inputs found in the view. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a77bcaa12d078eff7aa7bbaa30cb5bbda}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Get\+Button\+For\+Name@{Get\+Button\+For\+Name}}
+\index{Get\+Button\+For\+Name@{Get\+Button\+For\+Name}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Get\+Button\+For\+Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Abstract\+Button} Scaffolding.\+Abstract\+View.\+Get\+Button\+For\+Name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a77bcaa12d078eff7aa7bbaa30cb5bbda}
+
+
+Return a button that is a child of the view by name. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a9dbb324d1671f845976f1fa23d01ccde}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Notify\+Model\+Of\+View\+Closed@{Notify\+Model\+Of\+View\+Closed}}
+\index{Notify\+Model\+Of\+View\+Closed@{Notify\+Model\+Of\+View\+Closed}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Notify\+Model\+Of\+View\+Closed}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+Notify\+Model\+Of\+View\+Closed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a9dbb324d1671f845976f1fa23d01ccde}
+
+
+Notifies the model that the view has been closed. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!On\+Hide\+Complete@{On\+Hide\+Complete}}
+\index{On\+Hide\+Complete@{On\+Hide\+Complete}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{On\+Hide\+Complete}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+On\+Hide\+Complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_aa5b29ad6a0a57677261e0bdc3b2e9825}
+
+
+Runs when the view is completely closed. After this call, the view will be deleted. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are enabled at this step. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!On\+Hide\+Start@{On\+Hide\+Start}}
+\index{On\+Hide\+Start@{On\+Hide\+Start}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{On\+Hide\+Start}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+On\+Hide\+Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_ae8e198103d966b4a12bc8fdb27296765}
+
+
+Runs when the view is requested to close, before any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!On\+Show\+Complete@{On\+Show\+Complete}}
+\index{On\+Show\+Complete@{On\+Show\+Complete}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{On\+Show\+Complete}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+On\+Show\+Complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_ad3d0ee8b69a70afa3355c9aad0ab34b6}
+
+
+Runs after the \char`\"{}show\char`\"{} step has been completed, usually after any animations. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are enabled at this step. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!On\+Show\+Start@{On\+Show\+Start}}
+\index{On\+Show\+Start@{On\+Show\+Start}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{On\+Show\+Start}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+On\+Show\+Start (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a7c4ad4fbf3039a5acc67a16e6672510e}
+
+
+Runs when the view is opened, and before any animation events have happened. Any \hyperlink{class_scaffolding_1_1_abstract_input}{Abstract\+Input} derrived objects in the view are disabled at this point, to stop any clicks during the transitions. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a9af94b623e26a958d6295fc3b89eab0b}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+View.\+Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf View\+Manager\+Base}}]{manager}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_view_a9af94b623e26a958d6295fc3b89eab0b}
+
+
+Runs when the view is created. Use this instead of Awake or Start. 
+
+\hypertarget{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}{\index{Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}!Toggle\+Enabled\+Inputs@{Toggle\+Enabled\+Inputs}}
+\index{Toggle\+Enabled\+Inputs@{Toggle\+Enabled\+Inputs}!Scaffolding\+::\+Abstract\+View@{Scaffolding\+::\+Abstract\+View}}
+\subsubsection[{Toggle\+Enabled\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Abstract\+View.\+Toggle\+Enabled\+Inputs (
+\begin{DoxyParamCaption}
+\item[{bool}]{enabled}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_abstract_view_a5e6cdf214eaa49da7ef180c6874353b0}
+
+
+Toggles the enabled state of all inputs in the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & If set to {\ttfamily true} enabled.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Views/Abstract\+View.\+cs\end{DoxyCompactItemize}

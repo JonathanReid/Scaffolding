@@ -1,0 +1,424 @@
+\hypertarget{class_scaffolding_1_1_view_request}{\section{Scaffolding.\+View\+Request Class Reference}
+\label{class_scaffolding_1_1_view_request}\index{Scaffolding.\+View\+Request@{Scaffolding.\+View\+Request}}
+}
+Inheritance diagram for Scaffolding.\+View\+Request\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_scaffolding_1_1_view_request}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_scaffolding_1_1_view_request_afa476fd65d761a75a17763aa66ec4526}{virtual void {\bfseries Register\+View\+To\+Model} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view, \hyperlink{class_scaffolding_1_1_abstract_model}{Abstract\+Model} model)}\label{class_scaffolding_1_1_view_request_afa476fd65d761a75a17763aa66ec4526}
+
+\item 
+\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} \hyperlink{class_scaffolding_1_1_view_request_a3edc966ebf54c7695dd2918007d5f433}{Get\+View\+Data\+For\+Transition} (Type type)
+\begin{DoxyCompactList}\small\item\em Get the data that has been packaged for delivery to a view. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_aa673715af6dd0fe2faa4d825d13a734d}{Request\+Overlay$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a73035af50a3c6e23e5de1798df478911}{Request\+Overlay} (Type type)
+\begin{DoxyCompactList}\small\item\em Request an overlay with type to open. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a3eddf134fb24bde36070703528f48688}{Request\+Overlay$<$ T $>$} (bool disable\+Inputs\+On\+Screen)
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open, with the option to disable inputs on the currently open screen \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_af2db772c0e32b01dd9576bfa24ce04aa}{Request\+Overlay} (Type type, bool disable\+Inputs\+On\+Screen)
+\begin{DoxyCompactList}\small\item\em Requests an overlay to open, with the option to disable inputs on the currently open screen \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a614cdfd9b456ef39d9294c4f0a5d4a4b}{Request\+Overlay\+Close$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Request an overlay to close. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a8e2b65d409c7b4ff692753ce5825e9de}{Request\+Overlay\+Close} (Type type)
+\begin{DoxyCompactList}\small\item\em Request an overlay to close of type. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_ad546a557c876f40350a0aa87e3df051f}{Request\+Overlay\+Force\+Close$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Force an overlay to close, this skips the On\+Hide\+Start method and goes straight to Hide\+Complete. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a9245c7504ef075c0a800b1d63db3a7c4}{Request\+Overlay\+Force\+Close} (Type type)
+\begin{DoxyCompactList}\small\item\em Force an overlay to close, this skips the On\+Hide\+Start method and goes straight to Hide\+Complete. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_acacc176c1e97491d4ed539b71a0576c8}{Request\+View$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Request a view. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a6049ec6f948d31b1f38252f8c330aa34}{Request\+View} (Type type)
+\begin{DoxyCompactList}\small\item\em Request a view with type. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a5c031132968ce946ce612ca3a79b1075}{Request\+Force\+Reopen\+View$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Request to reopen a view \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_af867121a024ce722629fe9ad23a8207f}{Request\+Force\+Reopen\+View} (Type type)
+\begin{DoxyCompactList}\small\item\em Request to reopen a view \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_ae9834b37d6a291e9666f1d47a0614e74}{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$} ()
+\begin{DoxyCompactList}\small\item\em Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_view_request_a46ea4104f8158757661c1626b074b665}{Request\+View\+With\+Loading\+Overlay} (Type type, Type loading\+Type)
+\begin{DoxyCompactList}\small\item\em Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_request_af8aa731570962d7a79a83575726e033e}{Send\+Data\+To\+View$<$ T $>$} (\hyperlink{class_scaffolding_1_1_s_object}{S\+Object} data)
+\begin{DoxyCompactList}\small\item\em Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_request_a9ed5d8133e13eeb40abf1c897e89401d}{Send\+Data\+To\+View} (Type target\+View, \hyperlink{class_scaffolding_1_1_s_object}{S\+Object} data)
+\begin{DoxyCompactList}\small\item\em Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_request_a352884d93e18dbe65225c4c0f0a2a291}{Remove\+Data\+For\+View$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Delete any data you want to send to a view. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_view_request_a74c5d71a0743934fba7f6980e7decd7a}{Remove\+Data\+For\+View} (Type target\+View)
+\begin{DoxyCompactList}\small\item\em Delete any data you want to send to a view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_scaffolding_1_1_view_request_ae88834823495c1f661407d885e3c5e9d}{Is\+Hiding}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether or not this view is in the hide state. \end{DoxyCompactList}\item 
+bool \hyperlink{class_scaffolding_1_1_view_request_a56767533f14295a74852fdb2f855504f}{Is\+Showing}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether or not this view is in the showing state. \end{DoxyCompactList}\item 
+\hypertarget{class_scaffolding_1_1_view_request_af715820a9f7d30c529a29013fce1100c}{bool {\bfseries Is\+Setting\+Up}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_scaffolding_1_1_view_request_af715820a9f7d30c529a29013fce1100c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_view_request_a3edc966ebf54c7695dd2918007d5f433}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Get\+View\+Data\+For\+Transition@{Get\+View\+Data\+For\+Transition}}
+\index{Get\+View\+Data\+For\+Transition@{Get\+View\+Data\+For\+Transition}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Get\+View\+Data\+For\+Transition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+Object} Scaffolding.\+View\+Request.\+Get\+View\+Data\+For\+Transition (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_request_a3edc966ebf54c7695dd2918007d5f433}
+
+
+Get the data that has been packaged for delivery to a view. 
+
+\hypertarget{class_scaffolding_1_1_view_request_a74c5d71a0743934fba7f6980e7decd7a}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Remove\+Data\+For\+View@{Remove\+Data\+For\+View}}
+\index{Remove\+Data\+For\+View@{Remove\+Data\+For\+View}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Remove\+Data\+For\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Request.\+Remove\+Data\+For\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\+View}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_request_a74c5d71a0743934fba7f6980e7decd7a}
+
+
+Delete any data you want to send to a view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_request_a352884d93e18dbe65225c4c0f0a2a291}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Remove\+Data\+For\+View$<$ T $>$@{Remove\+Data\+For\+View$<$ T $>$}}
+\index{Remove\+Data\+For\+View$<$ T $>$@{Remove\+Data\+For\+View$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Remove\+Data\+For\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Request.\+Remove\+Data\+For\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_request_a352884d93e18dbe65225c4c0f0a2a291}
+
+
+Delete any data you want to send to a view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+View} & Target view.\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_af867121a024ce722629fe9ad23a8207f}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}}
+\index{Request\+Force\+Reopen\+View@{Request\+Force\+Reopen\+View}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Force\+Reopen\+View}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+Force\+Reopen\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_af867121a024ce722629fe9ad23a8207f}
+
+
+Request to reopen a view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_a5c031132968ce946ce612ca3a79b1075}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}}
+\index{Request\+Force\+Reopen\+View$<$ T $>$@{Request\+Force\+Reopen\+View$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Force\+Reopen\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+Force\+Reopen\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a5c031132968ce946ce612ca3a79b1075}
+
+
+Request to reopen a view 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+\end{DoxyTemplParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a73035af50a3c6e23e5de1798df478911}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay@{Request\+Overlay}}
+\index{Request\+Overlay@{Request\+Overlay}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a73035af50a3c6e23e5de1798df478911}
+
+
+Request an overlay with type to open. 
+
+Example\+: Request\+Overlay(typeof(\+My\+View)); 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_af2db772c0e32b01dd9576bfa24ce04aa}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay@{Request\+Overlay}}
+\index{Request\+Overlay@{Request\+Overlay}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type, }
+\item[{bool}]{disable\+Inputs\+On\+Screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_af2db772c0e32b01dd9576bfa24ce04aa}
+
+
+Requests an overlay to open, with the option to disable inputs on the currently open screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type.\\
+\hline
+{\em disable\+Inputs\+On\+Screen} & If set to {\ttfamily true} disable inputs on screen.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_view_request_aa673715af6dd0fe2faa4d825d13a734d}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}}
+\index{Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+Overlay}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_aa673715af6dd0fe2faa4d825d13a734d}
+
+
+Requests an overlay to open. 
+
+Example\+: \hyperlink{class_scaffolding_1_1_view_request_a73035af50a3c6e23e5de1798df478911}{Request\+Overlay$<$\+My\+View$>$()}; 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+\end{DoxyTemplParams}
+
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a3eddf134fb24bde36070703528f48688}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}}
+\index{Request\+Overlay$<$ T $>$@{Request\+Overlay$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+Overlay}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{bool}]{disable\+Inputs\+On\+Screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a3eddf134fb24bde36070703528f48688}
+
+
+Requests an overlay to open, with the option to disable inputs on the currently open screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em disable\+Inputs\+On\+Screen} & If set to {\ttfamily true} disable inputs on screen.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{class_scaffolding_1_1_view_request_a8e2b65d409c7b4ff692753ce5825e9de}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay\+Close@{Request\+Overlay\+Close}}
+\index{Request\+Overlay\+Close@{Request\+Overlay\+Close}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay\+Close}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+Overlay\+Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a8e2b65d409c7b4ff692753ce5825e9de}
+
+
+Request an overlay to close of type. 
+
+Example\+: Request\+Overlay\+Close(typeof(\+My\+View)); 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_a614cdfd9b456ef39d9294c4f0a5d4a4b}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay\+Close$<$ T $>$@{Request\+Overlay\+Close$<$ T $>$}}
+\index{Request\+Overlay\+Close$<$ T $>$@{Request\+Overlay\+Close$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay\+Close$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+Overlay\+Close}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a614cdfd9b456ef39d9294c4f0a5d4a4b}
+
+
+Request an overlay to close. 
+
+Example\+: \hyperlink{class_scaffolding_1_1_view_request_a8e2b65d409c7b4ff692753ce5825e9de}{Request\+Overlay\+Close$<$\+My\+View$>$()}; 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a9245c7504ef075c0a800b1d63db3a7c4}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay\+Force\+Close@{Request\+Overlay\+Force\+Close}}
+\index{Request\+Overlay\+Force\+Close@{Request\+Overlay\+Force\+Close}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay\+Force\+Close}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+Overlay\+Force\+Close (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a9245c7504ef075c0a800b1d63db3a7c4}
+
+
+Force an overlay to close, this skips the On\+Hide\+Start method and goes straight to Hide\+Complete. 
+
+Example\+: Request\+Overlay\+Force\+Close(typeof(\+My\+View)); 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_ad546a557c876f40350a0aa87e3df051f}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+Overlay\+Force\+Close$<$ T $>$@{Request\+Overlay\+Force\+Close$<$ T $>$}}
+\index{Request\+Overlay\+Force\+Close$<$ T $>$@{Request\+Overlay\+Force\+Close$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+Overlay\+Force\+Close$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+Overlay\+Force\+Close}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_ad546a557c876f40350a0aa87e3df051f}
+
+
+Force an overlay to close, this skips the On\+Hide\+Start method and goes straight to Hide\+Complete. 
+
+Example\+: \hyperlink{class_scaffolding_1_1_view_request_a9245c7504ef075c0a800b1d63db3a7c4}{Request\+Overlay\+Force\+Close$<$\+My\+View$>$()}; 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a6049ec6f948d31b1f38252f8c330aa34}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+View@{Request\+View}}
+\index{Request\+View@{Request\+View}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+View}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a6049ec6f948d31b1f38252f8c330aa34}
+
+
+Request a view with type. 
+
+Example\+: Request\+View(typeof(\+My\+View)); 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_acacc176c1e97491d4ed539b71a0576c8}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+View$<$ T $>$@{Request\+View$<$ T $>$}}
+\index{Request\+View$<$ T $>$@{Request\+View$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_acacc176c1e97491d4ed539b71a0576c8}
+
+
+Request a view. 
+
+Example\+: \hyperlink{class_scaffolding_1_1_view_request_a6049ec6f948d31b1f38252f8c330aa34}{Request\+View$<$\+My\+View$>$()}; 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a46ea4104f8158757661c1626b074b665}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}}
+\index{Request\+View\+With\+Loading\+Overlay@{Request\+View\+With\+Loading\+Overlay}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+View\+Request.\+Request\+View\+With\+Loading\+Overlay (
+\begin{DoxyParamCaption}
+\item[{Type}]{type, }
+\item[{Type}]{loading\+Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_a46ea4104f8158757661c1626b074b665}
+
+
+Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. 
+
+Example\+: Request\+View\+With\+Loading\+Overlay(typeof(\+My\+Heavy\+View),typeof(\+My\+Loading\+Screen)); 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\hypertarget{class_scaffolding_1_1_view_request_ae9834b37d6a291e9666f1d47a0614e74}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}}
+\index{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$@{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Request\+View\+With\+Loading\+Overlay$<$ T, L $>$}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf Scaffolding.\+View\+Request.\+Request\+View\+With\+Loading\+Overlay}$<$ T, L $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_view_request_ae9834b37d6a291e9666f1d47a0614e74}
+
+
+Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen. 
+
+Example\+: \hyperlink{class_scaffolding_1_1_view_request_a46ea4104f8158757661c1626b074b665}{Request\+View\+With\+Loading\+Overlay$<$\+My\+Heavy\+View, My\+Loading\+Screen$>$()}; 
+
+Implements \hyperlink{interface_scaffolding_1_1_i_requestable}{Scaffolding.\+I\+Requestable}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\item[{\em L} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+\hypertarget{class_scaffolding_1_1_view_request_a9ed5d8133e13eeb40abf1c897e89401d}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Send\+Data\+To\+View@{Send\+Data\+To\+View}}
+\index{Send\+Data\+To\+View@{Send\+Data\+To\+View}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Send\+Data\+To\+View}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+View\+Request.\+Send\+Data\+To\+View (
+\begin{DoxyParamCaption}
+\item[{Type}]{target\+View, }
+\item[{{\bf S\+Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_request_a9ed5d8133e13eeb40abf1c897e89401d}
+
+
+Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. 
+
+Example\+: Value\+Object obj = new Value\+Object(); obj.\+Put\+Int(\char`\"{}\+Key\char`\"{}, 10); Send\+Data\+To\+View(type\+Of(\+My\+View),obj); \hypertarget{class_scaffolding_1_1_view_request_af8aa731570962d7a79a83575726e033e}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Send\+Data\+To\+View$<$ T $>$@{Send\+Data\+To\+View$<$ T $>$}}
+\index{Send\+Data\+To\+View$<$ T $>$@{Send\+Data\+To\+View$<$ T $>$}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Send\+Data\+To\+View$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Scaffolding.\+View\+Request.\+Send\+Data\+To\+View}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+Object}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_view_request_af8aa731570962d7a79a83575726e033e}
+
+
+Package up data to send to a target view. Useful to send data between views, can be packaged anytime before the change view request happens. 
+
+Example\+: Value\+Object obj = new Value\+Object(); obj.\+Put\+Int(\char`\"{}\+Key\char`\"{}, 10); Send\+Data\+To\+View$<$\+My\+View$>$(obj); \begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Abstract\+View}]\end{description}
+\end{Desc}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_scaffolding_1_1_view_request_ae88834823495c1f661407d885e3c5e9d}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Is\+Hiding@{Is\+Hiding}}
+\index{Is\+Hiding@{Is\+Hiding}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Is\+Hiding}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\+View\+Request.\+Is\+Hiding\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_view_request_ae88834823495c1f661407d885e3c5e9d}
+
+
+Gets a value indicating whether or not this view is in the hide state. 
+
+{\ttfamily true} if this instance is hiding; otherwise, {\ttfamily false}.\hypertarget{class_scaffolding_1_1_view_request_a56767533f14295a74852fdb2f855504f}{\index{Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}!Is\+Showing@{Is\+Showing}}
+\index{Is\+Showing@{Is\+Showing}!Scaffolding\+::\+View\+Request@{Scaffolding\+::\+View\+Request}}
+\subsubsection[{Is\+Showing}]{\setlength{\rightskip}{0pt plus 5cm}bool Scaffolding.\+View\+Request.\+Is\+Showing\hspace{0.3cm}{\ttfamily [get]}}}\label{class_scaffolding_1_1_view_request_a56767533f14295a74852fdb2f855504f}
+
+
+Gets a value indicating whether or not this view is in the showing state. 
+
+{\ttfamily true} if this instance is showing; otherwise, {\ttfamily false}.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Views/View\+Request.\+cs\end{DoxyCompactItemize}

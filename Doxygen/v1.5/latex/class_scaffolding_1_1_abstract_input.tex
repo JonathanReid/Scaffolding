@@ -1,0 +1,180 @@
+\hypertarget{class_scaffolding_1_1_abstract_input}{\section{Scaffolding.\+Abstract\+Input Class Reference}
+\label{class_scaffolding_1_1_abstract_input}\index{Scaffolding.\+Abstract\+Input@{Scaffolding.\+Abstract\+Input}}
+}
+
+
+Abstract input is responsible for all inputs responding to a touch or input from \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager}.  
+
+
+Inheritance diagram for Scaffolding.\+Abstract\+Input\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.395722cm]{class_scaffolding_1_1_abstract_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a15d8f76fe4f335c622be311cfbec8b27}{On\+Destroy} ()
+\begin{DoxyCompactList}\small\item\em When the input is destroyed, clean up after itself. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The inputs clean up phase. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_af1ca6d47fda48013c3521f106944d9af}{Kill} ()
+\begin{DoxyCompactList}\small\item\em Removing any event references the input has \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a5b19183daa9bbef63dd4637d7197c077}{Toggle\+Enabled\+Input} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Toggles the enabled state of the collider associated with the input. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}{Handle\+Event\+Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}{Handle\+Event\+Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a5996b0cb611a384e527ce871b9607858}{Handle\+Event\+Dragged} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_scaffolding_1_1_abstract_input_a2f8eac0790f92d3ce70e196069cc6936}{Handle\+Event\+Dragged\+Delta} (Vector3 delta)
+\begin{DoxyCompactList}\small\item\em Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through an average delta position value of all known touches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract input is responsible for all inputs responding to a touch or input from \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager}. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}
+
+
+The inputs clean up phase. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_scaffolding_button_a1f295926babd2653cd63ed2933108d45}{Scaffolding.\+Scaffolding\+Button}, \hyperlink{class_scaffolding_1_1_abstract_button_ae8879dc8ec6de80c1c75d7399ebffe90}{Scaffolding.\+Abstract\+Button}, \hyperlink{class_scaffolding_1_1_drag_input_aff15e6ed3bca67228c44918a544e241b}{Scaffolding.\+Drag\+Input}, \hyperlink{class_scaffolding_1_1_pinch_input_a5849a64ba0a49d679e4a57fc28fe3f7a}{Scaffolding.\+Pinch\+Input}, \hyperlink{class_scaffolding_1_1_rotate_input_a85778a91b86665998c1b84f24c571e88}{Scaffolding.\+Rotate\+Input}, and \hyperlink{class_scaffolding_1_1_swipe_input_a5d19c1744df90f14d150241605cb86bf}{Scaffolding.\+Swipe\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a5996b0cb611a384e527ce871b9607858}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Handle\+Event\+Dragged@{Handle\+Event\+Dragged}}
+\index{Handle\+Event\+Dragged@{Handle\+Event\+Dragged}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Handle\+Event\+Dragged}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Handle\+Event\+Dragged (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a5996b0cb611a384e527ce871b9607858}
+
+
+Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_swipe_input_a818aba4106a64b5dde4977bca4b358a7}{Scaffolding.\+Swipe\+Input}, \hyperlink{class_scaffolding_1_1_rotate_input_afffb85f2f27b314bde50d0e45d6117d5}{Scaffolding.\+Rotate\+Input}, and \hyperlink{class_scaffolding_1_1_pinch_input_a865f0201d2b7930241711abb68a7341d}{Scaffolding.\+Pinch\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a2f8eac0790f92d3ce70e196069cc6936}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Handle\+Event\+Dragged\+Delta@{Handle\+Event\+Dragged\+Delta}}
+\index{Handle\+Event\+Dragged\+Delta@{Handle\+Event\+Dragged\+Delta}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Handle\+Event\+Dragged\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Handle\+Event\+Dragged\+Delta (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{delta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a2f8eac0790f92d3ce70e196069cc6936}
+
+
+Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through an average delta position value of all known touches. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_drag_input_a600650eb9b2e3ce954af6a5982db3360}{Scaffolding.\+Drag\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Handle\+Event\+Pressed@{Handle\+Event\+Pressed}}
+\index{Handle\+Event\+Pressed@{Handle\+Event\+Pressed}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Handle\+Event\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Handle\+Event\+Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}
+
+
+Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_drag_input_a49561ec761c72584711384d57cb74f41}{Scaffolding.\+Drag\+Input}, \hyperlink{class_scaffolding_1_1_scaffolding_button_a1cc1e5b6b74c5411e1ca46dd81eb5144}{Scaffolding.\+Scaffolding\+Button}, \hyperlink{class_scaffolding_1_1_rotate_input_a4c37089dcaae6d1cb1785b45d5cec8b3}{Scaffolding.\+Rotate\+Input}, \hyperlink{class_scaffolding_1_1_pinch_input_aea53be8e94bef95c8373dd05639eaa41}{Scaffolding.\+Pinch\+Input}, \hyperlink{class_scaffolding_1_1_pinch_this_input_a00f941bc53b1847a2be7a2e61a4a9a57}{Scaffolding.\+Pinch\+This\+Input}, \hyperlink{class_scaffolding_1_1_rotate_this_input_a721eb598cb78a1abb06d8c37f9de01ea}{Scaffolding.\+Rotate\+This\+Input}, and \hyperlink{class_scaffolding_1_1_drag_this_input_a09639007081a6fee7bb7141ec5fa32a5}{Scaffolding.\+Drag\+This\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Handle\+Event\+Released@{Handle\+Event\+Released}}
+\index{Handle\+Event\+Released@{Handle\+Event\+Released}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Handle\+Event\+Released}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Handle\+Event\+Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}
+
+
+Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_drag_input_ab50a7059961c803e39e3ce9ffb0945d7}{Scaffolding.\+Drag\+Input}, \hyperlink{class_scaffolding_1_1_rotate_input_a96588e29dafafeb2e1e1c5469b2bbda1}{Scaffolding.\+Rotate\+Input}, \hyperlink{class_scaffolding_1_1_pinch_input_ad7e6fa3689011526acda972b7f6f4aa8}{Scaffolding.\+Pinch\+Input}, \hyperlink{class_scaffolding_1_1_scaffolding_button_ab6c3c337fc6c6c9dad69498ac5acd098}{Scaffolding.\+Scaffolding\+Button}, \hyperlink{class_scaffolding_1_1_pinch_this_input_ad9ca7c0e4b14d3d59ff06b258b4b9f7d}{Scaffolding.\+Pinch\+This\+Input}, \hyperlink{class_scaffolding_1_1_drag_this_input_a9da2ff31ce625e9880e6f47cd8617c6a}{Scaffolding.\+Drag\+This\+Input}, and \hyperlink{class_scaffolding_1_1_rotate_this_input_aa90af18d3d575cb5a5176e3c952e68cd}{Scaffolding.\+Rotate\+This\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_af1ca6d47fda48013c3521f106944d9af}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Kill@{Kill}}
+\index{Kill@{Kill}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Kill}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Kill (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_af1ca6d47fda48013c3521f106944d9af}
+
+
+Removing any event references the input has 
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a15d8f76fe4f335c622be311cfbec8b27}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!On\+Destroy@{On\+Destroy}}
+\index{On\+Destroy@{On\+Destroy}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{On\+Destroy}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+On\+Destroy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a15d8f76fe4f335c622be311cfbec8b27}
+
+
+When the input is destroyed, clean up after itself. 
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}
+
+
+Run by the view during it's setup phase. 
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_abstract_button_aa9ef22706bd2af0de02ec86f4d6641d4}{Scaffolding.\+Abstract\+Button}, \hyperlink{class_scaffolding_1_1_scaffolding_button_a9473252a76f28a9d9605c7be23377f94}{Scaffolding.\+Scaffolding\+Button}, \hyperlink{class_scaffolding_1_1_pinch_this_input_a60b5bc5461de1286d8bd142742451dab}{Scaffolding.\+Pinch\+This\+Input}, \hyperlink{class_scaffolding_1_1_drag_this_input_afb612ddc8d089c8708494b57063b235d}{Scaffolding.\+Drag\+This\+Input}, \hyperlink{class_scaffolding_1_1_rotate_this_input_a9e0fc73644310f1efd1f49e692638c89}{Scaffolding.\+Rotate\+This\+Input}, \hyperlink{class_scaffolding_1_1_pinch_input_aa6687d25d10c2f4e7106641e0647af35}{Scaffolding.\+Pinch\+Input}, and \hyperlink{class_scaffolding_1_1_rotate_input_a89be6ed5c624ff8f637fdc38227c4637}{Scaffolding.\+Rotate\+Input}.
+
+\hypertarget{class_scaffolding_1_1_abstract_input_a5b19183daa9bbef63dd4637d7197c077}{\index{Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}!Toggle\+Enabled\+Input@{Toggle\+Enabled\+Input}}
+\index{Toggle\+Enabled\+Input@{Toggle\+Enabled\+Input}!Scaffolding\+::\+Abstract\+Input@{Scaffolding\+::\+Abstract\+Input}}
+\subsubsection[{Toggle\+Enabled\+Input}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Scaffolding.\+Abstract\+Input.\+Toggle\+Enabled\+Input (
+\begin{DoxyParamCaption}
+\item[{bool}]{enabled}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_abstract_input_a5b19183daa9bbef63dd4637d7197c077}
+
+
+Toggles the enabled state of the collider associated with the input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & If set to {\ttfamily true} enabled.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_scaffolding_button_aa84a30d26afd5a3f54b5614d6e09e535}{Scaffolding.\+Scaffolding\+Button}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/Abstract\+Input.\+cs\end{DoxyCompactItemize}

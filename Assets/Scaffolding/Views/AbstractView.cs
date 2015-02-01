@@ -242,6 +242,12 @@ namespace Scaffolding
             Destroy(gameObject);
         }
 
+		/// <summary>
+		/// Dispatchs an event to model. This will only be picked up if the model is registered to a view.
+		/// This allows for communication between the view and its model. You should ONLY communicate with models through events.
+		/// Views DO NOT know about their model.
+		/// </summary>
+		/// <param name="obj">Object.</param>
 		public virtual void DispatchEventToModel(SObject obj)
 		{
 			if(ViewEvent != null)
@@ -250,6 +256,9 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Notifies the model that the view has been closed.
+		/// </summary>
 		public virtual void NotifyModelOfViewClosed()
 		{
 			if(ViewClosedEvent != null)

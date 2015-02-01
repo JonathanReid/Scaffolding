@@ -1,0 +1,169 @@
+\hypertarget{class_scaffolding_1_1_rotate_input}{\section{Scaffolding.\+Rotate\+Input Class Reference}
+\label{class_scaffolding_1_1_rotate_input}\index{Scaffolding.\+Rotate\+Input@{Scaffolding.\+Rotate\+Input}}
+}
+
+
+Rotate input is largely a touch input based class. It replicates the rotate gesture, and dispatches a callback while rotating.  
+
+
+Inheritance diagram for Scaffolding.\+Rotate\+Input\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_scaffolding_1_1_rotate_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{class_scaffolding_1_1_rotate_input_a89be6ed5c624ff8f637fdc38227c4637}{Setup} (\hyperlink{class_scaffolding_1_1_abstract_view}{Abstract\+View} view)
+\begin{DoxyCompactList}\small\item\em Run by the view during it's setup phase. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_rotate_input_a85778a91b86665998c1b84f24c571e88}{Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The inputs clean up phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_scaffolding_1_1_rotate_input_a07b51f4f3db3e4e041f45a011319f8d9}{Register\+Rotate\+Callback} (Action$<$ float $>$ callback)
+\begin{DoxyCompactList}\small\item\em Register a callback handler for rotation. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_rotate_input_a4c37089dcaae6d1cb1785b45d5cec8b3}{Handle\+Event\+Pressed} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_rotate_input_afffb85f2f27b314bde50d0e45d6117d5}{Handle\+Event\+Dragged} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\item 
+override void \hyperlink{class_scaffolding_1_1_rotate_input_a96588e29dafafeb2e1e1c5469b2bbda1}{Handle\+Event\+Released} (\hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} tracker)
+\begin{DoxyCompactList}\small\item\em Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Rotate input is largely a touch input based class. It replicates the rotate gesture, and dispatches a callback while rotating. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scaffolding_1_1_rotate_input_a85778a91b86665998c1b84f24c571e88}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Rotate\+Input.\+Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_rotate_input_a85778a91b86665998c1b84f24c571e88}
+
+
+The inputs clean up phase. 
+
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_ab179ae99e76c6c934a0dcba4fc195e68}{Scaffolding.\+Abstract\+Input}.
+
+\hypertarget{class_scaffolding_1_1_rotate_input_afffb85f2f27b314bde50d0e45d6117d5}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Handle\+Event\+Dragged@{Handle\+Event\+Dragged}}
+\index{Handle\+Event\+Dragged@{Handle\+Event\+Dragged}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Handle\+Event\+Dragged}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Rotate\+Input.\+Handle\+Event\+Dragged (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_rotate_input_afffb85f2f27b314bde50d0e45d6117d5}
+
+
+Event\+Dragged, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a5996b0cb611a384e527ce871b9607858}{Scaffolding.\+Abstract\+Input}.
+
+\hypertarget{class_scaffolding_1_1_rotate_input_a4c37089dcaae6d1cb1785b45d5cec8b3}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Handle\+Event\+Pressed@{Handle\+Event\+Pressed}}
+\index{Handle\+Event\+Pressed@{Handle\+Event\+Pressed}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Handle\+Event\+Pressed}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Rotate\+Input.\+Handle\+Event\+Pressed (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_rotate_input_a4c37089dcaae6d1cb1785b45d5cec8b3}
+
+
+Event\+Pressed, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11e83c3462719749f8281a21024e902f}{Scaffolding.\+Abstract\+Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_rotate_this_input_a721eb598cb78a1abb06d8c37f9de01ea}{Scaffolding.\+Rotate\+This\+Input}.
+
+\hypertarget{class_scaffolding_1_1_rotate_input_a96588e29dafafeb2e1e1c5469b2bbda1}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Handle\+Event\+Released@{Handle\+Event\+Released}}
+\index{Handle\+Event\+Released@{Handle\+Event\+Released}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Handle\+Event\+Released}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Rotate\+Input.\+Handle\+Event\+Released (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Tracker}}]{tracker}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_rotate_input_a96588e29dafafeb2e1e1c5469b2bbda1}
+
+
+Event\+Released, dispatched by Scaffoldings \hyperlink{class_scaffolding_1_1_input_manager}{Input\+Manager} Passes through a \hyperlink{class_scaffolding_1_1_input_tracker}{Input\+Tracker} of the current touch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tracker} & Tracker.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a11854454457cd55a26f345011f4bd6bc}{Scaffolding.\+Abstract\+Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_rotate_this_input_aa90af18d3d575cb5a5176e3c952e68cd}{Scaffolding.\+Rotate\+This\+Input}.
+
+\hypertarget{class_scaffolding_1_1_rotate_input_a07b51f4f3db3e4e041f45a011319f8d9}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Register\+Rotate\+Callback@{Register\+Rotate\+Callback}}
+\index{Register\+Rotate\+Callback@{Register\+Rotate\+Callback}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Register\+Rotate\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Scaffolding.\+Rotate\+Input.\+Register\+Rotate\+Callback (
+\begin{DoxyParamCaption}
+\item[{Action$<$ float $>$}]{callback}
+\end{DoxyParamCaption}
+)}}\label{class_scaffolding_1_1_rotate_input_a07b51f4f3db3e4e041f45a011319f8d9}
+
+
+Register a callback handler for rotation. 
+
+Example\+: public void My\+Callback\+Function(float delta\+Angle) \{ //do rotation based code here... \}
+
+\+\_\+rotate\+Input.\+Register\+Rotate\+Callback(\+My\+Callback\+Function);
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback.\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_scaffolding_1_1_rotate_input_a89be6ed5c624ff8f637fdc38227c4637}{\index{Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}!Setup@{Setup}}
+\index{Setup@{Setup}!Scaffolding\+::\+Rotate\+Input@{Scaffolding\+::\+Rotate\+Input}}
+\subsubsection[{Setup}]{\setlength{\rightskip}{0pt plus 5cm}override void Scaffolding.\+Rotate\+Input.\+Setup (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\+View}}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scaffolding_1_1_rotate_input_a89be6ed5c624ff8f637fdc38227c4637}
+
+
+Run by the view during it's setup phase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & View.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_scaffolding_1_1_abstract_input_a598859c6342920d2b0c985310e6e9476}{Scaffolding.\+Abstract\+Input}.
+
+
+
+Reimplemented in \hyperlink{class_scaffolding_1_1_rotate_this_input_a9e0fc73644310f1efd1f49e692638c89}{Scaffolding.\+Rotate\+This\+Input}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Input/\+Items/Rotate\+Input.\+cs\end{DoxyCompactItemize}
