@@ -36,7 +36,15 @@ namespace Scaffolding.Editor
 		private void CreateBackgroundTexture()
 		{
 			_backgroundTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-			float val = 45f/255f;
+			float val = 0;
+			if(EditorGUIUtility.isProSkin)
+			{
+				val = 45f/255f;
+			}
+			else
+			{
+				val = 162f/255f;
+			}
 			_backgroundTexture.SetPixel(0, 0, new Color(val,val,val));
 			_backgroundTexture.Apply();
 		}
@@ -193,11 +201,13 @@ namespace Scaffolding.Editor
             Repaint();
         }
 
+		private bool _wasUsingProSkin;
 		private void DrawBackgroundImage(int i)
 		{
-			if(_backgroundTexture == null)
+			if(_backgroundTexture == null || EditorGUIUtility.isProSkin != _wasUsingProSkin)
 			{
 				CreateBackgroundTexture();
+				_wasUsingProSkin = EditorGUIUtility.isProSkin;
 			}
 
 			if(i%2 == 0)
@@ -209,7 +219,10 @@ namespace Scaffolding.Editor
 		
 		private void OpenViewButtons(string viewName, GameObject go)
         {
-			GUILayout.Label(viewName,EditorStyles.boldLabel	);
+			GUIStyle skin = EditorStyles.boldLabel;
+			skin.normal.textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black;
+
+			GUILayout.Label(viewName,skin);
             if (GUILayout.Button("Close", GUILayout.ExpandWidth(true), GUILayout.Width(40)))
             {
                 Close(go);
@@ -251,7 +264,10 @@ namespace Scaffolding.Editor
 			}
 			else
 			{
-				GUILayout.Label(viewName,EditorStyles.boldLabel);
+				GUIStyle skin = EditorStyles.boldLabel;
+				skin.normal.textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black;
+				
+				GUILayout.Label(viewName,skin);
 			}
 
 			if(IsViewBeingEdited(viewName))

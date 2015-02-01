@@ -130,7 +130,7 @@ namespace Scaffolding.Editor
 
             if (_firstTimeCreated)
             {
-                GUILayout.Label("Hey! It looks like you dont have a ViewManager set up! I've created on for you!", EditorStyles.boldLabel);
+                GUILayout.Label("Hey! It looks like you dont have a ViewManager set up! I've created one for you!", EditorStyles.boldLabel);
             }
 
             _fileName = EditorGUILayout.TextField("View Name:", _fileName);
