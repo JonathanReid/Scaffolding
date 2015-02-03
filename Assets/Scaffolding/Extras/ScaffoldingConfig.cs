@@ -76,17 +76,21 @@ namespace Scaffolding {
 		public ScaffoldingStartingView GetDefaultStartingView()
 		{
 			ScaffoldingStartingView sv = new ScaffoldingStartingView();
+			#if UNITY_EDITOR
 			sv.SceneName = EditorApplication.currentScene;
 			sv.SceneName = sv.SceneName.Remove(0,sv.SceneName.LastIndexOf("/")+1);
 			int index = sv.SceneName.LastIndexOf(".unity");
 			sv.SceneName = sv.SceneName.Remove(index,sv.SceneName.Length - index);
+#else
+			sv.SceneName = Application.loadedLevelName;
+#endif
 			sv.StartingViewIndex = 0;
 			sv.StartingViewType = ViewType.View;
 			sv.StartingViewName = "";
 			return sv;
 		}
 
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		public void SetViewDataForScene(ScaffoldingStartingView sv)
 		{
 			bool added = false;

@@ -30,6 +30,11 @@ public class MainMenu : AbstractView {
         base.OnHideComplete();
     }
 
+	public void LoadMainScene()
+	{
+		Application.LoadLevel("StartingScene");
+	}
+
 	public void OpenMadeByLink()
 	{
 		Debug.Log("Made by link");
