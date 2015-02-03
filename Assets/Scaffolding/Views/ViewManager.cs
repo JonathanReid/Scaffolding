@@ -8,12 +8,25 @@ namespace Scaffolding
     [AddComponentMenu("Scaffolding/Backend/View Manager")]
     public class ViewManager : ViewManagerBase, IRequestable
     {
-
+		public bool DontDestroyThisOnLoad;
         private bool _overridingStartup = false;
 
         /************************************************
          * Setup
          ************************************************/
+		/// <summary>
+		/// Limit the amount of view managers to just the one.
+		/// </summary>
+		private void Awake()
+		{
+			ViewManager[] managers = FindObjectsOfType<ViewManager>();
+			if(managers.Length > 1)
+			{
+				DestroyImmediate(gameObject);
+				return;
+			}
+		}
+
         /// <summary>
         /// Overrides the startup sequence.
         /// </summary>
@@ -37,16 +50,21 @@ namespace Scaffolding
         /// </summary>
         public void Init()
         {
+			if(DontDestroyThisOnLoad)
+			{
+				GameObject.DontDestroyOnLoad(gameObject);
+			}
+
 			_scaffoldingConfig = Resources.Load<ScaffoldingConfig>("SCConfig");
             _disabledInputsOnView = new Dictionary<Type, List<Type>>();
 
             _currentOverlays = new Dictionary<Type, AbstractView>();
-
-			Type t = System.Type.GetType(_scaffoldingConfig.StartingView);
+			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
+			Type t = System.Type.GetType(sv.StartingViewName);
 
             if (t != null && GameObject.FindObjectOfType<AbstractView>() == null)
             {
-                switch(_scaffoldingConfig.StartingViewType)
+                switch(sv.StartingViewType)
 				{
 					case ViewType.View:
 						RequestView(t);
@@ -71,6 +89,14 @@ namespace Scaffolding
             }
             
         }
+
+		void OnLevelWasLoaded(int level) {
+			if(DontDestroyThisOnLoad)
+			{
+				Init();
+			}
+		}
+
         /************************************************
          * public getters
          ************************************************/

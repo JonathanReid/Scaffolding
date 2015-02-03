@@ -1,4 +1,8 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,6 +14,15 @@ namespace Scaffolding {
 	{
 		View,
 		Overlay,
+	}
+
+	[Serializable]
+	public class ScaffoldingStartingView
+	{
+		public string SceneName;
+		public string StartingViewName;
+		public int StartingViewIndex;
+		public ViewType StartingViewType;
 	}
 
 	public class ScaffoldingConfig : ScriptableObject{
@@ -25,8 +38,7 @@ namespace Scaffolding {
 		public string ScaffoldingModelInstantiatePath = "Model/";
 	    public string ScaffoldingPath = "Assets/";
 	    public bool ScaffoldingEnableAllGameobjects = true;
-		public string StartingView;
-		public ViewType StartingViewType;
+		public List<ScaffoldingStartingView> StartingView;
 
 		private static string _scaffoldingPath;
 		public static ScaffoldingConfig _instance;
@@ -49,6 +61,57 @@ namespace Scaffolding {
 			_instance.ScaffoldingPath = _scaffoldingPath;
 		}
 
+		public ScaffoldingStartingView GetViewDataForScene(string sceneName)
+		{
+			foreach(ScaffoldingStartingView s in StartingView)
+			{
+				if(s.SceneName == sceneName)
+				{
+					return s;
+				}
+			}
+			return GetDefaultStartingView();
+		}
+
+		public ScaffoldingStartingView GetDefaultStartingView()
+		{
+			ScaffoldingStartingView sv = new ScaffoldingStartingView();
+			sv.SceneName = EditorApplication.currentScene;
+			sv.SceneName = sv.SceneName.Remove(0,sv.SceneName.LastIndexOf("/")+1);
+			int index = sv.SceneName.LastIndexOf(".unity");
+			sv.SceneName = sv.SceneName.Remove(index,sv.SceneName.Length - index);
+			sv.StartingViewIndex = 0;
+			sv.StartingViewType = ViewType.View;
+			sv.StartingViewName = "";
+			return sv;
+		}
+
+		#if UNITY_EDITOR
+		public void SetViewDataForScene(ScaffoldingStartingView sv)
+		{
+			bool added = false;
+			int i = 0, l = StartingView.Count;
+			for(;i<l;++i)
+			{
+				if(StartingView[i].SceneName == sv.SceneName)
+				{
+					StartingView[i] = sv;
+//					Debug.Log(StartingView[i].StartingViewName);
+					added = true;
+					break;
+				}
+			}
+			if(!added)
+			{
+//				ScaffoldingStartingView	[] sva = new ScaffoldingStartingView[l+1];
+//				StartingView.CopyTo(sva,0);
+//				StartingView = sva;
+				StartingView.Add(sv);
+//				Debug.Log(StartingView[l]);
+				EditorUtility.SetDirty(this);
+			}
+		}
+		#endif
 		private static void RecursivelyFindFolderPath(string dir)
 		{
 			string[] paths = Directory.GetDirectories(dir);
@@ -130,6 +193,11 @@ namespace Scaffolding {
 				
 				count++;
 			}
+
+			if(g.GetComponent<ScaffoldingSingleObject>() == null)
+			{
+				g.AddComponent<ScaffoldingSingleObject>();
+			}
 			return g;
 		}
 
@@ -164,6 +232,10 @@ namespace Scaffolding {
 				g = path;
 				
 				count++;
+			}
+			if(g.GetComponent<ScaffoldingSingleObject>() == null)
+			{
+				g.AddComponent<ScaffoldingSingleObject>();
 			}
 			return g;
 		}

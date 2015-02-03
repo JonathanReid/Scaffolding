@@ -21,7 +21,6 @@ namespace Scaffolding.Editor
 		private string _renamingView = "";
 		private string _tempViewName = "";
 		private int _startingViewIndex;
-		private string _startingView;
 		private int _viewLength;
 		private ViewType _viewType;
 		private ScaffoldingConfig _scaffoldingConfig;
@@ -125,25 +124,35 @@ namespace Scaffolding.Editor
 			GUILayout.EndHorizontal();
 			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
 
-			_startingViewIndex = EditorGUILayout.Popup("Starting View:",_startingViewIndex, _viewNames.ToArray());
-			if (_scaffoldingConfig.StartingView != null)
+			if(_scaffoldingConfig.StartingView == null)
 			{
-				_startingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, _startingViewIndex, _viewNames, _scaffoldingConfig.StartingView);
+				_scaffoldingConfig.StartingView = new List<ScaffoldingStartingView>();
+				_scaffoldingConfig.SetViewDataForScene(_scaffoldingConfig.GetDefaultStartingView());
+			}
+
+			string name = EditorApplication.currentScene;
+			name = name.Remove(0,name.LastIndexOf("/")+1);
+			int index = name.LastIndexOf(".unity");
+			name = name.Remove(index,name.Length - index);
+
+			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
+			sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
+			if (sv.StartingViewName != null)
+			{
+				sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _viewNames, sv.StartingViewName);
 			}
 			_viewLength = _viewNames.Count;
-
-			if(_startingViewIndex < _abstractViews.Count)
-			{
-				_scaffoldingConfig.StartingView = _abstractViews[_startingViewIndex].name;
-			}
-
+			sv.StartingViewName = _viewNames[sv.StartingViewIndex];
 
 			GUILayout.EndHorizontal();
 			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
 
-			_scaffoldingConfig.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",_scaffoldingConfig.StartingViewType);
+			sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
 
 			GUILayout.EndHorizontal();
+
+			_scaffoldingConfig.SetViewDataForScene(sv);
+			EditorUtility.SetDirty(_scaffoldingConfig);
 
             //Setting up the library scroll area
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
