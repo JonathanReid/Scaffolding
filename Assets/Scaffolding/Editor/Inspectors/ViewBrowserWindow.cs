@@ -24,6 +24,7 @@ namespace Scaffolding.Editor
 		private int _viewLength;
 		private ViewType _viewType;
 		private ScaffoldingConfig _scaffoldingConfig;
+		private bool _applicationPlaying;
 
         [MenuItem("Tools/Scaffolding/Open View Library")]
         static void OpenViewLibrary()
@@ -79,8 +80,24 @@ namespace Scaffolding.Editor
 			_scaffoldingConfig = ScaffoldingConfig.Instance;
 		}
 
+		void Update()
+		{
+			// This is necessary to make the framerate normal for the editor window.
+			
+			if(!Application.isPlaying && _applicationPlaying)
+			{
+				Repaint();
+			}
+			
+			if(Application.isPlaying && !_applicationPlaying)
+			{
+				Repaint();
+			}
+		}
+
         void OnGUI()
         {
+			_applicationPlaying = Application.isPlaying;
 			CreateConfig();
             CreateAllViews();
 
@@ -206,8 +223,6 @@ namespace Scaffolding.Editor
             GUILayout.EndVertical();
 
 			EditorUtility.SetDirty(_scaffoldingConfig);
-
-            Repaint();
         }
 
 		private bool _wasUsingProSkin;
