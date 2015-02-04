@@ -93,6 +93,52 @@ namespace Scaffolding
 		}
 
 		/// <summary>
+		/// Request a scene, and open the specified view when scene finishes loading.
+		/// </summary>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void RequestSceneWithView<T>(LoadSceneType loadType, string sceneName) where T : AbstractView
+		{
+			RequestSceneWithView(typeof(T),loadType,sceneName);
+		}
+
+		/// <summary>
+		/// Request a scene, and open the specified view when scene finishes loading.
+		/// </summary>
+		/// <param name="viewType">View type.</param>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void RequestSceneWithView(Type viewType, LoadSceneType loadType, string sceneName)
+		{
+			OpenViewWhenSceneLoads(viewType,sceneName);
+			RequestScene(loadType,sceneName);
+		}
+
+		/// <summary>
+		/// Request a scene, and open the specified overlay when scene finishes loading.
+		/// </summary>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void RequestSceneWithOverlay<T>(LoadSceneType loadType, string sceneName) where T : AbstractView
+		{
+			RequestSceneWithOverlay(typeof(T),loadType,sceneName);
+		}
+
+		/// <summary>
+		/// Request a scene, and open the specified view when scene finishes loading.
+		/// </summary>
+		/// <param name="viewType">View type.</param>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void RequestSceneWithOverlay(Type viewType, LoadSceneType loadType, string sceneName)
+		{
+			OpenOverlayWhenSceneLoads(viewType,sceneName);
+			RequestScene(loadType,sceneName);
+		}
+
+		/// <summary>
 		/// Starts the loading scene. Called by HideComplete() further on down.
 		/// Called when a view closes.
 		/// </summary>

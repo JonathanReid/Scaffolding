@@ -59,14 +59,53 @@ namespace Scaffolding
             return (_viewDataforTransitions != null && _viewDataforTransitions.ContainsKey(type)) ? _viewDataforTransitions [type] : null;
         }
 
+		public void RequestScene(LoadSceneType loadingType, string sceneName)
+		{
+			_manager.RequestScene(loadingType, sceneName);
+		}
+
 		/// <summary>
-		/// Request a scene using a given loading type.
+		/// Request a scene, and open the specified view when scene finishes loading.
 		/// </summary>
 		/// <param name="loadType">Load type.</param>
 		/// <param name="sceneName">Scene name.</param>
-		public virtual void RequestScene(LoadSceneType loadType, string sceneName)
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void RequestSceneWithView<T>(LoadSceneType loadType, string sceneName) where T : AbstractView
 		{
-			_manager.RequestScene(loadType, sceneName);
+			RequestSceneWithView(typeof(T),loadType,sceneName);
+		}
+		
+		/// <summary>
+		/// Request a scene, and open the specified view when scene finishes loading.
+		/// </summary>
+		/// <param name="viewType">View type.</param>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void RequestSceneWithView(Type viewType, LoadSceneType loadType, string sceneName)
+		{
+			_manager.RequestSceneWithView(viewType,loadType,sceneName);
+		}
+		
+		/// <summary>
+		/// Request a scene, and open the specified overlay when scene finishes loading.
+		/// </summary>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void RequestSceneWithOverlay<T>(LoadSceneType loadType, string sceneName) where T : AbstractView
+		{
+			RequestSceneWithOverlay(typeof(T),loadType,sceneName);
+		}
+		
+		/// <summary>
+		/// Request a scene, and open the specified view when scene finishes loading.
+		/// </summary>
+		/// <param name="viewType">View type.</param>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void RequestSceneWithOverlay(Type viewType, LoadSceneType loadType, string sceneName)
+		{
+			_manager.RequestSceneWithOverlay(viewType,loadType,sceneName);
 		}
     
 		/// <summary>

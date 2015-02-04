@@ -19,6 +19,10 @@ namespace Scaffolding
 		void OpenOverlayWhenSceneLoads<T>(string sceneName) where T : AbstractView;
 		void OpenOverlayWhenSceneLoads(Type type, string sceneName);
 		void RequestScene(LoadSceneType loadType, string sceneName);
+		void RequestSceneWithView<T>(LoadSceneType loadType, string sceneName) where T : AbstractView;
+		void RequestSceneWithView(Type viewType, LoadSceneType loadType, string sceneName);
+		void RequestSceneWithOverlay<T>(LoadSceneType loadType, string sceneName) where T : AbstractView;
+		void RequestSceneWithOverlay(Type viewType, LoadSceneType loadType, string sceneName);
 		void RequestOverlay<T>() where T :AbstractView;
 		void RequestOverlay(Type type);
 		void RequestOverlayClose<T>() where T :AbstractView;

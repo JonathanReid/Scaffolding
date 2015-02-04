@@ -10,18 +10,20 @@ public class SceneOneStartingView : AbstractView {
         base.Setup(manager);
 		AddButtonPressedHandler("OpenSceneAdditive",OpenSceneAdditive);
 		AddButtonPressedHandler("OpenScene",OpenScene);
-		OpenViewWhenSceneLoads<MainMenu>("DemoScene");
-		OpenViewWhenSceneLoads<SceneOneStartingView>("StartingScene");
+//		OpenViewWhenSceneLoads<MainMenu>("DemoScene");
+//		OpenViewWhenSceneLoads<SceneOneStartingView>("StartingScene");
     }
 
 	private void OpenSceneAdditive()
 	{
-		RequestScene(LoadSceneType.LoadAdditiveAsync,"DemoScene");
+		RequestSceneWithView<MainMenu>(LoadSceneType.LoadAdditiveAsync,"DemoScene");
+//		RequestScene(LoadSceneType.LoadAdditiveAsync,"DemoScene");
 	}
 
 	private void OpenScene()
 	{
-		RequestScene(LoadSceneType.LoadAsync,"DemoScene");
+		RequestSceneWithView<MainMenu>(LoadSceneType.LoadAsync,"DemoScene");
+//		RequestScene(LoadSceneType.LoadAsync,"DemoScene");
 	}
 
     public override void OnShowStart(SObject data)

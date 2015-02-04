@@ -35,7 +35,8 @@ public class MainMenu : AbstractView {
 	public void LoadMainScene()
 	{
 		RequestOverlay<SceneOneOverlay>();
-		RequestScene(LoadSceneType.LoadAsync, "StartingScene");
+		RequestSceneWithView<SceneOneStartingView>(LoadSceneType.LoadAsync,"StartingScene");
+//		RequestScene(LoadSceneType.LoadAsync, "StartingScene");
 //		Application.LoadLevel("StartingScene");
 	}
 
