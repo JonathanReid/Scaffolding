@@ -6,6 +6,10 @@ namespace Scaffolding
 {
 	public interface IRequestable {
 
+		void OpenViewWhenSceneLoads<T>(string sceneName) where T : AbstractView;
+		void OpenViewWhenSceneLoads(Type type, string sceneName);
+		void OpenOverlayWhenSceneLoads<T>(string sceneName) where T : AbstractView;
+		void OpenOverlayWhenSceneLoads(Type type, string sceneName);
 		void RequestOverlay<T>() where T :AbstractView;
 		void RequestOverlay(Type type);
 		void RequestOverlayClose<T>() where T :AbstractView;

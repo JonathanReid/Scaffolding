@@ -15,6 +15,7 @@ namespace Scaffolding
 		/************************************************
          * internals
          ************************************************/
+		public bool DontDestroyThisOnLoad;
 		internal AbstractView _lastScreen;
 		internal AbstractView _currentScreen;
 		internal AbstractView _targetScreen;
@@ -28,6 +29,8 @@ namespace Scaffolding
 
 		internal Dictionary<Type, List<Type>> _disabledInputsOnView;
 		internal Dictionary<Type, List<AnimationClip>> _registeredAnimationEvents;
+		internal Dictionary<string, Type> _viewToOpenWithScene;
+		internal Dictionary<string, Type> _overlayToOpenWithScene;
 		internal ScaffoldingConfig _scaffoldingConfig;
 
 		public void AddAnimationEventToTransition(Type targetView, AnimationClip clip, string eventName)
@@ -65,6 +68,105 @@ namespace Scaffolding
 					_registeredAnimationEvents[targetView] = clips;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Opens the view when scene loads.
+		/// </summary>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void OpenViewWhenSceneLoads<T>(string sceneName) where T : AbstractView
+		{
+			OpenViewWhenSceneLoads(typeof(T),sceneName);
+		}
+
+		/// <summary>
+		/// Opens the view when scene loads.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void OpenViewWhenSceneLoads(Type type, string sceneName)
+		{
+			if(!DontDestroyThisOnLoad)
+			{
+				Debug.LogWarning("Scaffolding:: You are trying to set a view to open when a scene loads, but nothing will happen as the view manager will be destroyed between scenes");
+			}
+			else
+			{
+				if(_viewToOpenWithScene == null)
+				{
+					_viewToOpenWithScene = new Dictionary<string, Type>();
+				}
+
+				if(_viewToOpenWithScene.ContainsKey(sceneName))
+				{
+					_viewToOpenWithScene[sceneName] = type;
+				}
+				else
+				{
+					_viewToOpenWithScene.Add(sceneName, type);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Opens the overlay when scene loads.
+		/// </summary>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public void OpenOverlayWhenSceneLoads<T>(string sceneName) where T : AbstractView
+		{
+			OpenOverlayWhenSceneLoads(typeof(T),sceneName);
+		}
+
+		/// <summary>
+		/// Opens the overlay when scene loads.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void OpenOverlayWhenSceneLoads(Type type, string sceneName)
+		{
+			if(!DontDestroyThisOnLoad)
+			{
+				Debug.LogWarning("Scaffolding:: You are trying to set an overlay to open when a scene loads, but nothing will happen as the view manager will be destroyed between scenes");
+			}
+			else
+			{
+				if(_overlayToOpenWithScene == null)
+				{
+					_overlayToOpenWithScene = new Dictionary<string, Type>();
+				}
+
+				if(_overlayToOpenWithScene.ContainsKey(sceneName))
+				{
+					_overlayToOpenWithScene[sceneName] = type;
+				}
+				else
+				{
+					_overlayToOpenWithScene.Add(sceneName, type);
+				}
+			}
+		}
+
+		void OnLevelWasLoaded(int level) {
+			string levelName = Application.loadedLevelName;
+			if(DontDestroyThisOnLoad)
+			{
+				if(_viewToOpenWithScene != null && _viewToOpenWithScene.ContainsKey(levelName))
+				{
+					Type t = _viewToOpenWithScene[levelName];
+					RequestView(t);
+				}
+				else if(_overlayToOpenWithScene != null && _overlayToOpenWithScene.ContainsKey(levelName))
+				{
+					Type t = _overlayToOpenWithScene[levelName];
+					RequestOverlay(t);
+				}
+				else 
+				{
+					Debug.LogWarning("Scaffolding:: No views or overlays have been set to open when this scene loads.");
+				}
+			} 
 		}
 
 		/// <summary>

@@ -59,6 +59,46 @@ namespace Scaffolding
             return (_viewDataforTransitions != null && _viewDataforTransitions.ContainsKey(type)) ? _viewDataforTransitions [type] : null;
         }
     
+		/// <summary>
+		/// Opens the view when scene loads.
+		/// </summary>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public virtual void OpenViewWhenSceneLoads<T>(string sceneName) where T : AbstractView
+		{
+			_manager.OpenViewWhenSceneLoads(typeof(T),sceneName);
+		}
+
+		/// <summary>
+		/// Opens the view when scene loads.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public virtual void OpenViewWhenSceneLoads(Type type, string sceneName)
+		{
+			_manager.OpenViewWhenSceneLoads(type,sceneName);
+		}
+
+		/// <summary>
+		/// Opens the overlay when scene loads.
+		/// </summary>
+		/// <param name="sceneName">Scene name.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public virtual void OpenOverlayWhenSceneLoads<T>(string sceneName) where T : AbstractView
+		{
+			_manager.OpenOverlayWhenSceneLoads(typeof(T),sceneName);
+		}
+
+		/// <summary>
+		/// Opens the overlay when scene loads.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public virtual void OpenOverlayWhenSceneLoads(Type type, string sceneName)
+		{
+			_manager.OpenOverlayWhenSceneLoads(type,sceneName);
+		}
+
         /// <summary>
         /// Requests an overlay to open.
         /// </summary>

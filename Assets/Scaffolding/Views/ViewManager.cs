@@ -7,8 +7,7 @@ namespace Scaffolding
 {
     [AddComponentMenu("Scaffolding/Backend/View Manager")]
     public class ViewManager : ViewManagerBase, IRequestable
-    {
-		public bool DontDestroyThisOnLoad;
+	{
         private bool _overridingStartup = false;
 
         /************************************************
@@ -90,12 +89,12 @@ namespace Scaffolding
             
         }
 
-		void OnLevelWasLoaded(int level) {
-			if(DontDestroyThisOnLoad)
-			{
-				Init();
-			}
-		}
+//		void OnLevelWasLoaded(int level) {
+//			if(DontDestroyThisOnLoad)
+//			{
+//				Init();
+//			}
+//		}
 
         /************************************************
          * public getters

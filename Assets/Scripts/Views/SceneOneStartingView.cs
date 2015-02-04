@@ -10,6 +10,8 @@ public class SceneOneStartingView : AbstractView {
         base.Setup(manager);
 		AddButtonPressedHandler("OpenSceneAdditive",OpenSceneAdditive);
 		AddButtonPressedHandler("OpenScene",OpenScene);
+		OpenViewWhenSceneLoads<MainMenu>("DemoScene");
+		OpenViewWhenSceneLoads<SceneOneStartingView>("StartingScene");
     }
 
 	private void OpenSceneAdditive()
