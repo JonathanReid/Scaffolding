@@ -16,7 +16,6 @@ namespace Scaffolding
     public class InputManager : MonoBehaviour
     {
         public delegate void InputEvent(InputTracker tracker);
-
         public delegate void InputEventDelta(Vector3 position);
 
         public event InputEvent EventPressed;
@@ -35,6 +34,15 @@ namespace Scaffolding
          ************************************************/
         private void Awake()
         {
+			DontDestroyOnLoad(gameObject);
+
+			InputManager[] im = FindObjectsOfType<InputManager>();
+			if(im.Length > 1)
+			{
+				DestroyImmediate(gameObject);
+				return;
+			}
+
             _trackers = new List<InputTracker>();
             _trackerLookup = new Dictionary<int, InputTracker>();
 
@@ -68,6 +76,23 @@ namespace Scaffolding
 			foreach (InputTracker tracker in _trackers)
 			{
 				tracker.HitCamera = InputCameras;
+			}
+		}
+
+		private void OnLevelWasLoaded(int level) 
+		{
+			int i = InputCameras.Count-1,l = -1;
+			for(;i>l;--i)
+			{
+				if(InputCameras[i] == null)
+				{
+					InputCameras.RemoveAt(i);
+				}
+			}
+
+			if(Camera.main != null)
+			{
+				InputCameras.Add(Camera.main);
 			}
 		}
 

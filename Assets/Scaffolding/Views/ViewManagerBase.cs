@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -26,6 +26,11 @@ namespace Scaffolding
 		internal Dictionary<Type, AbstractView> _currentOverlays;
 		internal AbstractView _targetOverlay;
 		internal SObject _currentOverlayData;
+
+		//scene loading
+		internal bool _loadScene;
+		private string _requestedSceneName;
+		private LoadSceneType _loadType;
 
 		internal Dictionary<Type, List<Type>> _disabledInputsOnView;
 		internal Dictionary<Type, List<AnimationClip>> _registeredAnimationEvents;
@@ -68,6 +73,80 @@ namespace Scaffolding
 					_registeredAnimationEvents[targetView] = clips;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Request a scene using a given loading type.
+		/// </summary>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public void RequestScene(LoadSceneType loadType, string sceneName)
+		{
+			if(!_loadScene)
+			{
+				_requestedSceneName = sceneName;
+				_loadScene = true;
+				_loadType = loadType;
+				//only close screens, not overlays
+				ScreenClose(_currentScreen.GetType());
+			}
+		}
+
+		/// <summary>
+		/// Starts the loading scene. Called by HideComplete() further on down.
+		/// Called when a view closes.
+		/// </summary>
+		private void StartLoadingScene()
+		{
+			switch (_loadType) {
+			case LoadSceneType.Load:
+				LoadScene();
+				break;
+			case LoadSceneType.LoadAdditive:
+				LoadSceneAdditive();
+				break;
+			case LoadSceneType.LoadAsync:
+				StartCoroutine(LoadSceneAsync());
+				break;
+			case LoadSceneType.LoadAdditiveAsync:
+				StartCoroutine(LoadSceneAsyncAdditve());
+				break;
+			default:
+				throw new ArgumentOutOfRangeException ();
+			}
+
+		}
+
+		private void LoadScene()
+		{
+			Application.LoadLevel(_requestedSceneName);
+			_loadScene = false;
+			LevelWasLoaded();
+		}
+
+		private void LoadSceneAdditive()
+		{
+			Application.LoadLevelAdditive(_requestedSceneName);
+			_loadScene = false;
+			LevelWasLoaded();
+		}
+
+		IEnumerator LoadSceneAsync()
+		{
+			yield return new WaitForEndOfFrame();
+			AsyncOperation async = Application.LoadLevelAsync(_requestedSceneName);
+			yield return async;
+			_loadScene = false;
+			LevelWasLoaded();
+		}
+
+		IEnumerator LoadSceneAsyncAdditve()
+		{
+			yield return new WaitForEndOfFrame();
+			AsyncOperation async = Application.LoadLevelAdditiveAsync(_requestedSceneName);
+			yield return async;
+			_loadScene = false;
+			LevelWasLoaded();
 		}
 
 		/// <summary>
@@ -148,18 +227,18 @@ namespace Scaffolding
 			}
 		}
 
-		void OnLevelWasLoaded(int level) {
-			string levelName = Application.loadedLevelName;
+		private void LevelWasLoaded() 
+		{
 			if(DontDestroyThisOnLoad)
 			{
-				if(_viewToOpenWithScene != null && _viewToOpenWithScene.ContainsKey(levelName))
+				if(_viewToOpenWithScene != null && _viewToOpenWithScene.ContainsKey(_requestedSceneName))
 				{
-					Type t = _viewToOpenWithScene[levelName];
+					Type t = _viewToOpenWithScene[_requestedSceneName];
 					RequestView(t);
 				}
-				else if(_overlayToOpenWithScene != null && _overlayToOpenWithScene.ContainsKey(levelName))
+				else if(_overlayToOpenWithScene != null && _overlayToOpenWithScene.ContainsKey(_requestedSceneName))
 				{
-					Type t = _overlayToOpenWithScene[levelName];
+					Type t = _overlayToOpenWithScene[_requestedSceneName];
 					RequestOverlay(t);
 				}
 				else 
@@ -438,6 +517,13 @@ namespace Scaffolding
 				if(_targetScreen.showingType != AbstractView.ShowingTypes.ShowImmediately)
 				{
 					ScreenOpen();
+				}
+			}
+			else if(_currentScreen.GetType() == screenType)
+			{
+				if(_loadScene)
+				{
+					StartLoadingScene();
 				}
 			}
 			

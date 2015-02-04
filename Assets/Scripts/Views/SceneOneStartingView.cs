@@ -16,12 +16,12 @@ public class SceneOneStartingView : AbstractView {
 
 	private void OpenSceneAdditive()
 	{
-		Application.LoadLevelAdditive("DemoScene");
+		RequestScene(LoadSceneType.LoadAdditiveAsync,"DemoScene");
 	}
 
 	private void OpenScene()
 	{
-		Application.LoadLevel("DemoScene");
+		RequestScene(LoadSceneType.LoadAsync,"DemoScene");
 	}
 
     public override void OnShowStart(SObject data)
@@ -32,15 +32,18 @@ public class SceneOneStartingView : AbstractView {
     public override void OnShowComplete()
     {
         base.OnShowComplete();
+		RequestOverlayClose<SceneOneOverlay>();
     }
 
     public override void OnHideStart()
     {
+		RequestOverlay<SceneOneOverlay>();
         base.OnHideStart();
     }
 
     public override void OnHideComplete()
     {
+
         base.OnHideComplete();
     }
 }

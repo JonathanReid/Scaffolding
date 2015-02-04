@@ -11,7 +11,7 @@ namespace Scaffolding
     /// </summary>
     public abstract class AbstractInput : MonoBehaviour
     {
-        private InputManager _inputManager;
+        internal InputManager _inputManager;
         internal AbstractView _view;
         internal Collider _collider;
         /************************************************

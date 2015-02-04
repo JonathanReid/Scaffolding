@@ -12,12 +12,14 @@ public class MainMenu : AbstractView {
 
     public override void OnShowStart(SObject data)
     {
+
         base.OnShowStart(data);
     }
 
     public override void OnShowComplete()
     {
         base.OnShowComplete();
+		RequestOverlayClose<SceneOneOverlay>();
     }
 
     public override void OnHideStart()
@@ -32,7 +34,9 @@ public class MainMenu : AbstractView {
 
 	public void LoadMainScene()
 	{
-		Application.LoadLevel("StartingScene");
+		RequestOverlay<SceneOneOverlay>();
+		RequestScene(LoadSceneType.LoadAsync, "StartingScene");
+//		Application.LoadLevel("StartingScene");
 	}
 
 	public void OpenMadeByLink()

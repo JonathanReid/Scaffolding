@@ -7,6 +7,7 @@ using Scaffolding;
 using System.IO;
 using System.Text;
 
+
 namespace Scaffolding.Editor
 {
     public class ViewBrowserWindow : EditorWindow

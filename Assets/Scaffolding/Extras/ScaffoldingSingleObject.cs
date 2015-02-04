@@ -7,6 +7,7 @@ namespace Scaffolding
 
 		// Use this for initialization
 		void Awake () {
+			GameObject.DontDestroyOnLoad(gameObject);
 			ScaffoldingSingleObject[] holders = FindObjectsOfType<ScaffoldingSingleObject>();
 			if(holders.Length > 1)
 			{

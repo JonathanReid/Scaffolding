@@ -99,6 +99,7 @@ namespace Scaffolding
 		public override void ToggleEnabledInput (bool enabled)
 		{
 			_enabled = enabled;
+			_inputManager.GetComponent<EventSystem>().enabled = enabled;
 			base.ToggleEnabledInput(enabled);
 		}
 

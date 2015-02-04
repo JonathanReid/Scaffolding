@@ -123,6 +123,12 @@ namespace Scaffolding
                 item.SetPosition();
             }
         }
+
+		void Awake()
+		{
+			GameObject.DontDestroyOnLoad(gameObject);
+		}
+
         /************************************************
          * for override
          ************************************************/
@@ -132,6 +138,7 @@ namespace Scaffolding
         /// </summary>
         public virtual void Setup(ViewManagerBase manager)
         {
+
             _isSettingUp = true;
             _manager = manager;
             _animator = gameObject.GetComponent<Animation>();
@@ -156,7 +163,7 @@ namespace Scaffolding
                     index++;
                 }
             }
-
+			ToggleEnabledInputs(false);
             UpdatePosition();
         }
 
@@ -168,8 +175,6 @@ namespace Scaffolding
         {
             if (_isShowing)
                 return;
-
-            ToggleEnabledInputs(false);
 
             _isHiding = false;
             _isShowing = true;

@@ -58,6 +58,16 @@ namespace Scaffolding
         {
             return (_viewDataforTransitions != null && _viewDataforTransitions.ContainsKey(type)) ? _viewDataforTransitions [type] : null;
         }
+
+		/// <summary>
+		/// Request a scene using a given loading type.
+		/// </summary>
+		/// <param name="loadType">Load type.</param>
+		/// <param name="sceneName">Scene name.</param>
+		public virtual void RequestScene(LoadSceneType loadType, string sceneName)
+		{
+			_manager.RequestScene(loadType, sceneName);
+		}
     
 		/// <summary>
 		/// Opens the view when scene loads.
