@@ -146,10 +146,10 @@ namespace Scaffolding
 		{
 			switch (_loadType) {
 			case LoadSceneType.Load:
-				LoadScene();
+				StartCoroutine(LoadScene());
 				break;
 			case LoadSceneType.LoadAdditive:
-				LoadSceneAdditive();
+				StartCoroutine(LoadSceneAdditive());
 				break;
 			case LoadSceneType.LoadAsync:
 				StartCoroutine(LoadSceneAsync());
@@ -163,16 +163,20 @@ namespace Scaffolding
 
 		}
 
-		private void LoadScene()
+		IEnumerator LoadScene()
 		{
+			yield return new WaitForEndOfFrame();
 			Application.LoadLevel(_requestedSceneName);
+			yield return new WaitForEndOfFrame();
 			_loadScene = false;
 			LevelWasLoaded();
 		}
 
-		private void LoadSceneAdditive()
+		IEnumerator LoadSceneAdditive()
 		{
+			yield return new WaitForEndOfFrame();
 			Application.LoadLevelAdditive(_requestedSceneName);
+			yield return new WaitForEndOfFrame();
 			_loadScene = false;
 			LevelWasLoaded();
 		}
@@ -280,16 +284,37 @@ namespace Scaffolding
 				if(_viewToOpenWithScene != null && _viewToOpenWithScene.ContainsKey(_requestedSceneName))
 				{
 					Type t = _viewToOpenWithScene[_requestedSceneName];
+					_viewToOpenWithScene.Remove(_requestedSceneName);
 					RequestView(t);
 				}
 				else if(_overlayToOpenWithScene != null && _overlayToOpenWithScene.ContainsKey(_requestedSceneName))
 				{
 					Type t = _overlayToOpenWithScene[_requestedSceneName];
+					_overlayToOpenWithScene.Remove(_requestedSceneName);
 					RequestOverlay(t);
 				}
 				else 
 				{
-					Debug.LogWarning("Scaffolding:: No views or overlays have been set to open when this scene loads.");
+					//use defaults that are in the scene!
+					ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
+					Type t = System.Type.GetType(sv.StartingViewName);
+
+					if (t != null)
+					{
+						switch(sv.StartingViewType)
+						{
+						case ViewType.View:
+							RequestView(t);
+							break;
+						case ViewType.Overlay:
+							RequestOverlay(t);
+							break;
+						}
+					}
+					else
+					{
+						Debug.LogWarning("Scaffolding:: No views or overlays have been set to open when this scene loads.");
+					}
 				}
 			} 
 		}

@@ -12,6 +12,7 @@ public class IntroView : AbstractView {
 
     public override void OnShowStart(SObject data)
     {
+		RequestOverlayClose<SceneOneOverlay>();
         base.OnShowStart(data);
     }
 
