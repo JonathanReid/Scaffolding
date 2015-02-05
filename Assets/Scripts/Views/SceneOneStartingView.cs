@@ -22,8 +22,8 @@ public class SceneOneStartingView : AbstractView {
 
 	private void OpenScene()
 	{
-		RequestSceneWithView<MainMenu>(LoadSceneType.LoadAsync,"DemoScene");
-//		RequestScene(LoadSceneType.LoadAsync,"DemoScene");
+//		RequestSceneWithView<MainMenu>(LoadSceneType.Load,"DemoScene");
+		RequestScene(LoadSceneType.Load,"DemoScene");
 	}
 
     public override void OnShowStart(SObject data)
