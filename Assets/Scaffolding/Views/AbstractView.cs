@@ -163,7 +163,7 @@ namespace Scaffolding
                     index++;
                 }
             }
-			ToggleEnabledInputs(false);
+
             UpdatePosition();
         }
 
@@ -175,6 +175,8 @@ namespace Scaffolding
         {
             if (_isShowing)
                 return;
+
+			ToggleEnabledInputs(false);
 
             _isHiding = false;
             _isShowing = true;

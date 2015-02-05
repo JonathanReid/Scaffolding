@@ -15,10 +15,12 @@ namespace Scaffolding
 
 		private Button _button;
 		private bool _enabled;
+		private Selectable.Transition _buttonTransition;
 
 		public override void Setup (AbstractView view)
 		{
 			_button = GetComponent<Button>();
+			_buttonTransition = _button.transition;
 			_button.onClick.AddListener(ButtonClicked);
 			base.Setup (view);
 		}
@@ -99,7 +101,8 @@ namespace Scaffolding
 		public override void ToggleEnabledInput (bool enabled)
 		{
 			_enabled = enabled;
-			_inputManager.GetComponent<EventSystem>().enabled = enabled;
+			_button.transition = enabled? _buttonTransition : Selectable.Transition.None;
+			_button.interactable = enabled;
 			base.ToggleEnabledInput(enabled);
 		}
 
