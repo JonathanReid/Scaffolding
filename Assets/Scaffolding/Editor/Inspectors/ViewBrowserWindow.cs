@@ -26,6 +26,8 @@ namespace Scaffolding.Editor
 		private ViewType _viewType;
 		private ScaffoldingConfig _scaffoldingConfig;
 		private bool _applicationPlaying;
+		private bool _scenesFoldout = true;
+		private bool _viewsFoldout = true;
 
         [MenuItem("Tools/Scaffolding/Open View Library")]
         static void OpenViewLibrary()
@@ -103,7 +105,6 @@ namespace Scaffolding.Editor
             CreateAllViews();
 
             //toolbar GUI
-            int i = 0, l = _viewNames.Count;
             //create search bar
             GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
             GUIStyle toolbar = GUI.skin.FindStyle("ToolbarSeachTextField");
@@ -184,32 +185,76 @@ namespace Scaffolding.Editor
 				{
 						//display all buttons for views    
 					_backgroundImageHeight = 0;
-		            i = 0;
+					int i = 0, l = _viewNames.Count;
 					int j = 0;
-					for (; i < l;++i)
-		            {
-		                //handle searching
-		                if (searchString.Length == 0 || (searchString.Length > 0 && _viewNames[i].IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0))
-		                {
-							DrawBackgroundImage(j);
-		                    //handle individual buttons 
-		                    EditorGUILayout.BeginHorizontal();
-		                    System.Type t = _abstractViews[i].GetType();
-		                    AbstractView sceneObject = GameObject.FindObjectOfType(t) as AbstractView;
-		                    if (sceneObject != null)
-		                    {
-		                        OpenViewButtons(_viewNames[i], sceneObject.gameObject);
-		                    }
-		                    else
-		                    {
-		                        ClosedViewButtons(_viewNames[i]);
-		                    }
-		                    EditorGUILayout.EndHorizontal();
 
+					_scenesFoldout = EditorGUILayout.Foldout(_scenesFoldout,"Buildable Scenes");
+					if(_scenesFoldout)
+					{
+						GUILayout.Space(5);
+						_backgroundImageHeight += 23;
+					
+						foreach (UnityEditor.EditorBuildSettingsScene S in UnityEditor.EditorBuildSettings.scenes)
+						{
+							DrawBackgroundImage(j);
+							EditorGUILayout.BeginHorizontal();
+							string n = S.path.Substring(S.path.LastIndexOf('/')+1);
+							n = n.Substring(0,n.Length-6);
+							GUIStyle skin = EditorStyles.boldLabel;
+							skin.normal.textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black;
+							
+							GUILayout.Label(n,skin);
+							if (GUILayout.Button("Open", GUILayout.ExpandWidth(true), GUILayout.Width(218)))
+							{
+								EditorApplication.SaveCurrentSceneIfUserWantsTo();
+								EditorApplication.OpenScene(S.path);
+							}
+							EditorGUILayout.EndHorizontal();
 							GUILayout.Space(5);
 							j++;
-		                }
-		            }
+						}
+					}
+					else
+					{
+						GUILayout.Space(5);
+						_backgroundImageHeight += 23;
+					}
+
+					_viewsFoldout = EditorGUILayout.Foldout(_viewsFoldout,"Views");
+
+					if(_viewsFoldout)
+					{
+						GUILayout.Space(5);
+						_backgroundImageHeight += 23;
+
+						i = 0;
+						l = _viewNames.Count;
+
+						for (; i < l;++i)
+			            {
+			                //handle searching
+			                if (searchString.Length == 0 || (searchString.Length > 0 && _viewNames[i].IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0))
+			                {
+								DrawBackgroundImage(j);
+			                    //handle individual buttons 
+			                    EditorGUILayout.BeginHorizontal();
+			                    System.Type t = _abstractViews[i].GetType();
+			                    AbstractView sceneObject = GameObject.FindObjectOfType(t) as AbstractView;
+			                    if (sceneObject != null)
+			                    {
+			                        OpenViewButtons(_viewNames[i], sceneObject.gameObject);
+			                    }
+			                    else
+			                    {
+			                        ClosedViewButtons(_viewNames[i]);
+			                    }
+			                    EditorGUILayout.EndHorizontal();
+
+								GUILayout.Space(5);
+								j++;
+			                }
+			            }
+					}
 				}
 				else
 				{
