@@ -11,7 +11,14 @@ namespace Scaffolding
 			ScaffoldingSingleObject[] holders = FindObjectsOfType<ScaffoldingSingleObject>();
 			if(holders.Length > 1)
 			{
-				DestroyImmediate(gameObject);
+				foreach(ScaffoldingSingleObject o in holders)
+				{
+					if(o.gameObject.name == gameObject.name)
+					{
+						DestroyImmediate(gameObject);
+						break;
+					}
+				}
 			}
 		}
 
