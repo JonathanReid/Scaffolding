@@ -150,6 +150,8 @@ namespace Scaffolding.Editor
 			}
 
 			string name = EditorApplication.currentScene;
+			if(name != "")
+			{
 			name = name.Remove(0,name.LastIndexOf("/")+1);
 			int index = name.LastIndexOf(".unity");
 			name = name.Remove(index,name.Length - index);
@@ -172,6 +174,12 @@ namespace Scaffolding.Editor
 
 			_scaffoldingConfig.SetViewDataForScene(sv);
 			EditorUtility.SetDirty(_scaffoldingConfig);
+			}
+			else
+			{
+				GUILayout.Label("You need to save the scene first!");
+				GUILayout.EndHorizontal();
+			}
 
             //Setting up the library scroll area
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
