@@ -462,7 +462,7 @@ namespace Scaffolding
 		{   
 			if (_targetScreen == null || (_targetScreen.GetType() != screenType && !_targetScreen.IsSettingUp))
 			{
-				GameObject obj = GameObject.Instantiate(Resources.Load(_scaffoldingConfig.ViewPrefabPath() + screenType.Name)) as GameObject;
+				GameObject obj = GameObject.Instantiate(Resources.Load(_scaffoldingConfig.ViewPrefabPath(screenType.Name) + screenType.Name)) as GameObject;
 				
 				#if UNITY_4_6 || UNITY_5
 				obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);
@@ -640,7 +640,7 @@ namespace Scaffolding
 		{
 			if (!_currentOverlays.ContainsKey(overlayType))
 			{
-				GameObject obj = GameObject.Instantiate(Resources.Load(_scaffoldingConfig.ViewPrefabPath() + overlayType.Name)) as GameObject;
+				GameObject obj = GameObject.Instantiate(Resources.Load(_scaffoldingConfig.ViewPrefabPath(overlayType.Name)+overlayType.Name)) as GameObject;
 				
 				#if UNITY_4_6 || UNITY_5
 				obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);

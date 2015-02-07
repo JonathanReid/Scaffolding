@@ -346,7 +346,7 @@ namespace Scaffolding.Editor
 			}
 			if (GUILayout.Button("Open", GUILayout.Width(100)))
             {
-                GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load(_scaffoldingConfig.ViewPrefabPath() + viewName)) as GameObject;
+				GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load(_scaffoldingConfig.ViewPrefabPath(viewName)+viewName)) as GameObject;
 #if UNITY_4_6
 				obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);
 #else
@@ -360,9 +360,9 @@ namespace Scaffolding.Editor
 				if (GUILayout.Button("Done", GUILayout.Width(60)))
 				{
 					_renamingView = "";
-					string oldNamePrefab = _scaffoldingConfig.FullViewPrefabPath() + viewName;
+					string oldNamePrefab = _scaffoldingConfig.FullViewPrefabPath(viewName)+viewName;
 					string oldNameScript = _scaffoldingConfig.ScriptsPath() + viewName;
-					string newNamePrefab = _scaffoldingConfig.FullViewPrefabPath() + _tempViewName;
+					string newNamePrefab = _scaffoldingConfig.FullViewPrefabPath(_tempViewName)+_tempViewName;
 					string newNameScript = _scaffoldingConfig.ScriptsPath() + _tempViewName;
 
 					AssetDatabase.MoveAsset(oldNamePrefab + ".prefab",newNamePrefab + ".prefab");
@@ -402,9 +402,9 @@ namespace Scaffolding.Editor
 					GameObject go = GameObject.Find(name);
 					DestroyImmediate(go);
 
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath() + viewName + ".prefab");
+					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath(viewName)+viewName + ".prefab");
 					AssetDatabase.DeleteAsset(_scaffoldingConfig.ScriptsPath() + viewName + ".cs");
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath() + viewName + "Model.prefab");
+					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath(viewName)+viewName + "Model.prefab");
 					AssetDatabase.DeleteAsset(_scaffoldingConfig.ScriptsPath() + viewName + "Model.cs");
 					AssetDatabase.Refresh();
                 }
@@ -445,7 +445,7 @@ namespace Scaffolding.Editor
 
         private void CreateAllViews()
         {
-            UnityEngine.Object[] views = Resources.LoadAll(_scaffoldingConfig.ViewPrefabPath());
+            UnityEngine.Object[] views = Resources.LoadAll("");//_scaffoldingConfig.ViewPrefabPath());
             _viewNames = new List<string>();
             _abstractViews = new List<AbstractView>();
             foreach (UnityEngine.Object o in views)

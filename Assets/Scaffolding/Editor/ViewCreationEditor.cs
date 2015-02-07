@@ -9,7 +9,7 @@ using Scaffolding;
 using System.Collections.Generic;
 
 
-#if UNITY_4_6 || UNITY_5_0
+#if UNITY_4_6
 using UnityEngine.UI;
 #endif
 
@@ -46,7 +46,7 @@ namespace Scaffolding.Editor
             _window.minSize = new Vector2(500, 200);
         }
 
-		#if UNITY_4_6 || UNITY_5_0
+		#if UNITY_4_6
 		private static Canvas CreateCanvas(GameObject c)
 		{
 			Canvas canvas = c.AddComponent<Canvas>();
@@ -223,7 +223,7 @@ namespace Scaffolding.Editor
 				InternalEditorUtility.AddScriptComponentUnchecked(_createdModelObject, AssetDatabase.LoadAssetAtPath(TargetModelPath(), typeof(MonoScript)) as MonoScript);
 			}
             _createdViewObject.AddComponent<Animation>();
-#if UNITY_4_6 || UNITY_5_0
+#if UNITY_4_6
 			CreateCanvas(_createdViewObject);
 #endif
             if (_window != null)
@@ -271,10 +271,10 @@ namespace Scaffolding.Editor
 
         private static void CreateAssets()
         {
-			if (!Directory.Exists(_scaffoldingConfig.FullViewPrefabPath()))
-				Directory.CreateDirectory(_scaffoldingConfig.FullViewPrefabPath());
+			if (!Directory.Exists(_scaffoldingConfig.FullViewPrefabPath(_fileName)))
+				Directory.CreateDirectory(_scaffoldingConfig.FullViewPrefabPath(_fileName));
 
-			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath() + _fileName + ".prefab");
+			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_fileName) + _fileName + ".prefab");
             GameObject go = new GameObject();
             go.name = _fileName;
             _createdViewObject = PrefabUtility.ReplacePrefab(go, obj, ReplacePrefabOptions.ConnectToPrefab);
@@ -282,7 +282,7 @@ namespace Scaffolding.Editor
 
 			if(_createModel)
 			{
-				obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath() + _modelFileName + ".prefab");
+				obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_modelFileName) + _modelFileName + ".prefab");
 				go = new GameObject();
 				go.name = _modelFileName;
 
