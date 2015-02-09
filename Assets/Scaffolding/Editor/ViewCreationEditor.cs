@@ -9,7 +9,7 @@ using Scaffolding;
 using System.Collections.Generic;
 
 
-#if UNITY_4_6
+#if UNITY_4_6 || UNITY_5
 using UnityEngine.UI;
 #endif
 
@@ -46,7 +46,7 @@ namespace Scaffolding.Editor
             _window.minSize = new Vector2(500, 200);
         }
 
-		#if UNITY_4_6
+		#if UNITY_4_6 || UNITY_5
 		private static Canvas CreateCanvas(GameObject c)
 		{
 			Canvas canvas = c.AddComponent<Canvas>();
@@ -223,7 +223,7 @@ namespace Scaffolding.Editor
 				InternalEditorUtility.AddScriptComponentUnchecked(_createdModelObject, AssetDatabase.LoadAssetAtPath(TargetModelPath(), typeof(MonoScript)) as MonoScript);
 			}
             _createdViewObject.AddComponent<Animation>();
-#if UNITY_4_6
+			#if UNITY_4_6 || UNITY_5
 			CreateCanvas(_createdViewObject);
 #endif
             if (_window != null)
