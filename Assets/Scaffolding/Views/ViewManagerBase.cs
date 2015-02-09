@@ -297,7 +297,7 @@ namespace Scaffolding
 				{
 					//use defaults that are in the scene!
 					ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
-					Type t = System.Type.GetType(sv.StartingViewName);
+					Type t = ScaffoldingConfig.GetType(sv.StartingViewName);
 
 					if (t != null)
 					{
@@ -474,7 +474,7 @@ namespace Scaffolding
 				_targetScreen = obj.GetComponent<AbstractView>();
 				
 				string s = screenType.Name + "Model";
-				Type t = System.Type.GetType(s);
+				Type t = ScaffoldingConfig.GetType(s);
 				
 				if(t != null)
 				{
@@ -651,7 +651,7 @@ namespace Scaffolding
 				obj.transform.name = overlayType.Name;
 				
 				string s = overlayType.Name + "Model";
-				Type t = System.Type.GetType(s);
+				Type t = ScaffoldingConfig.GetType(s);
 				
 				if(t != null)
 				{

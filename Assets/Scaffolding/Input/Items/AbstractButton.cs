@@ -102,16 +102,16 @@ namespace Scaffolding
 				{
 					if (loadingOverlay != "")
 					{
-						_view.RequestViewWithLoadingOverlay(System.Type.GetType(targetView), System.Type.GetType(loadingOverlay));
+						_view.RequestViewWithLoadingOverlay(ScaffoldingConfig.GetType(targetView), ScaffoldingConfig.GetType(loadingOverlay));
 					}
 					else
 					{
-						_view.RequestView(System.Type.GetType(targetView));
+						_view.RequestView(ScaffoldingConfig.GetType(targetView));
 					}
 				}
 				else
 				{
-					Type t = System.Type.GetType(targetView);
+					Type t = ScaffoldingConfig.GetType(targetView);
 					_view.RequestOverlay(t,disableInputsOnOverlay);
 				}
 			}
@@ -124,7 +124,7 @@ namespace Scaffolding
 		{
 			if (targetView != null)
 			{
-				Type t = System.Type.GetType(targetView);
+				Type t = ScaffoldingConfig.GetType(targetView);
 				_view.RequestOverlayClose (t);
 			}
 		}

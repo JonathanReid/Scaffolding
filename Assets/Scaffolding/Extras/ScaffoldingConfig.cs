@@ -244,6 +244,13 @@ namespace Scaffolding {
 			return g;
 		}
 
+		public static Type GetType(string className)
+		{
+			//need to include the assembly as get type doesnt work in html5
+			Type t = System.Type.GetType(className + ", Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+			return t;
+		}
+
 		public string ViewPrefabPath(string viewName)
 		{
 			string finalPath = "";
