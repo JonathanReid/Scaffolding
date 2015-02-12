@@ -25,11 +25,17 @@ namespace Scaffolding.Editor
             EditorGUILayout.HelpBox("I WANT THIS VIEW TO", MessageType.None);
             _target.showingType = (AbstractView.ShowingTypes)EditorGUILayout.EnumPopup(_target.showingType);
 
-            GUILayout.Label("In Transition");
-            _target.inTransition = (AnimationClip)EditorGUILayout.ObjectField(_target.inTransition, typeof(AnimationClip), true);
-            GUILayout.Label("Out Transition");
-            _target.outTransition = (AnimationClip)EditorGUILayout.ObjectField(_target.outTransition, typeof(AnimationClip), true);
-
+			if(_target is SkinnedViewController)
+			{
+				EditorGUILayout.HelpBox("Set the transitions on the skinned views instead!",MessageType.Info);
+			}
+			else
+			{
+	            GUILayout.Label("In Transition");
+	            _target.inTransition = (AnimationClip)EditorGUILayout.ObjectField(_target.inTransition, typeof(AnimationClip), true);
+	            GUILayout.Label("Out Transition");
+	            _target.outTransition = (AnimationClip)EditorGUILayout.ObjectField(_target.outTransition, typeof(AnimationClip), true);
+			}
             if (GUILayout.Button("Save View"))
             {
                 PrefabUtility.ReplacePrefab(_target.gameObject, PrefabUtility.GetPrefabParent(_target.gameObject), ReplacePrefabOptions.ConnectToPrefab);

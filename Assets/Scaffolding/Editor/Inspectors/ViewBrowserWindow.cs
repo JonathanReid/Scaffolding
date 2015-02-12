@@ -467,7 +467,6 @@ namespace Scaffolding.Editor
 		private void RecursivelyFindAndReplacePrefabs(Transform t)
 		{
 			AbstractSkinnableView bv = t.GetComponentInChildren<AbstractSkinnableView>(); 
-			Debug.Log(t);
 			if(bv != null)
 			{
 				GameObject g = bv.gameObject;

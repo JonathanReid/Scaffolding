@@ -7,8 +7,6 @@ public class [SKIN_NAME] : [SKIN_TYPE] {
     public override void OnShowStart (SObject data)
     {
         base.OnShowStart (data);
-
-        OnShowComplete();
     }
 
     public override void OnShowComplete ()
@@ -18,7 +16,6 @@ public class [SKIN_NAME] : [SKIN_TYPE] {
 
     public override void OnHideStart ()
     {
-        OnHideComplete();
         base.OnHideStart ();
     }
 
