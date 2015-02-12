@@ -1,0 +1,29 @@
+using UnityEngine;
+using System.Collections;
+using Scaffolding;
+
+public class [SKIN_NAME] : [SKIN_TYPE] {
+
+    public override void OnShowStart (SObject data)
+    {
+        base.OnShowStart (data);
+
+        OnShowComplete();
+    }
+
+    public override void OnShowComplete ()
+    {
+        base.OnShowComplete ();
+    }
+
+    public override void OnHideStart ()
+    {
+        OnHideComplete();
+        base.OnHideStart ();
+    }
+
+    public override void OnHideComplete ()
+    {
+        base.OnHideComplete ();
+    }
+}

@@ -9,7 +9,7 @@ using Scaffolding;
 using System.Collections.Generic;
 
 
-#if UNITY_4_6 || UNITY_5
+#if UNITY_4_6 || UNITY_5_0
 using UnityEngine.UI;
 #endif
 
@@ -26,6 +26,7 @@ namespace Scaffolding.Editor
 		private static GameObject _createdModelObject;
         private static bool _firstTimeCreated;
 		private static bool _createModel;
+		private static bool _createCanvas;
 		//for allowing users to select which file they want their views to extend from, default is AbstractView.
 		private static List<string> _extendableClassNames;
 		private static int _selectedView = -1;
@@ -34,6 +35,8 @@ namespace Scaffolding.Editor
 		private static int _selectedModel = -1;
 
 		private static ScaffoldingConfig _scaffoldingConfig;
+		private static bool _createView;
+		private static bool _createSkinnableView;
 
         [MenuItem("GameObject/Create Other/Scaffolding/New View", false, 12900)]
         static void CreateNewView()
@@ -41,12 +44,14 @@ namespace Scaffolding.Editor
             _firstTimeCreated = false;
             _fileName = "";
 			_modelFileName = "";
+			_createView = true;
+			_createSkinnableView = false;
             _window = GetWindow<ViewCreationEditor>(true, "Scaffolding - Create new view");
             _window.maxSize = new Vector2(500, 200);
             _window.minSize = new Vector2(500, 200);
         }
 
-		#if UNITY_4_6 || UNITY_5
+		#if UNITY_4_6 || UNITY_5_0
 		private static Canvas CreateCanvas(GameObject c)
 		{
 			Canvas canvas = c.AddComponent<Canvas>();
@@ -117,48 +122,91 @@ namespace Scaffolding.Editor
         {
 			CreateConfig();
 
-			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
-            GUILayout.Label("Create new view!", EditorStyles.boldLabel);
-			GUILayout.EndHorizontal();
-            if (!GameObject.FindObjectOfType(typeof(ViewManager)))
-            {
-                _firstTimeCreated = true;
-                GameObject go = new GameObject();
-                go.name = "ViewManager";
-                go.AddComponent<ViewManager>();
-            }
-
-            if (_firstTimeCreated)
-            {
-                GUILayout.Label("Hey! It looks like you dont have a ViewManager set up! I've created one for you!", EditorStyles.boldLabel);
-            }
-
-            _fileName = EditorGUILayout.TextField("View Name:", _fileName);
-			_modelFileName = _fileName + "Model";
-
-
-			GetAllAbstractViewBasedClasses();
-
-			GUILayout.Label("Choose which class this view should extend (AbstractView is default)");
-			_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
-
-			_createModel = EditorGUILayout.Toggle("Create model for view: ", _createModel);
-			GetAllAbstractModelBasedClasses();
-			if(_createModel)
+			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
+			if (GUILayout.Button("New View", EditorStyles.toolbarButton))
 			{
-				GUILayout.Label("Choose which class this model should extend (AbstractModel is default)");
-				_selectedModel = EditorGUILayout.Popup(_selectedModel,_extendableModelClassNames.ToArray());
+				_createView = true;
+				_createSkinnableView = false;
 			}
+			if (GUILayout.Button("New Skin", EditorStyles.toolbarButton))
+			{
+				_createView = false;
+				_createSkinnableView = true;
+			}
+			GUILayout.EndHorizontal();
 
-            GUI.enabled = _fileName.Length > 0;
+			if(_createView)
+			{
+				GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
+	            GUILayout.Label("Create new view!", EditorStyles.boldLabel);
+				GUILayout.EndHorizontal();
+	            if (!GameObject.FindObjectOfType(typeof(ViewManager)))
+	            {
+	                _firstTimeCreated = true;
+	                GameObject go = new GameObject();
+	                go.name = "ViewManager";
+	                go.AddComponent<ViewManager>();
+	            }
 
-			EditorGUILayout.Separator();
+	            if (_firstTimeCreated)
+	            {
+	                GUILayout.Label("Hey! It looks like you dont have a ViewManager set up! I've created one for you!", EditorStyles.boldLabel);
+	            }
 
-            if (GUILayout.Button("Create!"))
-            {
-                CreateNewFileOfType();
-            }
-            GUI.enabled = true;
+	            _fileName = EditorGUILayout.TextField("View Name:", _fileName);
+				_modelFileName = _fileName + "Model";
+
+
+				GetAllAbstractViewBasedClasses();
+
+				GUILayout.Label("Choose which class this view should extend (AbstractView is default)");
+				_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
+
+				_createModel = EditorGUILayout.Toggle("Create model for view: ", _createModel);
+				GetAllAbstractModelBasedClasses();
+				if(_createModel)
+				{
+					GUILayout.Label("Choose which class this model should extend (AbstractModel is default)");
+					_selectedModel = EditorGUILayout.Popup(_selectedModel,_extendableModelClassNames.ToArray());
+				}
+
+				_createCanvas = EditorGUILayout.Toggle("Add canvas to view: ", _createCanvas);
+
+	            GUI.enabled = _fileName.Length > 0;
+
+				EditorGUILayout.Separator();
+
+	            if (GUILayout.Button("Create!"))
+	            {
+	                CreateNewFileOfType();
+	            }
+	            GUI.enabled = true;
+			}
+			else if(_createSkinnableView)
+			{
+				GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
+				GUILayout.Label("Create new Skin!", EditorStyles.boldLabel);
+				GUILayout.EndHorizontal();
+
+				_fileName = EditorGUILayout.TextField("Skin Name:", _fileName);
+
+				GetAllAbstractViewBasedClasses();
+				
+				GUILayout.Label("Choose which class this skin is for");
+				_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
+
+				_createCanvas = EditorGUILayout.Toggle("Add canvas to view: ", _createCanvas);
+				
+				GUI.enabled = _fileName.Length > 0;
+				
+				EditorGUILayout.Separator();
+				
+				if (GUILayout.Button("Create!"))
+				{
+					CreateNewSkinOfType();
+				}
+				GUI.enabled = true;
+			}
         }
 
 		private void GetAllAbstractViewBasedClasses()
@@ -178,7 +226,8 @@ namespace Scaffolding.Editor
 							_selectedView = _extendableClassNames.Count-1;
 						}
 					}
-					if (type.BaseType == typeof(AbstractView))
+				
+					if (type.IsSubclassOf(typeof(AbstractView)))
 					{
 						_extendableClassNames.Add(type.Name);
 					}
@@ -224,11 +273,33 @@ namespace Scaffolding.Editor
 			}
             _createdViewObject.AddComponent<Animation>();
 			#if UNITY_4_6 || UNITY_5
-			CreateCanvas(_createdViewObject);
+			if(_createCanvas)
+			{
+				CreateCanvas(_createdViewObject);
+			}
 #endif
             if (_window != null)
                 _window.Close();
         }
+
+		public static void CreateNewSkinOfType()
+		{   
+			CreateSkinScript();
+			
+			CreateSkinAssets();
+			AssetDatabase.Refresh();
+			InternalEditorUtility.AddScriptComponentUnchecked(_createdViewObject, AssetDatabase.LoadAssetAtPath(SkinTargetPath(), typeof(MonoScript)) as MonoScript);
+
+			#if UNITY_4_6 || UNITY_5
+			if(_createCanvas)
+			{
+				CreateCanvas(_createdViewObject);
+			}
+			#endif
+
+			if (_window != null)
+				_window.Close();
+		}
 
         void OnDestroy()
         {
@@ -242,6 +313,11 @@ namespace Scaffolding.Editor
         {
 			return _scaffoldingConfig.ScriptsPath() + _fileName + ".cs";
         }
+
+		private static string SkinTargetPath()
+		{
+			return _scaffoldingConfig.ScriptsPath()+ _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".cs";
+		}
 
 		private static string TargetModelPath()
 		{
@@ -268,6 +344,31 @@ namespace Scaffolding.Editor
 
             AssetDatabase.Refresh();
         }
+
+		private static void CreateSkinScript()
+		{
+			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath()+_fileName))
+				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath()+_fileName);
+			
+			var writer = new StreamWriter(SkinTargetPath());
+			writer.Write(GetSkinClass());
+			writer.Close();
+			writer.Dispose();
+
+			AssetDatabase.Refresh();
+		}
+
+		private static void CreateSkinAssets()
+		{
+			if (!Directory.Exists(_scaffoldingConfig.FullViewPrefabPath(_fileName)+_fileName))
+				Directory.CreateDirectory(_scaffoldingConfig.FullViewPrefabPath(_fileName)+_fileName);
+			
+			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_fileName)+ _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".prefab");
+			GameObject go = new GameObject();
+			go.name = _fileName;
+			_createdViewObject = PrefabUtility.ReplacePrefab(go, obj, ReplacePrefabOptions.ConnectToPrefab);
+			DestroyImmediate(go);
+		}
 
         private static void CreateAssets()
         {
@@ -311,6 +412,20 @@ namespace Scaffolding.Editor
 
             return text;
         }
+
+		private static string GetSkinClass()
+		{
+			string type = typeof(AbstractSkinnableView).ToString();
+			
+			TextAsset t = Resources.Load<TextAsset>("SkinTemplate");
+			
+			string text = t.text;
+			
+			text = text.Replace(ScaffoldingConfig.SKIN_NAME,_extendableClassNames[_selectedView]+_fileName);
+			text = text.Replace(ScaffoldingConfig.SKIN_TYPE,type);
+			
+			return text;
+		}
 
 		private static string GetModelClass()
 		{

@@ -31,8 +31,10 @@ namespace Scaffolding {
 		public const string VIEW_TYPE = "[VIEW_TYPE]";
 		public const string MODEL_NAME = "[MODEL_NAME]";
 		public const string MODEL_TYPE = "[MODEL_TYPE]";
+		public const string SKIN_NAME = "[SKIN_NAME]";
+		public const string SKIN_TYPE = "[SKIN_TYPE]";
 
-		public List<string> ScaffoldingResourcesPath = new List<string>();
+		public string ScaffoldingResourcesPath = "Assets/Resources/Views/";
 	    public string ScaffoldingScriptsPath = "Assets/Scripts/Views/";
 	    public string ScaffoldingInstantiatePath = "Views/";
 		public string ScaffoldingModelInstantiatePath = "Model/";
@@ -253,39 +255,24 @@ namespace Scaffolding {
 
 		public string ViewPrefabPath(string viewName)
 		{
-			string finalPath = "";
-			foreach(string s in ScaffoldingResourcesPath)
+			string path = ScaffoldingResourcesPath;
+			int index = path.IndexOf("Resources/");
+			if(index > -1)
 			{
-				string path = s;
-				int index = path.IndexOf("Resources/");
-				if(index > -1)
-				{
-					path = path.Remove(0, index + 10);
-				}
-				path +="/";
-				if(Resources.Load(path + viewName) != null)
-				{
-					finalPath = path;
-				}
+				path = path.Remove(0, index + 10);
 			}
-			return finalPath;
+			path +="/";
+
+			return path;
 		}
 
 		public string FullViewPrefabPath(string viewName)
 		{
-			string finalPath = "";
-			foreach(string s in ScaffoldingResourcesPath)
-			{
-				string path = s;
-				if (path[path.Length - 1] != '/')
-					path += "/";
+			string path = ScaffoldingResourcesPath;
+			if (path[path.Length - 1] != '/')
+				path += "/";
 
-				if(Resources.Load(path + viewName) != null)
-				{
-					finalPath = path;
-				}
-			}
-			return finalPath;
+			return path;
 		}
 
 		public string ScriptsPath()

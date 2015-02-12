@@ -437,19 +437,45 @@ namespace Scaffolding.Editor
 
         private void Save(GameObject g)
         {
-            PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ConnectToPrefab);
-        }
+			string viewName = g.name;
+			RecursivelyFindAndReplacePrefabs(g.transform);
+			PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
+			UnityEditor.Editor.DestroyImmediate(g);
 
-        private void Close(GameObject g)
+			GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load(_scaffoldingConfig.ViewPrefabPath(viewName)+viewName)) as GameObject;
+			#if UNITY_4_6 || UNITY_5
+			obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);
+			#else
+			obj.transform.parent = _scaffoldingConfig.DetermineParentGameObjectPath().transform;
+			#endif
+			Selection.activeObject = obj;
+		}
+		
+		private void Close(GameObject g)
         {
             UnityEditor.Editor.DestroyImmediate(g);
         }
 
-        private void SaveAndClose(GameObject g)
-        {
-            PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ConnectToPrefab);
-            UnityEditor.Editor.DestroyImmediate(g);
-        }
+		private void SaveAndClose(GameObject g)
+		{
+			RecursivelyFindAndReplacePrefabs(g.transform);
+
+			PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
+			UnityEditor.Editor.DestroyImmediate(g);
+		}
+		
+		private void RecursivelyFindAndReplacePrefabs(Transform t)
+		{
+			AbstractSkinnableView bv = t.GetComponentInChildren<AbstractSkinnableView>(); 
+			Debug.Log(t);
+			if(bv != null)
+			{
+				GameObject g = bv.gameObject;
+				PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
+				UnityEditor.Editor.DestroyImmediate(g);
+			}
+		}
+
 
         private void CreateAllViews()
         {
