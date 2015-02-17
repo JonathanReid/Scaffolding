@@ -37,10 +37,12 @@ namespace Scaffolding {
 	    public string ScaffoldingInstantiatePath = "Views/";
 		public string ScaffoldingModelInstantiatePath = "Model/";
 	    public string ScaffoldingPath = "Assets/";
+		public string ScaffoldingConfigPath = "Assets/";
 	    public bool ScaffoldingEnableAllGameobjects = true;
 		public List<ScaffoldingStartingView> StartingView;
 
 		private static string _scaffoldingPath;
+		private static string _scaffoldingConfigPath;
 		public static ScaffoldingConfig _instance;
 		public static ScaffoldingConfig Instance
 		{
@@ -58,7 +60,9 @@ namespace Scaffolding {
 		private void UpdateScaffoldingPath()
 		{
 			RecursivelyFindFolderPath("Assets");
+			RecursivelyFindAsset("Assets");
 			_instance.ScaffoldingPath = _scaffoldingPath;
+			_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
 		}
 
 		public ScaffoldingStartingView GetViewDataForScene(string sceneName)
@@ -133,6 +137,24 @@ namespace Scaffolding {
 			}
 		}
 
+		private static void RecursivelyFindAsset(string dir)
+		{
+			string[] paths = Directory.GetDirectories(dir);
+			foreach(string s in paths)
+			{
+				string[] files = Directory.GetFiles(s);
+				foreach(string f in files)
+				{
+					if(f.Contains("SCConfig.asset"))
+					{
+						_scaffoldingConfigPath = f;
+						break;
+					}
+				}
+				RecursivelyFindAsset(s);
+			}
+		}
+
 		public static ScaffoldingConfig CreateInstance()
 		{
 			string path = "";
@@ -140,7 +162,12 @@ namespace Scaffolding {
 
 #if UNITY_EDITOR
 			RecursivelyFindFolderPath("Assets");
-			path = _scaffoldingPath+"/Resources/SCConfig.asset";
+			RecursivelyFindAsset("Assets");
+			path = _scaffoldingConfigPath;
+			if(!_scaffoldingConfigPath.Contains("Resources"))
+			{
+				Debug.LogWarning("Scaffolding:: The config file needs to be in a resources folder!");
+			}
 
 			if(AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) == null)
 			{
@@ -157,6 +184,7 @@ namespace Scaffolding {
 			
 			sc = AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) as ScaffoldingConfig;
 			sc.ScaffoldingPath = _scaffoldingPath;
+			sc.ScaffoldingConfigPath = _scaffoldingConfigPath;
 #else
 			path = "SCConfig.asset";
 			sc = Resources.Load<ScaffoldingConfig>(path);
