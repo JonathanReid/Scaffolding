@@ -164,9 +164,15 @@ namespace Scaffolding {
 			RecursivelyFindFolderPath("Assets");
 			RecursivelyFindAsset("Assets");
 			path = _scaffoldingConfigPath;
-			if(!_scaffoldingConfigPath.Contains("Resources"))
+
+			if(_scaffoldingConfigPath != null && !_scaffoldingConfigPath.Contains("Resources"))
 			{
 				Debug.LogWarning("Scaffolding:: The config file needs to be in a resources folder!");
+			}
+
+			if(path == null)
+			{
+				path = _scaffoldingPath + "/Resources/SCConfig.asset";
 			}
 
 			if(AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) == null)
