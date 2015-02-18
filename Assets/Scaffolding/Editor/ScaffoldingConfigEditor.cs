@@ -13,8 +13,9 @@ namespace Scaffolding.Editor
     public class ScaffoldingConfigEditor : EditorWindow
     {
 		private ScaffoldingConfig _scaffoldingConfig;
-		private string _scriptsPath;
-        private string _prefabsPath;
+
+		private List<string> _scriptsPath;
+        private List<string> _prefabsPath;
         private string _instantiatePath;
 		private string _modelPath;
 		private bool _enableAllGameObjects;
@@ -34,13 +35,22 @@ namespace Scaffolding.Editor
 				_scaffoldingConfig = ScaffoldingConfig.Instance;
 			}
 			_scriptsPath = _scaffoldingConfig.ScaffoldingScriptsPath;
+			if(_scriptsPath.Count == 0)
+			{
+				_scriptsPath.Add("Assets/Scripts/Views/");
+			}
 			_prefabsPath = _scaffoldingConfig.ScaffoldingResourcesPath;
+			if(_prefabsPath.Count == 0)
+			{
+				_prefabsPath.Add("Assets/Resources/Views");
+			}
 			_instantiatePath = _scaffoldingConfig.ScaffoldingInstantiatePath;
 			_modelPath = _scaffoldingConfig.ScaffoldingModelInstantiatePath;
 			_enableAllGameObjects = _scaffoldingConfig.ScaffoldingEnableAllGameobjects;
 		}
 
 		private bool _prefabPathToggle;
+		private bool _scriptPathToggle;
 
         void OnGUI()
         {
@@ -49,9 +59,17 @@ namespace Scaffolding.Editor
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Current Scripts Path: " + _scriptsPath );
-
+			_scriptPathToggle = EditorGUILayout.Foldout(_scriptPathToggle,"Used Scripts Paths:");
 			EditorGUILayout.EndHorizontal();
+			if(_scriptPathToggle)
+			{
+				for(int i = 0;i<_scriptsPath.Count;++i)
+				{
+					EditorGUILayout.BeginHorizontal();
+					EditorGUILayout.LabelField(_scriptsPath[i]);
+					EditorGUILayout.EndHorizontal();
+				}
+			}
 			EditorGUILayout.BeginHorizontal();
 			if(GUILayout.Button("Set path for generated scripts"))
 			{
@@ -62,11 +80,17 @@ namespace Scaffolding.Editor
 
 				if(path != "")
 				{
-					_scriptsPath = path;
-					if(_scriptsPath.IndexOf("Assets") > -1)
-				    { 
-						_scriptsPath = _scriptsPath.Remove(0,_scriptsPath.IndexOf("Assets"));
-					}	
+					int index = _scriptsPath.IndexOf(path);
+					if(index < 0)
+					{
+						_scriptsPath.Add(path);
+						index = _scriptsPath.Count-1;
+					}
+					_scriptsPath[index] = path;
+					if(_scriptsPath[index].IndexOf("Assets") > -1)
+					{ 
+						_scriptsPath[index] = _scriptsPath[index].Remove(0,_scriptsPath[index].IndexOf("Assets"));
+					}
 				}
 			}
 
@@ -96,7 +120,8 @@ namespace Scaffolding.Editor
 
             EditorGUILayout.EndHorizontal();
 
-            if (!_prefabsPath.Contains("/Resources/"))
+			//this is so lazy...
+            if (!_prefabsPath[_prefabsPath.Count-1].Contains("Resources"))
             {
                 EditorGUILayout.HelpBox("PREFABS PATH MUST BE IN A RESOURCES FOLDER!", MessageType.Error);
             }

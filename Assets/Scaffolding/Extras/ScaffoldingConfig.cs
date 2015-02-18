@@ -34,8 +34,8 @@ namespace Scaffolding {
 		public const string SKIN_NAME = "[SKIN_NAME]";
 		public const string SKIN_TYPE = "[SKIN_TYPE]";
 
-		public string ScaffoldingResourcesPath = "Assets/Resources/Views/";
-	    public string ScaffoldingScriptsPath = "Assets/Scripts/Views/";
+		public List<string> ScaffoldingResourcesPath = new List<string>();
+		public List<string> ScaffoldingScriptsPath = new List<string>();// "Assets/Scripts/Views/";
 	    public string ScaffoldingInstantiatePath = "Views/";
 		public string ScaffoldingModelInstantiatePath = "Model/";
 	    public string ScaffoldingPath = "Assets/";
@@ -65,6 +65,28 @@ namespace Scaffolding {
 			RecursivelyFindAsset("Assets");
 			_instance.ScaffoldingPath = _scaffoldingPath;
 			_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
+			RemoveUnUsedPaths();
+		}
+
+		private void RemoveUnUsedPaths()
+		{
+			int i = ScaffoldingResourcesPath.Count-1, l = -1;
+			for(;i>l;--i)
+			{
+				if(ScaffoldingResourcesPath[i] == null || ScaffoldingResourcesPath[i] == "")
+				{
+					ScaffoldingResourcesPath.RemoveAt(i);
+				}
+			}
+
+			i = ScaffoldingScriptsPath.Count-1;
+			for(;i>l;--i)
+			{
+				if(ScaffoldingScriptsPath[i] == null || ScaffoldingScriptsPath[i] == "")
+				{
+					ScaffoldingScriptsPath.RemoveAt(i);
+				}
+			}
 		}
 
 		public ScaffoldingStartingView GetViewDataForScene(string sceneName)
@@ -166,9 +188,15 @@ namespace Scaffolding {
 			RecursivelyFindFolderPath("Assets");
 			RecursivelyFindAsset("Assets");
 			path = _scaffoldingConfigPath;
-			if(!_scaffoldingConfigPath.Contains("Resources"))
+
+			if(_scaffoldingConfigPath != null && !_scaffoldingConfigPath.Contains("Resources"))
 			{
 				Debug.LogWarning("Scaffolding:: The config file needs to be in a resources folder!");
+			}
+
+			if(path == null)
+			{
+				path = _scaffoldingPath + "/Resources/SCConfig.asset";
 			}
 
 			if(AssetDatabase.LoadAssetAtPath(path,typeof(ScaffoldingConfig)) == null)
@@ -283,15 +311,32 @@ namespace Scaffolding {
 
 		public string ViewPrefabPath(string viewName)
 		{
-			string path = ScaffoldingResourcesPath;
-			int index = path.IndexOf("Resources/");
-			if(index > -1)
+			string finalPath = "";
+			foreach(string s in ScaffoldingResourcesPath)
 			{
-				path = path.Remove(0, index + 10);
+				string path = s;
+				int index = path.IndexOf("Resources");
+				if(index > -1)
+				{
+					path = path.Remove(0, index + 9);
+				}
+				if(path.Length > 0)
+				{
+					if(path[0] == '/')
+					{
+						path = path.Remove(0,1);
+					}
+					if (path[path.Length - 1] != '/')
+					{
+						path += "/";
+					}
+				}
+				if(Resources.Load(path + viewName) != null)
+				{
+					finalPath = path;
+				}
 			}
-			path +="/";
-
-			return path;
+			return finalPath;
 		}
 
 		public string FullViewPrefabPath(string viewName)
@@ -303,9 +348,9 @@ namespace Scaffolding {
 			return path;
 		}
 
-		public string ScriptsPath()
+		public string ScriptsPath(int index)
 		{
-			string path = ScaffoldingScriptsPath;
+			string path = ScaffoldingScriptsPath[index];
 			if (path[path.Length - 1] != '/')
 				path += "/";
 			
