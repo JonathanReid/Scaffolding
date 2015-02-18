@@ -313,12 +313,22 @@ namespace Scaffolding {
 			foreach(string s in ScaffoldingResourcesPath)
 			{
 				string path = s;
-				int index = path.IndexOf("Resources/");
+				int index = path.IndexOf("Resources");
 				if(index > -1)
 				{
-					path = path.Remove(0, index + 10);
+					path = path.Remove(0, index + 9);
 				}
-				path +="/";
+				if(path.Length > 0)
+				{
+					if(path[0] == '/')
+					{
+						path = path.Remove(0,1);
+					}
+					if (path[path.Length - 1] != '/')
+					{
+						path += "/";
+					}
+				}
 				if(Resources.Load(path + viewName) != null)
 				{
 					finalPath = path;

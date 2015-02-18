@@ -354,7 +354,7 @@ namespace Scaffolding.Editor
 			}
 			if (GUILayout.Button("Open", GUILayout.Width(100)))
             {
-				GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load(_scaffoldingConfig.ViewPrefabPath(viewName)+viewName)) as GameObject;
+				GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load<GameObject>(_scaffoldingConfig.ViewPrefabPath(viewName)+viewName)) as GameObject;
 				#if UNITY_4_6 || UNITY_5
 				obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);
 #else
