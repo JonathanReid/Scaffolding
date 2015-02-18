@@ -327,7 +327,7 @@ namespace Scaffolding.Editor
 
 		private static string SkinTargetPath()
 		{
-			return _scaffoldingConfig.ScriptsPath()+ _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".cs";
+			return _scaffoldingConfig.ScriptsPath(_selectedScriptPath)+ _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".cs";
 		}
 
 		private static string TargetModelPath()
@@ -358,8 +358,8 @@ namespace Scaffolding.Editor
 
 		private static void CreateSkinScript()
 		{
-			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath()+_fileName))
-				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath()+_fileName);
+			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath(_selectedScriptPath)))
+				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath(_selectedScriptPath));
 			
 			var writer = new StreamWriter(SkinTargetPath());
 			writer.Write(GetSkinClass());
@@ -371,10 +371,11 @@ namespace Scaffolding.Editor
 
 		private static void CreateSkinAssets()
 		{
-			if (!Directory.Exists(_scaffoldingConfig.FullViewPrefabPath(_fileName)+_fileName))
-				Directory.CreateDirectory(_scaffoldingConfig.FullViewPrefabPath(_fileName)+_fileName);
-			
-			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_fileName)+ _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".prefab");
+			if (!Directory.Exists(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]+"/" + _fileName))
+				Directory.CreateDirectory(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]+"/" + _fileName);
+
+			Debug.Log(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]);
+			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath] + "/" + _fileName+"/" +_extendableClassNames[_selectedView]+ _fileName + ".prefab");
 			GameObject go = new GameObject();
 			go.name = _fileName;
 			_createdViewObject = PrefabUtility.ReplacePrefab(go, obj, ReplacePrefabOptions.ConnectToPrefab);

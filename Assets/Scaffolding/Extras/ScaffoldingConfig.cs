@@ -341,12 +341,21 @@ namespace Scaffolding {
 
 		public string FullViewPrefabPath(string viewName)
 		{
-			string path = ScaffoldingResourcesPath;
-			if (path[path.Length - 1] != '/')
-				path += "/";
-
-			return path;
+			string finalPath = "";
+			foreach(string s in ScaffoldingResourcesPath)
+			{
+				string path = s;
+				if (path[path.Length - 1] != '/')
+					path += "/";
+				
+				if(Resources.Load(path + viewName) != null)
+				{
+					finalPath = path;
+				}
+			}
+			return finalPath;
 		}
+
 
 		public string ScriptsPath(int index)
 		{

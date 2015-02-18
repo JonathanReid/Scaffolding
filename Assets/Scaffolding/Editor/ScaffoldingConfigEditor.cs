@@ -58,7 +58,7 @@ namespace Scaffolding.Editor
 
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
 
-            EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.BeginHorizontal();
 			_scriptPathToggle = EditorGUILayout.Foldout(_scriptPathToggle,"Used Scripts Paths:");
 			EditorGUILayout.EndHorizontal();
 			if(_scriptPathToggle)
@@ -77,7 +77,7 @@ namespace Scaffolding.Editor
 					"Pick Scaffolding Scripts path",
 					"Assets",
 					"");
-
+				
 				if(path != "")
 				{
 					int index = _scriptsPath.IndexOf(path);
@@ -93,13 +93,26 @@ namespace Scaffolding.Editor
 					}
 				}
 			}
-
-            EditorGUILayout.EndHorizontal();
-
+			
+			EditorGUILayout.EndHorizontal();
+			
 			EditorGUILayout.Space();
-
-//			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.LabelField("Current Resources Path: " + _prefabsPath );
+			
+			EditorGUILayout.BeginHorizontal();
+			_prefabPathToggle = EditorGUILayout.Foldout(_prefabPathToggle,"Used Prefabs Paths:");
+			EditorGUILayout.EndHorizontal();
+			if(_prefabPathToggle)
+			{
+				for(int i = 0;i<_prefabsPath.Count;++i)
+				{
+					EditorGUILayout.BeginHorizontal();
+					EditorGUILayout.LabelField(_prefabsPath[i]);
+					EditorGUILayout.EndHorizontal();
+				}
+			}
+			
+			//			EditorGUILayout.EndHorizontal();
+			
 			EditorGUILayout.BeginHorizontal();
 			if(GUILayout.Button("Set path for generated view prefabs"))
 			{
@@ -107,24 +120,29 @@ namespace Scaffolding.Editor
 					"Pick Scaffolding Prefabs path",
 					"Assets",
 					"");
-
+				
 				if(path != "")
 				{
-					_prefabsPath = path;
-					if(_prefabsPath.IndexOf("Assets") > -1)
+					int index = _prefabsPath.IndexOf(path);
+					if(index < 0)
+					{
+						_prefabsPath.Add(path);
+						index = _prefabsPath.Count-1;
+					}
+					_prefabsPath[index] = path;
+					if(_prefabsPath[index].IndexOf("Assets") > -1)
 					{ 
-						_prefabsPath = _prefabsPath.Remove(0,_prefabsPath.IndexOf("Assets"));
+						_prefabsPath[index] = _prefabsPath[index].Remove(0,_prefabsPath[index].IndexOf("Assets"));
 					}
 				}
 			}
-
-            EditorGUILayout.EndHorizontal();
-
-			//this is so lazy...
-            if (!_prefabsPath[_prefabsPath.Count-1].Contains("Resources"))
-            {
-                EditorGUILayout.HelpBox("PREFABS PATH MUST BE IN A RESOURCES FOLDER!", MessageType.Error);
-            }
+			
+			EditorGUILayout.EndHorizontal();
+			
+			if (!_prefabsPath[_prefabsPath.Count-1].Contains("Resources"))
+			{
+				EditorGUILayout.HelpBox("PREFABS PATH MUST BE IN A RESOURCES FOLDER!", MessageType.Error);
+			}
 
 			EditorGUILayout.Space();
 
