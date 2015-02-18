@@ -368,19 +368,35 @@ namespace Scaffolding.Editor
 				if (GUILayout.Button("Done", GUILayout.Width(60)))
 				{
 					_renamingView = "";
-					string oldNamePrefab = _scaffoldingConfig.FullViewPrefabPath(viewName)+viewName;
-					string oldNameScript = _scaffoldingConfig.ScriptsPath() + viewName;
-					string newNamePrefab = _scaffoldingConfig.FullViewPrefabPath(_tempViewName)+_tempViewName;
-					string newNameScript = _scaffoldingConfig.ScriptsPath() + _tempViewName;
+					string oldNamePrefab = "";
+					string oldNameScript = "";
+					var guids = AssetDatabase.FindAssets(viewName);
+					foreach(var guid in guids)
+					{
+						string s = AssetDatabase.GUIDToAssetPath(guid);
+						if(s.Contains(".cs"))
+						{
+							oldNameScript = s;
+						}
+						else if(s.Contains(".prefab"))
+						{
+							oldNamePrefab = s;
+						}
+					}
 
-					AssetDatabase.MoveAsset(oldNamePrefab + ".prefab",newNamePrefab + ".prefab");
-					RenameFile(oldNameScript + ".cs",viewName,_tempViewName);
-					AssetDatabase.MoveAsset(oldNameScript + ".cs",newNameScript + ".cs");
+					string newNamePrefab = oldNamePrefab.Replace(viewName,_tempViewName);
+					string newNameScript = oldNameScript.Replace(viewName,_tempViewName);
+
+					Debug.Log(newNamePrefab);
+
+					AssetDatabase.MoveAsset(oldNamePrefab,newNamePrefab);
+					RenameFile(oldNameScript,viewName,_tempViewName);
+					AssetDatabase.MoveAsset(oldNameScript,newNameScript );
 
 
-					AssetDatabase.MoveAsset(oldNamePrefab + "Model.prefab",newNamePrefab + "Model.prefab");
-					RenameFile(oldNameScript + "Model.cs",viewName,_tempViewName);
-					AssetDatabase.MoveAsset(oldNameScript + "Model.cs",newNameScript + "Model.cs");
+					AssetDatabase.MoveAsset(oldNamePrefab + "Model",newNamePrefab + "Model");
+					RenameFile(oldNameScript + "Model",viewName,_tempViewName);
+					AssetDatabase.MoveAsset(oldNameScript + "Model",newNameScript + "Model");
 					AssetDatabase.Refresh();
 					CreateAllViews();
 				}
@@ -410,14 +426,28 @@ namespace Scaffolding.Editor
 					GameObject go = GameObject.Find(name);
 					DestroyImmediate(go);
 
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath(viewName)+viewName + ".prefab");
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.ScriptsPath() + viewName + ".cs");
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.FullViewPrefabPath(viewName)+viewName + "Model.prefab");
-					AssetDatabase.DeleteAsset(_scaffoldingConfig.ScriptsPath() + viewName + "Model.cs");
+					DeleteFile(viewName,".prefab");
+					DeleteFile(viewName,".cs");
+					DeleteFile(viewName,"Model.prefab");
+					DeleteFile(viewName,"Model.cs");
+
 					AssetDatabase.Refresh();
                 }
             }
         }
+
+		private void DeleteFile(string name,string extension)
+		{
+			var guids = AssetDatabase.FindAssets(name);
+			foreach(var guid in guids)
+			{
+				string s = AssetDatabase.GUIDToAssetPath(guid);
+				if(s.Contains(extension))
+				{
+					AssetDatabase.DeleteAsset(s);
+				}
+			}
+		}
 
 		private void RenameFile(string path, string oldname, string newname)
 		{

@@ -33,7 +33,7 @@ namespace Scaffolding {
 		public const string MODEL_TYPE = "[MODEL_TYPE]";
 
 		public List<string> ScaffoldingResourcesPath = new List<string>();
-	    public string ScaffoldingScriptsPath = "Assets/Scripts/Views/";
+		public List<string> ScaffoldingScriptsPath = new List<string>();// "Assets/Scripts/Views/";
 	    public string ScaffoldingInstantiatePath = "Views/";
 		public string ScaffoldingModelInstantiatePath = "Model/";
 	    public string ScaffoldingPath = "Assets/";
@@ -63,6 +63,28 @@ namespace Scaffolding {
 			RecursivelyFindAsset("Assets");
 			_instance.ScaffoldingPath = _scaffoldingPath;
 			_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
+			RemoveUnUsedPaths();
+		}
+
+		private void RemoveUnUsedPaths()
+		{
+			int i = ScaffoldingResourcesPath.Count-1, l = -1;
+			for(;i>l;--i)
+			{
+				if(ScaffoldingResourcesPath[i] == null || ScaffoldingResourcesPath[i] == "")
+				{
+					ScaffoldingResourcesPath.RemoveAt(i);
+				}
+			}
+
+			i = ScaffoldingScriptsPath.Count-1;
+			for(;i>l;--i)
+			{
+				if(ScaffoldingScriptsPath[i] == null || ScaffoldingScriptsPath[i] == "")
+				{
+					ScaffoldingScriptsPath.RemoveAt(i);
+				}
+			}
 		}
 
 		public ScaffoldingStartingView GetViewDataForScene(string sceneName)
@@ -322,9 +344,9 @@ namespace Scaffolding {
 			return finalPath;
 		}
 
-		public string ScriptsPath()
+		public string ScriptsPath(int index)
 		{
-			string path = ScaffoldingScriptsPath;
+			string path = ScaffoldingScriptsPath[index];
 			if (path[path.Length - 1] != '/')
 				path += "/";
 			

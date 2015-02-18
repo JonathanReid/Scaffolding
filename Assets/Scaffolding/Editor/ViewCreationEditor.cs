@@ -34,6 +34,8 @@ namespace Scaffolding.Editor
 		private static int _selectedModel = -1;
 
 		private static ScaffoldingConfig _scaffoldingConfig;
+		private static int _selectedResourcePath = 0;
+		private static int _selectedScriptPath = 0;
 
         [MenuItem("GameObject/Create Other/Scaffolding/New View", false, 12900)]
         static void CreateNewView()
@@ -42,8 +44,8 @@ namespace Scaffolding.Editor
             _fileName = "";
 			_modelFileName = "";
             _window = GetWindow<ViewCreationEditor>(true, "Scaffolding - Create new view");
-            _window.maxSize = new Vector2(500, 200);
-            _window.minSize = new Vector2(500, 200);
+            _window.maxSize = new Vector2(500, 300);
+            _window.minSize = new Vector2(500, 300);
         }
 
 		#if UNITY_4_6 || UNITY_5
@@ -138,6 +140,12 @@ namespace Scaffolding.Editor
 
 
 			GetAllAbstractViewBasedClasses();
+
+			GUILayout.Label("Choose where to save the view to:");
+			_selectedResourcePath = EditorGUILayout.Popup(_selectedResourcePath,_scaffoldingConfig.ScaffoldingResourcesPath.ToArray());
+
+			GUILayout.Label("Choose where to save the view script to:");
+			_selectedScriptPath = EditorGUILayout.Popup(_selectedScriptPath,_scaffoldingConfig.ScaffoldingScriptsPath.ToArray());
 
 			GUILayout.Label("Choose which class this view should extend (AbstractView is default)");
 			_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
@@ -240,18 +248,18 @@ namespace Scaffolding.Editor
 
         private static string TargetPath()
         {
-			return _scaffoldingConfig.ScriptsPath() + _fileName + ".cs";
+			return _scaffoldingConfig.ScriptsPath(_selectedScriptPath) + _fileName + ".cs";
         }
 
 		private static string TargetModelPath()
 		{
-			return _scaffoldingConfig.ScriptsPath() + _modelFileName + ".cs";
+			return _scaffoldingConfig.ScriptsPath(_selectedScriptPath) + _modelFileName + ".cs";
 		}
 
         private static void CreateScript()
         {
-			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath()))
-				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath());
+			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath(_selectedScriptPath)))
+				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath(_selectedScriptPath));
 
             var writer = new StreamWriter(TargetPath());
             writer.Write(GetViewClass());
@@ -271,10 +279,10 @@ namespace Scaffolding.Editor
 
         private static void CreateAssets()
         {
-			if (!Directory.Exists(_scaffoldingConfig.FullViewPrefabPath(_fileName)))
-				Directory.CreateDirectory(_scaffoldingConfig.FullViewPrefabPath(_fileName));
+			if (!Directory.Exists(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]))
+				Directory.CreateDirectory(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]);
 
-			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_fileName) + _fileName + ".prefab");
+			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath] + "/" + _fileName + ".prefab");
             GameObject go = new GameObject();
             go.name = _fileName;
             _createdViewObject = PrefabUtility.ReplacePrefab(go, obj, ReplacePrefabOptions.ConnectToPrefab);
@@ -282,7 +290,7 @@ namespace Scaffolding.Editor
 
 			if(_createModel)
 			{
-				obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.FullViewPrefabPath(_modelFileName) + _modelFileName + ".prefab");
+				obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath] + "/" + _modelFileName + ".prefab");
 				go = new GameObject();
 				go.name = _modelFileName;
 
