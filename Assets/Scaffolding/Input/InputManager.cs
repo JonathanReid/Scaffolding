@@ -203,25 +203,6 @@ namespace Scaffolding
                 }
             }
         }
-
-        void OnDrawGizmos()
-        {
-            if (Application.isEditor && Application.isPlaying)
-            {
-                int i = 0, l = 2;
-                for (; i < l; ++i)
-                {
-                    if (_trackerLookup.ContainsKey(i))
-                    {
-                        InputTracker tracker = _trackerLookup[i];
-                        Vector3 pos = Camera.main.ScreenToWorldPoint(tracker.Position);
-                        pos.z = 0;
-                        Gizmos.DrawSphere(pos, 0.1f);
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// Fully kill any trackers we've found to not be in use.
         /// </summary>

@@ -18,6 +18,7 @@ namespace Scaffolding.Editor
         private List<GameObject> sceneObjects;
         private List<AbstractView> _views;
         private List<string> _viewNames;
+		private List<string> _fullViewNames;
         private int _selectedScriptIndex;
         private int _selectedMethodIndex;
         private bool _openAsOverlay;
@@ -55,7 +56,7 @@ namespace Scaffolding.Editor
             _target.targetViewIndex = EditorGUILayout.Popup(_target.targetViewIndex, _viewNames.ToArray());
             _target.targetViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_target.targetViewLength, _target.targetViewIndex, _viewNames, _target.targetView);
             _target.targetViewLength = _viewNames.Count;
-            _target.targetView = _views[_target.targetViewIndex].name;
+            _target.targetView = _views[_target.targetViewIndex].GetType().FullName;
 
             //choose how its opened.
             EditorGUILayout.HelpBox("OPEN AS SCREEN OR OVERLAY?", MessageType.None);
@@ -110,7 +111,7 @@ namespace Scaffolding.Editor
             LoadAllViews();
             _target.targetViewIndex = EditorGUILayout.Popup(_target.targetViewIndex, _viewNames.ToArray());
             _target.targetViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_target.targetViewLength, _target.targetViewIndex, _viewNames, _target.targetView);
-            _target.targetView = _views[_target.targetViewIndex].name;
+            _target.targetView = _views[_target.targetViewIndex].GetType().FullName;
         }
 
         private void TellClass(int i)
@@ -239,6 +240,7 @@ namespace Scaffolding.Editor
         {
             _views = new List<AbstractView>();
             _viewNames = new List<string>();
+			_fullViewNames = new List<string>();
             UnityEngine.Object[] views = Resources.LoadAll("Views");
             foreach (UnityEngine.Object o in views)
             {
@@ -246,6 +248,7 @@ namespace Scaffolding.Editor
                 if (v != null)
                 {
                     _views.Add(v);
+					_fullViewNames.Add(v.GetType().FullName);
                     _viewNames.Add(v.name);
                 }
             }

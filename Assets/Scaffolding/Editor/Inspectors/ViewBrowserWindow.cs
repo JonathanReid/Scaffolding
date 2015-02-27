@@ -14,6 +14,7 @@ namespace Scaffolding.Editor
     {
         private static ViewBrowserWindow _window;
         private List<string> _viewNames;
+		private List<string> _fullViewNames;
         private List<AbstractView> _abstractViews;
         private Vector2 _scrollPos;
 		private Texture2D _backgroundTexture;
@@ -50,6 +51,11 @@ namespace Scaffolding.Editor
 			}
 			_backgroundTexture.SetPixel(0, 0, new Color(val,val,val));
 			_backgroundTexture.Apply();
+		}
+
+		private void OnEnable()
+		{
+			CreateConfig();
 		}
 
 		private void CancelSearch()
@@ -90,18 +96,21 @@ namespace Scaffolding.Editor
 			if(!Application.isPlaying && _applicationPlaying)
 			{
 				Repaint();
+				CreateConfig();
+				_scaffoldingConfig.UpdateScaffoldingPath();
 			}
 			
 			if(Application.isPlaying && !_applicationPlaying)
 			{
 				Repaint();
+				CreateConfig();
+				_scaffoldingConfig.UpdateScaffoldingPath();
 			}
 		}
 
         void OnGUI()
         {
 			_applicationPlaying = Application.isPlaying;
-			CreateConfig();
             CreateAllViews();
 
             //toolbar GUI
@@ -141,7 +150,7 @@ namespace Scaffolding.Editor
 			}
 
 			GUILayout.EndHorizontal();
-			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
+			GUILayout.BeginVertical(GUI.skin.FindStyle("Box"));
 
 			if(_scaffoldingConfig.StartingView == null)
 			{
@@ -152,28 +161,25 @@ namespace Scaffolding.Editor
 			string name = EditorApplication.currentScene;
 			if(name != "")
 			{
-			name = name.Remove(0,name.LastIndexOf("/")+1);
-			int index = name.LastIndexOf(".unity");
-			name = name.Remove(index,name.Length - index);
+				name = name.Remove(0,name.LastIndexOf("/")+1);
+				int index = name.LastIndexOf(".unity");
+				name = name.Remove(index,name.Length - index);
 
-			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
-			sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
-			if (sv.StartingViewName != null)
-			{
-				sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _viewNames, sv.StartingViewName);
-			}
-			_viewLength = _viewNames.Count;
-			sv.StartingViewName = _viewNames[sv.StartingViewIndex];
+				ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
+				sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
+				if (sv.StartingViewName != null)
+				{
+					sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _fullViewNames, sv.StartingViewName);
+				}
+				_viewLength = _viewNames.Count;
+				sv.StartingViewName = _fullViewNames[sv.StartingViewIndex];
 
-			GUILayout.EndHorizontal();
-			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
+				sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
 
-			sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
+				GUILayout.EndHorizontal();
 
-			GUILayout.EndHorizontal();
-
-			_scaffoldingConfig.SetViewDataForScene(sv);
-			EditorUtility.SetDirty(_scaffoldingConfig);
+				_scaffoldingConfig.SetViewDataForScene(sv);
+				EditorUtility.SetDirty(_scaffoldingConfig);
 			}
 			else
 			{
@@ -184,7 +190,6 @@ namespace Scaffolding.Editor
             //Setting up the library scroll area
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
            
-
             GUILayout.BeginVertical();
 
 			if(!EditorApplication.isPlaying)
@@ -273,8 +278,8 @@ namespace Scaffolding.Editor
 			{
 				EditorGUILayout.HelpBox("Best not fiddle with views while Unity is running.",MessageType.Info);
 			}
-            EditorGUILayout.EndScrollView();
             GUILayout.EndVertical();
+			EditorGUILayout.EndScrollView();
 
 			EditorUtility.SetDirty(_scaffoldingConfig);
         }
@@ -510,6 +515,7 @@ namespace Scaffolding.Editor
         {
             UnityEngine.Object[] views = Resources.LoadAll("");//_scaffoldingConfig.ViewPrefabPath());
             _viewNames = new List<string>();
+			_fullViewNames = new List<string>();
             _abstractViews = new List<AbstractView>();
             foreach (UnityEngine.Object o in views)
             {
@@ -518,6 +524,7 @@ namespace Scaffolding.Editor
                     AbstractView v = (o as GameObject).GetComponent<AbstractView>();
                     if (v != null)
                     {
+						_fullViewNames.Add(v.GetType().FullName);
                         _viewNames.Add(v.GetType().Name);
                         _abstractViews.Add(v);
                     }

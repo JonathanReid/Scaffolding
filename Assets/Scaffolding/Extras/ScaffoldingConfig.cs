@@ -53,13 +53,13 @@ namespace Scaffolding {
 				if(_instance == null)
 				{
 					_instance = CreateInstance();
+					_instance.UpdateScaffoldingPath();
 				}
-				_instance.UpdateScaffoldingPath();
 				return _instance;
 			}
 		}
 
-		private void UpdateScaffoldingPath()
+		public void UpdateScaffoldingPath()
 		{
 			RecursivelyFindFolderPath("Assets");
 			RecursivelyFindAsset("Assets");
@@ -228,7 +228,7 @@ namespace Scaffolding {
 			GameObject g = null;
 			string[] p = ScaffoldingInstantiatePath.Split(new char[1]{ '/' }, 10);
 			int count = 0;
-			
+
 			foreach (string n in p)
 			{
 				if (n.Equals(""))

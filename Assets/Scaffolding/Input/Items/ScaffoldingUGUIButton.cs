@@ -13,8 +13,8 @@ namespace Scaffolding
 	/// </summary>
 	public class ScaffoldingUGUIButton : AbstractButton, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler {
 
-		private Button _button;
-		private bool _enabled;
+		protected Button _button;
+		protected bool _enabled;
 		private Selectable.Transition _buttonTransition;
 
 		public override void Setup (AbstractView view)
@@ -40,7 +40,7 @@ namespace Scaffolding
 		/// Called when the pointer over the button is down
 		/// </summary>
 		/// <param name="data">Data.</param>
-		public void OnPointerDown(PointerEventData data)
+		public virtual void OnPointerDown(PointerEventData data)
 		{
 			if(_enabled)
 			{
@@ -52,7 +52,7 @@ namespace Scaffolding
 		/// Called when the pointer over the button is up.
 		/// </summary>
 		/// <param name="data">Data.</param>
-		public void OnPointerUp(PointerEventData data)
+		public virtual void OnPointerUp(PointerEventData data)
 		{
 			if(_enabled)
 			{
@@ -64,7 +64,7 @@ namespace Scaffolding
 		/// Called when the pointer exits the button
 		/// </summary>
 		/// <param name="data">Data.</param>
-		public void OnPointerExit(PointerEventData data)
+		public virtual void OnPointerExit(PointerEventData data)
 		{
 			if(_enabled)
 			{
@@ -76,7 +76,7 @@ namespace Scaffolding
 		/// Called when the pointer enters the button
 		/// </summary>
 		/// <param name="data">Data.</param>
-		public void OnPointerEnter(PointerEventData data)
+		public virtual void OnPointerEnter(PointerEventData data)
 		{
 			if(_enabled)
 			{
