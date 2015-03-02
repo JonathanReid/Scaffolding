@@ -172,7 +172,10 @@ namespace Scaffolding.Editor
 					sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _fullViewNames, sv.StartingViewName);
 				}
 				_viewLength = _viewNames.Count;
-				sv.StartingViewName = _fullViewNames[sv.StartingViewIndex];
+				if(sv.StartingViewIndex < _fullViewNames.Count)
+				{
+					sv.StartingViewName = _fullViewNames[sv.StartingViewIndex];
+				}
 
 				sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
 

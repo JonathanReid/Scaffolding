@@ -184,8 +184,6 @@ namespace Scaffolding.Editor
 				GUILayout.Label("Choose where to save the view script to:");
 				_selectedScriptPath = EditorGUILayout.Popup(_selectedScriptPath,_scaffoldingConfig.ScaffoldingScriptsPath.ToArray());
 
-				GUILayout.Label("Choose which class this view should extend (AbstractView is default)");
-				_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
 
 	            if (GUILayout.Button("Create!"))
 	            {
@@ -358,8 +356,8 @@ namespace Scaffolding.Editor
 
 		private static void CreateSkinScript()
 		{
-			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath(_selectedScriptPath)))
-				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath(_selectedScriptPath));
+			if (!Directory.Exists(_scaffoldingConfig.ScriptsPath(_selectedScriptPath)+"/" + _fileName))
+				Directory.CreateDirectory(_scaffoldingConfig.ScriptsPath(_selectedScriptPath)+"/" + _fileName);
 			
 			var writer = new StreamWriter(SkinTargetPath());
 			writer.Write(GetSkinClass());
