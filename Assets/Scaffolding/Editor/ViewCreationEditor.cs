@@ -204,6 +204,12 @@ namespace Scaffolding.Editor
 				GUILayout.Label("Choose which class this skin is for");
 				_selectedView = EditorGUILayout.Popup(_selectedView,_extendableClassNames.ToArray());
 
+				GUILayout.Label("Choose where to save the view to:");
+				_selectedResourcePath = EditorGUILayout.Popup(_selectedResourcePath,_scaffoldingConfig.ScaffoldingResourcesPath.ToArray());
+				
+				GUILayout.Label("Choose where to save the view script to:");
+				_selectedScriptPath = EditorGUILayout.Popup(_selectedScriptPath,_scaffoldingConfig.ScaffoldingScriptsPath.ToArray());
+
 				_createCanvas = EditorGUILayout.Toggle("Add canvas to view: ", _createCanvas);
 				
 				GUI.enabled = _fileName.Length > 0;
