@@ -14,7 +14,6 @@ namespace Scaffolding.Editor
     {
         private static ViewBrowserWindow _window;
         private List<string> _viewNames;
-		private List<string> _fullViewNames;
         private List<AbstractView> _abstractViews;
         private Vector2 _scrollPos;
 		private Texture2D _backgroundTexture;
@@ -51,11 +50,6 @@ namespace Scaffolding.Editor
 			}
 			_backgroundTexture.SetPixel(0, 0, new Color(val,val,val));
 			_backgroundTexture.Apply();
-		}
-
-		private void OnEnable()
-		{
-			CreateConfig();
 		}
 
 		private void CancelSearch()
@@ -96,21 +90,18 @@ namespace Scaffolding.Editor
 			if(!Application.isPlaying && _applicationPlaying)
 			{
 				Repaint();
-				CreateConfig();
-				_scaffoldingConfig.UpdateScaffoldingPath();
 			}
 			
 			if(Application.isPlaying && !_applicationPlaying)
 			{
 				Repaint();
-				CreateConfig();
-				_scaffoldingConfig.UpdateScaffoldingPath();
 			}
 		}
 
         void OnGUI()
         {
 			_applicationPlaying = Application.isPlaying;
+			CreateConfig();
             CreateAllViews();
 
             //toolbar GUI
@@ -150,7 +141,7 @@ namespace Scaffolding.Editor
 			}
 
 			GUILayout.EndHorizontal();
-			GUILayout.BeginVertical(GUI.skin.FindStyle("Box"));
+			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
 
 			if(_scaffoldingConfig.StartingView == null)
 			{
@@ -161,28 +152,28 @@ namespace Scaffolding.Editor
 			string name = EditorApplication.currentScene;
 			if(name != "")
 			{
-				name = name.Remove(0,name.LastIndexOf("/")+1);
-				int index = name.LastIndexOf(".unity");
-				name = name.Remove(index,name.Length - index);
+			name = name.Remove(0,name.LastIndexOf("/")+1);
+			int index = name.LastIndexOf(".unity");
+			name = name.Remove(index,name.Length - index);
 
-				ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
-				sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
-				if (sv.StartingViewName != null)
-				{
-					sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _fullViewNames, sv.StartingViewName);
-				}
-				_viewLength = _viewNames.Count;
-				if(sv.StartingViewIndex < _fullViewNames.Count)
-				{
-					sv.StartingViewName = _fullViewNames[sv.StartingViewIndex];
-				}
+			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
+			sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
+			if (sv.StartingViewName != null)
+			{
+				sv.StartingViewIndex = ScaffoldingUtilitiesEditor.CheckIfMenuItemChanged(_viewLength, sv.StartingViewIndex, _viewNames, sv.StartingViewName);
+			}
+			_viewLength = _viewNames.Count;
+			sv.StartingViewName = _viewNames[sv.StartingViewIndex];
 
-				sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
+			GUILayout.EndHorizontal();
+			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Box"));
 
-				GUILayout.EndHorizontal();
+			sv.StartingViewType = (ViewType)EditorGUILayout.EnumPopup("Open as:",sv.StartingViewType);
 
-				_scaffoldingConfig.SetViewDataForScene(sv);
-				EditorUtility.SetDirty(_scaffoldingConfig);
+			GUILayout.EndHorizontal();
+
+			_scaffoldingConfig.SetViewDataForScene(sv);
+			EditorUtility.SetDirty(_scaffoldingConfig);
 			}
 			else
 			{
@@ -193,6 +184,7 @@ namespace Scaffolding.Editor
             //Setting up the library scroll area
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
            
+
             GUILayout.BeginVertical();
 
 			if(!EditorApplication.isPlaying)
@@ -281,8 +273,8 @@ namespace Scaffolding.Editor
 			{
 				EditorGUILayout.HelpBox("Best not fiddle with views while Unity is running.",MessageType.Info);
 			}
+            EditorGUILayout.EndScrollView();
             GUILayout.EndVertical();
-			EditorGUILayout.EndScrollView();
 
 			EditorUtility.SetDirty(_scaffoldingConfig);
         }
@@ -475,65 +467,49 @@ namespace Scaffolding.Editor
 
         private void Save(GameObject g)
         {
-			string viewName = g.name;
-			RecursivelyFindAndReplacePrefabs(g.transform);
-			PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
-			UnityEditor.Editor.DestroyImmediate(g);
+            PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ConnectToPrefab);
+        }
 
-			GameObject obj = PrefabUtility.InstantiatePrefab(Resources.Load(_scaffoldingConfig.ViewPrefabPath(viewName)+viewName)) as GameObject;
-			#if UNITY_4_6 || UNITY_5
-			obj.transform.SetParent(_scaffoldingConfig.DetermineParentGameObjectPath().transform);
-			#else
-			obj.transform.parent = _scaffoldingConfig.DetermineParentGameObjectPath().transform;
-			#endif
-			Selection.activeObject = obj;
-		}
-		
-		private void Close(GameObject g)
+        private void Close(GameObject g)
         {
             UnityEditor.Editor.DestroyImmediate(g);
         }
 
-		private void SaveAndClose(GameObject g)
-		{
-			RecursivelyFindAndReplacePrefabs(g.transform);
+        private void SaveAndClose(GameObject g)
+        {
+            PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ConnectToPrefab);
+            UnityEditor.Editor.DestroyImmediate(g);
+        }
 
-			PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
-			UnityEditor.Editor.DestroyImmediate(g);
-		}
-		
-		private void RecursivelyFindAndReplacePrefabs(Transform t)
-		{
-			AbstractSkinnableView bv = t.GetComponentInChildren<AbstractSkinnableView>(); 
-			if(bv != null)
-			{
-				GameObject g = bv.gameObject;
-				PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
-				UnityEditor.Editor.DestroyImmediate(g);
-			}
-		}
-
+        private string ConvertPathToResourcePath(string path)
+        {
+            return path.Remove(0,path.IndexOf("Resources/")+10);
+        }
 
         private void CreateAllViews()
         {
-            UnityEngine.Object[] views = Resources.LoadAll("");//_scaffoldingConfig.ViewPrefabPath());
-            _viewNames = new List<string>();
-			_fullViewNames = new List<string>();
-            _abstractViews = new List<AbstractView>();
-            foreach (UnityEngine.Object o in views)
+            foreach(string prefabPath in _scaffoldingConfig.ScaffoldingResourcesPath)
             {
-                if (o is GameObject)
+                UnityEngine.Object[] views = Resources.LoadAll(ConvertPathToResourcePath(prefabPath));
+                _viewNames = new List<string>();
+                _fullViewNames = new List<string>();
+                _abstractViews = new List<AbstractView>();
+                foreach (UnityEngine.Object o in views)
                 {
-                    AbstractView v = (o as GameObject).GetComponent<AbstractView>();
-                    if (v != null)
+                    if (o is GameObject)
                     {
-						_fullViewNames.Add(v.GetType().FullName);
-                        _viewNames.Add(v.GetType().Name);
-                        _abstractViews.Add(v);
+                        AbstractView v = (o as GameObject).GetComponent<AbstractView>();
+                        if (v != null)
+                        {
+                            _fullViewNames.Add(v.GetType().FullName);
+                            _viewNames.Add(v.GetType().Name);
+                            _abstractViews.Add(v);
+                        }
                     }
                 }
+                views = null;
             }
-            views = null;
+
         }
     }
 }
