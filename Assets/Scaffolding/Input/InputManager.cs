@@ -21,6 +21,7 @@ namespace Scaffolding
         public event InputEvent EventPressed;
         public event InputEvent EventReleased;
         public event InputEvent EventDragged;
+		public event InputEvent EventClicked;
         public event InputEventDelta EventDraggedDelta;
 
 		public List<Camera> InputCameras;
@@ -322,6 +323,15 @@ namespace Scaffolding
         private void EndTracking(InputTracker tracker)
         {
             tracker.StopTracking();
+
+			if(tracker.Clicked())
+			{
+
+				if(EventClicked != null)
+				{
+					EventClicked(tracker);
+				}
+			}
             
             _trackers.Remove(tracker);
             _trackerLookup.Remove(tracker.FingerId);

@@ -119,10 +119,9 @@ namespace Scaffolding
         /// Passes through a InputTracker of the current touch.
         /// </summary>
         /// <param name="tracker">Tracker.</param>
-        public override void HandleEventReleased(InputTracker tracker)
+        public override void HandleEventClicked(InputTracker tracker)
         {
             base.HandleEventReleased(tracker);
-
             if (_hit)
             {
 				if(tracker.HitGameObject(_collider.gameObject))

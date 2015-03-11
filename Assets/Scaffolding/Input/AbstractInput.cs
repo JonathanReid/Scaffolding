@@ -36,6 +36,7 @@ namespace Scaffolding
             _inputManager.EventPressed += HandleEventPressed;
             _inputManager.EventReleased += HandleEventReleased;
             _inputManager.EventDragged += HandleEventDragged;
+			_inputManager.EventClicked += HandleEventClicked;
             _inputManager.EventDraggedDelta += HandleEventDraggedDelta;
         }
 
@@ -69,6 +70,7 @@ namespace Scaffolding
                 _inputManager.EventPressed -= HandleEventPressed;
                 _inputManager.EventReleased -= HandleEventReleased;
                 _inputManager.EventDragged -= HandleEventDragged;
+				_inputManager.EventClicked -= HandleEventClicked;
                 _inputManager.EventDraggedDelta -= HandleEventDraggedDelta;
             }
         }
@@ -84,6 +86,11 @@ namespace Scaffolding
                 _collider.enabled = enabled;
             }
         }
+
+		public virtual void HandleEventClicked (InputTracker tracker)
+		{
+			
+		}
 
         /// <summary>
         /// EventPressed, dispatched by Scaffoldings InputManager

@@ -18,6 +18,7 @@ namespace Scaffolding
         private Vector2 _velocity;
 		private GameObject _hitObject;
 		private List<Camera> _hitCameras;
+		private GameObject _hitObjectOnDown;
 
         /************************************************
          * Getters & setters.
@@ -79,6 +80,18 @@ namespace Scaffolding
 			}
 		}
 
+		/// <summary>
+		/// Deterimnes if the tracker hit the same object now as it did when it began.
+		/// </summary>
+		public bool Clicked()
+		{
+			if(_hitObject == _hitObjectOnDown)
+			{
+				return true;
+			}
+			return false;
+		}
+
         /// <summary>
         /// Determines if the object passed through was hit by this tracker
         /// </summary>
@@ -120,6 +133,7 @@ namespace Scaffolding
 
             StartTracking();
             UpdateTracker(position);
+			_hitObjectOnDown = _hitObject;
         }
 
         /************************************************

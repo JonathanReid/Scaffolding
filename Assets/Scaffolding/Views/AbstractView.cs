@@ -184,15 +184,61 @@ namespace Scaffolding
             if (inTransition != null)
             {
                 inTransition.wrapMode = WrapMode.Once;
-                _manager.AddAnimationEventToTransition(this.GetType(), inTransition, "ShowComplete");
                 _animator.AddClip(inTransition, inTransition.name);
-                _animator.Play(inTransition.name);
+				StartCoroutine(PlayAndCallbackRealTime(_animator,inTransition.name,ShowComplete));
             }
             else
             {
                 ShowComplete();   
             }
         }
+
+		private IEnumerator PlayAndCallbackRealTime(Animation animation, string animName, Action callback = null)
+		{
+			animation.Stop();
+			animation.Play(animName);
+			
+			AnimationState _currentState = animation[animName];
+			bool isPlaying = true;
+			float _progressTime = 0f;
+			float _timeAtLastFrame = 0f;
+			float _timeAtCurrentFrame = 0f;
+			float deltaTime = 0f;
+			
+			_timeAtLastFrame = Time.realtimeSinceStartup;
+			
+			while (isPlaying)
+			{
+				_timeAtCurrentFrame = Time.realtimeSinceStartup;
+				deltaTime = _timeAtCurrentFrame - _timeAtLastFrame;
+				_timeAtLastFrame = _timeAtCurrentFrame;
+				
+				_progressTime += deltaTime;
+				_currentState.normalizedTime = _progressTime / _currentState.length;
+				animation.Sample ();
+				
+				if (_progressTime >= _currentState.length)
+				{
+					if(_currentState.wrapMode != WrapMode.Loop)
+					{
+						isPlaying = false;
+					}
+					else
+					{
+						_progressTime = 0.0f;
+					}
+				}
+				
+				yield return new WaitForEndOfFrame();
+			}
+			
+			yield return null;
+			
+			if(callback != null)
+			{
+				callback();
+			}
+		}
 
         private void ShowComplete()
         {
@@ -226,10 +272,9 @@ namespace Scaffolding
             if (outTransition != null)
             {
                 outTransition.wrapMode = WrapMode.Once;
-                _manager.AddAnimationEventToTransition(this.GetType(), outTransition, "OnHideComplete");
                 _animator.AddClip(outTransition, outTransition.name);
                             
-                _animator.Play(outTransition.name);
+				StartCoroutine(PlayAndCallbackRealTime(_animator,outTransition.name,OnHideComplete));
             }
             else
             {
