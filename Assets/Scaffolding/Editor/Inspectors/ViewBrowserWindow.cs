@@ -481,24 +481,35 @@ namespace Scaffolding.Editor
             UnityEditor.Editor.DestroyImmediate(g);
         }
 
+        private string ConvertPathToResourcePath(string path)
+        {
+            return path.Remove(0,path.IndexOf("Resources/")+10);
+        }
+
         private void CreateAllViews()
         {
-            UnityEngine.Object[] views = Resources.LoadAll("");//_scaffoldingConfig.ViewPrefabPath());
-            _viewNames = new List<string>();
-            _abstractViews = new List<AbstractView>();
-            foreach (UnityEngine.Object o in views)
+            foreach(string prefabPath in _scaffoldingConfig.ScaffoldingResourcesPath)
             {
-                if (o is GameObject)
+                UnityEngine.Object[] views = Resources.LoadAll(ConvertPathToResourcePath(prefabPath));
+                _viewNames = new List<string>();
+                _fullViewNames = new List<string>();
+                _abstractViews = new List<AbstractView>();
+                foreach (UnityEngine.Object o in views)
                 {
-                    AbstractView v = (o as GameObject).GetComponent<AbstractView>();
-                    if (v != null)
+                    if (o is GameObject)
                     {
-                        _viewNames.Add(v.GetType().Name);
-                        _abstractViews.Add(v);
+                        AbstractView v = (o as GameObject).GetComponent<AbstractView>();
+                        if (v != null)
+                        {
+                            _fullViewNames.Add(v.GetType().FullName);
+                            _viewNames.Add(v.GetType().Name);
+                            _abstractViews.Add(v);
+                        }
                     }
                 }
+                views = null;
             }
-            views = null;
+
         }
     }
 }
