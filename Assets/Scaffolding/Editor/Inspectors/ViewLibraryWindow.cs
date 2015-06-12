@@ -10,12 +10,18 @@ using System.Text;
 
 namespace Scaffolding.Editor
 {
-    public class ViewBrowserWindow : EditorWindow
+    public class ViewLibraryWindow : EditorWindow
     {
-        private static ViewBrowserWindow _window;
+        private static ViewLibraryWindow _window;
+
         private List<string> _viewNames;
 		private List<string> _fullViewNames;
         private List<AbstractView> _abstractViews;
+
+		private List<string> _transitionNames;
+		private List<string> _fulltransitionNames;
+		private List<AbstractTransition> _abstractTransitions;
+
         private Vector2 _scrollPos;
 		private Texture2D _backgroundTexture;
 		private string searchString = "";
@@ -28,12 +34,13 @@ namespace Scaffolding.Editor
 		private ScaffoldingConfig _scaffoldingConfig;
 		private bool _applicationPlaying;
 		private bool _scenesFoldout = true;
+		private bool _transitionsFoldout = true;
 		private bool _viewsFoldout = true;
 
         [MenuItem("Tools/Scaffolding/Open View Library")]
         static void OpenViewLibrary()
         {
-            _window = (ViewBrowserWindow)EditorWindow.GetWindow(typeof(ViewBrowserWindow));
+            _window = (ViewLibraryWindow)EditorWindow.GetWindow(typeof(ViewLibraryWindow));
             _window.title = " View Library";
 		}
 
@@ -235,6 +242,45 @@ namespace Scaffolding.Editor
 					{
 						GUILayout.Space(5);
 						_backgroundImageHeight += 23;
+					}
+
+					if(_transitionNames.Count > 0)
+					{
+						_transitionsFoldout = EditorGUILayout.Foldout(_transitionsFoldout,"Transitions");
+						if(_transitionsFoldout)
+						{
+							GUILayout.Space(5);
+							_backgroundImageHeight += 23;
+							
+							i = 0;
+							l = _transitionNames.Count;
+							
+							for (; i < l;++i)
+							{
+								DrawBackgroundImage(j);
+								//handle individual buttons 
+								EditorGUILayout.BeginHorizontal();
+								System.Type t = _abstractTransitions[i].GetType();
+								AbstractTransition sceneObject = GameObject.FindObjectOfType(t) as AbstractTransition;
+								if (sceneObject != null)
+								{
+									OpenViewButtons(_transitionNames[i], sceneObject.gameObject);
+								}
+								else
+								{
+									ClosedViewButtons(_transitionNames[i]);
+								}
+								EditorGUILayout.EndHorizontal();
+								
+								GUILayout.Space(5);
+								j++;
+							}
+						}
+						else
+						{
+							GUILayout.Space(5);
+							_backgroundImageHeight += 23;
+						}
 					}
 
 					_viewsFoldout = EditorGUILayout.Foldout(_viewsFoldout,"Views");
@@ -521,12 +567,17 @@ namespace Scaffolding.Editor
 
         private void CreateAllViews()
         {
+			_viewNames = new List<string>();
+			_fullViewNames = new List<string>();
+			_abstractViews = new List<AbstractView>();
+			_transitionNames = new List<string>();
+			_fulltransitionNames = new List<string>();
+			_abstractTransitions = new List<AbstractTransition>();
+
 			foreach(string prefabPath in _scaffoldingConfig.ScaffoldingResourcesPath)
 			{
 				UnityEngine.Object[] views = Resources.LoadAll(ConvertPathToResourcePath(prefabPath));
-				_viewNames = new List<string>();
-				_fullViewNames = new List<string>();
-				_abstractViews = new List<AbstractView>();
+
 				foreach (UnityEngine.Object o in views)
 				{
 					if (o is GameObject)
@@ -534,14 +585,31 @@ namespace Scaffolding.Editor
 						AbstractView v = (o as GameObject).GetComponent<AbstractView>();
 						if (v != null)
 						{
-							_fullViewNames.Add(v.GetType().FullName);
-							_viewNames.Add(v.GetType().Name);
-							_abstractViews.Add(v);
+							if(v is AbstractTransition)
+							{
+								if(!_transitionNames.Contains(v.GetType().Name))
+							   	{
+									_fulltransitionNames.Add(v.GetType().FullName);
+									_transitionNames.Add(v.GetType().Name);
+									_abstractTransitions.Add(v as AbstractTransition);
+								}
+							}
+							else
+							{
+								if(!_viewNames.Contains(v.GetType().Name))
+								{
+									_fullViewNames.Add(v.GetType().FullName);
+									_viewNames.Add(v.GetType().Name);
+									_abstractViews.Add(v);
+								}
+							}
 						}
 					}
 				}
 				views = null;
 			}
+
+
         }
     }
 }

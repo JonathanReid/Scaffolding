@@ -100,14 +100,7 @@ namespace Scaffolding
 			{
 				if (openAsScreen)
 				{
-					if (loadingOverlay != "")
-					{
-						_view.RequestViewWithLoadingOverlay(ScaffoldingConfig.GetType(targetView), ScaffoldingConfig.GetType(loadingOverlay));
-					}
-					else
-					{
-						_view.RequestView(ScaffoldingConfig.GetType(targetView));
-					}
+					_view.RequestView(ScaffoldingConfig.GetType(targetView));
 				}
 				else
 				{

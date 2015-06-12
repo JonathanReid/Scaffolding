@@ -280,7 +280,7 @@ namespace Scaffolding.Editor
             CreateScript();
 
             CreateAssets();
-            AssetDatabase.Refresh();
+//            AssetDatabase.Refresh();
             InternalEditorUtility.AddScriptComponentUnchecked(_createdViewObject, AssetDatabase.LoadAssetAtPath(TargetPath(), typeof(MonoScript)) as MonoScript);
 			if(_createModel)
 			{

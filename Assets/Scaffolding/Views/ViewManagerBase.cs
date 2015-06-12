@@ -323,86 +323,28 @@ namespace Scaffolding
 		/// Requests the screen to open.
 		/// </summary>
 		/// <param name="screenType">Screen type.</param>
-		public void RequestView<T>() where T : AbstractView
+		public AbstractView RequestView<T>() where T : AbstractView
 		{
-			RequestView(typeof(T),null);
+			return RequestView(typeof(T),null);
 		}
 		
 		/// <summary>
 		/// Requests the screen to open.
 		/// </summary>
 		/// <param name="screenType">Screen type.</param>
-		public void RequestView(Type screenType)
+		public AbstractView RequestView(Type screenType)
 		{
-			RequestView(screenType, null);
+			return RequestView(screenType, null);
 		}
-		
-		/// <summary>
-		/// Requests the view with a loading view.
-		/// This is useful if the screen you are moving to is very heavy and takes a long time to load.
-		/// You can open an overlay to mask this loading while you wait.
-		/// Once the loading is complete, the overlay will close.
-		/// </summary>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		/// <typeparam name="L">The 2nd type parameter.</typeparam>
-		public void RequestViewWithLoadingOverlay<T,L>() where T : AbstractView where L : AbstractView
-		{
-			RequestViewWithLoadingOverlay(typeof(T),typeof(L),null);
-		}
-		
-		/// <summary>
-		/// Requests the view with a loading view.
-		/// This is useful if the screen you are moving to is very heavy and takes a long time to load.
-		/// You can open an overlay to mask this loading while you wait.
-		/// Once the loading is complete, the overlay will close.
-		/// </summary>
-		/// <param name="screenType">Screen type.</param>
-		/// <param name="loadingViewType">Loading view type.</param>
-		public void RequestViewWithLoadingOverlay(Type screenType, Type loadingViewType)
-		{
-			RequestViewWithLoadingOverlay(screenType,loadingViewType,null);
-		}
-		/// <summary>
-		/// Requests the view with a loading view.
-		/// This is useful if the screen you are moving to is very heavy and takes a long time to load.
-		/// You can open an overlay to mask this loading while you wait.
-		/// Once the loading is complete, the overlay will close.
-		/// </summary>
-		/// <param name="viewData">View data.</param>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		/// <typeparam name="L">The 2nd type parameter.</typeparam>
-		public void RequestViewWithLoadingOverlay<T,L>(SObject viewData) where T : AbstractView where L : AbstractView
-		{
-			RequestViewWithLoadingOverlay(typeof(T),typeof(L),viewData);
-		}
-		
-		/// <summary>
-		/// Requests the view with a loading view.
-		/// This is useful if the screen you are moving to is very heavy and takes a long time to load.
-		/// You can open an overlay to mask this loading while you wait.
-		/// Once the loading is complete, the overlay will close.
-		/// </summary>
-		/// <param name="screenType">Screen type.</param>
-		/// <param name="loadingViewType">Loading view type.</param>
-		/// <param name="viewData">ViewData.</param>
-		public void RequestViewWithLoadingOverlay(Type screenType, Type loadingViewType, SObject viewData)
-		{
-			//load the loading view as an overlay, then load the screen behind it. 
-			// when screen is known to be "done", close overlay.
-			_loadingOverlay = loadingViewType;
-			_loadingOverlayTargetView = screenType;
-			_loadingOverlayTargetViewData = viewData;
-			RequestOverlay(_loadingOverlay);
-		}
-		
+
 		/// <summary>
 		/// Requests the screen with data.
 		/// </summary>
 		/// <param name="screenType">Screen type.</param>
 		/// <param name="data">Data.</param>
-		public void RequestView<T>(SObject viewData) where T : AbstractView
+		public AbstractView RequestView<T>(SObject viewData) where T : AbstractView
 		{
-			RequestView(typeof(T),viewData);
+			return RequestView(typeof(T),viewData);
 		}
 		
 		/// <summary>
@@ -458,7 +400,7 @@ namespace Scaffolding
 		/// </summary>
 		/// <param name="screenType">Screen type.</param>
 		/// <param name="data">Data.</param>
-		public void RequestView(Type screenType, SObject data)
+		public AbstractView RequestView(Type screenType, SObject data)
 		{   
 			if (_targetScreen == null || (_targetScreen.GetType() != screenType && !_targetScreen.IsSettingUp))
 			{
@@ -495,7 +437,7 @@ namespace Scaffolding
 				obj.SetActive(false);
 				
 				_lastScreen = _currentScreen;
-				
+
 				_targetScreenData = data;
 				
 				if (_currentScreen != null)
@@ -514,13 +456,20 @@ namespace Scaffolding
 				{
 					ScreenOpen();   
 				}
+
+				return _targetScreen;
+			}
+			else
+			{
+				return null;
 			}
 		}
 		
 		private void ScreenOpen()
 		{
 			_targetScreen.gameObject.SetActive(true);
-			
+
+			_targetScreen.IsShowing = true;
 			_targetScreen.OnShowStart(_targetScreenData);
 			if (_loadingOverlay != null)
 			{
@@ -550,10 +499,15 @@ namespace Scaffolding
 		
 		private void ScreenClose(Type screenType)
 		{
-			_currentScreen.OnHideStart();
-			if(ViewClosed != null)
+			if(!_currentScreen.IsHiding)
 			{
-				ViewClosed(_currentScreen);
+				_currentScreen.IsHiding = true;
+				_targetScreen.IsShowing = false;
+				_currentScreen.OnHideStart();
+				if(ViewClosed != null)
+				{
+					ViewClosed(_currentScreen);
+				}
 			}
 		}
 		
@@ -608,27 +562,27 @@ namespace Scaffolding
 		/// Requests an overlay to open
 		/// </summary>
 		/// <param name="overlayType">Overlay type.</param>
-		public void RequestOverlay(Type overlayType)
+		public AbstractView RequestOverlay(Type overlayType)
 		{
-			RequestOverlay(overlayType, null);
+			return RequestOverlay(overlayType, null);
 		}
 		
 		/// <summary>
 		/// Requests an overlay to open
 		/// </summary>
 		/// <param name="overlayType">Overlay type.</param>
-		public void RequestOverlay<T>() where T :  AbstractView
+		public AbstractView RequestOverlay<T>() where T :  AbstractView
 		{
-			RequestOverlay(typeof(T),null);
+			return RequestOverlay(typeof(T),null);
 		}
 		
 		/// <summary>
 		/// Requests an overlay to open
 		/// </summary>
 		/// <param name="overlayType">Overlay type.</param>
-		public void RequestOverlay<T>(SObject viewData) where T :  AbstractView
+		public AbstractView RequestOverlay<T>(SObject viewData) where T :  AbstractView
 		{
-			RequestOverlay(typeof(T),viewData);
+			return RequestOverlay(typeof(T),viewData);
 		}
 		
 		/// <summary>
@@ -636,7 +590,7 @@ namespace Scaffolding
 		/// </summary>
 		/// <param name="overlayType">Overlay type.</param>
 		/// <param name="data">Data.</param>
-		public void RequestOverlay(Type overlayType, SObject viewData)
+		public AbstractView RequestOverlay(Type overlayType, SObject viewData)
 		{
 			if (!_currentOverlays.ContainsKey(overlayType))
 			{
@@ -687,7 +641,13 @@ namespace Scaffolding
 				}
 				
 				_currentOverlays.Add(overlayType, _targetOverlay);
-				OverlayOpen(_targetOverlay.GetType(), viewData);  
+				OverlayOpen(_targetOverlay.GetType(), viewData); 
+
+				return _targetOverlay;
+			}
+			else
+			{
+				return null;
 			}
 		}
 		
@@ -708,7 +668,10 @@ namespace Scaffolding
 		{
 			if (_currentOverlays.ContainsKey(overlayType))
 			{
-				OverlayHide(overlayType);
+				if(!_currentOverlays[overlayType].IsHiding)
+				{
+					OverlayHide(overlayType);
+				}
 			}
 		}
 		
@@ -764,6 +727,7 @@ namespace Scaffolding
 			AbstractView view = _currentOverlays[screenType];
 			view.gameObject.SetActive(true);
 			view.OnShowStart(data);
+			view.IsShowing = true;
 			
 			if(_loadingOverlay == screenType)
 			{
@@ -779,10 +743,71 @@ namespace Scaffolding
 		private void OverlayHide(Type screenType)
 		{
 			AbstractView view = _currentOverlays[screenType];
-			view.OnHideStart();
-			if(OverlayClosed != null)
+			if(!view.IsHiding)
 			{
-				OverlayClosed(view);
+				view.IsHiding = true;
+				view.IsShowing = false;
+
+				view.OnHideStart();
+				if(OverlayClosed != null)
+				{
+					OverlayClosed(view);
+				}
+			}
+		}
+
+		public void TransitionTo<T,T1>() where T :  AbstractView where T1 : AbstractTransition
+		{
+			TransitionTo<T,T1>(null);
+		}
+
+		public void TransitionTo<T,T1>(SObject data) where T :  AbstractView where T1 : AbstractTransition
+		{
+			//Open the transtion
+			//when transition is open
+			//request view
+			//when view has given the all clear that its loaded
+			//cload the transition
+
+			//probably needs to happen in a coroutine with callbacks.
+			StartCoroutine(TransitionState(typeof(T1),typeof(T),data));
+		}
+
+		IEnumerator TransitionState(Type transitionType, Type viewType, SObject data)
+		{
+			AbstractTransition transition = RequestOverlay(transitionType,data) as AbstractTransition;
+
+			while(transition.TransitionStarting)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
+			yield return new WaitForEndOfFrame();
+
+			_waitingForViewToLoad = true;
+			_viewWaitingForLoad = viewType;
+			RequestView(viewType);
+
+			while(_waitingForViewToLoad)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
+			yield return new WaitForEndOfFrame();
+
+			RequestOverlayClose(transitionType);
+
+			_viewWaitingForLoad = null;
+		}
+
+		private bool _waitingForViewToLoad;
+		private Type _viewWaitingForLoad;
+
+		public void ViewCompletedLoading(Type t)
+		{
+			if(_waitingForViewToLoad && t == _viewWaitingForLoad)
+			{
+				_waitingForViewToLoad = false;
 			}
 		}
 

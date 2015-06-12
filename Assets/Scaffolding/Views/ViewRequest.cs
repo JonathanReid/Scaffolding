@@ -10,33 +10,19 @@ namespace Scaffolding
 
 		internal ViewManagerBase _manager;
         internal Dictionary<Type, SObject> _viewDataforTransitions;
-        internal bool _isHiding;
-        internal bool _isShowing;
         internal bool _isSettingUp;
 
         /// <summary>
         /// Gets a value indicating whether or not this view is in the hide state.
         /// </summary>
         /// <value><c>true</c> if this instance is hiding; otherwise, <c>false</c>.</value>
-        public bool IsHiding
-        {
-            get
-            {
-                return _isHiding;
-            }
-        }
+        internal bool IsHiding;
         
         /// <summary>
         /// Gets a value indicating whether or not this view is in the showing state.
         /// </summary>
         /// <value><c>true</c> if this instance is showing; otherwise, <c>false</c>.</value>
-        public bool IsShowing
-        {
-            get
-            {
-                return _isShowing;
-            }
-        }
+		internal bool IsShowing;
 
         public bool IsSettingUp
         {
@@ -108,46 +94,6 @@ namespace Scaffolding
 			_manager.RequestSceneWithOverlay(viewType,loadType,sceneName);
 		}
     
-		/// <summary>
-		/// Opens the view when scene loads.
-		/// </summary>
-		/// <param name="sceneName">Scene name.</param>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		public virtual void OpenViewWhenSceneLoads<T>(string sceneName) where T : AbstractView
-		{
-			_manager.OpenViewWhenSceneLoads(typeof(T),sceneName);
-		}
-
-		/// <summary>
-		/// Opens the view when scene loads.
-		/// </summary>
-		/// <param name="type">Type.</param>
-		/// <param name="sceneName">Scene name.</param>
-		public virtual void OpenViewWhenSceneLoads(Type type, string sceneName)
-		{
-			_manager.OpenViewWhenSceneLoads(type,sceneName);
-		}
-
-		/// <summary>
-		/// Opens the overlay when scene loads.
-		/// </summary>
-		/// <param name="sceneName">Scene name.</param>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		public virtual void OpenOverlayWhenSceneLoads<T>(string sceneName) where T : AbstractView
-		{
-			_manager.OpenOverlayWhenSceneLoads(typeof(T),sceneName);
-		}
-
-		/// <summary>
-		/// Opens the overlay when scene loads.
-		/// </summary>
-		/// <param name="type">Type.</param>
-		/// <param name="sceneName">Scene name.</param>
-		public virtual void OpenOverlayWhenSceneLoads(Type type, string sceneName)
-		{
-			_manager.OpenOverlayWhenSceneLoads(type,sceneName);
-		}
-
         /// <summary>
         /// Requests an overlay to open.
         /// </summary>
@@ -156,9 +102,9 @@ namespace Scaffolding
         /// RequestOverlay<MyView>();
         /// </summary>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public virtual void RequestOverlay<T>() where T :AbstractView
+		public virtual AbstractView RequestOverlay<T>() where T :AbstractView
         {
- 	       RequestOverlay(typeof(T));
+ 	       return RequestOverlay(typeof(T));
         }
     
         /// <summary>
@@ -168,10 +114,11 @@ namespace Scaffolding
         /// Example:
         /// RequestOverlay(typeof(MyView));
         /// </summary>
-        public virtual void RequestOverlay(Type type)
+		public virtual AbstractView RequestOverlay(Type type)
         {
- 	       _manager.RequestOverlay(type, GetViewDataForTransition(type));
+ 	       	AbstractView v = _manager.RequestOverlay(type, GetViewDataForTransition(type));
             RemoveDataForView(type);
+			return v;
         }
     
         /// <summary>
@@ -179,9 +126,9 @@ namespace Scaffolding
         /// </summary>
         /// <param name="disableInputsOnScreen">If set to <c>true</c> disable inputs on screen.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public virtual void RequestOverlay<T>(bool disableInputsOnScreen)
+		public virtual AbstractView RequestOverlay<T>(bool disableInputsOnScreen)
         {
- 	       RequestOverlay(typeof(T), disableInputsOnScreen);
+ 	       return RequestOverlay(typeof(T), disableInputsOnScreen);
         }
     
         /// <summary>
@@ -189,14 +136,14 @@ namespace Scaffolding
         /// </summary>
         /// <param name="type">Type.</param>
         /// <param name="disableInputsOnScreen">If set to <c>true</c> disable inputs on screen.</param>
-        public virtual void RequestOverlay(Type type, bool disableInputsOnScreen)
+		public virtual AbstractView RequestOverlay(Type type, bool disableInputsOnScreen)
         {
 	        SObject vo = GetViewDataForTransition(type);
 	        if (vo == null)
 	            vo = new SObject();
 	        vo.AddBool("Scaffolding:DisableInputsOnOverlay", disableInputsOnScreen);
 	        SendDataToView(type, vo);
-	        RequestOverlay(type);
+	        return RequestOverlay(type);
         }
     
     
@@ -255,9 +202,9 @@ namespace Scaffolding
         /// Example:
         /// RequestView<MyView>();
         /// </summary>
-        public virtual void RequestView<T>() where T :AbstractView
+		public virtual AbstractView RequestView<T>() where T :AbstractView
         {
- 	       RequestView(typeof(T));
+ 	       return RequestView(typeof(T));
         }
     
         /// <summary>
@@ -267,10 +214,11 @@ namespace Scaffolding
         /// Example:
         /// RequestView(typeof(MyView));
         /// </summary>
-        public virtual void RequestView(Type type)
+		public virtual AbstractView RequestView(Type type)
         {
-			_manager.RequestView(type, GetViewDataForTransition(type));
+			AbstractView v = _manager.RequestView(type, GetViewDataForTransition(type));
 			RemoveDataForView(type);
+			return v;
         }
     
         /// <summary>
@@ -289,31 +237,6 @@ namespace Scaffolding
         public virtual void RequestForceReopenView(Type type)
         {
  	       _manager.RequestForceReopenView(type, GetViewDataForTransition(type));
-        }
-    
-        /// <summary>
-        /// Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen.
-        /// </summary>
-        /// <summary>
-        /// Example:
-        /// RequestViewWithLoadingOverlay<MyHeavyView, MyLoadingScreen>();
-        /// </summary>
-        public virtual void RequestViewWithLoadingOverlay<T, L>() where T :AbstractView where  L :AbstractView
-        {
- 	       RequestViewWithLoadingOverlay(typeof(T), typeof(L));
-        }
-    
-        /// <summary>
-        /// Request a view, with an overlay. Used when the requested view is a heavy load and you want to mask that stall with a loading screen.
-        /// </summary>
-        /// <summary>
-        /// Example:
-        /// RequestViewWithLoadingOverlay(typeof(MyHeavyView),typeof(MyLoadingScreen));
-        /// </summary>
-        public virtual void RequestViewWithLoadingOverlay(Type type, Type loadingType)
-        {
-			_manager.RequestViewWithLoadingOverlay(type, loadingType, GetViewDataForTransition(type));
-			RemoveDataForView(type);
         }
     
         /************************************************
@@ -383,6 +306,11 @@ namespace Scaffolding
                 _viewDataforTransitions.Remove(targetView);
             }
         }
+
+		public void TransitionTo<T,T1>() where T :  AbstractView where T1 : AbstractTransition
+		{
+			_manager.TransitionTo<T,T1>(GetViewDataForTransition(typeof(T1)));
+		}
 
     }
 }

@@ -190,13 +190,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public int GetInt(string key)
         {
-            if (_intDict.ContainsKey(key))
-                return _intDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return 0;
-            }
+			if(_intDict != null)
+			{
+	            if (_intDict.ContainsKey(key))
+	                return _intDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return 0;
+	            }
+			}
+			else
+			{
+				return 0;
+			}
         }
 
         /// <summary>
@@ -206,13 +213,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public string GetString(string key)
         {
-            if (_stringDict.ContainsKey(key))
-                return _stringDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return "";
-            }
+			if(_stringDict != null)
+			{
+	            if (_stringDict.ContainsKey(key))
+	                return _stringDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return "";
+            	}	
+			}
+			else
+			{
+				return "";
+			}
         }
 
         /// <summary>
@@ -222,13 +236,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public float GetFloat(string key)
         {
-            if (_floatDict.ContainsKey(key))
-                return _floatDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return 0f;
-            }
+			if(_floatDict != null)
+			{
+	            if (_floatDict.ContainsKey(key))
+	                return _floatDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return 0f;
+	            }
+			}
+			else
+			{
+				return 0f;
+			}
         }
 
         /// <summary>
@@ -238,13 +259,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public bool GetBool(string key)
         {
-            if (_boolDict.ContainsKey(key))
-                return _boolDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return false;
-            }
+			if(_boolDict != null)
+			{
+	            if (_boolDict.ContainsKey(key))
+	                return _boolDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return false;
+	            }
+			}
+			else
+			{
+				return false;
+			}
         }
 
         /// <summary>
@@ -254,13 +282,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public List<System.Object> GetObjectList(string key)
         {
-            if (_objectListDict.ContainsKey(key))
-                return _objectListDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return new List<System.Object>();
-            }
+			if(_objectListDict != null)
+			{
+	            if (_objectListDict.ContainsKey(key))
+	                return _objectListDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return new List<System.Object>();
+	            }
+			}
+			else
+			{
+				return new List<System.Object>();
+			}
         }
 
         /// <summary>
@@ -270,13 +305,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public System.Object[] GetObjectArray(string key)
         {
-            if (_objectArrayDict.ContainsKey(key))
-                return _objectArrayDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return new System.Object[0];
-            }
+			if(_objectArrayDict != null)
+			{
+	            if (_objectArrayDict.ContainsKey(key))
+	                return _objectArrayDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return new System.Object[0];
+	            }
+			}
+			else
+			{
+				return new System.Object[0];
+			}
         }
 
         /// <summary>
@@ -286,13 +328,20 @@ namespace Scaffolding
         /// <param name="key">Key.</param>
         public System.Object GetObject(string key)
         {
-            if (_objectDict.ContainsKey(key))
-                return _objectDict[key];
-            else
-            {
-                Debug.LogWarning("No value could be found for key: " + key);
-                return new UnityEngine.Object();
-            }
+			if(_objectDict != null)
+			{
+	            if (_objectDict.ContainsKey(key))
+	                return _objectDict[key];
+	            else
+	            {
+	                Debug.LogWarning("No value could be found for key: " + key);
+	                return new UnityEngine.Object();
+	            }
+			}
+			else
+			{
+				return new UnityEngine.Object();
+			}
         }
 
 		/// <summary>
@@ -302,11 +351,18 @@ namespace Scaffolding
 		/// <param name="key">Key.</param>
 		public System.Action GetAction(string key)
 		{
-			if (_actionDict.ContainsKey(key))
-				return _actionDict[key];
+			if(_actionDict != null)
+			{
+				if (_actionDict.ContainsKey(key))
+					return _actionDict[key];
+				else
+				{
+					Debug.LogWarning("No value could be found for key: " + key);
+					return null;
+				}
+			}
 			else
 			{
-				Debug.LogWarning("No value could be found for key: " + key);
 				return null;
 			}
 		}

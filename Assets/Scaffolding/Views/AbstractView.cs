@@ -173,23 +173,17 @@ namespace Scaffolding
         /// </summary>
         public virtual void OnShowStart(SObject data)
         {
-            if (_isShowing)
-                return;
-
 			ToggleEnabledInputs(false);
-
-            _isHiding = false;
-            _isShowing = true;
 
             if (inTransition != null)
             {
                 inTransition.wrapMode = WrapMode.Once;
                 _animator.AddClip(inTransition, inTransition.name);
-				StartCoroutine(PlayAndCallbackRealTime(_animator,inTransition.name,ShowComplete));
+				StartCoroutine(PlayAndCallbackRealTime(_animator,inTransition.name,TransitionShowComplete));
             }
             else
             {
-                ShowComplete();   
+                TransitionShowComplete();   
             }
         }
 
@@ -240,10 +234,15 @@ namespace Scaffolding
 			}
 		}
 
-        private void ShowComplete()
+        private void TransitionShowComplete()
         {
             _manager.ScreenShowComplete(this.GetType());
         }
+
+		public virtual void LoadComplete()
+		{
+			_manager.ViewCompletedLoading(this.GetType());
+		}
 
         /// <summary>
         /// Runs after the "show" step has been completed, usually after any animations.
@@ -261,13 +260,8 @@ namespace Scaffolding
         /// </summary>
         public virtual void OnHideStart()
         {
-            if (_isHiding)
-                return;
 
             ToggleEnabledInputs(false);
-
-            _isHiding = true;
-            _isShowing = false;
 
             if (outTransition != null)
             {

@@ -66,6 +66,15 @@ namespace Scaffolding {
 			_instance.ScaffoldingPath = _scaffoldingPath;
 			_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
 			RemoveUnUsedPaths();
+
+			if(!ScaffoldingResourcesPath.Contains(_scaffoldingPath+"/Transitions/Resources/Transitions"))
+			{
+				ScaffoldingResourcesPath.Add(_scaffoldingPath+"/Transitions/Resources/Transitions");
+			}
+			if(!ScaffoldingResourcesPath.Contains(_scaffoldingPath+"/Transitions/Scripts/"))
+			{
+				ScaffoldingScriptsPath.Add(_scaffoldingPath+"/Transitions/Scripts/");
+			}
 		}
 
 		private void RemoveUnUsedPaths()
@@ -128,18 +137,13 @@ namespace Scaffolding {
 				if(StartingView[i].SceneName == sv.SceneName)
 				{
 					StartingView[i] = sv;
-//					Debug.Log(StartingView[i].StartingViewName);
 					added = true;
 					break;
 				}
 			}
 			if(!added)
 			{
-//				ScaffoldingStartingView	[] sva = new ScaffoldingStartingView[l+1];
-//				StartingView.CopyTo(sva,0);
-//				StartingView = sva;
 				StartingView.Add(sv);
-//				Debug.Log(StartingView[l]);
 				EditorUtility.SetDirty(this);
 			}
 		}
