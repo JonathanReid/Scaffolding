@@ -108,6 +108,7 @@ namespace Scaffolding.Audio.Editor
 			{
 				if(clip != null)
 				{
+					EditorAudio.GetMethodsFromAudioClass();
 					EditorAudio.StopClips();
 					EditorAudio.PlayClip(clip);
 				}
@@ -133,6 +134,8 @@ namespace Scaffolding.Audio.Editor
 			DrawToolbar();
 
 			_config.GlobalVolume = EditorGUILayout.Slider("Global Volume:",_config.GlobalVolume,0,1);
+
+			_config.PlayBackgroundMusicOnLoad = EditorGUILayout.Toggle("Auto play music:", _config.PlayBackgroundMusicOnLoad);
 
 			_scrollArea = GUILayout.BeginScrollView(_scrollArea);
 

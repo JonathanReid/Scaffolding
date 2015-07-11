@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 
 namespace Scaffolding
 {
 	[RequireComponent(typeof(Animation))]
-	public abstract class AbstractSkinnableView : ViewRequest {
+	public abstract class AbstractSkinnableView : ViewRequestable {
 
 		public delegate void AbstractSkinnableViewEvent(AbstractSkinnableView sender);
 		

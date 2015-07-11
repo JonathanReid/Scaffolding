@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Scaffolding
     /// <summary>
     /// Abstract view. The base class for any view you wish to create, whether it is a Screen or Overlay.
     /// </summary>
-    public abstract class AbstractView : ViewRequest
+    public abstract class AbstractView : ViewRequestable
     {
 		public delegate void AbstractViewEvent(AbstractView sender, SObject obj);
 		public event AbstractViewEvent ViewEvent;
@@ -136,11 +136,11 @@ namespace Scaffolding
         /// Runs when the view is created.
         /// Use this instead of Awake or Start.
         /// </summary>
-        public virtual void Setup(ViewManagerBase manager)
-        {
+        public override void Setup (ViewManagerBase manager)
+		{
+			base.Setup(manager);
 
             _isSettingUp = true;
-            _manager = manager;
             _animator = gameObject.GetComponent<Animation>();
             if (_animator == null)
                 _animator = gameObject.AddComponent<Animation>();

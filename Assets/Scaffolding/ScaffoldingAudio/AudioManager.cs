@@ -50,7 +50,10 @@ public class AudioManager : MonoBehaviour {
 			}
 		}
 
-		PlayBackgroundMusic(AudioTrigger.BackgroundMusic);
+		if(_config.PlayBackgroundMusicOnLoad)
+		{
+			PlayBackgroundMusic(AudioTrigger.BackgroundMusic);
+		}
 	}
 
 	private void OnDestroy()

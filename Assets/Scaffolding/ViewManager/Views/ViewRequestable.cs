@@ -5,7 +5,7 @@ using System;
 
 namespace Scaffolding
 {
-    public class ViewRequest : MonoBehaviour, IRequestable
+    public class ViewRequestable : MonoBehaviour, IRequestable
     {
 
 		internal ViewManagerBase _manager;
@@ -31,6 +31,24 @@ namespace Scaffolding
                 return _isSettingUp;
             }
         }
+
+		void Awake()
+		{
+			Setup ();
+		}
+
+		public virtual void Setup()
+		{
+			if(_manager == null)
+			{
+				Setup(FindObjectOfType<ViewManagerBase>());
+			}
+		}
+
+		public virtual void Setup(ViewManagerBase manager)
+		{
+			_manager = manager;
+		}
 
 		public virtual void RegisterViewToModel(AbstractView view, AbstractModel model)
 		{

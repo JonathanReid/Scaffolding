@@ -10,6 +10,7 @@ public class AudioConfig : ScriptableObjectCreator<AudioConfig> {
 
 	public List<AudioGroupVO> SFXGroups;
 	public float GlobalVolume = 1;
+	public bool PlayBackgroundMusicOnLoad;
 	public AudioMixer Mixer;
 }
 
