@@ -18,7 +18,7 @@ public class IntroView : AbstractView {
     public override void OnShowComplete()
     {
         base.OnShowComplete();
-		Invoke("LoadComplete",2);
+		Invoke("LoadComplete",1);
     }
 
 	public override void LoadComplete ()

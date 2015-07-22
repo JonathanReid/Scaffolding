@@ -191,7 +191,7 @@ namespace Scaffolding
                 if (UnityEngine.Input.GetKey(KeyCode.LeftCommand) || UnityEngine.Input.GetKey(KeyCode.LeftControl))
                 {
                     tracker = _trackerLookup.ContainsKey(1) ? _trackerLookup[1] : null;
-
+				
                     if (tracker != null)
                     {
                         tracker.UpdateTracker(_secondaryMouseStartPosition - (UnityEngine.Input.mousePosition - _secondaryMouseStartPosition));

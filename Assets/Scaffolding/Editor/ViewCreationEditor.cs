@@ -9,7 +9,7 @@ using Scaffolding;
 using System.Collections.Generic;
 
 
-#if UNITY_4_6 || UNITY_5_0
+#if UNITY_4_6 || UNITY_5
 using UnityEngine.UI;
 #endif
 
@@ -53,7 +53,7 @@ namespace Scaffolding.Editor
             _window.minSize = new Vector2(500, 300);
         }
 
-		#if UNITY_4_6 || UNITY_5_0
+		#if UNITY_4_6 || UNITY_5
 		private static Canvas CreateCanvas(GameObject c)
 		{
 			Canvas canvas = c.AddComponent<Canvas>();

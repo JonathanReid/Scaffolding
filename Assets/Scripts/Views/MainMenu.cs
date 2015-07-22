@@ -34,15 +34,7 @@ public class MainMenu : AbstractView {
 
 	private void NextPressed()
 	{
-		//Maybe, instead of having all these options, I just have components that do the in and the out, and then stack them together/
-		//that way, I can have views that transition in one way, and out another.
-		//and then those components get driven by the transition, which just looks after what it looks like.
-		//so a fade in component, and a fade out component
-		//or a fade in and a wipe out...
-
-
-
-		TransitionTo<IntroView,PageTurnTransition>();
+		TransitionTo<IntroView,DoorsTransition>();
 	}
 
 	public void OpenMadeByLink()
