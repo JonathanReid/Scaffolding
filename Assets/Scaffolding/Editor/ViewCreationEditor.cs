@@ -391,7 +391,13 @@ namespace Scaffolding.Editor
 			if (!Directory.Exists(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]))
 				Directory.CreateDirectory(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath]);
 
-			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath] + "/" + _fileName + ".prefab");
+			string prefabPath = _scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath];
+			if(!prefabPath.EndsWith("/"))
+			{
+				prefabPath += "/";
+			}
+
+			UnityEngine.Object obj = PrefabUtility.CreateEmptyPrefab(prefabPath + _fileName + ".prefab");
             GameObject go = new GameObject();
             go.name = _fileName;
             _createdViewObject = PrefabUtility.ReplacePrefab(go, obj, ReplacePrefabOptions.ConnectToPrefab);
@@ -399,7 +405,7 @@ namespace Scaffolding.Editor
 
 			if(_createModel)
 			{
-				obj = PrefabUtility.CreateEmptyPrefab(_scaffoldingConfig.ScaffoldingResourcesPath[_selectedResourcePath] + "/" + _modelFileName + ".prefab");
+				obj = PrefabUtility.CreateEmptyPrefab(prefabPath + _modelFileName + ".prefab");
 				go = new GameObject();
 				go.name = _modelFileName;
 

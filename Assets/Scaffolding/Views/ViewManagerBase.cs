@@ -584,7 +584,29 @@ namespace Scaffolding
 		{
 			return RequestOverlay(typeof(T),viewData);
 		}
-		
+
+		public AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText) where T : AbstractModalPopup
+		{
+			SObject data = new SObject();
+			data.AddString(AbstractModalPopup.BUTTON_OK_TEXT, buttonOKText);
+			data.AddAction(AbstractModalPopup.BUTTON_OK_CALLBACK, buttonOKCallback);
+			data.AddString(AbstractModalPopup.BUTTON_DISMISS_TEXT, buttonDismissText);
+			data.AddAction(AbstractModalPopup.BUTTON_DISMISS_CALLBACK, buttonDismissCallback);
+			data.AddString(AbstractModalPopup.BODY_TEXT, bodyText);
+
+			return RequestOverlay(typeof(T),data) as AbstractModalPopup;
+		}
+
+		public AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, string bodyText) where T : AbstractModalPopup
+		{
+			SObject data = new SObject();
+			data.AddString(AbstractModalPopup.BUTTON_OK_TEXT, buttonOKText);
+			data.AddAction(AbstractModalPopup.BUTTON_OK_CALLBACK, buttonOKCallback);
+			data.AddString(AbstractModalPopup.BODY_TEXT, bodyText);
+			
+			return RequestOverlay(typeof(T),data) as AbstractModalPopup;
+		}
+
 		/// <summary>
 		/// Requests the overlay open with data.
 		/// </summary>

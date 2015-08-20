@@ -340,6 +340,10 @@ namespace Scaffolding {
 					finalPath = path;
 				}
 			}
+			if(!finalPath.EndsWith("/"))
+			{
+				finalPath += "/";
+			}
 			return finalPath;
 		}
 

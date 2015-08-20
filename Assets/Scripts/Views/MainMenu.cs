@@ -34,7 +34,19 @@ public class MainMenu : AbstractView {
 
 	private void NextPressed()
 	{
+//		TransitionTo<IntroView,DoorsTransition>();
+		RequestModalPopup<AreYouSurePopup>(OKPressed,"OK!", DismissPressed, "Cancel", "Are you sure you want to continue?");
+	}
+
+	private void OKPressed()
+	{
+		Debug.Log("OK!");
 		TransitionTo<IntroView,DoorsTransition>();
+	}
+
+	private void DismissPressed()
+	{
+		Debug.Log("Cancel :(");
 	}
 
 	public void OpenMadeByLink()

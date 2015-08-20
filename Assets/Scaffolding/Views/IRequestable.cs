@@ -30,5 +30,7 @@ namespace Scaffolding
 		void RequestForceReopenView<T>() where T:AbstractView;
 		void RequestForceReopenView(Type type);
 		void TransitionTo<T,T1>() where T :  AbstractView where T1 : AbstractTransition;
+		AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText) where T : AbstractModalPopup;
+		AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, string bodyText) where T : AbstractModalPopup;
 	}
 }

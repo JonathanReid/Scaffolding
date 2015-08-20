@@ -11,7 +11,7 @@ namespace Scaffolding
     /// Used for passing data between views.
     /// Pack any data you require into this, and OnShowStart can retrieve it.
     /// </summary>
-		public class SObject
+	public class SObject
     {
         private Dictionary<string, int> _intDict;
 		private Dictionary<string, float> _floatDict;

@@ -130,7 +130,7 @@ namespace Scaffolding
         {
  	       return RequestOverlay(typeof(T), disableInputsOnScreen);
         }
-    
+
         /// <summary>
         /// Requests an overlay to open, with the option to disable inputs on the currently open screen
         /// </summary>
@@ -312,5 +312,14 @@ namespace Scaffolding
 			_manager.TransitionTo<T,T1>(GetViewDataForTransition(typeof(T1)));
 		}
 
+		public virtual AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText) where T : AbstractModalPopup
+		{
+			return _manager.RequestModalPopup<T>(buttonOKCallback,buttonOKText,buttonDismissCallback,buttonDismissText,bodyText);
+		}
+		
+		public virtual AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, string bodyText) where T : AbstractModalPopup
+		{
+			return _manager.RequestModalPopup<T>(buttonOKCallback,buttonOKText,bodyText);
+		}
     }
 }
