@@ -202,12 +202,12 @@ public override void OnShowStart(SObject data)
         if(data.HasKey(“PlayerScore”))
         {
 			_playerScore = data.GetInt(“PlayerScore”);
-		 }
+		}
 
-		 if(data.HasKey(“PlayerName”))
-		 {
+		if(data.HasKey(“PlayerName”))
+		{
 			_playerName = data.GetString(“PlayerName”);
-		 }
+		}
     }
 }
 ```
