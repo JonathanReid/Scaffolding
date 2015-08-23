@@ -88,7 +88,7 @@ public class MainMenu : AbstractView {
        base.Setup(manager);
        //you should call these button shortcut methods AFTER setup, as that is where the button references are created.
        //The “NoButton” variety means there is no reference of the button passed in. Great for when there is only a few buttons.
-			           GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
+		           GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
     }
 
     public override void OnShowStart(SObject data)
@@ -113,7 +113,7 @@ public class MainMenu : AbstractView {
 
     private void NextPressed()
     {
-		   Debug.Log(“My button has been pressed!”);
+	   Debug.Log(“My button has been pressed!”);
     }
 }
 ```
@@ -125,37 +125,37 @@ private InputManager _inputManager;
 	private InputTracker _currentTracker;
 	 
 	public override void Setup(ViewManagerBase manager)
-  {
-      base.Setup(manager);
+    {
+        base.Setup(manager);
 
-			_inputManager = FindObjectOfType<InputManager>();
-			_inputManager.EventPressed += HandleEventPressed;
-			_inputManager.EventReleased += HandleEventReleased;
-			_inputManager.EventDragged += HandleEventDragged;
-  }
+		_inputManager = FindObjectOfType<InputManager>();
+		_inputManager.EventPressed += HandleEventPressed;
+		_inputManager.EventReleased += HandleEventReleased;
+		_inputManager.EventDragged += HandleEventDragged;
+    }
 
 	void HandleEventPressed (InputTracker tracker)
 	{
-			if(_currentTracker == null)
-			{
-				_currentTracker = tracker;
-			}
+		if(_currentTracker == null)
+		{
+			_currentTracker = tracker;
+		}
 	}
 
 	void HandleEventDragged (InputTracker tracker)
 	{
-			if(tracker == _currentTracker)
-			{
-				//do some dragging code.
-			}
+		if(tracker == _currentTracker)
+		{
+			//do some dragging code.
+		}
 	}
 
 	void HandleEventReleased (InputTracker tracker)
 	{
-			if(_currentTracker == tracker)
-			{
-				_currentTracker = null;
-			}
+		if(_currentTracker == tracker)
+		{
+			_currentTracker = null;
+		}
 	}
 ```
 
@@ -171,9 +171,9 @@ And then check for inputs on the tracker by doing:
 
 ``` c#
 if(tracker.HitGameObject(_targetObject))
-{
-		//Hit my object!
-}
+			{
+				//Hit my object!
+			}
 ```
 
 The input system underlying scaffolding is really solid, and is tied closely to the view system, allowing for view level mass management of inputs. If you want to use your own raycasts, you can, but be careful to enable and disable them when transitioning between views.
@@ -201,13 +201,13 @@ public override void OnShowStart(SObject data)
     {
         if(data.HasKey(“PlayerScore”))
         {
-					_playerScore = data.GetInt(“PlayerScore”);
-			  }
+		_playerScore = data.GetInt(“PlayerScore”);
+	  }
 
-			  if(data.HasKey(“PlayerName”))
-			  {
-					_playerName = data.GetString(“PlayerName”);
-			  }
+	  if(data.HasKey(“PlayerName”))
+	  {
+		_playerName = data.GetString(“PlayerName”);
+	  }
     }
 }
 ```
@@ -259,7 +259,7 @@ E.g:
 ``` c#
 public override void OnShowComplete()
 {
-  base.OnShowComplete();
+		base.OnShowComplete();
 	LoadComplete();
 }
 ```
