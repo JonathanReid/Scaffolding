@@ -88,7 +88,7 @@ public class MainMenu : AbstractView {
        base.Setup(manager);
        //you should call these button shortcut methods AFTER setup, as that is where the button references are created.
        //The “NoButton” variety means there is no reference of the button passed in. Great for when there is only a few buttons.
-		           GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
+			           GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
     }
 
     public override void OnShowStart(SObject data)
@@ -113,11 +113,70 @@ public class MainMenu : AbstractView {
 
     private void NextPressed()
     {
-	   Debug.Log(“My button has been pressed!”);
+		   Debug.Log(“My button has been pressed!”);
     }
 }
 ```
 
+If you need to create your own input, but are unable to extend from AbstractInput for whatever reason, you can do so by registering for input events from the input manager like so;
+
+``` c#
+private InputManager _inputManager;
+	private InputTracker _currentTracker;
+	 
+	public override void Setup(ViewManagerBase manager)
+  {
+      base.Setup(manager);
+
+			_inputManager = FindObjectOfType<InputManager>();
+			_inputManager.EventPressed += HandleEventPressed;
+			_inputManager.EventReleased += HandleEventReleased;
+			_inputManager.EventDragged += HandleEventDragged;
+  }
+
+	void HandleEventPressed (InputTracker tracker)
+	{
+			if(_currentTracker == null)
+			{
+				_currentTracker = tracker;
+			}
+	}
+
+	void HandleEventDragged (InputTracker tracker)
+	{
+			if(tracker == _currentTracker)
+			{
+				//do some dragging code.
+			}
+	}
+
+	void HandleEventReleased (InputTracker tracker)
+	{
+			if(_currentTracker == tracker)
+			{
+				_currentTracker = null;
+			}
+	}
+```
+
+The example code above registers for the basic press, drag and release events. It also shows you how the input trackers work. There is a single tracker for each finger or input on the screen. This allows you to explicitly check a cached input tracker against the one passed in from the event. 
+
+Doing this, you can limit the multitouch code to a single touch, or you can handle all the touches if you would like. 
+
+The tracker item contains a lot of information about the active input, e.g. position, velocity and what item its currently raycast against. This will just use the main camera by default, but if you wanted to raycast against a specific camera, you can pass that in by doing the following:
+
+`_inputManager.AddCameraToInputCameras(_myCamera);`
+
+And then check for inputs on the tracker by doing:
+
+``` c#
+if(tracker.HitGameObject(_targetObject))
+{
+		//Hit my object!
+}
+```
+
+The input system underlying scaffolding is really solid, and is tied closely to the view system, allowing for view level mass management of inputs. If you want to use your own raycasts, you can, but be careful to enable and disable them when transitioning between views.
 ## Pass data to views
 When requesting a view or overlay, you can pass data in in the form of an SObject. This is just a holder class for various data types.
 
@@ -142,13 +201,13 @@ public override void OnShowStart(SObject data)
     {
         if(data.HasKey(“PlayerScore”))
         {
-		_playerScore = data.GetInt(“PlayerScore”);
-	  }
+					_playerScore = data.GetInt(“PlayerScore”);
+			  }
 
-	  if(data.HasKey(“PlayerName”))
-	  {
-		_playerName = data.GetString(“PlayerName”);
-	  }
+			  if(data.HasKey(“PlayerName”))
+			  {
+					_playerName = data.GetString(“PlayerName”);
+			  }
     }
 }
 ```
@@ -200,7 +259,7 @@ E.g:
 ``` c#
 public override void OnShowComplete()
 {
-      base.OnShowComplete();
+  base.OnShowComplete();
 	LoadComplete();
 }
 ```
