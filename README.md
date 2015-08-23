@@ -3,6 +3,13 @@
 ## What is Scaffolding
 Scaffolding is a MV framework for Unity that Preloaded has used for a number of projects. It is created and maintained by Jon Reid, with any feedback from the team being merged in so it is an ongoing and growing framework.
 
+## Future plans
+[] Transitions
+[] Audio framework
+[] Refactor ViewManagerBase to Facade pattern
+[] Basic graphics for generated views
+[] Graph based code generation to quickly link up and edit flows
+
 ## Structure
 Scaffolding is made up of a few components, the view library which is the central editing tool for Scaffolding, the views themselves, and inputs.
 
