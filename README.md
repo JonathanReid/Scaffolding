@@ -73,7 +73,46 @@ Registering button callbacks with AddButtonPressedHandler(MyHandleButtonPressedF
 as well as internal state management.
 
 Example class:
+``` c#
+using UnityEngine;
+using Scaffolding;
 
+public class MainMenu : AbstractView {
+	 
+    public override void Setup(ViewManagerBase manager)
+    {
+       base.Setup(manager);
+       //you should call these button shortcut methods AFTER setup, as that is where the button references are created.
+       //The “NoButton” variety means there is no reference of the button passed in. Great for when there is only a few buttons.
+		           GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
+    }
+
+    public override void OnShowStart(SObject data)
+    {
+        base.OnShowStart(data);
+    }
+
+    public override void OnShowComplete()
+    {
+        base.OnShowComplete();
+    }
+
+    public override void OnHideStart()
+    {
+        base.OnHideStart();
+    }
+
+    public override void OnHideComplete()
+    {
+        base.OnHideComplete();
+    }
+
+    private void NextPressed()
+    {
+	   Debug.Log(“My button has been pressed!”);
+    }
+}
+```
 
 ## Pass data to views
 When requesting a view or overlay, you can pass data in in the form of an SObject. This is just a holder class for various data types.
@@ -164,10 +203,6 @@ public override void OnShowComplete()
 Transitions are essentially an overlay which extends AbstractTransition instead of AbstractView. 
 
 Transitions are made up of an InTransition and an OutTransition, with the idea being that you can mix and match transitions, setting them up in the editor.
-
-
-
-
 
 Taking a look at the DoorsTransition, you can see there is an InTransition and an OutTransition, these are just looking after the animation direction, and can be any class that extends TransitionComponentBase. So if you wanted to make a custom transition, you would make a new transition view, which extends AbstractTransition, as well as a new transition component which extends TransitionComponentBase.
 
