@@ -88,7 +88,7 @@ public class MainMenu : AbstractView {
        base.Setup(manager);
        //you should call these button shortcut methods AFTER setup, as that is where the button references are created.
        //The “NoButton” variety means there is no reference of the button passed in. Great for when there is only a few buttons.
-GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
+		GetButtonForName(“Next”).AddButtonPressedHandlerNoButton(NextPressed);
     }
 
     public override void OnShowStart(SObject data)
@@ -202,12 +202,12 @@ public override void OnShowStart(SObject data)
         if(data.HasKey(“PlayerScore”))
         {
 			_playerScore = data.GetInt(“PlayerScore”);
-		  }
+		 }
 
-		  if(data.HasKey(“PlayerName”))
-		  {
+		 if(data.HasKey(“PlayerName”))
+		 {
 			_playerName = data.GetString(“PlayerName”);
-		  }
+		 }
     }
 }
 ```
