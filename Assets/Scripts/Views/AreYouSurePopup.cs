@@ -10,7 +10,7 @@ public class AreYouSurePopup : AbstractModalPopup {
 
 	public override void Setup (ViewManagerBase manager)
 	{
-		_bodyText = transform.FindChild("Canvas/Panel/PanelLayer/Text").GetComponent<Text>();
+		_bodyText = transform.FindChild("Canvas/Panel/BG/BodyText").GetComponent<Text>();
 		base.Setup (manager);
 	}
 
