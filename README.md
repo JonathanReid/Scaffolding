@@ -80,12 +80,35 @@ When requesting a view or overlay, you can pass data in in the form of an SObjec
 
 Data is sent in in the following way:
 
-
+``` c#
+SObject data = new SObject();
+data.AddInt(“PlayerScore”, _score);	
+data.AddString(“PlayerName”, _playerName);
+SendDataToView<GameOverView>(data);
+```
 
 
 
 Retrieving data is in a view is done during the OnShowStart() function:
+``` c#
+public override void OnShowStart(SObject data)
+{
+    base.OnShowStart(data);
 
+    if(data != null)
+    {
+        if(data.HasKey(“PlayerScore”))
+        {
+		_playerScore = data.GetInt(“PlayerScore”);
+	  }
+
+	  if(data.HasKey(“PlayerName”))
+	  {
+		_playerName = data.GetString(“PlayerName”);
+	  }
+    }
+}
+```
 
 Data is checked for null only because data is not needed to open a view. Its possible for you to request a view with and without data if the flow originates from a different point.
 
@@ -111,7 +134,9 @@ If you are making your own popup, with your own hierarchy, please make sure that
 You are not restricted to two buttons, the popup will also work with a single “ButtonOK” popup, and the code for requesting the view also has tis variant built in.
 
 To request a popup, use the following example:
-
+``` c#
+RequestModalPopup<AreYouSurePopup>(OKPressedHandler,”OK”, DismissPressedHandler, “Cancel”, “Are you sure?”);
+```
 
 
 ## Transitions
@@ -121,10 +146,20 @@ The project includes a few basic transitions, including DoorTransition, which is
 
 To request a view with a transition, call the following code:
 
-
+``` c#
+TransitionTo<IntroView,DoorsTransition>();
+```
 
 And once you know that IntroView has finished loading, you can then call LoadComplete(); 
 E.g:
+
+``` c#
+public override void OnShowComplete()
+{
+      base.OnShowComplete();
+	LoadComplete();
+}
+```
 
 Transitions are essentially an overlay which extends AbstractTransition instead of AbstractView. 
 
