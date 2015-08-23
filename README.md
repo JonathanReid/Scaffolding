@@ -259,7 +259,7 @@ E.g:
 ``` c#
 public override void OnShowComplete()
 {
-		base.OnShowComplete();
+	base.OnShowComplete();
 	LoadComplete();
 }
 ```
