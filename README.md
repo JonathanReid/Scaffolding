@@ -33,18 +33,18 @@ Its a single menu that is easy to just dock as a standard part of the UI as its 
 
 ## How to open the view library
 It’s simple to open the View Library, just do the following:
-![open view library](http://jonsgames.com/images/scaffolding/readme/open_view_library.png)
+![open view library](http://jonsgames.com/public/images/scaffolding/readme/open_view_library.png)
 This will open the following panel:
-![open view library](http://jonsgames.com/images/scaffolding/readme/view_library2.png)
+![open view library](http://jonsgames.com/public/images/scaffolding/readme/view_library2.png)
 Just dock this panel into part of the unity UI.
 
 ## Make a new view
 
 In the View Library, click on the “Create New” button.
-![Make a new view](http://jonsgames.com/images/scaffolding/readme/view_library1.png)
+![Make a new view](http://jonsgames.com/public/images/scaffolding/readme/view_library1.png)
 
 This will open up the “Create New View” panel. 
-![Make a new view](http://jonsgames.com/images/scaffolding/readme/create_new_view2.png)
+![Make a new view](http://jonsgames.com/public/images/scaffolding/readme/create_new_view2.png)
 
 Here you will be presented with all the settings you will need to create a new view. 
 
@@ -72,8 +72,8 @@ Overlays can close themselves if needed, as well as other views or overlays. To 
 Scaffolding manages all its internal inputs that have been created with the AbstractInput class. This class is the base for all ScaffoldingButtons, ScaffoldingUGUIButtons and others. If you want to create your own button or input item, it is HIGHLY recommended that you use the AbstractInput class as a base as this provides you with all the needed functions to get multitouch input from Scaffoldings InputManager as well as making sure your input is enabled and disabled during and after transitions as well as disabling inputs underneath overlays to stop clickthroughs.
 
 If you are using Unity 4.6+, it’s advised to use the ScaffoldingUGUIButton as this has a number of shortcut methods, including:
-Getting the button quickly by calling GetButtonForName(“NameOfButton);
-Registering button callbacks with AddButtonPressedHandler(MyHandleButtonPressedFunction);
+Getting the button quickly by calling `GetButtonForName(“NameOfButton);`
+Registering button callbacks with `AddButtonPressedHandler(MyHandleButtonPressedFunction);`
 as well as internal state management.
 
 Example class:
@@ -164,12 +164,12 @@ The modal popup exists in two pieces, the view prefab itself, and the code.
 The code for the view is straightforward, as its largely about setting text on the various components. 
 
 First you’ll need to create the popup view. To do this, create a view as you have done previously, but set the base class to AbstractModalPopup.
-![Popups](http://jonsgames.com/images/scaffolding/readme/create_new_popup.png)
+![Popups](http://jonsgames.com/public/images/scaffolding/readme/create_new_popup.png)
 
 This will create the various view components as needed, and set the underlying modal code for the popup.
 
 The example AreYouSurePopup in the scaffolding project has the following structure:
-![Popups](http://jonsgames.com/images/scaffolding/readme/popup_heirarchy.png)
+![Popups](http://jonsgames.com/public/images/scaffolding/readme/popup_heirarchy.png)
 
 The only important part of the structure here is to name the OK and dismiss buttons as they are shown above. This is because the modalPopup code is looking for these buttons by name to make sure the callbacks are correct.
 
@@ -211,6 +211,6 @@ Transitions are made up of an InTransition and an OutTransition, with the idea b
 
 Taking a look at the DoorsTransition, you can see there is an InTransition and an OutTransition, these are just looking after the animation direction, and can be any class that extends TransitionComponentBase. So if you wanted to make a custom transition, you would make a new transition view, which extends AbstractTransition, as well as a new transition component which extends TransitionComponentBase.
 
-![Transitions](http://jonsgames.com/images/scaffolding/readme/doors_component.png)
+![Transitions](http://jonsgames.com/public/images/scaffolding/readme/doors_component.png)
 
 As Transitions are still an ongoing feature, either take a look at how the example transitions are constructed, or ask me directly for further information.
