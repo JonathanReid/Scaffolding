@@ -13,15 +13,15 @@ There should be sub components in a view which are responsible for smaller behav
 Game or app data should be loaded into a proxy or a model, never in a view itself. Proxies are preferred, e.g a GameDataProxy, that the model can then request specific data from, which is passed into the view. Views should be as detached as possible, which enables Unit testing and integration testing to be performed as well as other testing, such as the potential to run the app headlessly for speed testing, or skinning.
 
 ## Structure of a view
-Setup(); - Called as soon as the view is created.
+`Setup();` - Called as soon as the view is created.
 
-OnShowStart(SObject data); - Called directly after Setup.
+`OnShowStart(SObject data);` - Called directly after Setup.
 
-OnShowComplete(); - Called by OnShowStart, either after the InAnimation has completed, or immediately. Can be called manually by not calling base in OnShowStart. E.G for coded in animations.
+`OnShowComplete();` - Called by OnShowStart, either after the InAnimation has completed, or immediately. Can be called manually by not calling base in OnShowStart. E.G for coded in animations.
 
-OnHideStart(); - Called when Scaffolding processes the request to change view.
+`OnHideStart();` - Called when Scaffolding processes the request to change view.
 
-OnHideComplete(); - Called by OnHideStart, either after the OutAnimation has completed, or immediately. Can be called manually by not calling base in OnHideStart. E.G for coded out animations.
+`OnHideComplete();` - Called by OnHideStart, either after the OutAnimation has completed, or immediately. Can be called manually by not calling base in OnHideStart. E.G for coded out animations.
 
 
 ## What is the view library
@@ -33,15 +33,19 @@ Its a single menu that is easy to just dock as a standard part of the UI as its 
 
 ## How to open the view library
 It’s simple to open the View Library, just do the following:
-
+![open view library](http://jonsgames.com/images/scaffolding/readme/open_view_library.png)
 This will open the following panel:
+![open view library](http://jonsgames.com/images/scaffolding/readme/view_library2.png)
 Just dock this panel into part of the unity UI.
 
 ## Make a new view
 
 In the View Library, click on the “Create New” button.
+![Make a new view](http://jonsgames.com/images/scaffolding/readme/view_library1.png)
 
 This will open up the “Create New View” panel. 
+![Make a new view](http://jonsgames.com/images/scaffolding/readme/create_new_view2.png)
+
 Here you will be presented with all the settings you will need to create a new view. 
 
 The name. This should be something descriptive such as MainMenuView, TutorialView, PauseView etc.
@@ -52,18 +56,18 @@ Directories. You can choose where to save the script and the prefab parts of the
 
 ## Request a view
 As there can only be one view open at a time, you need to request a view to move to the next view in the flow. This is done through the very simple call:
-RequestView<MyViewName>();
+`RequestView<MyViewName>();`
 
 ## Request an overlay
 Requesting an overlay is very much like requesting a view, however, there can be as many overlays open at a time as you like.
 To do so, call:
-RequestOverlay<MyOverlayName>();
+`RequestOverlay<MyOverlayName>();`
 
 However, there is an extra parameter that can be passed through to the overlay, whether or not you want to disable all inputs on overlays underneath. 
 
 ## Close overlay
 Overlays can close themselves if needed, as well as other views or overlays. To do so, call:
-RequestOverlayClose<MyOverlayName>();
+`RequestOverlayClose<MyOverlayName>();`
 ## Inputs
 Scaffolding manages all its internal inputs that have been created with the AbstractInput class. This class is the base for all ScaffoldingButtons, ScaffoldingUGUIButtons and others. If you want to create your own button or input item, it is HIGHLY recommended that you use the AbstractInput class as a base as this provides you with all the needed functions to get multitouch input from Scaffoldings InputManager as well as making sure your input is enabled and disabled during and after transitions as well as disabling inputs underneath overlays to stop clickthroughs.
 
@@ -160,11 +164,12 @@ The modal popup exists in two pieces, the view prefab itself, and the code.
 The code for the view is straightforward, as its largely about setting text on the various components. 
 
 First you’ll need to create the popup view. To do this, create a view as you have done previously, but set the base class to AbstractModalPopup.
-
+![Popups](http://jonsgames.com/images/scaffolding/readme/create_new_popup.png)
 
 This will create the various view components as needed, and set the underlying modal code for the popup.
 
 The example AreYouSurePopup in the scaffolding project has the following structure:
+![Popups](http://jonsgames.com/images/scaffolding/readme/popup_heirarchy.png)
 
 The only important part of the structure here is to name the OK and dismiss buttons as they are shown above. This is because the modalPopup code is looking for these buttons by name to make sure the callbacks are correct.
 
@@ -205,5 +210,7 @@ Transitions are essentially an overlay which extends AbstractTransition instead 
 Transitions are made up of an InTransition and an OutTransition, with the idea being that you can mix and match transitions, setting them up in the editor.
 
 Taking a look at the DoorsTransition, you can see there is an InTransition and an OutTransition, these are just looking after the animation direction, and can be any class that extends TransitionComponentBase. So if you wanted to make a custom transition, you would make a new transition view, which extends AbstractTransition, as well as a new transition component which extends TransitionComponentBase.
+
+![Transitions](http://jonsgames.com/images/scaffolding/readme/doors_component.png)
 
 As Transitions are still an ongoing feature, either take a look at how the example transitions are constructed, or ask me directly for further information.
