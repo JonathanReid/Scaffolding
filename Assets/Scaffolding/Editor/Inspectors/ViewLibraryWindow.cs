@@ -544,8 +544,11 @@ namespace Scaffolding.Editor
 		private void SaveAndClose(GameObject g)
 		{
 			RecursivelyFindAndReplacePrefabs(g.transform);
-
-			PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
+			
+			string path = AssetDatabase.GetAssetPath (PrefabUtility.GetPrefabParent(g));
+			PrefabUtility.CreatePrefab(path,g,ReplacePrefabOptions.ReplaceNameBased);
+			
+			//			PrefabUtility.ReplacePrefab(obj, g, ReplacePrefabOptions.ReplaceNameBased);
 			UnityEditor.Editor.DestroyImmediate(g);
 		}
 		
