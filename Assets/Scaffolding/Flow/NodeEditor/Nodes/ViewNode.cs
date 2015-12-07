@@ -6,7 +6,7 @@ using NodeEditorFramework.Utilities;
 using Scaffolding;
 
 [System.Serializable]
-[Node (false, "Views/ViewNode", false)]
+[Node (true, "Views/ViewNode", false)]
 public class ViewNode : Node 
 {
 	public List<Scaffolding.ViewType> viewType;
