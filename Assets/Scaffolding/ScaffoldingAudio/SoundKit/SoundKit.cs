@@ -256,7 +256,7 @@ public class SoundKit : MonoBehaviour
 		private SoundKit _manager;
 
 		public AudioSource audioSource;
-		internal Action _completionHandler;
+		internal Action<SKSound> _completionHandler;
 		internal bool _playingLoopingAudio;
 		internal float _elapsedTime;
 
@@ -327,7 +327,7 @@ public class SoundKit : MonoBehaviour
 		/// </summary>
 		/// <returns>The SKSound.</returns>
 		/// <param name="handler">Handler.</param>
-		public SKSound setCompletionHandler( Action handler )
+		public SKSound setCompletionHandler( Action<SKSound> handler )
 		{
 			_completionHandler = handler;
 
@@ -344,7 +344,7 @@ public class SoundKit : MonoBehaviour
 
 			if( _completionHandler != null )
 			{
-				_completionHandler();
+				_completionHandler(this);
 				_completionHandler = null;
 			}
 

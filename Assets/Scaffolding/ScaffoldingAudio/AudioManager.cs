@@ -72,10 +72,37 @@ public class AudioManager : MonoBehaviour {
 		return audio;
 	}
 
-	public SoundKit.SKSound PlaySound(AudioTrigger trigger)
+	private void SoundCompletedPlaying(SoundKit.SKSound sound)
+	{
+		foreach(KeyValuePair<AudioVO, AudioClip> kvp in _loadedAudio)
+		{
+			if(kvp.Value.name == sound.audioSource.clip.name)
+			{
+				_loadedAudio.Remove(kvp.Key);
+				Resources.UnloadAsset(kvp.Value);
+				break;
+			}
+		}
+		sound.audioSource.clip = null;
+	}
+
+	/// <summary>
+	/// Plays the sound.
+	/// </summary>
+	/// <returns>The sound.</returns>
+	/// <param name="trigger">Trigger.</param>
+	/// <param name="clearMemoryAfterSoundPlays">If set to <c>true</c> remove sound clip from memory, dont do this if using short clips that are used often!.</param>
+	public SoundKit.SKSound PlaySound(AudioTrigger trigger, bool clearMemoryAfterSoundPlays = false)
 	{
 		AudioVO vo = GetSoundForTrigger(trigger);
-		return _soundKit.playSound(_loadedAudio[vo],vo.ClipVolume + Random.Range(-vo.Variation,vo.Variation));
+		SoundKit.SKSound s = _soundKit.playSound(_loadedAudio[vo],vo.ClipVolume + Random.Range(-vo.Variation,vo.Variation));
+
+		if(clearMemoryAfterSoundPlays)
+		{
+			s.setCompletionHandler(SoundCompletedPlaying);
+		}
+
+		return s;
 	}
 
 	public SoundKit.SKSound PlaySoundLooped(AudioTrigger trigger)
