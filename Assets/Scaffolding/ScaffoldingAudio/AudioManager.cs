@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(SoundKit))]
 public class AudioManager : MonoBehaviour {
 
-	public AudioMixer mixer;
-	public int InitialCapacity = 15;
-	public float GlobalVolume = 1;
-	private Stack<SoundObject> _availableSounds;
-	private List<SoundObject> _playingSounds;
 	private AudioConfig _config;
 	private Dictionary<AudioVO, AudioClip> _loadedAudio;
+	private SoundKit _soundKit;
 
 	private static AudioManager _instance;
 	public static AudioManager Instance
@@ -36,11 +33,8 @@ public class AudioManager : MonoBehaviour {
 	{
 		_config = AudioConfig.Get ("SCAudioConfig.asset","ScaffoldingAudio/Resources");
 
-		_availableSounds = new Stack<SoundObject>();
-		_playingSounds = new List<SoundObject>();
 		_loadedAudio = new Dictionary<AudioVO, AudioClip>(0);
-
-		CreatePooledObjects();
+		_soundKit = SoundKit.instance;
 
 		foreach(AudioGroupVO vo in _config.SFXGroups)
 		{
@@ -56,47 +50,6 @@ public class AudioManager : MonoBehaviour {
 	private void OnDestroy()
 	{
 		_loadedAudio = new Dictionary<AudioVO, AudioClip>();
-		for(int i = 0; i < _availableSounds.Count; ++i)
-		{
-			SoundObject obj = _availableSounds.Pop();
-			obj = null;
-		}
-
-		for(int i = 0; i < _playingSounds.Count; ++i)
-		{
-			_playingSounds[i] = null;
-		}
-	}
-
-	private SoundObject GetAvailableSoundObject()
-	{
-		SoundObject sound = null;
-		if(_availableSounds.Count > 0)
-		{
-			sound = _availableSounds.Pop();
-		}
-
-		if(sound == null)
-		{
-			sound = new SoundObject();
-			sound.Setup(this);
-		}
-
-		_playingSounds.Add(sound);
-
-		return sound;
-	}
-
-	private SoundObject GetPlayingSoundObject(AudioTrigger trigger)
-	{
-		foreach(SoundObject obj in _playingSounds)
-		{
-			if(obj.CurrentTrigger == trigger)
-			{
-				return obj;
-			}
-		}
-		return null;
 	}
 
 	private AudioVO GetSoundForTrigger(AudioTrigger trigger)
@@ -119,153 +72,71 @@ public class AudioManager : MonoBehaviour {
 		return audio;
 	}
 
-	private void CreatePooledObjects()
-	{
-		for(int i = 0; i < InitialCapacity; i++)
-		{
-			SoundObject obj = new SoundObject();
-			obj.Setup(this);
-			_availableSounds.Push(obj);
-		}
-	}
-
-	public void AudioCompletedPlaying(SoundObject obj)
-	{
-		_playingSounds.Remove(obj);
-		_availableSounds.Push(obj);
-	}
-
-	public void Play(AudioTrigger trigger)
+	public SoundKit.SKSound PlaySound(AudioTrigger trigger)
 	{
 		AudioVO vo = GetSoundForTrigger(trigger);
-		SoundObject sound = GetAvailableSoundObject();
-		sound.Play(vo,_loadedAudio[vo]);
+		return _soundKit.playSound(_loadedAudio[vo],vo.ClipVolume + Random.Range(-vo.Variation,vo.Variation));
 	}
 
-	public void PlayLooped(AudioTrigger trigger)
+	public SoundKit.SKSound PlaySoundLooped(AudioTrigger trigger)
 	{
 		AudioVO vo = GetSoundForTrigger(trigger);
-		SoundObject sound = GetAvailableSoundObject();
-		vo.Loop = true;
-		sound.Play(vo,_loadedAudio[vo]);
-	}
-	
-	public void PlayClipFadeIn(AudioTrigger trigger, float duration)
-	{
-		FadeInClip(trigger,duration,false);
-	}
-
-	public void StopClipFadeOut(AudioTrigger trigger, float duration)
-	{
-		FadeOutClip(trigger, duration);
+		return _soundKit.playSoundLooped(_loadedAudio[vo]);
 	}
 
 	public void PlayBackgroundMusic(AudioTrigger trigger)
 	{
 		AudioVO vo = GetSoundForTrigger(trigger);
-		if(!vo.Playing)
-		{
-			PlayLooped(trigger);
-		}
+		_soundKit.playBackgroundMusic(_loadedAudio[vo],vo.ClipVolume);
+	}
+
+	public SoundKit.SKSound GetBackgroundMusic()
+	{
+		return _soundKit.backgroundSound;
+	}
+
+	public void PlayOneShot(AudioTrigger trigger)
+	{
+		AudioVO vo = GetSoundForTrigger(trigger);
+		_soundKit.playOneShot(_loadedAudio[vo],vo.ClipVolume);
+	}
+
+	public SoundKit.SKSound PlayPannedSound(AudioTrigger trigger)
+	{
+		AudioVO vo = GetSoundForTrigger(trigger);
+		return _soundKit.playPannedSound(_loadedAudio[vo],vo.Pan);
+	}
+
+	public SoundKit.SKSound PlayPitchedSound(AudioTrigger trigger)
+	{
+		AudioVO vo = GetSoundForTrigger(trigger);
+		return _soundKit.playPitchedSound(_loadedAudio[vo],vo.Pitch);
+	}
+
+	public void FadeOutBackgroundMusic(float duration)
+	{
+		_soundKit.backgroundSound.fadeOutAndStop(duration);
 	}
 
 	public void FadeInBackgroundMusic(AudioTrigger trigger, float duration)
 	{
-		FadeInClip(trigger,duration,true);
-	}
-
-	public void FadeOutBackgroundMusic(AudioTrigger trigger, float duration)
-	{
-		FadeOutClip(trigger, duration);
-	}
-
-	private void FadeInClip(AudioTrigger trigger, float duration, bool loop)
-	{
 		AudioVO vo = GetSoundForTrigger(trigger);
-		if(!vo.Playing)
-		{
-			SoundObject sound = GetAvailableSoundObject();
-			vo.Loop = loop;
-			StartCoroutine(sound.FadeIn(vo,_loadedAudio[vo],duration));
-		}
+		_soundKit.playBackgroundMusic(_loadedAudio[vo],0);
+		_soundKit.backgroundSound.fadeInMusic(duration, vo.ClipVolume);
 	}
 
-	private void FadeOutClip(AudioTrigger trigger, float duration)
+	public void ToggleMute(bool toggle)
 	{
-		SoundObject sound = GetPlayingSoundObject(trigger);
-		if(sound != null)
-		{
-			StartCoroutine(sound.FadeOut(duration));
-		}
-	}
-
-	public void CrossFadeBackgroundMusic()
-	{
-
-	}
-
-	public void LoopClip()
-	{
-
-	}
-
-	public void ChangeClipVolume()
-	{
-
-	}
-
-	public void ChangeGlobalVolume()
-	{
-
-	}
-
-	private float _previousGlobalVolume;
-	private bool _muted;
-	public void ToggleMute(bool mute)
-	{
-		if(mute)
-		{
-			_previousGlobalVolume = _config.GlobalVolume;
-			_config.GlobalVolume = 0;
-		}
-		else
-		{
-			_config.GlobalVolume = _previousGlobalVolume;
-		}
-		_muted = mute;
+		AudioListener.pause = !AudioListener.pause;
 	}
 
 	public bool IsAudioMuted()
 	{
-		return _muted;
+		return AudioListener.pause;
 	}
 
-	public void FadeGlobalVolume()
-	{
-
-	}
-
-	public void Stop(AudioTrigger trigger)
-	{
-		SoundObject sound = GetPlayingSoundObject(trigger);
-		if(sound != null)
-		{
-			sound.Stop();
-		}
-	}
-	
 	private void Update()
 	{
-		for(int i = 0; i < _playingSounds.Count; ++i)
-		{
-			if(_playingSounds[i].AudioCompleted())
-			{
-				_playingSounds[i].Stop();
-			}
-			else
-			{
-				_playingSounds[i].AdjustVolume(_config.GlobalVolume);
-			}
-		}
+		AudioListener.volume = _config.GlobalVolume;
 	}
 }

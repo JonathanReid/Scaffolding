@@ -35,4 +35,6 @@ public class AudioVO
 	public bool Loop;
 	public bool Playing = false;
 	public float DefinedVariation;
+	public float Pan;
+	public float Pitch;
 }

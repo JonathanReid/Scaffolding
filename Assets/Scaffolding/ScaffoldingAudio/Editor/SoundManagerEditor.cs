@@ -60,7 +60,6 @@ namespace Scaffolding.Audio.Editor
 				ReorderableList Rlist = new ReorderableList(group.Clips,typeof(AudioVO), true, true, true, true);
 				Rlist.drawHeaderCallback = (rect) =>
 				{
-
 					GUI.Label(rect,"SFX Group");//_config.SFXGroups[i].GroupName);
 				};
 
@@ -83,7 +82,7 @@ namespace Scaffolding.Audio.Editor
 			EditorGUI.LabelField(new Rect(rect.x, rect.y, 30, EditorGUIUtility.singleLineHeight),"Clip:");
 			rect.x += 30;
 			
-			float width = rect.width - 270;
+			float width = rect.width - 320;
 			
 			AudioClip clip = Resources.Load<AudioClip>(element.Clip);
 			
@@ -97,11 +96,17 @@ namespace Scaffolding.Audio.Editor
 			EditorGUI.LabelField(new Rect(rect.x, rect.y, 50, EditorGUIUtility.singleLineHeight),"Volume:");
 			rect.x += 50;
 			element.ClipVolume = EditorGUI.FloatField(new Rect(rect.x, rect.y, 30, EditorGUIUtility.singleLineHeight), element.ClipVolume);
-			rect.x += 40;
+			rect.x += 31;
 			EditorGUI.LabelField(new Rect(rect.x, rect.y, 60, EditorGUIUtility.singleLineHeight),"Variation:");
 			rect.x += 60;
 			element.Variation = EditorGUI.FloatField(new Rect(rect.x, rect.y, 30, EditorGUIUtility.singleLineHeight), element.Variation);
-			rect.x += 40;
+			rect.x += 31;
+
+			EditorGUI.LabelField(new Rect(rect.x, rect.y, 30, EditorGUIUtility.singleLineHeight),"Pitch:");
+			rect.x += 30;
+			element.Pitch = EditorGUI.FloatField(new Rect(rect.x, rect.y, 30, EditorGUIUtility.singleLineHeight), element.Pitch);
+			rect.x += 35;
+
 			char playIcon = '\u25B6';
 			char stopIcon = '\u25A0';
 			if(GUI.Button(new Rect(rect.x, rect.y, 20, EditorGUIUtility.singleLineHeight),playIcon.ToString()))
@@ -119,6 +124,8 @@ namespace Scaffolding.Audio.Editor
 			{
 				EditorAudio.StopClips();
 			}
+
+
 
 			return element;
 		}

@@ -12,7 +12,7 @@ public class SoundTester : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			AudioManager.Instance.Play(AudioTrigger.SFX);
+			AudioManager.Instance.PlaySound(AudioTrigger.SFX);
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha1))
@@ -27,12 +27,22 @@ public class SoundTester : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.Alpha3))
 		{
-			AudioManager.Instance.FadeOutBackgroundMusic(AudioTrigger.BackgroundMusic,3);
+			AudioManager.Instance.FadeOutBackgroundMusic(3);
 		}
 
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			AudioManager.Instance.ToggleMute(!AudioManager.Instance.IsAudioMuted());
+		}
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			AudioManager.Instance.GetBackgroundMusic().audioSource.panStereo -= 0.1f;
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			AudioManager.Instance.GetBackgroundMusic().audioSource.panStereo += 0.1f;
 		}
 	}
 }
