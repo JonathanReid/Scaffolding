@@ -206,7 +206,7 @@ namespace Scaffolding
             int i = 0, l = selectedScript.Count;
             for (; i < l; ++i)
             {
-				Type t = ScaffoldingConfig.GetType(selectedScript[i]);
+				Type t = ScaffoldingExtensions.GetType(selectedScript[i]);
                 UnityEngine.Object o = GameObject.FindObjectOfType(t);
                
                 if (o != null)

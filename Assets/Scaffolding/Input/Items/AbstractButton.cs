@@ -100,11 +100,11 @@ namespace Scaffolding
 			{
 				if (openAsScreen)
 				{
-					_view.RequestView(ScaffoldingConfig.GetType(targetView));
+					_view.RequestView(ScaffoldingExtensions.GetType(targetView));
 				}
 				else
 				{
-					Type t = ScaffoldingConfig.GetType(targetView);
+					Type t = ScaffoldingExtensions.GetType(targetView);
 					_view.RequestOverlay(t,disableInputsOnOverlay);
 				}
 			}
@@ -117,7 +117,7 @@ namespace Scaffolding
 		{
 			if (targetView != null)
 			{
-				Type t = ScaffoldingConfig.GetType(targetView);
+				Type t = ScaffoldingExtensions.GetType(targetView);
 				_view.RequestOverlayClose (t);
 			}
 		}

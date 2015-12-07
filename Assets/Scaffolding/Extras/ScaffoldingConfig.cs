@@ -16,6 +16,12 @@ namespace Scaffolding {
 		Overlay,
 	}
 
+	public enum ViewOpenType
+	{
+		Open,
+		Close,
+	}
+
 	[Serializable]
 	public class ScaffoldingStartingView
 	{
@@ -42,6 +48,8 @@ namespace Scaffolding {
 		public string ScaffoldingConfigPath = "Assets/";
 	    public bool ScaffoldingEnableAllGameobjects = true;
 		public List<ScaffoldingStartingView> StartingView;
+		public string ScaffoldingFlowCanvasAsset;
+		public List<FlowItem> FlowInfo;
 
 		private static string _scaffoldingPath;
 		private static string _scaffoldingConfigPath;
@@ -71,7 +79,7 @@ namespace Scaffolding {
 			{
 				ScaffoldingResourcesPath.Add(_scaffoldingPath+"/Transitions/Resources/Transitions");
 			}
-			if(!ScaffoldingResourcesPath.Contains(_scaffoldingPath+"/Transitions/Scripts/"))
+			if(!ScaffoldingScriptsPath.Contains(_scaffoldingPath+"/Transitions/Scripts/"))
 			{
 				ScaffoldingScriptsPath.Add(_scaffoldingPath+"/Transitions/Scripts/");
 			}
@@ -304,13 +312,6 @@ namespace Scaffolding {
 				g.AddComponent<ScaffoldingSingleObject>();
 			}
 			return g;
-		}
-
-		public static Type GetType(string className)
-		{
-			//need to include the assembly as get type doesnt work in html5
-			Type t = System.Type.GetType(className + ", Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-			return t;
 		}
 
 		public string ViewPrefabPath(string viewName)

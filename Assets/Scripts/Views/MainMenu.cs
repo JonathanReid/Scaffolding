@@ -9,7 +9,6 @@ public class MainMenu : AbstractView {
 	public override void Setup(ViewManagerBase manager)
     {
         base.Setup(manager);
-		GetButtonForName("Next").AddButtonPressedHandlerNoButton(NextPressed);
     }
 
     public override void OnShowStart(SObject data)
@@ -31,18 +30,6 @@ public class MainMenu : AbstractView {
     {
         base.OnHideComplete();
     }
-
-	private void NextPressed()
-	{
-//		TransitionTo<IntroView,DoorsTransition>();
-		RequestModalPopup<AreYouSurePopup>(OKPressed,"OK!", DismissPressed, "Cancel", "Are you sure you want to continue?");
-	}
-
-	private void OKPressed()
-	{
-		Debug.Log("OK!");
-		TransitionTo<IntroView,DoorsTransition>();
-	}
 
 	private void DismissPressed()
 	{

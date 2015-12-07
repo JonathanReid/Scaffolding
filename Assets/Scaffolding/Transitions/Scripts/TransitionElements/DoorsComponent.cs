@@ -25,6 +25,7 @@ namespace Scaffolding.Transitions
 		public DoorsTransitionDirection Direction;
 		public DoorsTransitionStartPoint To;
 		public DoorsTransitionStartPoint From;
+		public float Delay;
 
 		private Vector2 _leftTarget = Vector2.zero;
 		private Vector2 _rightTarget = Vector2.zero;
@@ -40,8 +41,8 @@ namespace Scaffolding.Transitions
 
 			SetDirection(Direction, To, ref _leftTarget,ref _rightTarget);
 
-			LeftDoor.DOAnchorPos(_leftTarget,Duration).SetEase(Ease).OnComplete(TransitionComplete);
-			RightDoor.DOAnchorPos(_rightTarget,Duration).SetEase(Ease);
+			LeftDoor.DOAnchorPos(_leftTarget,Duration).SetEase(Ease).SetDelay(Delay).OnComplete(TransitionComplete);
+			RightDoor.DOAnchorPos(_rightTarget,Duration).SetEase(Ease).SetDelay(Delay);
 		}
 		
 		public override void SetBaseValues ()

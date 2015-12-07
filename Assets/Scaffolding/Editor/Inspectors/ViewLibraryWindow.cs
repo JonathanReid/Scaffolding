@@ -41,7 +41,7 @@ namespace Scaffolding.Editor
         static void OpenViewLibrary()
         {
             _window = (ViewLibraryWindow)EditorWindow.GetWindow(typeof(ViewLibraryWindow));
-            _window.title = " View Library";
+			_window.titleContent = new GUIContent("View Library");
 		}
 
 		private void CreateBackgroundTexture()
@@ -563,11 +563,6 @@ namespace Scaffolding.Editor
 			}
 		}
 
-		private string ConvertPathToResourcePath(string path)
-		{
-			return path.Remove(0,path.IndexOf("Resources/")+10);
-		}
-
         private void CreateAllViews()
         {
 			_viewNames = new List<string>();
@@ -579,7 +574,7 @@ namespace Scaffolding.Editor
 
 			foreach(string prefabPath in _scaffoldingConfig.ScaffoldingResourcesPath)
 			{
-				UnityEngine.Object[] views = Resources.LoadAll(ConvertPathToResourcePath(prefabPath));
+				UnityEngine.Object[] views = Resources.LoadAll(ScaffoldingExtensions.ConvertPathToResourcePath(prefabPath));
 
 				foreach (UnityEngine.Object o in views)
 				{

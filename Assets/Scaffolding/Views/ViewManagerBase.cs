@@ -297,7 +297,7 @@ namespace Scaffolding
 				{
 					//use defaults that are in the scene!
 					ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
-					Type t = ScaffoldingConfig.GetType(sv.StartingViewName);
+					Type t = ScaffoldingExtensions.GetType(sv.StartingViewName);
 
 					if (t != null)
 					{
@@ -416,7 +416,7 @@ namespace Scaffolding
 				_targetScreen = obj.GetComponent<AbstractView>();
 				
 				string s = screenType.Name + "Model";
-				Type t = ScaffoldingConfig.GetType(s);
+				Type t = ScaffoldingExtensions.GetType(s);
 				
 				if(t != null)
 				{
@@ -597,6 +597,18 @@ namespace Scaffolding
 			return RequestOverlay(typeof(T),data) as AbstractModalPopup;
 		}
 
+		public AbstractModalPopup RequestModalPopup(Type popupType, Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText)
+		{
+			SObject data = new SObject();
+			data.AddString(AbstractModalPopup.BUTTON_OK_TEXT, buttonOKText);
+			data.AddAction(AbstractModalPopup.BUTTON_OK_CALLBACK, buttonOKCallback);
+			data.AddString(AbstractModalPopup.BUTTON_DISMISS_TEXT, buttonDismissText);
+			data.AddAction(AbstractModalPopup.BUTTON_DISMISS_CALLBACK, buttonDismissCallback);
+			data.AddString(AbstractModalPopup.BODY_TEXT, bodyText);
+			
+			return RequestOverlay(popupType,data) as AbstractModalPopup;
+		}
+
 		public AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, string bodyText) where T : AbstractModalPopup
 		{
 			SObject data = new SObject();
@@ -627,7 +639,7 @@ namespace Scaffolding
 				obj.transform.name = overlayType.Name;
 				
 				string s = overlayType.Name + "Model";
-				Type t = ScaffoldingConfig.GetType(s);
+				Type t = ScaffoldingExtensions.GetType(s);
 				
 				if(t != null)
 				{
@@ -795,8 +807,26 @@ namespace Scaffolding
 			StartCoroutine(TransitionState(typeof(T1),typeof(T),data));
 		}
 
+		public void TransitionTo(Type view, Type transition)
+		{
+			TransitionTo(view, transition, null);
+		}
+		
+		public void TransitionTo(Type view, Type transition, SObject data)
+		{
+			//Open the transtion
+			//when transition is open
+			//request view
+			//when view has given the all clear that its loaded
+			//cload the transition
+			
+			//probably needs to happen in a coroutine with callbacks.
+			StartCoroutine(TransitionState(transition, view, data));
+		}
+
 		IEnumerator TransitionState(Type transitionType, Type viewType, SObject data)
 		{
+			_currentScreen.ToggleEnabledInputs(false);
 			AbstractTransition transition = RequestOverlay(transitionType,data) as AbstractTransition;
 
 			while(transition.TransitionStarting)

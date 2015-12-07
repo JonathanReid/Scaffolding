@@ -252,6 +252,7 @@ namespace Scaffolding
         {
             ToggleEnabledInputs(true);
             _isSettingUp = false;
+			LoadComplete();
         }
 
         /// <summary>

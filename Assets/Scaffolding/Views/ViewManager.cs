@@ -59,7 +59,7 @@ namespace Scaffolding
 
             _currentOverlays = new Dictionary<Type, AbstractView>();
 			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
-			Type t = ScaffoldingConfig.GetType(sv.StartingViewName);
+			Type t = ScaffoldingExtensions.GetType(sv.StartingViewName);
 
             if (t != null && GameObject.FindObjectOfType<AbstractView>() == null)
             {

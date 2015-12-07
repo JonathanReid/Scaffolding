@@ -168,7 +168,10 @@ namespace Scaffolding
         /// </summary>
         public virtual void RequestOverlayClose(Type type)
         {
- 	       _manager.RequestOverlayClose(type);
+			if(_manager != null)
+			{
+ 	       		_manager.RequestOverlayClose(type);
+			}
         }
     
         /// <summary>
@@ -312,9 +315,20 @@ namespace Scaffolding
 			_manager.TransitionTo<T,T1>(GetViewDataForTransition(typeof(T1)));
 		}
 
+		public void TransitionTo(Type view, Type transition)
+		{
+			_manager.TransitionTo(view, transition, GetViewDataForTransition(transition));
+		}
+
+
 		public virtual AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText) where T : AbstractModalPopup
 		{
 			return _manager.RequestModalPopup<T>(buttonOKCallback,buttonOKText,buttonDismissCallback,buttonDismissText,bodyText);
+		}
+
+		public virtual AbstractModalPopup RequestModalPopup(Type popupType, Action buttonOKCallback, string buttonOKText, Action buttonDismissCallback, string buttonDismissText, string bodyText)
+		{
+			return _manager.RequestModalPopup(popupType, buttonOKCallback,buttonOKText,buttonDismissCallback,buttonDismissText,bodyText);
 		}
 		
 		public virtual AbstractModalPopup RequestModalPopup<T>(Action buttonOKCallback, string buttonOKText, string bodyText) where T : AbstractModalPopup
