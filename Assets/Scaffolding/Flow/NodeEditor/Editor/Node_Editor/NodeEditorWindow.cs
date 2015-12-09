@@ -253,6 +253,7 @@ namespace NodeEditorFramework
 
 			for(int i = 0; i < views.Count; ++i)
 			{
+				Debug.Log(views[i]);
 				ViewNode viewNode = (ViewNode)NodeTypes.getDefaultNode ("viewNode").Create (new Vector2 (x, y),views[i]);
 
 				x += 250;
@@ -274,27 +275,32 @@ namespace NodeEditorFramework
 			{
 				if(mainNodeCanvas.nodes[i].GetType() == typeof(StartNode))
 				{
-					Node node = mainNodeCanvas.nodes[i].Outputs[0].connections[0].body;
-					string name = "";
-					#if UNITY_5_3
-					name = EditorSceneManager.GetActiveScene().name;
-					#else
-					name = EditorApplication.currentScene;
-					#endif
-					if(name != "")
+					if(mainNodeCanvas.nodes[i].Outputs[0].connections.Count > 0)
 					{
-						name = name.Remove(0,name.LastIndexOf("/")+1);
-						int index = name.LastIndexOf(".unity");
-						name = name.Remove(index,name.Length - index);
-						
-						ScaffoldingStartingView sv = ScaffoldingConfig.Instance.GetViewDataForScene(name);
-						sv.StartingViewIndex = ScaffoldingExtensions.GetAllViews().IndexOf(node.name)+1;
-						sv.StartingViewName = node.name;
-						sv.StartingViewType = (mainNodeCanvas.nodes[i] as StartNode).viewType[0];
+						Node node = mainNodeCanvas.nodes[i].Outputs[0].connections[0].body;
+						string name = "";
+						#if UNITY_5_3
+						name = EditorSceneManager.GetActiveScene().name;
+						#else
+						name = EditorApplication.currentScene;
+						#endif
+						if(name != "")
+						{
+							#if !UNITY_5_3
+							name = name.Remove(0,name.LastIndexOf("/")+1);
+							int index = name.LastIndexOf(".unity");
+							name = name.Remove(index,name.Length - index);
+							#endif
+							
+							ScaffoldingStartingView sv = ScaffoldingConfig.Instance.GetViewDataForScene(name);
+							sv.StartingViewIndex = ScaffoldingExtensions.GetAllViews().IndexOf(node.name);
+							sv.StartingViewName = node.name;
+							sv.StartingViewType = (mainNodeCanvas.nodes[i] as StartNode).viewType[0];
 
-						ScaffoldingConfig.Instance.SetViewDataForScene(sv);
+							ScaffoldingConfig.Instance.SetViewDataForScene(sv);
+						}
+						MapPathOfView(node);
 					}
-					MapPathOfView(node);
 				}
 			}
 

@@ -21,6 +21,7 @@ namespace Scaffolding
 		{
 			_button = GetComponent<Button>();
 			_buttonTransition = _button.transition;
+			_button.onClick.RemoveListener(ButtonClicked);
 			_button.onClick.AddListener(ButtonClicked);
 			base.Setup (view);
 		}

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Scaffolding;
 
-public class MainMenu : AbstractView {
+public class PauseView : AbstractView {
 	 
     public override void Setup(ViewManagerBase manager)
     {

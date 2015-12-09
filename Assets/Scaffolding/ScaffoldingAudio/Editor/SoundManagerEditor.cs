@@ -246,7 +246,7 @@ namespace Scaffolding.Audio.Editor
 
 		private void BuildTriggerClass(string content, string className)
 		{
-			string path = ScaffoldingUtils.RecursivelyFindAsset("Assets",className);
+			string path = ScaffoldingExtensions.RecursivelyFindAsset("Assets",className);
 			
 			var writer = new StreamWriter(path);
 			writer.Write(content);

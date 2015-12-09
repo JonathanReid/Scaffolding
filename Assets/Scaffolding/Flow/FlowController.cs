@@ -45,6 +45,7 @@ public class FlowController : MonoBehaviour {
 
 	private List<FlowItem> _flow;
 	private string _viewName;
+	private AbstractView _view;
 	private string _buttonName;
 	private FlowItem _flowItem;
 	private ViewManager _viewManager;
@@ -97,14 +98,17 @@ public class FlowController : MonoBehaviour {
 		return true;
 	}
 	
-	public void SetItem(string viewName, string buttonName)
+	public void SetItem(AbstractView view, string buttonName)
 	{
-		_viewName = viewName;
+		_view = view;
+		_viewName = view.name;
 		_buttonName = buttonName;
 
 		_flowItem = GetFlowItem(_viewName, _buttonName);
 
 		TakeSnapshotOfViews();
+
+		MoveNext();
 	}
 
 	public void TakeSnapshotOfViews()
@@ -130,25 +134,26 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public void RestoreSnapshot(Action callback, string viewName, string buttonName)
+	public void RestoreSnapshot(AbstractView view, string buttonName)
 	{
-		_viewName = viewName;
+		_view = view;
+		_viewName = view.name;
 		_buttonName = buttonName;
 
 		//if there is no snapshots in the history, make a best guess.
 		if(_viewBreadcrumbs.Count == 0)
 		{
-			SetFlowItemToBestGuess(viewName);
+			SetFlowItemToBestGuess(_viewName);
 		}
 		else
 		{
 			FlowSnapshot snapshot = _viewBreadcrumbs[_viewBreadcrumbs.Count-1];
-			_flowItem = GetFlowItemWithEntryPoint(snapshot.OpenView, viewName );
+			_flowItem = GetFlowItemWithEntryPoint(snapshot.OpenView, _viewName );
 
 			//if there is no match in the history, make a best guess.
 			if(string.IsNullOrEmpty( _flowItem.EntryPoint ))
 			{
-				SetFlowItemToBestGuess(viewName);
+				SetFlowItemToBestGuess(_viewName);
 			}
 			else
 			{
@@ -163,7 +168,7 @@ public class FlowController : MonoBehaviour {
 		}
 		else
 		{
-			callback();
+			MoveNext();
 		}
 	}
 
@@ -426,4 +431,117 @@ public class FlowController : MonoBehaviour {
 		
 		return new FlowItem();
 	}
+
+	#region button clicked, now lets move
+
+	private void PopupOK()
+	{
+		MoveNextPopup(0);
+	}
+
+	private void PopupNo()
+	{
+		MoveNextPopup(1);
+	}
+
+	private void MoveNext()
+	{
+		switch (GetOpenAsType ()) 
+		{
+		case ViewType.View:
+
+			if(HasNextPointInFlow())
+			{
+				if(HasTransition())
+				{
+					_view.TransitionTo(GetNextPointInFlow(),GetTransition() );
+				}
+				else
+				{
+					_view.RequestView( GetNextPointInFlow() );
+				}
+			}
+			switch (OpenOrCloseView ()) 
+			{
+			case ViewOpenType.Open:
+				break;
+
+			case ViewOpenType.Close:
+				_view.RequestOverlayClose( _view.GetType() );
+				break;
+			}
+			break;
+		case ViewType.Overlay:
+
+			if(HasNextPointInFlow())
+			{
+				if(HasPopup())
+				{
+					_view.RequestModalPopup(GetPopup(),PopupOK,GetPopupButtonText(0),PopupNo,GetPopupButtonText(1), GetPopupBodyText());
+				}
+				else
+				{
+					_view.RequestOverlay( GetNextPointInFlow() );
+				}
+			}
+
+			switch (OpenOrCloseView ()) 
+			{
+			case ViewOpenType.Open:
+
+				break;
+
+			case ViewOpenType.Close:
+				_view.RequestOverlayClose( _view.GetType() );
+				break;
+			}
+			break;
+		}
+	}
+
+	private void MoveNextPopup(int popupButtonID)
+	{
+		switch (GetPopupOpenType (popupButtonID)) 
+		{
+		case ViewType.View:
+			switch (OpenOrCloseModalPopup (popupButtonID)) 
+			{
+			case ViewOpenType.Open:
+				if(PopupOptionHasTransition(popupButtonID))
+				{
+					_view.TransitionTo(GetPopupExitPoint(popupButtonID),GetPopupOptionTransition(popupButtonID) );
+				}
+				else
+				{
+					_view.RequestView( GetPopupExitPoint(popupButtonID) );
+				}
+				break;
+			case ViewOpenType.Close:
+				_view.RequestOverlayClose( _view.GetType() );
+				break;
+			}
+			break;
+		case ViewType.Overlay:
+			switch (OpenOrCloseModalPopup (popupButtonID)) 
+			{
+			case ViewOpenType.Open:
+				if(HasPopup(popupButtonID))
+				{
+					_view.RequestModalPopup(GetPopup(popupButtonID),PopupOK,GetPopupButtonText(0),PopupNo,GetPopupButtonText(1), GetPopupBodyText());
+				}
+				else
+				{
+					_view.RequestOverlay( GetPopupExitPoint(popupButtonID) );
+				}
+				break;
+
+			case ViewOpenType.Close:
+				_view.RequestOverlayClose( _view.GetType() );
+				break;
+			}
+			break;
+		}
+	}
+
+	#endregion
 }

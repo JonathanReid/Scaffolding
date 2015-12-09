@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Scaffolding
 {
@@ -163,10 +164,16 @@ public static class ScaffoldingExtensions
 				{
 					GameObject go = GameObject.Instantiate(view) as GameObject;
 					
-					AbstractButton[] buttons = go.GetComponentsInChildren<AbstractButton>();
-					foreach(AbstractButton button in buttons)
+					AutoFlowButton[] buttons = go.GetComponentsInChildren<AutoFlowButton>();
+					foreach(AutoFlowButton button in buttons)
 					{
 						butts.Add(button.name);
+					}
+
+					AutoFlowButtonGroup[] groups = go.GetComponentsInChildren<AutoFlowButtonGroup>();
+					foreach(AutoFlowButtonGroup group in groups)
+					{
+						butts.Add(group.name);
 					}
 					
 					MonoBehaviour.DestroyImmediate(go);
@@ -181,47 +188,95 @@ public static class ScaffoldingExtensions
 			return path.Remove(0,path.IndexOf("Resources/")+10);
 		}
 
-    public static bool IsRetina(this GameObject gameObject)
-    {
-        #if IOS
-		if (iPhone.generation == iPhoneGeneration.iPhone4)
+		public static string RecursivelyFindFolderPath(string dir, string parentFolder)
 		{
-			return true;
+				string path = "";
+				string[] paths = Directory.GetDirectories(dir);
+				foreach(string s in paths)
+				{
+						if(s.Contains(parentFolder))
+						{
+								path = s;
+								break;
+						}
+						else
+						{
+								path = RecursivelyFindFolderPath(s,parentFolder);
+						}
+				}
+
+				return path;
 		}
-		if (iPhone.generation == iPhoneGeneration.iPhone4S)
+
+		public static string RecursivelyFindAsset(string dir, string objectName)
 		{
-			return true;
+				string asset = "";
+				string[] paths = Directory.GetDirectories(dir);
+				foreach(string s in paths)
+				{
+						string[] files = Directory.GetFiles(s);
+						foreach(string f in files)
+						{
+								if(f.Contains(objectName))
+								{
+										asset = f;
+										break;
+								}
+						}
+						if(asset == "")
+						{
+								asset = RecursivelyFindAsset(s,objectName);
+						}
+						else
+						{
+								break;
+						}
+				}
+
+				return asset;
 		}
-		if (iPhone.generation == iPhoneGeneration.iPhone5)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPhone5C)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPhone5S)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPad3Gen)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPad4Gen)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPadMini1Gen)
-		{
-			return true;
-		}
-		if (iPhone.generation == iPhoneGeneration.iPadUnknown)
-		{
-			return true;
-		}
-        #endif
-        return false;
-    }
-}
+
+	    public static bool IsRetina(this GameObject gameObject)
+	    {
+	        #if IOS
+			if (iPhone.generation == iPhoneGeneration.iPhone4)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPhone4S)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPhone5)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPhone5C)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPhone5S)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPad3Gen)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPad4Gen)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPadMini1Gen)
+			{
+				return true;
+			}
+			if (iPhone.generation == iPhoneGeneration.iPadUnknown)
+			{
+				return true;
+			}
+	        #endif
+	        return false;
+	    }
+	}
 }

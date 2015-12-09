@@ -164,6 +164,12 @@ namespace Scaffolding
                 }
             }
 
+			AutoFlowButtonGroup[] autoButtonGroups = gameObject.GetComponentsInChildren<AutoFlowButtonGroup>();
+			for(int i = 0; i < autoButtonGroups.Length; ++i)
+			{
+				autoButtonGroups[i].Setup(this);
+			}
+
             UpdatePosition();
         }
 

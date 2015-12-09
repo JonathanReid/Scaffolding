@@ -54,12 +54,19 @@ namespace Scaffolding.Editor
         }
 
 		#if UNITY_4_6 || UNITY_5
-		private static Canvas CreateCanvas(GameObject c)
+		[MenuItem("GameObject/UI/Scaffolding/Canvas", false, 12900)]
+		static Canvas CreateCanvas(GameObject can = null)
 		{
+			GameObject c = can == null ? new GameObject() : can;
+			c.name = "Canvas";
 			Canvas canvas = c.AddComponent<Canvas>();
 			canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
-			c.AddComponent<CanvasScaler>();
+			CanvasScaler scaler = c.AddComponent<CanvasScaler>();
+			scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+			scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+			scaler.matchWidthOrHeight = 1;
+			scaler.referenceResolution = new Vector2(2048,1536);
 			c.AddComponent<GraphicRaycaster>();
 
 			return canvas;
@@ -71,8 +78,7 @@ namespace Scaffolding.Editor
 			Canvas canvas = GameObject.FindObjectOfType<Canvas>();
 			if(canvas == null)
 			{
-				GameObject c = new GameObject();
-				canvas = CreateCanvas(c);
+				canvas = CreateCanvas();
 			}
 
 			GameObject go = new GameObject();
@@ -83,6 +89,7 @@ namespace Scaffolding.Editor
 			go.AddComponent<Button>();
 			RectTransform tr = go.GetComponent<RectTransform>();
 			tr.anchoredPosition = new Vector2(0,0); 
+			tr.sizeDelta = new Vector2(500,200);
 
 			GameObject label = new GameObject();
 			label.name = "Label";
@@ -90,12 +97,49 @@ namespace Scaffolding.Editor
 			text.text = "Button";
 			text.alignment = TextAnchor.MiddleCenter;
 			text.color = Color.black;
+			text.fontSize = 70;
 			tr = text.GetComponent<RectTransform>();
 			label.transform.SetParent(canvas.transform);
 			tr.localPosition = new Vector3(0,0,0);
+			tr.sizeDelta = new Vector2(500,200);
 			label.transform.SetParent(go.transform);
 
 			Selection.activeGameObject = go;
+		}
+
+		[MenuItem("GameObject/UI/Scaffolding/Auto Flow Button", false, 12900)]
+		static void CreateNewFlowButton()
+		{
+				Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+				if(canvas == null)
+				{
+					canvas = CreateCanvas();
+				}
+
+				GameObject go = new GameObject();
+				go.name = "Button Item";
+				go.transform.SetParent(canvas.transform);
+				go.AddComponent<AutoFlowButton>();
+				go.AddComponent<Image>();
+				go.AddComponent<Button>();
+				RectTransform tr = go.GetComponent<RectTransform>();
+				tr.anchoredPosition = new Vector2(0,0); 
+				tr.sizeDelta = new Vector2(500,200);
+
+				GameObject label = new GameObject();
+				label.name = "Label";
+				Text text = label.AddComponent<Text>();
+				text.text = "Button";
+				text.alignment = TextAnchor.MiddleCenter;
+				text.color = Color.black;
+				text.fontSize = 70;
+				tr = text.GetComponent<RectTransform>();
+				label.transform.SetParent(canvas.transform);
+				tr.localPosition = new Vector3(0,0,0);
+				tr.sizeDelta = new Vector2(500,200);
+				label.transform.SetParent(go.transform);
+
+				Selection.activeGameObject = go;
 		}
 #else
 			

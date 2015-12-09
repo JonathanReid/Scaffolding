@@ -573,7 +573,9 @@ namespace Scaffolding.Editor
 			if(bv != null)
 			{
 				GameObject g = bv.gameObject;
-				PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
+				string path = AssetDatabase.GetAssetPath (PrefabUtility.GetPrefabParent(g));
+				PrefabUtility.CreatePrefab(path,g,ReplacePrefabOptions.ReplaceNameBased);
+//				PrefabUtility.ReplacePrefab(g, PrefabUtility.GetPrefabParent(g), ReplacePrefabOptions.ReplaceNameBased);
 				UnityEditor.Editor.DestroyImmediate(g);
 			}
 		}

@@ -6,7 +6,7 @@ using NodeEditorFramework.Utilities;
 using Scaffolding;
 
 [System.Serializable]
-[Node (true, "Views/ViewNode", false)]
+[Node (false, "Views/ViewNode", false)]
 public class ViewNode : Node 
 {
 	public List<Scaffolding.ViewType> viewType;
@@ -37,6 +37,21 @@ public class ViewNode : Node
 		}
 
 		return node;
+	}
+
+	public void Refresh()
+	{
+		int buttonCount = ButtonCount;
+
+		List<string> buttons = ScaffoldingExtensions.GetButtonsInView(name);
+		ButtonCount = buttons.Count;
+		for(int i = buttonCount; i < ButtonCount; ++i)
+		{
+			CreateOutput (buttons[i], "View");
+			viewType.Add(Scaffolding.ViewType.View);
+		}
+
+		rect = new Rect (rect.x, rect.y, 200, 30 + (ButtonCount * 35));
 	}
 	
 	public override void NodeGUI () 

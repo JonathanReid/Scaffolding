@@ -378,6 +378,7 @@ namespace NodeEditorFramework
 					{ // Right click -> Node Context Click
 						GenericMenu menu = new GenericMenu ();
 
+						menu.AddItem (new GUIContent ("Refresh Node"), false, ContextCallback, new callbackObject ("refreshNode", curNodeCanvas, curEditorState));
 						menu.AddItem (new GUIContent ("Delete Node"), false, ContextCallback, new callbackObject ("deleteNode", curNodeCanvas, curEditorState));
 						menu.AddItem (new GUIContent ("Duplicate Node"), false, ContextCallback, new callbackObject ("duplicateNode", curNodeCanvas, curEditorState));
 						if (NodeTypes.getNodeData (curEditorState.focusedNode).transitions)
@@ -615,6 +616,9 @@ namespace NodeEditorFramework
 
 			switch (cbObj.message)
 			{
+			case "refreshNode":
+				(curEditorState.focusedNode as ViewNode).Refresh();
+				break;
 			case "deleteNode":
 				if (curEditorState.focusedNode != null) 
 					curEditorState.focusedNode.Delete ();
