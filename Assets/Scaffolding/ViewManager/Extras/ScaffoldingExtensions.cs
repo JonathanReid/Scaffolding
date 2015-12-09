@@ -15,7 +15,7 @@ public static class ScaffoldingExtensions
         {
             GameObject go = new GameObject();
             go.name = type.Name;
-#if UNITY_5_0
+#if UNITY_5
             o = go.AddComponent(type);
 #else
 			o = UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(go, "Assets/Scaffolding/Extras/ScaffoldingExtensions.cs (20,8)", type.Name);

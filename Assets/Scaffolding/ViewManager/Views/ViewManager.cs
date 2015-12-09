@@ -2,6 +2,9 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_5_3
+using UnityEngine.SceneManagement;
+#endif
 
 namespace Scaffolding
 {
@@ -58,7 +61,16 @@ namespace Scaffolding
             _disabledInputsOnView = new Dictionary<Type, List<Type>>();
 
             _currentOverlays = new Dictionary<Type, AbstractView>();
-			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
+
+			string levelName = "";
+
+			#if UNITY_5_3
+			levelName = SceneManager.GetActiveScene().name;
+			#else
+			levelName = Application.loadedLevelName;
+			#endif
+
+			ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(levelName);
 			Type t = ScaffoldingExtensions.GetType(sv.StartingViewName);
 
             if (t != null && GameObject.FindObjectOfType<AbstractView>() == null)

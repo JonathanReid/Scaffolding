@@ -6,6 +6,9 @@ using NodeEditorFramework;
 using NodeEditorFramework.Resources;
 using Scaffolding;
 using NodeEditorFramework.Utilities;
+#if UNITY_5_3
+using UnityEditor.SceneManagement;
+#endif
 
 namespace NodeEditorFramework
 {
@@ -272,7 +275,12 @@ namespace NodeEditorFramework
 				if(mainNodeCanvas.nodes[i].GetType() == typeof(StartNode))
 				{
 					Node node = mainNodeCanvas.nodes[i].Outputs[0].connections[0].body;
-					string name = EditorApplication.currentScene;
+					string name = "";
+					#if UNITY_5_3
+					name = EditorSceneManager.GetActiveScene().name;
+					#else
+					name = EditorApplication.currentScene;
+					#endif
 					if(name != "")
 					{
 						name = name.Remove(0,name.LastIndexOf("/")+1);
@@ -324,7 +332,6 @@ namespace NodeEditorFramework
 					if(nextNode is PopupNode)
 					{
 						Node yesNode = nextNode.Outputs[0].connections[0].body;
-						Node noNode = nextNode.Outputs[1].connections[0].body;
 
 						PopupNode popupNode = (nextNode as PopupNode);
 

@@ -12,7 +12,7 @@ using UnityEngineInternal;
 
 namespace Scaffolding.Audio.Editor
 {
-	
+	//probably should show all audio clips in project, and then you move them about to assign them to different triggers
 	public class SoundManagerEditor : EditorWindow {
 
 		private static SoundManagerEditor _window;
@@ -26,7 +26,7 @@ namespace Scaffolding.Audio.Editor
 		static void OpenWindow()
 		{
 			_window = (SoundManagerEditor)EditorWindow.GetWindow(typeof(SoundManagerEditor));
-			_window.title = "Audio Library";
+			_window.titleContent = new GUIContent("Audio Library");
 		}
 
 		void OnEnable()
@@ -53,7 +53,7 @@ namespace Scaffolding.Audio.Editor
 		{
 			_sfxLists = new List<ReorderableList>();
 			
-			int i = 0, l = _config.SFXGroups.Count;
+			int i = 0;
 			foreach(AudioGroupVO group in _config.SFXGroups)
 			{
 				AudioGroupVO vo = _config.SFXGroups[i];
@@ -86,7 +86,11 @@ namespace Scaffolding.Audio.Editor
 			
 			AudioClip clip = Resources.Load<AudioClip>(element.Clip);
 			
+			#if UNITY_5_3
+			element.Clip = AssetDatabase.GetAssetPath( (AudioClip)EditorGUI.ObjectField(new Rect(rect.x, rect.y, width, EditorGUIUtility.singleLineHeight), clip, typeof(AudioClip),false) );
+			#else
 			element.Clip = AssetDatabase.GetAssetPath( (AudioClip)EditorGUI.ObjectField(new Rect(rect.x, rect.y, width, EditorGUIUtility.singleLineHeight), clip, typeof(AudioClip)) );
+			#endif
 			if(element.Clip.Length > 0)
 			{
 				element.Clip = element.Clip.Remove(0, element.Clip.IndexOf("Resources") + 10);

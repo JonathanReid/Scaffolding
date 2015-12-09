@@ -50,7 +50,9 @@ namespace Scaffolding
 #if UNITY_4_6 || UNITY_5
 			gameObject.AddComponent<EventSystem>();
 			gameObject.AddComponent<StandaloneInputModule>();
+			#if !UNITY_5_3
 			gameObject.AddComponent<TouchInputModule>();
+			#endif
 #endif
 
 			if(InputCameras == null)

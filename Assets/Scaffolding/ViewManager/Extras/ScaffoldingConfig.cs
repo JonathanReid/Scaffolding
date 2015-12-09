@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
+#if UNITY_5_3
+using UnityEditor.SceneManagement;
+#endif
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -121,8 +124,13 @@ namespace Scaffolding {
 		public ScaffoldingStartingView GetDefaultStartingView()
 		{
 			ScaffoldingStartingView sv = new ScaffoldingStartingView();
+
 			#if UNITY_EDITOR
+			#if UNITY_5_3
+			sv.SceneName = EditorSceneManager.GetActiveScene().name;
+			#else
 			sv.SceneName = EditorApplication.currentScene;
+			#endif
 			sv.SceneName = sv.SceneName.Remove(0,sv.SceneName.LastIndexOf("/")+1);
 			int index = sv.SceneName.LastIndexOf(".unity");
 			sv.SceneName = sv.SceneName.Remove(index,sv.SceneName.Length - index);

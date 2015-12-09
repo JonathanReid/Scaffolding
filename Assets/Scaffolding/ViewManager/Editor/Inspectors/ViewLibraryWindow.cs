@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using Scaffolding;
 using System.IO;
 using System.Text;
+#if UNITY_5_3
+using UnityEditor.SceneManagement;
+#endif
 
 
 namespace Scaffolding.Editor
@@ -165,12 +168,19 @@ namespace Scaffolding.Editor
 				_scaffoldingConfig.SetViewDataForScene(_scaffoldingConfig.GetDefaultStartingView());
 			}
 
-			string name = EditorApplication.currentScene;
+			string name = "";
+			#if UNITY_5_3
+			name = EditorSceneManager.GetActiveScene().name;
+			#else
+			name = EditorApplication.currentScene;
+			#endif
 			if(name != "")
 			{
+				#if !UNITY_5_3
 				name = name.Remove(0,name.LastIndexOf("/")+1);
 				int index = name.LastIndexOf(".unity");
 				name = name.Remove(index,name.Length - index);
+				#endif
 
 				ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(name);
 				sv.StartingViewIndex = EditorGUILayout.Popup("Starting View:",sv.StartingViewIndex, _viewNames.ToArray());
@@ -230,8 +240,13 @@ namespace Scaffolding.Editor
 							GUILayout.Label(n,skin);
 							if (GUILayout.Button("Open", GUILayout.ExpandWidth(true), GUILayout.Width(218)))
 							{
+								#if UNITY_5_3
+								EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+								EditorSceneManager.OpenScene(S.path);
+								#else
 								EditorApplication.SaveCurrentSceneIfUserWantsTo();
 								EditorApplication.OpenScene(S.path);
+								#endif
 							}
 							EditorGUILayout.EndHorizontal();
 							GUILayout.Space(5);

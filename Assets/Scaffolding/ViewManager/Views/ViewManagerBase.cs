@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+#if UNITY_5_3
+using UnityEngine.SceneManagement;
+#endif
 
 namespace Scaffolding
 {
@@ -166,7 +169,11 @@ namespace Scaffolding
 		IEnumerator LoadScene()
 		{
 			yield return new WaitForEndOfFrame();
+			#if UNITY_5_3
+			SceneManager.LoadScene(_requestedSceneName);
+			#else
 			Application.LoadLevel(_requestedSceneName);
+			#endif
 			yield return new WaitForEndOfFrame();
 			_loadScene = false;
 			LevelWasLoaded();
@@ -175,7 +182,11 @@ namespace Scaffolding
 		IEnumerator LoadSceneAdditive()
 		{
 			yield return new WaitForEndOfFrame();
+			#if UNITY_5_3
+			SceneManager.LoadScene(_requestedSceneName);
+			#else
 			Application.LoadLevelAdditive(_requestedSceneName);
+			#endif
 			yield return new WaitForEndOfFrame();
 			_loadScene = false;
 			LevelWasLoaded();
@@ -184,7 +195,13 @@ namespace Scaffolding
 		IEnumerator LoadSceneAsync()
 		{
 			yield return new WaitForEndOfFrame();
-			AsyncOperation async = Application.LoadLevelAsync(_requestedSceneName);
+			AsyncOperation async = null;
+
+			#if UNITY_5_3
+			async = SceneManager.LoadSceneAsync(_requestedSceneName);
+			#else
+			async = Application.LoadLevelAsync(_requestedSceneName);
+			#endif
 			yield return async;
 			_loadScene = false;
 			LevelWasLoaded();
@@ -193,7 +210,14 @@ namespace Scaffolding
 		IEnumerator LoadSceneAsyncAdditve()
 		{
 			yield return new WaitForEndOfFrame();
-			AsyncOperation async = Application.LoadLevelAdditiveAsync(_requestedSceneName);
+			AsyncOperation async = null;
+
+			#if UNITY_5_3
+			async = SceneManager.LoadSceneAsync(_requestedSceneName);
+			#else
+			async = Application.LoadLevelAdditiveAsync(_requestedSceneName);
+			#endif
+
 			yield return async;
 			_loadScene = false;
 			LevelWasLoaded();
@@ -296,7 +320,14 @@ namespace Scaffolding
 				else 
 				{
 					//use defaults that are in the scene!
-					ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(Application.loadedLevelName);
+					string levelName = "";
+
+					#if UNITY_5_3
+					levelName = SceneManager.GetActiveScene().name;
+					#else
+					levelName = Application.loadedLevelName;
+					#endif
+					ScaffoldingStartingView sv = _scaffoldingConfig.GetViewDataForScene(levelName);
 					Type t = ScaffoldingExtensions.GetType(sv.StartingViewName);
 
 					if (t != null)
