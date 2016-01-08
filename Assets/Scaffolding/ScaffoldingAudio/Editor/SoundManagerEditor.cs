@@ -26,7 +26,8 @@ namespace Scaffolding.Audio.Editor
 		static void OpenWindow()
 		{
 			_window = (SoundManagerEditor)EditorWindow.GetWindow(typeof(SoundManagerEditor));
-			_window.titleContent = new GUIContent("Audio Library");
+			_window.title = "Audio Library";
+//			_window.titleContent = new GUIContent("Audio Library");
 		}
 
 		void OnEnable()

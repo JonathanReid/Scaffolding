@@ -3,30 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using Scaffolding;
 
-public class MainMenu : AbstractView {
+public class ExampleClass : MonoBehaviour {
 	 
-    public override void Setup(ViewManagerBase manager)
-    {
-        base.Setup(manager);
-    }
+	private const int MAGIC_NUMBER = 100;
 
-    public override void OnShowStart(SObject data)
-    {
-        base.OnShowStart(data);
-    }
+    public float ExampleFloat;
+	public string ExampleString;
 
-    public override void OnShowComplete()
-    {
-        base.OnShowComplete();
-    }
+	private GameObject _gameObjectReference;
+	private string _internalString;
 
-    public override void OnHideStart()
-    {
-        base.OnHideStart();
-    }
+	public void Setup()
+	{
+		_gameObjectReference = transform.FindChild("MyGameObject").GetComponent<GameObject>();
+	}
 
-    public override void OnHideComplete()
-    {
-        base.OnHideComplete();
-    }
+	private void Show()
+	{
+
+	}
+
+	private void Hide()
+	{
+
+	}
+
 }

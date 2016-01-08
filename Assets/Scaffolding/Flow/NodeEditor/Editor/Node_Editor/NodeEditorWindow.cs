@@ -65,7 +65,8 @@ namespace NodeEditorFramework
 
 			ResourceManager.Init(NodeEditor.editorPath + "Resources/");
 			iconTexture = ResourceManager.LoadTexture(EditorGUIUtility.isProSkin? "Textures/Icon_Dark.png" : "Textures/Icon_Light.png");
-			_editor.titleContent = new GUIContent("Flow Editor", iconTexture);
+			_editor.title = "FlowEditor";
+//			_editor.titleContent = new GUIContent("Flow Editor", iconTexture);
 		}
 
 		/// <summary>
@@ -106,6 +107,7 @@ namespace NodeEditorFramework
 				return;
 			}
 			AssureHasEditor ();
+
 
 			if (mainNodeCanvas == null)
 			{

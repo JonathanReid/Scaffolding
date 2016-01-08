@@ -166,6 +166,14 @@ namespace Scaffolding.Editor
 
         void OnGUI()
         {
+
+			if(EditorApplication.isCompiling)
+			{
+				EditorGUILayout.HelpBox("Please wait while the view is being created", MessageType.Info);
+				return;
+			}
+		
+
 			CreateConfig();
 
 			GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
@@ -266,7 +274,41 @@ namespace Scaffolding.Editor
 				}
 				GUI.enabled = true;
 			}
+
+		}
+
+		void OnEnable()
+		{
+			_attachScript = EditorPrefs.GetBool("Scaffolding-CreatingView");
+			_selectedResourcePath = EditorPrefs.GetInt("Scaffolding-ResourcePath");
+			_fileName = EditorPrefs.GetString("Scaffolding-CreatingViewFileName");
+			CreateConfig();
+			_window = EditorWindow.GetWindow<ViewCreationEditor>();
+		}
+
+		void Update()
+		{
+			if(_attachScript)
+			{
+				if(!EditorApplication.isCompiling)
+				{
+					string func = EditorPrefs.GetString("Scaffolding-Callback");
+					switch(func)
+					{
+						case "AttachFile":
+							AttachFile();
+							break;
+						case "AttachSkin":
+							AttachSkin();
+							break;
+					}
+					_attachScript = false;
+					EditorPrefs.SetBool("Scaffolding-CreatingView",_attachScript);
+				}	
+			}
         }
+
+		public static bool _attachScript;
 
 		private void GetAllAbstractViewBasedClasses()
 		{
@@ -323,31 +365,49 @@ namespace Scaffolding.Editor
         {   
             CreateScript();
 
-            CreateAssets();
-//            AssetDatabase.Refresh();
-            InternalEditorUtility.AddScriptComponentUnchecked(_createdViewObject, AssetDatabase.LoadAssetAtPath(TargetPath(), typeof(MonoScript)) as MonoScript);
+			_attachScript = true;
+			EditorPrefs.SetBool("Scaffolding-CreatingView",_attachScript);
+			EditorPrefs.SetString("Scaffolding-CreatingViewFileName",_fileName);
+			EditorPrefs.SetString("Scaffolding-Callback","AttachFile");
+			EditorPrefs.SetInt("Scaffolding-ResourcePath",_selectedResourcePath);
+        }
+
+		private static void AttachFile()
+		{
+			CreateAssets();
+			var myType = ScaffoldingExtensions.GetType(_fileName);
+			_createdViewObject.AddComponent(myType);
 			if(_createModel)
 			{
-				InternalEditorUtility.AddScriptComponentUnchecked(_createdModelObject, AssetDatabase.LoadAssetAtPath(TargetModelPath(), typeof(MonoScript)) as MonoScript);
+				myType = ScaffoldingExtensions.GetType(_modelFileName);
+				_createdModelObject.AddComponent(myType);
 			}
-            _createdViewObject.AddComponent<Animation>();
 			#if UNITY_4_6 || UNITY_5
 			if(_createCanvas)
 			{
 				CreateCanvas(_createdViewObject);
 			}
-#endif
-            if (_window != null)
-                _window.Close();
-        }
+			#endif
+			if (_window != null)
+				_window.Close();
+		}
 
 		public static void CreateNewSkinOfType()
 		{   
 			CreateSkinScript();
-			
+			_attachScript = true;
+			EditorPrefs.SetBool("Scaffolding-CreatingView",_attachScript);
+			EditorPrefs.SetString("Scaffolding-CreatingViewFileName",_fileName);
+			EditorPrefs.SetString("Scaffolding-Callback","AttachSkin");
+			EditorPrefs.SetInt("Scaffolding-ResourcePath",_selectedResourcePath);
+		}
+
+		private void AttachSkin()
+		{
 			CreateSkinAssets();
 			AssetDatabase.Refresh();
-			InternalEditorUtility.AddScriptComponentUnchecked(_createdViewObject, AssetDatabase.LoadAssetAtPath(SkinTargetPath(), typeof(MonoScript)) as MonoScript);
+			var myType = ScaffoldingExtensions.GetType(_extendableClassNames[_selectedView]+_fileName);
+			_createdViewObject.AddComponent(myType);
 
 			#if UNITY_4_6 || UNITY_5
 			if(_createCanvas)

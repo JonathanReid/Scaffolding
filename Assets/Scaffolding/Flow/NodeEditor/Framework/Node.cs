@@ -133,11 +133,13 @@ namespace NodeEditorFramework
 				for (int conCnt = 0; conCnt < output.connections.Count; conCnt++) 
 				{
 					NodeInput input = output.connections [conCnt];
+				
 					NodeEditor.DrawConnection (startPos,
 					                           startDir,
 					                           input.GetGUIKnob ().center,
 					                           input.GetDirection () * -1,
 					                           ConnectionTypes.GetTypeData (output.type).col);
+
 				}
 			}
 		}
@@ -413,29 +415,7 @@ namespace NodeEditorFramework
 		/// </summary>
 		public void ClearCalculation () 
 		{
-			if (startRecursiveSearchNode == null || recursiveSearchSurpassed == null) 
-			{ // Start search
-				recursiveSearchSurpassed = new List<Node> ();
-				startRecursiveSearchNode = this;
-			}
 
-			if (recursiveSearchSurpassed.Contains (this))
-				return;
-			recursiveSearchSurpassed.Add (this);
-
-			calculated = false;
-			for (int outCnt = 0; outCnt < Outputs.Count; outCnt++)
-			{
-				NodeOutput output = Outputs [outCnt];
-				for (int conCnt = 0; conCnt < output.connections.Count; conCnt++)
-					output.connections [conCnt].body.ClearCalculation ();
-			}
-
-			if (startRecursiveSearchNode == this) 
-			{ // End search
-				recursiveSearchSurpassed = null;
-				startRecursiveSearchNode = null;
-			}
 		}
 		
 		/// <summary>

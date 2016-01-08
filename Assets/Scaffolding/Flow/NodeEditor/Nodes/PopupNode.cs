@@ -55,7 +55,7 @@ public class PopupNode : Node
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("Popup type:");
 		PopupIndex = UnityEditor.EditorGUILayout.Popup(PopupIndex, Popups);
-		if (t != PopupIndex)
+		if (t != PopupIndex && PopupIndex > -1 && PopupIndex < Popups.Length)
 		{
 			Buttons = ScaffoldingExtensions.GetButtonsInView(Popups[PopupIndex]);
 			t = PopupIndex;

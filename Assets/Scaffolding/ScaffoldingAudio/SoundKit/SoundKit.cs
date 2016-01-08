@@ -403,7 +403,7 @@ public class SoundKit : MonoBehaviour
 			audioSource.volume = volume;
 			audioSource.pitch = pitch;
 #if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_5_0 || UNITY_5_1
-			audioSource.pan = pan; // Pan removed in version 5.2.1p2
+			audioSource.panStereo = pan; // Pan removed in version 5.2.1p2
 #else
 			audioSource.panStereo = pan;
 #endif

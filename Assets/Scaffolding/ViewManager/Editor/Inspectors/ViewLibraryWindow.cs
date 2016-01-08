@@ -44,7 +44,8 @@ namespace Scaffolding.Editor
         static void OpenViewLibrary()
         {
             _window = (ViewLibraryWindow)EditorWindow.GetWindow(typeof(ViewLibraryWindow));
-			_window.titleContent = new GUIContent("View Library");
+			_window.title = "View Library";
+//			_window.titleContent = new GUIContent("View Library");
 		}
 
 		private void CreateBackgroundTexture()
@@ -120,6 +121,7 @@ namespace Scaffolding.Editor
 
         void OnGUI()
         {
+			try{
 			_applicationPlaying = Application.isPlaying;
             CreateAllViews();
 
@@ -158,6 +160,7 @@ namespace Scaffolding.Editor
 			{
 				EditorApplication.ExecuteMenuItem("Tools/Scaffolding/Preferences");
 			}
+
 
 			GUILayout.EndHorizontal();
 			GUILayout.BeginVertical(GUI.skin.FindStyle("Box"));
@@ -347,6 +350,9 @@ namespace Scaffolding.Editor
             GUILayout.EndVertical();
 
 			EditorUtility.SetDirty(_scaffoldingConfig);
+			}
+			catch
+			{}
         }
 
 		private bool _wasUsingProSkin;
