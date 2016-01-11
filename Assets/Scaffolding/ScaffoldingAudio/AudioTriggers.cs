@@ -1,5 +1,6 @@
 public enum AudioTrigger
  {
- 	 BackgroundMusic,
- 	 SFX
+ 	BackgroundMusic,
+ 	SFX,
+ 	MyTrigger
  }
