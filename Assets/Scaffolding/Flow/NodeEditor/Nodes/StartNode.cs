@@ -29,7 +29,14 @@ public class StartNode : Node
 
 		return node;
 	}
-	
+
+	public override void DrawNode ()
+	{
+		GUI.color = Color.magenta;
+		base.DrawNode ();
+		GUI.color = Color.white;
+	}
+
 	public override void NodeGUI () 
 	{
 		if(viewType == null || viewType.Count == 0)

@@ -28,6 +28,14 @@ public class GameView : AbstractView {
         base.OnShowComplete();
     }
 
+	public void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			RequestView<GameOverView>();
+		}
+	}
+
     public override void OnHideStart()
     {
         base.OnHideStart();

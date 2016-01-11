@@ -43,8 +43,7 @@ namespace Scaffolding
 					button.AddButtonPressedHandler(ButtonPressed);
 				}
 			}
-
-			Debug.Log(view);
+				
 			_view = view;
 			_flow = FindObjectOfType<FlowController>();
 		}

@@ -26,7 +26,7 @@ public class ViewNode : Node
 		ButtonCount = buttons.Count;
 
 		node.name = name;
-		node.rect = new Rect (pos.x, pos.y, 200, 30 + (ButtonCount * 35));
+		node.rect = new Rect (pos.x, pos.y, 200, 30 + (ButtonCount * 45));
 		
 		node.CreateInput ("Target view", "View");
 
@@ -51,7 +51,14 @@ public class ViewNode : Node
 			viewType.Add(Scaffolding.ViewType.View);
 		}
 
-		rect = new Rect (rect.x, rect.y, 200, 30 + (ButtonCount * 35));
+		rect = new Rect (rect.x, rect.y, 200, 30 + (ButtonCount * 45));
+	}
+
+	public override void DrawNode ()
+	{
+		
+		base.DrawNode ();
+
 	}
 	
 	public override void NodeGUI () 
@@ -69,31 +76,38 @@ public class ViewNode : Node
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginVertical ();
 
-		GUILayout.Label("Connected views:");
+		GUILayout.Label("");
 		InputKnob (0);
+//
+//		for(int i = 0; i < Inputs[0].connections.Count; ++i)
+//		{
+//			if(Inputs[0].connections[i] != null)
+//			{
+//				GUILayout.Label (Inputs[0].connections[i].body.name);
+//			}
+//		}
 
-		for(int i = 0; i < Inputs[0].connections.Count; ++i)
-		{
-			if(Inputs[0].connections[i] != null)
-			{
-				GUILayout.Label (Inputs[0].connections[i].body.name);
-			}
-		}
-		// --
-		
 		GUILayout.EndVertical ();
 		GUILayout.BeginVertical ();
 
 		for(int i = 0; i < ButtonCount; ++i)
 		{
 			GUILayout.BeginVertical ();
-			Outputs [i].DisplayLayout ();
-
 			GUILayout.BeginHorizontal ();
 			GUILayout.FlexibleSpace();
+			GUILayout.Label("Button:");
+			Outputs [i].DisplayLayout ();
+			GUILayout.EndHorizontal ();
+
+			GUILayout.BeginHorizontal ();
+
+			GUILayout.FlexibleSpace();
+			GUILayout.Label("Request");
 			viewType[i] = (Scaffolding.ViewType)UnityEditor.EditorGUILayout.EnumPopup(viewType[i],GUILayout.Width(55));
 			GUILayout.EndHorizontal ();
 			GUILayout.EndVertical ();
+
+			GUILayout.Space(10);
 		}
 		
 		GUILayout.EndVertical ();

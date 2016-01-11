@@ -15,6 +15,9 @@ namespace NodeEditorFramework
 		[HideInInspector]
 		[NonSerialized]
 		public bool calculated = true;
+
+		public bool ShowingNode = true;
+		public bool MinifiableNode;
 		
 		// State graph
 		public List<Transition> transitions = new List<Transition> ();
@@ -73,9 +76,11 @@ namespace NodeEditorFramework
 		/// <summary>
 		/// Draws the node. Depends on curEditorState. Can be overridden by an node type.
 		/// </summary>
+
 		public virtual void DrawNode () 
 		{
 			// TODO: Node Editor Feature: Custom Windowing System
+
 			Rect nodeRect = rect;
 			nodeRect.position += NodeEditor.curEditorState.zoomPanAdjust;
 			float headerHeight = 20;
@@ -88,9 +93,19 @@ namespace NodeEditorFramework
 			GUI.Label (headerRect, new GUIContent (name), headerStyle);
 			
 			GUI.changed = false;
-			GUILayout.BeginArea (bodyRect, GUI.skin.box);
-			NodeGUI ();
-			GUILayout.EndArea ();
+
+			headerRect.width = headerHeight;
+			if(MinifiableNode && GUI.Button(headerRect,ShowingNode ? "-":"+"))
+			{
+				ShowingNode = !ShowingNode;
+			}
+
+			if(ShowingNode || !MinifiableNode)
+			{
+				GUILayout.BeginArea (bodyRect, GUI.skin.box);
+				NodeGUI ();
+				GUILayout.EndArea ();
+			}
 		}
 
 		/// <summary>
@@ -102,6 +117,7 @@ namespace NodeEditorFramework
 			{
 				NodeOutput output = Outputs[outCnt];
 				Rect knobRect = output.GetGUIKnob ();
+
 //				Matrix4x4 GUIMatrix = GUI.matrix;
 //				if (output.side != NodeSide.Right)
 //					GUIUtility.RotateAroundPivot (output.GetRotation (), knobRect.center);
@@ -137,7 +153,8 @@ namespace NodeEditorFramework
 					                           startDir,
 					                           input.GetGUIKnob ().center,
 					                           input.GetDirection () * -1,
-					                           ConnectionTypes.GetTypeData (output.type).col);
+					                           ConnectionTypes.GetTypeData (output.type).col,
+						output.body.rect.height);
 				}
 			}
 		}

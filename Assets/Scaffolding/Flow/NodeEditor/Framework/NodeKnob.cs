@@ -63,6 +63,13 @@ namespace NodeEditorFramework
 
 		#region GUI and Position calls
 
+		public bool HiddenKnob;
+
+		public void Hide()
+		{
+			HiddenKnob = true;
+		}
+
 		/// <summary>
 		/// Automatically draw the output with it's name and set the knob next to it at the current side.
 		/// </summary>
@@ -93,6 +100,7 @@ namespace NodeEditorFramework
 		/// <param name="style"></param>
 		public void DisplayLayout(GUIContent content, GUIStyle style)
 		{
+			HiddenKnob = false;
 			GUILayout.Label(content, style);
 			if (Event.current.type == EventType.Repaint)
 				SetPosition();
@@ -139,8 +147,18 @@ namespace NodeEditorFramework
 			Check ();
 			Vector2 center = new Vector2 (body.rect.x + (side == NodeSide.Bottom || side == NodeSide.Top? sidePosition : (side == NodeSide.Left? -sideOffset : body.rect.width+sideOffset)), 
 			                              body.rect.y + (side == NodeSide.Left || side == NodeSide.Right? sidePosition : (side == NodeSide.Top? -sideOffset : body.rect.height+sideOffset)));
+
+			if(body.MinifiableNode && !body.ShowingNode)
+				center.y = body.rect.y + 10;
+
+
 			Vector2 size = new Vector2 ((knobTexture.width/knobTexture.height) * NodeEditorGUI.knobSize,
 			                            (knobTexture.height/knobTexture.width) * NodeEditorGUI.knobSize);
+			
+			if(HiddenKnob)
+			{
+				size.x = 0;
+			}
 			Rect knobRect = new Rect (center.x + (side == NodeSide.Left? -size.x : 0), center.y + (side == NodeSide.Top? -size.y : (side == NodeSide.Bottom? 0 : -size.y/2)), size.x, size.y);
 			knobRect.position += NodeEditor.curEditorState.zoomPanAdjust;
 			return knobRect;

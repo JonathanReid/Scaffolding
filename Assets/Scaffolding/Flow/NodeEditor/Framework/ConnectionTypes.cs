@@ -103,7 +103,7 @@ namespace NodeEditorFramework
 	public class ViewType : ITypeDeclaration 
 	{
 		public string name { get { return "View"; } }
-		public Color col { get { return Color.cyan; } }
+		public Color col { get { return Color.green; } }
 		public string InputKnob_TexPath { get { return "Textures/In_Knob.png"; } }
 		public string OutputKnob_TexPath { get { return "Textures/Out_Knob.png"; } }
 		public Type Type { get { return typeof(string); } }

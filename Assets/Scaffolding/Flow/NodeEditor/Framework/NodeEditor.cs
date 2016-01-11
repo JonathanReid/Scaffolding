@@ -166,7 +166,8 @@ namespace NodeEditorFramework
 				                output.GetDirection (),
 				                ScreenToGUIPos (mousePos) + curEditorState.zoomPos * curEditorState.zoom,
 				                Vector2.right,
-				                ConnectionTypes.GetTypeData (output.type).col);
+					new Color(1,0,0),
+					output.body.rect.height);
 				if (Repaint != null)
 					Repaint ();
 			}
@@ -198,6 +199,7 @@ namespace NodeEditorFramework
 			{
 				curNodeCanvas.nodes [nodeCnt].DrawNode ();
 				curNodeCanvas.nodes [nodeCnt].DrawKnobs ();
+				UnityEditor.EditorUtility.SetDirty(curNodeCanvas.nodes [nodeCnt]);
 			}
 			
 			// ---- END SCALE ----
@@ -210,6 +212,11 @@ namespace NodeEditorFramework
 			
 			curNodeCanvas = prevNodeCanvas;
 			curEditorState = prevEditorState;
+
+			if(curNodeCanvas != null)
+			{
+				UnityEditor.EditorUtility.SetDirty(curNodeCanvas);
+			}
 		}
 		
 		#endregion
@@ -257,20 +264,104 @@ namespace NodeEditorFramework
 		/// <summary>
 		/// Draws a node connection from start to end, vectors being Vector2.right
 		/// </summary>
-		public static void DrawConnection (Vector2 startPos, Vector2 endPos, Color col) 
+		public static void DrawConnection (Vector2 startPos, Vector2 endPos, Color col, float nodeHeight) 
 		{
-			DrawConnection (startPos, Vector2.right, endPos, Vector2.right, col);
+			DrawConnection (startPos, Vector2.right, endPos, Vector2.right, col, nodeHeight);
 		}
 
 		/// <summary>
 		/// Draws a node connection from start to end with specified vectors
 		/// </summary>
-		public static void DrawConnection (Vector2 startPos, Vector2 startDir, Vector2 endPos, Vector2 endDir, Color col) 
+		public static void DrawConnection (Vector2 startPos, Vector2 startDir, Vector2 endPos, Vector2 endDir, Color col, float nodeHeight) 
 		{
 			#if NODE_EDITOR_LINE_CONNECTION
 			DrawLine (startPos, endPos, col * Color.gray, null, 3);
 			#else
-			NodeEditorGUI.DrawBezier (startPos, endPos, startPos + startDir * 80, endPos + endDir * -80, col * Color.gray, null, 3);
+
+			Vector2 startHeightDiff = (startPos-endPos).normalized;
+			startHeightDiff.x = 0;
+			Vector2 startWidthDiff = (startPos-endPos).normalized;
+			startWidthDiff.y = 0;
+
+			Vector2 p2 = startPos + Vector2.right * 25;
+			if(startHeightDiff.y >= 0)
+			{
+				startHeightDiff.y = 1;
+			}
+			else
+			{
+				startHeightDiff.y = -1;
+			}
+
+			Vector2 p3 = startPos + Vector2.right * 25 - startHeightDiff * nodeHeight;
+
+			if(endPos.x < startPos.x + 25)
+			{
+				UnityEditor.Handles.color = col;
+				Vector3[] points = new Vector3[6];
+				points[0] = startPos;
+				points[1] = p2;
+				points[2] = p3;
+				Vector2 p4 = p3;
+				p4.x = endPos.x - 25;
+				points[3] = p4;
+				Vector2 p5 = endPos;
+				p5.x -= 25;
+				points[4] = p5;
+				points[5] = endPos;
+				UnityEditor.Handles.DrawAAPolyLine(6,points);
+
+				Vector2 p6 = p3 + ((p4-p3)*0.5f);
+				p6.x += 25*0.2f;
+				float w = 0;
+				for(int i = 0; i < 50; ++i)
+				{
+					UnityEditor.Handles.DrawLine(p6-Vector2.down*w,p6+Vector2.down*w);
+					p6.x +=0.2f;
+					w+= 0.2f;
+				}
+			}
+			else
+			{
+				p3.y = endPos.y;
+
+				UnityEditor.Handles.color = col;
+				Vector3[] points = new Vector3[4];
+
+				points[0] = startPos;
+				points[1] = p2;
+				points[2] = p3;
+				points[3] = endPos;
+				UnityEditor.Handles.DrawAAPolyLine(6,points);
+
+				if(Mathf.Abs(p2.y - p3.y) < 2)
+				{
+					Vector2 p6 = startPos + ((endPos-startPos)*0.5f);
+					p6.x += 25*0.2f;
+					float w = 0;
+					for(int i = 0; i < 50; ++i)
+					{
+						UnityEditor.Handles.DrawLine(p6+Vector2.down*w,p6-Vector2.down*w);
+						p6.x -=0.2f;
+						w+= 0.2f;
+					}
+				}
+				else
+				{
+					Vector2 p6 = p2 + ((p3-p2)*0.5f);
+					float w = 0;
+					int dir = p3.y > p2.y ? -1:1;
+					p6.y -= (25*0.2f)*dir;
+					for(int i = 0; i < 50; ++i)
+					{
+						UnityEditor.Handles.DrawLine(p6-Vector2.right*w,p6+Vector2.right*w);
+						p6.y +=0.2f*dir;
+						w+= 0.2f;
+					}
+				}
+			}
+
+
 			#endif
 		}
 
@@ -617,7 +708,14 @@ namespace NodeEditorFramework
 			switch (cbObj.message)
 			{
 			case "refreshNode":
-				(curEditorState.focusedNode as ViewNode).Refresh();
+				if(curEditorState.focusedNode is ViewNode)
+				{
+					(curEditorState.focusedNode as ViewNode).Refresh();
+				}
+				else if(curEditorState.focusedNode is CloseViewNode)
+				{
+					(curEditorState.focusedNode as CloseViewNode).Refresh();
+				}
 				break;
 			case "deleteNode":
 				if (curEditorState.focusedNode != null) 

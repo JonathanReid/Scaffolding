@@ -29,43 +29,67 @@ public class TransitionNode : Node
 
 		return node;
 	}
+
+	public override void DrawNode ()
+	{
+		GUI.color = Color.magenta;
+		base.DrawNode ();
+		GUI.color = Color.white;
+	}
 	
 	public override void NodeGUI () 
 	{
-
+		MinifiableNode = true;
 		if(Transitions == null || Transitions.Length == 0)
 		{
 			Transitions = ScaffoldingExtensions.GetAllTransitions().ToArray();
 
 		}
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.BeginVertical ();
-		
-		GUILayout.Label("Connected views:");
-		InputKnob (0);
-		
-		for(int i = 0; i < Inputs[0].connections.Count; ++i)
+		if(Transitions.Length == 0)
 		{
-			if(Inputs[0].connections[i] != null)
-			{
-				GUILayout.Label (Inputs[0].connections[i].body.name);
-			}
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("No Transitions found in project!\nPlease create a transition that extends\nAbstractTransition!");
+			GUILayout.EndHorizontal();
+
+			GUILayout.BeginVertical ();
+			Inputs[0].Hide();
+			Outputs [0].Hide ();
+
+			GUILayout.EndVertical ();
 		}
-		
-		GUILayout.EndVertical ();
-		GUILayout.BeginVertical ();
+		else
+		{
+			GUILayout.BeginHorizontal ();
+			GUILayout.BeginVertical ();
+			
+			GUILayout.Label("");
+			InputKnob (0);
+			
+//			for(int i = 0; i < Inputs[0].connections.Count; ++i)
+//			{
+//				if(Inputs[0].connections[i] != null)
+//				{
+//					GUILayout.Label (Inputs[0].connections[i].body.name);
+//				}
+//			}
+//			
+			GUILayout.EndVertical ();
+			GUILayout.BeginVertical ();
 
-		GUILayout.BeginVertical ();
-		Outputs [0].DisplayLayout ();
-		GUILayout.EndVertical ();
+			GUILayout.BeginVertical ();
+			Outputs [0].DisplayLayout ();
+			GUILayout.EndVertical ();
 
-		TransitionIndex = UnityEditor.EditorGUILayout.Popup(TransitionIndex, Transitions);
-	
-		GUILayout.EndVertical ();
-		GUILayout.EndHorizontal ();
-		
-		
+			GUILayout.BeginHorizontal ();
+			GUILayout.Label("Using this transition:");
+			TransitionIndex = UnityEditor.EditorGUILayout.Popup(TransitionIndex, Transitions);
+			GUILayout.EndHorizontal ();
+
+			GUILayout.EndVertical ();
+			GUILayout.EndHorizontal ();
+			
+		}
 		if (GUI.changed)
 			NodeEditor.RecalculateFrom (this);
 	}

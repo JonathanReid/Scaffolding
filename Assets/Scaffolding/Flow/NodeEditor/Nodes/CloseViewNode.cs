@@ -21,33 +21,48 @@ public class CloseViewNode : Node
 		node.rect = new Rect (pos.x, pos.y, 200, 100);
 		
 		node.CreateInput ("Target view", "View");
-		node.CreateOutput ("Transition to:", "View");
+		node.CreateOutput ("Then Open:", "View");
 		
 		return node;
+	}
+
+	public void Refresh()
+	{
+		Debug.Log("Refreh");
+	}
+
+	public override void DrawNode ()
+	{
+		GUI.color = Color.magenta;
+		base.DrawNode ();
+		GUI.color = Color.white;
 	}
 	
 	public override void NodeGUI () 
 	{
+		MinifiableNode = true;
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginVertical ();
 
-		GUILayout.Label("Close Overlays:");
+		GUILayout.Label("Close Overlay");
 		InputKnob (0);
 
-		for(int i = 0; i < Inputs[0].connections.Count; ++i)
-		{
-			if(Inputs[0].connections[i] != null)
-			{
-				GUILayout.Label (Inputs[0].connections[i].body.name);
-			}
-		}
+//		for(int i = 0; i < Inputs[0].connections.Count; ++i)
+//		{
+//			if(Inputs[0].connections[i] != null)
+//			{
+//				GUILayout.Label (Inputs[0].connections[i].body.name);
+//			}
+//		}
 
 		GUILayout.EndVertical ();
 		GUILayout.BeginVertical ();
 
 
 		GUILayout.BeginVertical ();
+		GUILayout.BeginHorizontal ();
 		Outputs [0].DisplayLayout ();
+		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical ();
 
 		GUILayout.EndVertical ();

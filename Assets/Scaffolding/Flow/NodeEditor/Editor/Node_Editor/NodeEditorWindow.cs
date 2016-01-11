@@ -302,6 +302,10 @@ namespace NodeEditorFramework
 						MapPathOfView(node);
 					}
 				}
+				else
+				{
+					MapPathOfView(mainNodeCanvas.nodes[i]);
+				}
 			}
 
 		}
@@ -328,7 +332,7 @@ namespace NodeEditorFramework
 		{
 			for(int i = 0; i < n.Outputs.Count; ++i)
 			{
-				if(n.Outputs[i].connections.Count > 0)
+				if(n.Outputs[i].connections.Count > 0 && (n is ViewNode))
 				{
 					FlowItem item = new FlowItem();
 					Node nextNode = n.Outputs[i].connections[0].body;
