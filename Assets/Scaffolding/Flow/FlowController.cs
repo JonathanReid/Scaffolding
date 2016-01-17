@@ -47,7 +47,7 @@ public class FlowController : MonoBehaviour {
 	private string _viewName;
 	private AbstractView _view;
 	private string _buttonName;
-	private FlowItem _flowItem;
+	private List<FlowItem> _flowItem;
 	private ViewManager _viewManager;
 
 	private List<FlowSnapshot> _viewBreadcrumbs;
@@ -108,7 +108,10 @@ public class FlowController : MonoBehaviour {
 
 		TakeSnapshotOfViews();
 
-		MoveNext();
+		for(int i = 0; i< _flowItem.Count; ++i)
+		{
+			MoveNext(i);
+		}
 	}
 
 	public void TakeSnapshotOfViews()
@@ -127,7 +130,7 @@ public class FlowController : MonoBehaviour {
 				}
 			}
 
-			snap.Transition = _flowItem.Options.TransitionType;
+			snap.Transition = _flowItem[0].Options.TransitionType;
 
 			snap.OpenOverlays = overlays;
 			_viewBreadcrumbs.Add(snap);
@@ -151,37 +154,41 @@ public class FlowController : MonoBehaviour {
 			_flowItem = GetFlowItemWithEntryPoint(snapshot.OpenView, _viewName );
 
 			//if there is no match in the history, make a best guess.
-			if(string.IsNullOrEmpty( _flowItem.EntryPoint ))
+			if(string.IsNullOrEmpty( _flowItem[0].EntryPoint ))
 			{
 				SetFlowItemToBestGuess(_viewName);
 			}
 			else
 			{
-				_flowItem.Options.ExitPoint = _flowItem.EntryPoint;
-				_flowItem.Options.TransitionType = snapshot.Transition;
+				FlowItem item = _flowItem[0];
+				item.Options.ExitPoint = item.EntryPoint;
+				item.Options.TransitionType = snapshot.Transition;
+				_flowItem[0] = item;
 			}
 
 		}
-		if(string.IsNullOrEmpty( _flowItem.EntryPoint ))
+		if(string.IsNullOrEmpty( _flowItem[0].EntryPoint ))
 		{
 			throw new System.FormatException("Couldn't find any view to take the view to, so bailing out!");
 		}
 		else
 		{
-			MoveNext();
+			MoveNext(0);
 		}
 	}
 
 	private void SetFlowItemToBestGuess(string viewName)
 	{
 		_flowItem = GetFlowItemWithEntryPoint( viewName );
-		_flowItem.Options.ExitPoint = _flowItem.EntryPoint;
+		FlowItem item = _flowItem[0];
+		item.Options.ExitPoint = item.EntryPoint;
+		_flowItem[0] = item;
 	}
 
 	public bool HasInformationForView(string viewName, string button)
 	{
-		FlowItem f = GetFlowItem(viewName, button);
-		if(!string.IsNullOrEmpty(f.EntryPoint))
+		List<FlowItem> f = GetFlowItem(viewName, button);
+		if(f.Count > 0)
 		{
 			return true;
 		}
@@ -191,9 +198,9 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public bool HasNextPointInFlow()
+	public bool HasNextPointInFlow(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.Options.ExitPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].Options.ExitPoint))
 		{	
 			return true;
 		}
@@ -203,11 +210,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public Type GetNextPointInFlow()
+	public Type GetNextPointInFlow(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{	
-			return ScaffoldingExtensions.GetType(_flowItem.Options.ExitPoint);
+			return ScaffoldingExtensions.GetType(_flowItem[index].Options.ExitPoint);
 		}
 		else
 		{
@@ -215,11 +222,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public ViewType GetOpenAsType() 
+	public ViewType GetOpenAsType(int index) 
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return _flowItem.Options.OpenAsType;
+			return _flowItem[index].Options.OpenAsType;
 		}
 		else
 		{
@@ -228,11 +235,11 @@ public class FlowController : MonoBehaviour {
 	}
 
 
-	public ViewOpenType OpenOrCloseView() 
+	public ViewOpenType OpenOrCloseView(int index) 
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return _flowItem.Options.OpenOrCloseView;
+			return _flowItem[index].Options.OpenOrCloseView;
 		}
 		else
 		{
@@ -240,11 +247,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public ViewOpenType OpenOrCloseModalPopup(int id) 
+	public ViewOpenType OpenOrCloseModalPopup(int index, int id) 
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return _flowItem.PopupOptions.Options[id].OpenOrCloseView;
+			return _flowItem[index].PopupOptions.Options[id].OpenOrCloseView;
 		}
 		else
 		{
@@ -252,11 +259,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public bool HasTransition()
+	public bool HasTransition(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return !string.IsNullOrEmpty(_flowItem.Options.TransitionType);
+			return !string.IsNullOrEmpty(_flowItem[index].Options.TransitionType);
 		}
 		else
 		{
@@ -264,11 +271,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public Type GetTransition()
+	public Type GetTransition(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return ScaffoldingExtensions.GetType(_flowItem.Options.TransitionType);
+			return ScaffoldingExtensions.GetType(_flowItem[index].Options.TransitionType);
 		}
 		else
 		{
@@ -278,11 +285,11 @@ public class FlowController : MonoBehaviour {
 
 	//popups
 
-	public bool HasPopup()
+	public bool HasPopup(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return !string.IsNullOrEmpty(_flowItem.Options.PopupType);
+			return !string.IsNullOrEmpty(_flowItem[index].Options.PopupType);
 		}
 		else
 		{
@@ -290,11 +297,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 	
-	public Type GetPopup()
+	public Type GetPopup(int index)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return ScaffoldingExtensions.GetType(_flowItem.Options.PopupType);
+			return ScaffoldingExtensions.GetType(_flowItem[index].Options.PopupType);
 		}
 		else
 		{
@@ -302,11 +309,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public bool HasPopup(int id)
+	public bool HasPopup(int index, int id)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return !string.IsNullOrEmpty(_flowItem.PopupOptions.Options[id].PopupType);
+			return !string.IsNullOrEmpty(_flowItem[index].PopupOptions.Options[id].PopupType);
 		}
 		else
 		{
@@ -314,11 +321,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 	
-	public Type GetPopup(int id)
+	public Type GetPopup(int index, int id)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return ScaffoldingExtensions.GetType(_flowItem.PopupOptions.Options[id].PopupType);
+			return ScaffoldingExtensions.GetType(_flowItem[index].PopupOptions.Options[id].PopupType);
 		}
 		else
 		{
@@ -326,11 +333,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public Type GetPopupExitPoint(int id)
+	public Type GetPopupExitPoint(int index, int id)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return ScaffoldingExtensions.GetType(_flowItem.PopupOptions.Options[id].ExitPoint);
+			return ScaffoldingExtensions.GetType(_flowItem[index].PopupOptions.Options[id].ExitPoint);
 		}
 		else
 		{
@@ -338,11 +345,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 	
-	public ViewType GetPopupOpenType(int id) 
+	public ViewType GetPopupOpenType(int index, int id) 
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return _flowItem.PopupOptions.Options[id].OpenAsType;
+			return _flowItem[index].PopupOptions.Options[id].OpenAsType;
 		}
 		else
 		{
@@ -350,11 +357,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 	
-	public bool PopupOptionHasTransition(int id)
+	public bool PopupOptionHasTransition(int index, int id)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return !string.IsNullOrEmpty(_flowItem.PopupOptions.Options[id].TransitionType);
+			return !string.IsNullOrEmpty(_flowItem[index].PopupOptions.Options[id].TransitionType);
 		}
 		else
 		{
@@ -362,11 +369,11 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 	
-	public Type GetPopupOptionTransition(int id)
+	public Type GetPopupOptionTransition(int index, int id)
 	{
-		if(!string.IsNullOrEmpty(_flowItem.EntryPoint))
+		if(!string.IsNullOrEmpty(_flowItem[index].EntryPoint))
 		{
-			return ScaffoldingExtensions.GetType(_flowItem.PopupOptions.Options[id].TransitionType);
+			return ScaffoldingExtensions.GetType(_flowItem[index].PopupOptions.Options[id].TransitionType);
 		}
 		else
 		{
@@ -374,18 +381,19 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	public string GetPopupBodyText()
+	public string GetPopupBodyText(int index)
 	{
-		return _flowItem.PopupOptions.BodyText;
+		return _flowItem[index].PopupOptions.BodyText;
 	}
 
-	public string GetPopupButtonText(int id)
+	public string GetPopupButtonText(int index, int id)
 	{
-		return id == 0 ? _flowItem.PopupOptions.YesText : _flowItem.PopupOptions.NoText;
+		return id == 0 ? _flowItem[index].PopupOptions.YesText : _flowItem[index].PopupOptions.NoText;
 	}
 
-	private FlowItem GetFlowItem(string viewName, string buttonName)
+	private List<FlowItem> GetFlowItem(string viewName, string buttonName)
 	{
+		List<FlowItem> items = new List<FlowItem>();
 		int i = 0, l = _flow.Count;
 		for(;i<l;++i)
 		{
@@ -393,16 +401,24 @@ public class FlowController : MonoBehaviour {
 			{
 				if(_flow[i].ButtonName == buttonName)
 				{
-					return _flow[i];
+					if(_flow[i].Options.OpenAsType == ViewType.Overlay)
+					{
+						items.Insert(0,_flow[i]);
+					}
+					else
+					{
+						items.Add(_flow[i]);
+					}
 				}
 			}
 		}
 
-		return new FlowItem();
+		return items;
 	}
 
-	private FlowItem GetFlowItemWithEntryPoint(string entry, string exit)
+	private List<FlowItem> GetFlowItemWithEntryPoint(string entry, string exit)
 	{
+		List<FlowItem> items = new List<FlowItem>();
 		int i = 0, l = _flow.Count;
 		for(;i<l;++i)
 		{
@@ -410,58 +426,75 @@ public class FlowController : MonoBehaviour {
 			{
 				if(_flow[i].EntryPoint == entry)
 				{
-					return _flow[i];
+					if(_flow[i].Options.OpenAsType == ViewType.Overlay)
+					{
+						items.Insert(0,_flow[i]);
+					}
+					else
+					{
+						items.Add(_flow[i]);
+					}
 				}
 			}
 		}
 		
-		return new FlowItem();
+		return items;
 	}
 
-	private FlowItem GetFlowItemWithEntryPoint(string exit)
+	private List<FlowItem> GetFlowItemWithEntryPoint(string exit)
 	{
+		List<FlowItem> items = new List<FlowItem>();
 		int i = 0, l = _flow.Count;
 		for(;i<l;++i)
 		{
 			if(_flow[i].Options.ExitPoint == exit)
 			{
-				return _flow[i];
+				if(_flow[i].Options.OpenAsType == ViewType.Overlay)
+				{
+					items.Insert(0,_flow[i]);
+				}
+				else
+				{
+					items.Add(_flow[i]);
+				}
 			}
 		}
 		
-		return new FlowItem();
+		return items;
 	}
 
 	#region button clicked, now lets move
 
 	private void PopupOK()
 	{
-		MoveNextPopup(0);
+		MoveNextPopup(_popupIndex, 0);
 	}
 
 	private void PopupNo()
 	{
-		MoveNextPopup(1);
+		MoveNextPopup(_popupIndex, 1);
 	}
 
-	private void MoveNext()
+	private int _popupIndex;
+
+	private void MoveNext(int index)
 	{
-		switch (GetOpenAsType ()) 
+		switch (GetOpenAsType (index)) 
 		{
 		case ViewType.View:
 
-			if(HasNextPointInFlow())
+			if(HasNextPointInFlow(index))
 			{
-				if(HasTransition())
+				if(HasTransition(index))
 				{
-					_view.TransitionTo(GetNextPointInFlow(),GetTransition() );
+					_view.TransitionTo(GetNextPointInFlow(index),GetTransition(index) );
 				}
 				else
 				{
-					_view.RequestView( GetNextPointInFlow() );
+					_view.RequestView( GetNextPointInFlow(index) );
 				}
 			}
-			switch (OpenOrCloseView ()) 
+			switch (OpenOrCloseView (index)) 
 			{
 			case ViewOpenType.Open:
 				break;
@@ -473,19 +506,20 @@ public class FlowController : MonoBehaviour {
 			break;
 		case ViewType.Overlay:
 
-			if(HasNextPointInFlow())
+			if(HasNextPointInFlow(index))
 			{
-				if(HasPopup())
+				if(HasPopup(index))
 				{
-					_view.RequestModalPopup(GetPopup(),PopupOK,GetPopupButtonText(0),PopupNo,GetPopupButtonText(1), GetPopupBodyText());
+					_popupIndex = index;
+					_view.RequestModalPopup(GetPopup(index),PopupOK,GetPopupButtonText(index,0),PopupNo,GetPopupButtonText(index,1), GetPopupBodyText(index));
 				}
 				else
 				{
-					_view.RequestOverlay( GetNextPointInFlow() );
+					_view.RequestOverlay( GetNextPointInFlow(index) );
 				}
 			}
 
-			switch (OpenOrCloseView ()) 
+			switch (OpenOrCloseView (index)) 
 			{
 			case ViewOpenType.Open:
 
@@ -499,21 +533,21 @@ public class FlowController : MonoBehaviour {
 		}
 	}
 
-	private void MoveNextPopup(int popupButtonID)
+	private void MoveNextPopup(int index, int popupButtonID)
 	{
-		switch (GetPopupOpenType (popupButtonID)) 
+		switch (GetPopupOpenType (index, popupButtonID)) 
 		{
 		case ViewType.View:
-			switch (OpenOrCloseModalPopup (popupButtonID)) 
+			switch (OpenOrCloseModalPopup (index, popupButtonID)) 
 			{
 			case ViewOpenType.Open:
-				if(PopupOptionHasTransition(popupButtonID))
+				if(PopupOptionHasTransition(index, popupButtonID))
 				{
-					_view.TransitionTo(GetPopupExitPoint(popupButtonID),GetPopupOptionTransition(popupButtonID) );
+					_view.TransitionTo(GetPopupExitPoint(index, popupButtonID),GetPopupOptionTransition(index, popupButtonID) );
 				}
 				else
 				{
-					_view.RequestView( GetPopupExitPoint(popupButtonID) );
+					_view.RequestView( GetPopupExitPoint(index, popupButtonID) );
 				}
 				break;
 			case ViewOpenType.Close:
@@ -522,16 +556,16 @@ public class FlowController : MonoBehaviour {
 			}
 			break;
 		case ViewType.Overlay:
-			switch (OpenOrCloseModalPopup (popupButtonID)) 
+			switch (OpenOrCloseModalPopup (index, popupButtonID)) 
 			{
 			case ViewOpenType.Open:
-				if(HasPopup(popupButtonID))
+				if(HasPopup(index, popupButtonID))
 				{
-					_view.RequestModalPopup(GetPopup(popupButtonID),PopupOK,GetPopupButtonText(0),PopupNo,GetPopupButtonText(1), GetPopupBodyText());
+					_view.RequestModalPopup(GetPopup(index, popupButtonID),PopupOK,GetPopupButtonText(index, 0),PopupNo,GetPopupButtonText(index, 1), GetPopupBodyText(index));
 				}
 				else
 				{
-					_view.RequestOverlay( GetPopupExitPoint(popupButtonID) );
+					_view.RequestOverlay( GetPopupExitPoint(index,popupButtonID) );
 				}
 				break;
 

@@ -1,5 +1,5 @@
 ﻿//#define NODE_EDITOR_LINE_CONNECTION
-
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
@@ -42,7 +42,7 @@ namespace NodeEditorFramework
 		{
 			if (!initiated && !InitiationError) 
 			{
-	#if UNITY_EDITOR
+	
 				editorPath = ScaffoldingConfig.Instance.ScaffoldingPath + "/Flow/NodeEditor/";
 
 				Object script = UnityEditor.AssetDatabase.LoadAssetAtPath (editorPath + "Framework/NodeEditor.cs", typeof(Object));
@@ -52,7 +52,7 @@ namespace NodeEditorFramework
 					InitiationError = true;
 					return;
 				}
-	#endif
+	
 
 				ResourceManager.Init (editorPath + "Resources/");
 				
@@ -490,11 +490,11 @@ namespace NodeEditorFramework
 							if (nodeOutput != null)
 							{ // Output Node -> New Connection drawn from this
 								curEditorState.connectOutput = nodeOutput;
-								for(int i = 0; i < nodeOutput.connections.Count;i++)
-								{
-									nodeOutput.connections[i].connections.Remove(nodeOutput);
-								}
-								nodeOutput.connections.Clear();
+//								for(int i = 0; i < nodeOutput.connections.Count;i++)
+//								{
+//									nodeOutput.connections[i].connections.Remove(nodeOutput);
+//								}
+//								nodeOutput.connections.Clear();
 								e.Use();
 							}
 							else 
@@ -1198,6 +1198,7 @@ namespace NodeEditorFramework
 	}
 }
 
+#endif
 
 
 

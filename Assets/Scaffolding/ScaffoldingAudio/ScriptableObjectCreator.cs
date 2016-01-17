@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 public class ScriptableObjectCreator<T> : ScriptableObject where T : ScriptableObject {
@@ -19,8 +21,10 @@ public class ScriptableObjectCreator<T> : ScriptableObject where T : ScriptableO
 		{
 			if(!Application.isPlaying)
 			{
+				#if UNITY_EDITOR
 				_reference = CreateObject();
 				UpdateObjectFolderPath();
+				#endif
 			}
 			else
 			{
@@ -37,7 +41,8 @@ public class ScriptableObjectCreator<T> : ScriptableObject where T : ScriptableO
 		path = path.Remove(0, path.IndexOf("Resources") + 10);
 		return Resources.Load<T>(path);
 	}
-	
+
+	#if UNITY_EDITOR
 	public static T CreateObject()
 	{
 		string path = "";
@@ -115,4 +120,5 @@ public class ScriptableObjectCreator<T> : ScriptableObject where T : ScriptableO
 			RecursivelyFindAsset(s);
 		}
 	}
+	#endif
 }

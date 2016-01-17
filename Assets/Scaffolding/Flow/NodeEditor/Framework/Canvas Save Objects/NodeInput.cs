@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEngine;
 using NodeEditorFramework;
 using System.Collections.Generic;
@@ -99,3 +100,4 @@ namespace NodeEditorFramework
 		#endregion
 	}
 }
+#endif

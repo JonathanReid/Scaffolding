@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
+#if UNITY_EDITOR
 #if UNITY_5_3
 using UnityEditor.SceneManagement;
 #endif
 
-#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using System.IO;
@@ -72,20 +72,22 @@ namespace Scaffolding {
 
 		public void UpdateScaffoldingPath()
 		{
-			RecursivelyFindFolderPath("Assets");
-			RecursivelyFindAsset("Assets");
-			_instance.ScaffoldingPath = _scaffoldingPath;
-			_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
-			RemoveUnUsedPaths();
+			#if UNITY_EDITOR
+				RecursivelyFindFolderPath("Assets");
+				RecursivelyFindAsset("Assets");
+				_instance.ScaffoldingPath = _scaffoldingPath;
+				_instance.ScaffoldingConfigPath = _scaffoldingConfigPath;
+				RemoveUnUsedPaths();
 
-			if(!ScaffoldingResourcesPath.Contains(_scaffoldingPath+"/Transitions/Resources/Transitions"))
-			{
-				ScaffoldingResourcesPath.Add(_scaffoldingPath+"/Transitions/Resources/Transitions");
-			}
-			if(!ScaffoldingScriptsPath.Contains(_scaffoldingPath+"/Transitions/Scripts/"))
-			{
-				ScaffoldingScriptsPath.Add(_scaffoldingPath+"/Transitions/Scripts/");
-			}
+				if(!ScaffoldingResourcesPath.Contains(_scaffoldingPath+"/Transitions/Resources/Transitions"))
+				{
+					ScaffoldingResourcesPath.Add(_scaffoldingPath+"/Transitions/Resources/Transitions");
+				}
+				if(!ScaffoldingScriptsPath.Contains(_scaffoldingPath+"/Transitions/Scripts/"))
+				{
+					ScaffoldingScriptsPath.Add(_scaffoldingPath+"/Transitions/Scripts/");
+				}
+			#endif
 		}
 
 		private void RemoveUnUsedPaths()
@@ -133,7 +135,10 @@ namespace Scaffolding {
 			#endif
 			sv.SceneName = sv.SceneName.Remove(0,sv.SceneName.LastIndexOf("/")+1);
 			int index = sv.SceneName.LastIndexOf(".unity");
-			sv.SceneName = sv.SceneName.Remove(index,sv.SceneName.Length - index);
+			if(index >= 0)
+			{
+				sv.SceneName = sv.SceneName.Remove(index,sv.SceneName.Length - index);
+			}
 #else
 			sv.SceneName = Application.loadedLevelName;
 #endif
@@ -236,7 +241,7 @@ namespace Scaffolding {
 			sc.ScaffoldingPath = _scaffoldingPath;
 			sc.ScaffoldingConfigPath = _scaffoldingConfigPath;
 #else
-			path = "SCConfig.asset";
+			path = "SCConfig";
 			sc = Resources.Load<ScaffoldingConfig>(path);
 #endif
 

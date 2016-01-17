@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections.Generic;
 using NodeEditorFramework;
 
@@ -9,3 +10,4 @@ namespace NodeEditorFramework
 		public List<Node> nodes = new List<Node> ();
 	}
 }
+#endif

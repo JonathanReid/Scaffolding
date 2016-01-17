@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
 using NodeEditorFramework;
 
@@ -75,3 +76,4 @@ public class CloseViewNode : Node
 		return true;
 	}
 }
+#endif

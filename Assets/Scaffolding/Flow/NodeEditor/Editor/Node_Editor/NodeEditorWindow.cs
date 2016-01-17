@@ -65,8 +65,7 @@ namespace NodeEditorFramework
 
 			ResourceManager.Init(NodeEditor.editorPath + "Resources/");
 			iconTexture = ResourceManager.LoadTexture(EditorGUIUtility.isProSkin? "Textures/Icon_Dark.png" : "Textures/Icon_Light.png");
-			_editor.title = "FlowEditor";
-//			_editor.titleContent = new GUIContent("Flow Editor", iconTexture);
+			_editor.titleContent = new GUIContent("Flow Editor", iconTexture);
 		}
 
 		/// <summary>
@@ -107,7 +106,6 @@ namespace NodeEditorFramework
 				return;
 			}
 			AssureHasEditor ();
-
 
 			if (mainNodeCanvas == null)
 			{
@@ -184,9 +182,17 @@ namespace NodeEditorFramework
 				path = path.Replace (Application.dataPath, "Assets");
 				LoadNodeCanvas (path);
 			}
+			if(GUILayout.Button(new GUIContent("Refresh", "Adds in any new views that have been created"),EditorStyles.toolbarButton))
+			{
+				RefreshCanvas ();
+			}
+
 			if(GUILayout.Button(new GUIContent("Reset", "Loads a canvas from the view library"),EditorStyles.toolbarButton))
 			{
-				LoadViewCanvas ();
+				if(EditorUtility.DisplayDialog("Are you sure?" , "this will delete the current flow!", "ok", "cancel"))
+				{
+					LoadViewCanvas ();
+				}
 			}
 
 			GUILayout.EndHorizontal();
@@ -239,6 +245,51 @@ namespace NodeEditorFramework
 			Repaint ();
 		}
 
+		public void RefreshCanvas()
+		{
+			List<string> views = ScaffoldingExtensions.GetAllViews();
+
+			int x = -300;
+			int y = -200;
+
+			Node n = null;
+
+			for(int i = 0; i < views.Count; ++i)
+			{
+				bool createNewNode = true;
+
+				for(int j = 0; j < mainNodeCanvas.nodes.Count; j++)
+				{
+					if(mainNodeCanvas.nodes[j].name == views[i])
+					{
+						createNewNode = false;
+						n = mainNodeCanvas.nodes[j];
+					}
+				}
+
+				if(createNewNode)
+				{
+					ViewNode viewNode = (ViewNode)NodeTypes.getDefaultNode ("viewNode").Create (new Vector2 (x, y),views[i]);
+
+					mainNodeCanvas.nodes.Add(viewNode);
+				}
+				else
+				{
+					if(n is ViewNode)
+					{
+						(n as ViewNode).Refresh();
+					}
+				}
+
+				x += 250;
+				if(i % 3 == 0 && i > 0)
+				{
+					y += 150;
+					x = -300;
+				}
+			}
+		}
+
 		public void LoadViewCanvas()
 		{
 			NewNodeCanvas();
@@ -255,7 +306,6 @@ namespace NodeEditorFramework
 
 			for(int i = 0; i < views.Count; ++i)
 			{
-				Debug.Log(views[i]);
 				ViewNode viewNode = (ViewNode)NodeTypes.getDefaultNode ("viewNode").Create (new Vector2 (x, y),views[i]);
 
 				x += 250;
@@ -279,6 +329,8 @@ namespace NodeEditorFramework
 				{
 					if(mainNodeCanvas.nodes[i].Outputs[0].connections.Count > 0)
 					{
+						
+
 						Node node = mainNodeCanvas.nodes[i].Outputs[0].connections[0].body;
 						string name = "";
 						#if UNITY_5_3
@@ -336,74 +388,80 @@ namespace NodeEditorFramework
 			{
 				if(n.Outputs[i].connections.Count > 0 && (n is ViewNode))
 				{
-					FlowItem item = new FlowItem();
-					Node nextNode = n.Outputs[i].connections[0].body;
-
-					FlowOption option = new FlowOption();
-
-					if(nextNode is PopupNode)
+					for(int j = 0; j < n.Outputs[i].connections.Count; ++j)
 					{
-						Node yesNode = nextNode.Outputs[0].connections[0].body;
+						FlowItem item = new FlowItem();
+						Node nextNode = n.Outputs[i].connections[j].body;
 
-						PopupNode popupNode = (nextNode as PopupNode);
+						FlowOption option = new FlowOption();
 
-						FlowPopupOption popupOption = new FlowPopupOption();
-						popupOption.BodyText = popupNode.Body;
-						popupOption.YesText = popupNode.YesText;
-						popupOption.NoText = popupNode.NoText;
-						option.PopupType = popupNode.Popups[popupNode.PopupIndex];
-
-						popupOption.Options = new List<FlowOption>();
-						popupOption.Options.Add(CreateFlowOption(nextNode, 0));
-						popupOption.Options.Add(CreateFlowOption(nextNode, 1));
-
-						item.PopupOptions = popupOption;
-
-						nextNode = yesNode;
-					}
-
-					item.ButtonName = n.Outputs[i].name;
-					item.EntryPoint = n.name;
-
-					//create flow option for the base flow movement
-
-					if(nextNode is TransitionNode)
-					{
-						//adding in the transition type and changing the next node to skip over the transition
-						//certain nodes just facilitate a flow move and shouldnt be couldnt as a step.
-						option.TransitionType = (nextNode as TransitionNode).Transitions[(nextNode as TransitionNode).TransitionIndex];
-						nextNode = nextNode.Outputs[0].connections[0].body;
-					}
-
-					//setting up the movement choices, whether its a view or overlay etc.
-					option.OpenAsType = (n as ViewNode).viewType[i];
-
-					option.ExitPoint = nextNode.name;
-
-					if(nextNode is CloseViewNode)
-					{
-						option.OpenOrCloseView = (nextNode is CloseViewNode) ? ViewOpenType.Close : ViewOpenType.Open;
-						if(nextNode.Outputs[0].connections.Count > 0)
+						if(nextNode is PopupNode)
 						{
+							Node yesNode = nextNode.Outputs[0].connections[0].body;
+
+							PopupNode popupNode = (nextNode as PopupNode);
+
+							FlowPopupOption popupOption = new FlowPopupOption();
+							popupOption.BodyText = popupNode.Body;
+							popupOption.YesText = popupNode.YesText;
+							popupOption.NoText = popupNode.NoText;
+							option.PopupType = popupNode.Popups[popupNode.PopupIndex];
+
+							popupOption.Options = new List<FlowOption>();
+							popupOption.Options.Add(CreateFlowOption(nextNode, 0));
+							popupOption.Options.Add(CreateFlowOption(nextNode, 1));
+
+							item.PopupOptions = popupOption;
+
+							nextNode = yesNode;
+						}
+
+						item.ButtonName = n.Outputs[i].name;
+						item.EntryPoint = n.name;
+
+						//create flow option for the base flow movement
+
+						if(nextNode is TransitionNode)
+						{
+							//adding in the transition type and changing the next node to skip over the transition
+							//certain nodes just facilitate a flow move and shouldnt be couldnt as a step.
+							option.TransitionType = (nextNode as TransitionNode).Transitions[(nextNode as TransitionNode).TransitionIndex];
 							nextNode = nextNode.Outputs[0].connections[0].body;
-							option.ExitPoint = nextNode.name;
+						}
+
+						//setting up the movement choices, whether its a view or overlay etc.
+						if(nextNode is ViewNode)
+						{
+							option.OpenAsType = (nextNode as ViewNode).viewType;
+						}
+
+						option.ExitPoint = nextNode.name;
+
+						if(nextNode is CloseViewNode)
+						{
+							option.OpenOrCloseView = (nextNode is CloseViewNode) ? ViewOpenType.Close : ViewOpenType.Open;
+							if(nextNode.Outputs[0].connections.Count > 0)
+							{
+								nextNode = nextNode.Outputs[0].connections[0].body;
+								option.ExitPoint = nextNode.name;
+							}
+							else
+							{
+								option.ExitPoint = "";
+							}
+						}
+
+						item.Options = option;
+						//if theres an identical flow item, bail outta here!
+						if(IsFlowInfoUnique(item))
+						{
+							ScaffoldingConfig.Instance.FlowInfo.Add(item);
+							MapPathOfView(nextNode);
 						}
 						else
 						{
-							option.ExitPoint = "";
+
 						}
-					}
-
-					item.Options = option;
-					//if theres an identical flow item, bail outta here!
-					if(IsFlowInfoUnique(item))
-					{
-						ScaffoldingConfig.Instance.FlowInfo.Add(item);
-						MapPathOfView(nextNode);
-					}
-					else
-					{
-
 					}
 				}
 			}

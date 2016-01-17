@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -84,3 +85,4 @@ namespace NodeEditorFramework
 		}
 	}
 }
+#endif

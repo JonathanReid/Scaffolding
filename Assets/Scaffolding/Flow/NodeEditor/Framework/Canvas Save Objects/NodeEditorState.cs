@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections.Generic;
 using NodeEditorFramework;
 
@@ -34,3 +35,4 @@ namespace NodeEditorFramework
 		public List<Rect> ignoreInput = new List<Rect> (); // Rects inside the canvas to ignore input in (nested canvases, fE)
 	}
 }
+#endif

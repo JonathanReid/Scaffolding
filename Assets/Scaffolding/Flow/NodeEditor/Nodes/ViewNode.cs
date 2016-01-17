@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using NodeEditorFramework;
@@ -9,7 +10,7 @@ using Scaffolding;
 [Node (false, "Views/ViewNode", false)]
 public class ViewNode : Node 
 {
-	public List<Scaffolding.ViewType> viewType;
+	public Scaffolding.ViewType viewType;
 	
 	public const string ID = "viewNode";
 	public override string GetID { get { return ID; } }
@@ -21,19 +22,18 @@ public class ViewNode : Node
 	{
 		ViewNode node = CreateInstance <ViewNode> ();
 
-		viewType = new List<Scaffolding.ViewType>();
+		viewType = Scaffolding.ViewType.View;
 		List<string> buttons = ScaffoldingExtensions.GetButtonsInView(name);
 		ButtonCount = buttons.Count;
 
 		node.name = name;
-		node.rect = new Rect (pos.x, pos.y, 200, 30 + (ButtonCount * 45));
+		node.rect = new Rect (pos.x, pos.y, 200, 70 + (Mathf.Clamp((ButtonCount-1),0,100) * 20));
 		
 		node.CreateInput ("Target view", "View");
 
 		for(int i = 0; i < ButtonCount; i++)
 		{
 			node.CreateOutput (buttons[i], "View");
-			viewType.Add(Scaffolding.ViewType.View);
 		}
 
 		return node;
@@ -48,10 +48,9 @@ public class ViewNode : Node
 		for(int i = buttonCount; i < ButtonCount; ++i)
 		{
 			CreateOutput (buttons[i], "View");
-			viewType.Add(Scaffolding.ViewType.View);
 		}
 
-		rect = new Rect (rect.x, rect.y, 200, 30 + (ButtonCount * 45));
+		rect = new Rect (rect.x, rect.y, 200, 70 + (Mathf.Clamp((ButtonCount-1),0,100) * 20));
 	}
 
 	public override void DrawNode ()
@@ -66,18 +65,16 @@ public class ViewNode : Node
 		if(ButtonCount == -1)
 		{
 			ButtonCount = ScaffoldingExtensions.GetButtonsInView(name).Count;
-			viewType = new List<Scaffolding.ViewType>();
-			for(int i = 0; i < ButtonCount; ++i)
-			{
-				viewType.Add(Scaffolding.ViewType.View);
-			}
 		}
 
 		GUILayout.BeginHorizontal ();
-		GUILayout.BeginVertical ();
 
-		GUILayout.Label("");
+		GUILayout.BeginVertical ();
+		GUILayout.Label("Open as");
 		InputKnob (0);
+//		GUILayout.Label("Request");
+		viewType = (Scaffolding.ViewType)UnityEditor.EditorGUILayout.EnumPopup(viewType,GUILayout.Width(55));
+		GUILayout.EndVertical ();
 //
 //		for(int i = 0; i < Inputs[0].connections.Count; ++i)
 //		{
@@ -87,25 +84,16 @@ public class ViewNode : Node
 //			}
 //		}
 
-		GUILayout.EndVertical ();
 		GUILayout.BeginVertical ();
 
 		for(int i = 0; i < ButtonCount; ++i)
 		{
-			GUILayout.BeginVertical ();
+			
 			GUILayout.BeginHorizontal ();
-			GUILayout.FlexibleSpace();
 			GUILayout.Label("Button:");
 			Outputs [i].DisplayLayout ();
 			GUILayout.EndHorizontal ();
 
-			GUILayout.BeginHorizontal ();
-
-			GUILayout.FlexibleSpace();
-			GUILayout.Label("Request");
-			viewType[i] = (Scaffolding.ViewType)UnityEditor.EditorGUILayout.EnumPopup(viewType[i],GUILayout.Width(55));
-			GUILayout.EndHorizontal ();
-			GUILayout.EndVertical ();
 
 			GUILayout.Space(10);
 		}
@@ -127,3 +115,4 @@ public class ViewNode : Node
 	}
 }
 
+#endif

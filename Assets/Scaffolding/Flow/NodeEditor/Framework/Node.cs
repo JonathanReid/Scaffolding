@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using NodeEditorFramework;
@@ -542,7 +543,7 @@ namespace NodeEditorFramework
 			{
 				return false;
 			}
-
+				
 //			bool isRecursive = output.body.isChildOf (input.body);
 //			if (isRecursive) 
 //			{
@@ -563,11 +564,30 @@ namespace NodeEditorFramework
 		{
 			if (input != null && output != null) 
 			{
-				for(int i = 0; i < output.connections.Count; ++i)
-				{
-					output.connections[i].connections.Clear();
-				}
-				output.connections.Clear();
+//				for(int i = 0; i < output.connections.Count; ++i)
+//				{
+//					output.connections[i].connections.Clear();
+//				}
+
+//				for(int i = 0; i < output.connections.Count; ++i)
+//				{
+//					if(input.body is ViewNode)
+//					{
+//						if((input.body as ViewNode).viewType == Scaffolding.ViewType.View)
+//						{
+//							if(output.connections[i].body is ViewNode)
+//							{
+//								if((output.connections[i].body as ViewNode).viewType == Scaffolding.ViewType.View)
+//								{
+//									Debug.Log("Clear");
+//									output.connections.RemoveAt(i);
+//								}
+//							}
+//						}
+//					}
+//				}
+
+//				output.connections.Clear();
 				output.connections.Add (input);
 //				input.connections.Clear();
 				input.connections.Add(output);
@@ -606,3 +626,4 @@ namespace NodeEditorFramework
 		#endregion
 	}
 }
+#endif
