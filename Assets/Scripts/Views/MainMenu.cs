@@ -2,30 +2,39 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Scaffolding;
+using Scaffolding.Transitions;
 
-public class ExampleClass : MonoBehaviour {
+public class MainMenu : AbstractView {
 	 
-	private const int MAGIC_NUMBER = 100;
+    public override void Setup(ViewManagerBase manager)
+    {
+        base.Setup(manager);
 
-    public float ExampleFloat;
-	public string ExampleString;
+		GetButtonForName("StartGame").AddButtonPressedHandlerNoButton(ButtonPressed);
+    }
 
-	private GameObject _gameObjectReference;
-	private string _internalString;
+    public override void OnShowStart(SObject data)
+    {
+        base.OnShowStart(data);
+    }
 
-	public void Setup()
+    public override void OnShowComplete()
+    {
+        base.OnShowComplete();
+    }
+
+	private void ButtonPressed()
 	{
-		_gameObjectReference = transform.FindChild("MyGameObject").GetComponent<GameObject>();
+		TransitionTo<GameView,DoorsTransition>();
 	}
 
-	private void Show()
-	{
+    public override void OnHideStart()
+    {
+        base.OnHideStart();
+    }
 
-	}
-
-	private void Hide()
-	{
-
-	}
-
+    public override void OnHideComplete()
+    {
+        base.OnHideComplete();
+    }
 }

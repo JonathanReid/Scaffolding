@@ -1,0 +1,1333 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c2324a9ab1224ebe3edad393e3544, type: 3}
+  m_Name: GameFlow
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 11425000}
+  - {fileID: 11480756}
+  - {fileID: 11476418}
+  - {fileID: 11443808}
+  - {fileID: 11457086}
+  - {fileID: 11470110}
+  - {fileID: 11438386}
+  - {fileID: 11453122}
+  - {fileID: 11435578}
+  - {fileID: 11484406}
+  - {fileID: 11449060}
+  - {fileID: 11407660}
+  - {fileID: 11464300}
+  - {fileID: 11469218}
+  - {fileID: 11456750}
+  - {fileID: 11490922}
+--- !u!114 &11400444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: HelpButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 87
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496192}
+--- !u!114 &11401908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: ReplayButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11490922}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11475056}
+--- !u!114 &11402518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: QuitButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11437044}
+--- !u!114 &11404438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: StartGame
+  m_EditorClassIdentifier: 
+  body: {fileID: 11456750}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11418280}
+--- !u!114 &11406358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: CloseButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11476418}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11435570}
+--- !u!114 &11406956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: ButtonAboutPrize
+  m_EditorClassIdentifier: 
+  body: {fileID: 11456750}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 87
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11462932}
+--- !u!114 &11407552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  drawing: 1
+  focusedNode: {fileID: 0}
+  selectedNode: {fileID: 0}
+  currentNode: {fileID: 0}
+  dragNode: 0
+  makeTransition: {fileID: 0}
+  connectOutput: {fileID: 0}
+  navigate: 0
+  panWindow: 0
+  panOffset: {x: -349.97275, y: 193.93988}
+  zoom: 1.38
+  canvasRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1783
+    height: 908
+  zoomPanAdjust: {x: 1230.27, y: 626.52}
+  ignoreInput: []
+--- !u!114 &11407660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: PauseView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 107.24903
+    y: -282.15958
+    width: 200
+    height: 110
+  Inputs:
+  - {fileID: 11459464}
+  Outputs:
+  - {fileID: 11443050}
+  - {fileID: 11402518}
+  - {fileID: 11400444}
+  - {fileID: 11409570}
+  - {fileID: 11487670}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: GameView
+  ButtonCount: 3
+--- !u!114 &11408930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: PauseButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11453122}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11459464}
+--- !u!114 &11409570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: QuitButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 0
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11415008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: FindOutMore
+  m_EditorClassIdentifier: 
+  body: {fileID: 11490922}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 87
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11462932}
+--- !u!114 &11418280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11470110}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11404438}
+  - {fileID: 11494894}
+--- !u!114 &11425000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: GameOverView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -139.37039
+    y: 503.86917
+    width: 200
+    height: 70
+  Inputs:
+  - {fileID: 11428816}
+  Outputs:
+  - {fileID: 11429154}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: Close Overlay
+  ButtonCount: 0
+--- !u!114 &11427650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: NoButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11484406}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11435570}
+--- !u!114 &11428816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11425000}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 33
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11429154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: RetryButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11425000}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11473170}
+--- !u!114 &11429968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11490922}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11437510}
+--- !u!114 &11431248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: CloseButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11476418}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11431514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: 'Then Open:'
+  m_EditorClassIdentifier: 
+  body: {fileID: 11469218}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11433800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11457086}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 33
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11488096}
+--- !u!114 &11435570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11469218}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11443050}
+  - {fileID: 11406358}
+  - {fileID: 11427650}
+--- !u!114 &11435578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3e5dd47483407b8172e27081098d5, type: 3}
+  m_Name: Close Overlay
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 956.99915
+    y: 439.49002
+    width: 200
+    height: 100
+  Inputs:
+  - {fileID: 11475056}
+  Outputs:
+  - {fileID: 11459064}
+  ShowingNode: 1
+  MinifiableNode: 1
+  transitions: []
+  assigned: 0
+  value: 0
+--- !u!114 &11437044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11484406}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11402518}
+--- !u!114 &11437510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: 'Then Open:'
+  m_EditorClassIdentifier: 
+  body: {fileID: 11480756}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11429968}
+--- !u!114 &11438386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18d3cbabd67c4425aa8a44570b4fc37, type: 3}
+  m_Name: Starting View
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -1353.5559
+    y: -157.81007
+    width: 200
+    height: 65
+  Inputs: []
+  Outputs:
+  - {fileID: 11488096}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 01000000
+  Input1Val: 
+--- !u!114 &11443050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: ResumeButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11435570}
+--- !u!114 &11443808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: AboutThePrizeView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -215.60951
+    y: -476.70093
+    width: 200
+    height: 70
+  Inputs:
+  - {fileID: 11462932}
+  Outputs:
+  - {fileID: 11494894}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: MainMenu
+  ButtonCount: 1
+--- !u!114 &11449060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: ErrorPopup
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 309.68936
+    y: -565.2197
+    width: 200
+    height: 70
+  Inputs:
+  - {fileID: 11477054}
+  Outputs:
+  - {fileID: 11478800}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: 
+  ButtonCount: 1
+--- !u!114 &11450244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11453122}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11453122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: GameView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -566.85223
+    y: -179.98964
+    width: 200
+    height: 90
+  Inputs:
+  - {fileID: 11450244}
+  Outputs:
+  - {fileID: 11408930}
+  - {fileID: 11454900}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 0
+  Input1Val: Close Overlay
+  ButtonCount: 2
+--- !u!114 &11454900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: HelpButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11453122}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496192}
+--- !u!114 &11456750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: MainMenu
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -591.23456
+    y: 58.139774
+    width: 200
+    height: 110
+  Inputs:
+  - {fileID: 11458500}
+  Outputs:
+  - {fileID: 11404438}
+  - {fileID: 11473490}
+  - {fileID: 11406956}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: Close Overlay
+  ButtonCount: 3
+--- !u!114 &11457086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: LoadingView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -987.27985
+    y: -159.29982
+    width: 200
+    height: 70
+  Inputs:
+  - {fileID: 11433800}
+  Outputs: []
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: Starting View
+  ButtonCount: 0
+--- !u!114 &11458100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: HelpButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11490922}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496192}
+--- !u!114 &11458500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11456750}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11459064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: 'Then Open:'
+  m_EditorClassIdentifier: 
+  body: {fileID: 11435578}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11459464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11408930}
+--- !u!114 &11462932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11443808}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11406956}
+  - {fileID: 11415008}
+--- !u!114 &11462984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: YesButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11484406}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496978}
+--- !u!114 &11464300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3e5dd47483407b8172e27081098d5, type: 3}
+  m_Name: Close Overlay
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 475.8779
+    y: -382.2096
+    width: 200
+    height: 100
+  Inputs:
+  - {fileID: 11496978}
+  Outputs:
+  - {fileID: 11482130}
+  ShowingNode: 0
+  MinifiableNode: 1
+  transitions: []
+  assigned: 0
+  value: 0
+--- !u!114 &11469218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3e5dd47483407b8172e27081098d5, type: 3}
+  m_Name: Close Overlay
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 727.1192
+    y: 138.99983
+    width: 200
+    height: 100
+  Inputs:
+  - {fileID: 11435570}
+  Outputs:
+  - {fileID: 11431514}
+  ShowingNode: 0
+  MinifiableNode: 1
+  transitions: []
+  assigned: 0
+  value: 0
+--- !u!114 &11470110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3e5dd47483407b8172e27081098d5, type: 3}
+  m_Name: Close Overlay
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -175.95947
+    y: 75.685
+    width: 200
+    height: 100
+  Inputs:
+  - {fileID: 11418280}
+  Outputs:
+  - {fileID: 11493650}
+  ShowingNode: 0
+  MinifiableNode: 1
+  transitions: []
+  assigned: 0
+  value: 0
+--- !u!114 &11473170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11480756}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11429154}
+--- !u!114 &11473490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: HelpButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11456750}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 59
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496192}
+--- !u!114 &11475056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11435578}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11401908}
+--- !u!114 &11475288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: ContinueButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11490922}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 0
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11476418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: HelpView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 119.10922
+    y: 289.3498
+    width: 200
+    height: 70
+  Inputs:
+  - {fileID: 11496192}
+  Outputs:
+  - {fileID: 11406358}
+  - {fileID: 11431248}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: GameView
+  ButtonCount: 1
+--- !u!114 &11477054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11449060}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11478800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: QuitButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11449060}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11496978}
+--- !u!114 &11480756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3e5dd47483407b8172e27081098d5, type: 3}
+  m_Name: Close Overlay
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 170.7695
+    y: 502.94962
+    width: 200
+    height: 100
+  Inputs:
+  - {fileID: 11473170}
+  Outputs:
+  - {fileID: 11437510}
+  ShowingNode: 1
+  MinifiableNode: 1
+  transitions: []
+  assigned: 0
+  value: 0
+--- !u!114 &11482130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: 'Then Open:'
+  m_EditorClassIdentifier: 
+  body: {fileID: 11464300}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11484406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: AreYouSurePopup
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 551.0494
+    y: -180.16988
+    width: 200
+    height: 90
+  Inputs:
+  - {fileID: 11437044}
+  Outputs:
+  - {fileID: 11462984}
+  - {fileID: 11427650}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: PauseView
+  ButtonCount: 2
+--- !u!114 &11487670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: QuitButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11407660}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 0
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11488096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: Starting View
+  m_EditorClassIdentifier: 
+  body: {fileID: 11438386}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11433800}
+--- !u!114 &11490922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf791e0eded1b4b6abec53f5486c4b2d, type: 3}
+  m_Name: ResultsView
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 421.75797
+    y: 437.60983
+    width: 200
+    height: 90
+  Inputs:
+  - {fileID: 11429968}
+  Outputs:
+  - {fileID: 11401908}
+  - {fileID: 11458100}
+  - {fileID: 11415008}
+  - {fileID: 11475288}
+  ShowingNode: 1
+  MinifiableNode: 0
+  transitions: []
+  viewType: 1
+  Input1Val: Close Overlay
+  ButtonCount: 2
+--- !u!114 &11493650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: 'Then Open:'
+  m_EditorClassIdentifier: 
+  body: {fileID: 11470110}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections: []
+--- !u!114 &11494894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: CloseButton
+  m_EditorClassIdentifier: 
+  body: {fileID: 11443808}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 2
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11418280}
+--- !u!114 &11496192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11476418}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11454900}
+  - {fileID: 11473490}
+  - {fileID: 11458100}
+  - {fileID: 11400444}
+--- !u!114 &11496978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: Target view
+  m_EditorClassIdentifier: 
+  body: {fileID: 11464300}
+  type: View
+  texturePath: Textures/Out_Knob.png
+  side: 4
+  sidePosition: 31
+  sideOffset: 0
+  HiddenKnob: 0
+  connections:
+  - {fileID: 11462984}
+  - {fileID: 11478800}
