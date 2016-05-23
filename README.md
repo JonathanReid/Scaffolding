@@ -257,17 +257,50 @@ The project includes a few basic transitions, including DoorTransition, which is
 To request a view with a transition, call the following code:
 
 ``` c#
-TransitionTo<IntroView,DoorsTransition>();
+TransitionTo<DemoView,DoorsTransition>();
 ```
 
-And once you know that IntroView has finished loading, you can then call LoadComplete(); 
+And once you know that IntroView has finished loading, you can then call TransitionShowComplete(); 
 E.g:
 
 ``` c#
-public override void OnShowComplete()
-{
-	base.OnShowComplete();
-	LoadComplete();
+public class DemoView : AbstractView {
+
+    public override void Setup(ViewManagerBase manager)
+    {
+        base.Setup(manager);
+    }
+
+    public override void OnShowStart(SObject data)
+    {
+        StartCoroutine(BigLongLoad());
+    }
+
+    IEnumerator BigLongLoad()
+    {
+        // Do loading stuff here
+        yield return new WaitForSeconds(3);
+        Debug.Log("Big Long Load finished!");
+
+        TransitionShowComplete();
+    }
+
+    public override void OnShowComplete()
+    {
+        // Should only get here when we've finished the load.
+        Debug.Log("Screen transition finished!");
+        base.OnShowComplete();
+    }
+
+    public override void OnHideStart()
+    {
+        base.OnHideStart();
+    }
+
+    public override void OnHideComplete()
+    {
+        base.OnHideComplete();
+    }
 }
 ```
 

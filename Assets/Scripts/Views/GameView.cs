@@ -6,43 +6,60 @@ using UnityEngine.UI;
 
 public class GameView : AbstractView {
 	 
-    public override void Setup(ViewManagerBase manager)
-    {
-        base.Setup(manager);
-		SetLevelStarted();
-    }
-
-	private void SetLevelStarted()
+	public override void Setup(ViewManagerBase manager)
 	{
-		Text text = transform.FindChild("Canvas/LevelTitle").GetComponent<Text>();
-		text.text += " " + GameData.LevelStarted;
+		base.Setup(manager);
 	}
 
-    public override void OnShowStart(SObject data)
-    {
-        base.OnShowStart(data);
-    }
+	public override void OnShowStart(SObject data)
+	{
+		StartCoroutine(BigLongLoad());
 
-    public override void OnShowComplete()
-    {
-        base.OnShowComplete();
-    }
+		// Comment this out to make the transition into BarView work nicely...
+		// But doing that breaks any attempt to transition out of it!
+//			base.OnShowStart(data);
+	}
 
-	public void Update()
+	IEnumerator BigLongLoad()
+	{
+		// Do loading stuff here
+		yield return new WaitForSeconds(3);
+		Debug.Log("Big Long Load finished!");
+
+		TransitionShowComplete();
+	}
+
+	public override void OnShowComplete()
+	{
+		// Should only get here when we've finished the load.
+		Debug.Log("Screen transition finished!");
+
+//		AddButtonPressedHandler("BackButton", BackButtonPressed);
+
+		base.OnShowComplete();
+	}
+
+	void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			RequestView<GameOverView>();
+			BackButtonPressed();
 		}
 	}
 
-    public override void OnHideStart()
-    {
-        base.OnHideStart();
-    }
+	public override void OnHideStart()
+	{
+		base.OnHideStart();
+	}
 
-    public override void OnHideComplete()
-    {
-        base.OnHideComplete();
-    }
+	public override void OnHideComplete()
+	{
+		base.OnHideComplete();
+	}
+
+	private void BackButtonPressed()
+	{
+		TransitionTo<MainMenu, DoorsTransition>();
+	}
+
 }

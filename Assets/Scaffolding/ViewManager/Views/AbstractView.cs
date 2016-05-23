@@ -240,7 +240,7 @@ namespace Scaffolding
 			}
 		}
 
-        private void TransitionShowComplete()
+		public void TransitionShowComplete()
         {
             _manager.ScreenShowComplete(this.GetType());
         }
